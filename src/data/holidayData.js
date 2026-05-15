@@ -44,7 +44,7 @@ export const holidayData = [
   {
     "id": 7,
     "subject": "History",
-    "message": "DO it in the History homework copy",
+    "message": "Do it in Holiday homework copy",
     "file": "History.pdf",
     "downloadUrl": "/holiday_homework/History.pdf"
   },
@@ -68,5 +68,44 @@ export const holidayData = [
     "message": "Do it in the Homework copy",
     "file": "IT.pdf",
     "downloadUrl": "/holiday_homework/IT.pdf"
+  },
+  {
+    "id": 11,
+    "subject": "Physics",
+    "message": "Do it in the Assignment copy",
+    "file": "Physics.pdf",
+    "downloadUrl": "/holiday_homework/Physics.pdf"
+  },
+  {
+    "id": 12,
+    "subject": "Chemistry",
+    "message": "Do it in the CW copy",
+    "file": "Chemistry.pdf",
+    "downloadUrl": "/holiday_homework/Chemistry.pdf"
+  },
+  {
+    "id": 13,
+    "subject": "Biology",
+    "message": "Do it in the Assignment copy",
+    "file": "Biology.pdf",
+    "downloadUrl": "/holiday_homework/Biology.pdf"
+  },
+  {
+    "id": 14,
+    "subject": "Physics Project",
+    "message": "Do it in the ( waiting for Teacher Response)",
+    "projectData": "1) Project Work Draw all the cases for ray diagram in spherical mirror and spherical lens in a stick file.  2) Holiday Homework Complete NCERT question and answers along with intext questions answer in C.W notebook. 3. Write/ Solve the answers of PYQs BOARDS in your assignment notebook.(It is given in the form of pdf, get a print and answer all)"
+  },
+  {
+    "id": 15,
+    "subject": "Biology Project",
+    "message": "Do it in the stick file",
+    "projectData": "Biology 1) Project Work ( Models) a) Digestive system of human being (roll no. 1-20)  b) Respiratory system of human being (roll no. 21-40)  2) Do as directed a) Read chapter 5 (life processes)  b) Do intext and chapter end question and answers of chapter 5 (related to topics Nutrition and Respiration)"
+  },
+  {
+    "id": 16,
+    "subject": "Chemistry Project",
+    "message": "Do it in the stick file and Practical copy.",
+    "projectData": "1) Project Work Write all the chemical equations from chapter 1 to 4 in a file. You can make this file as colourful as you wish.  2) Practical Write experiment no. 1 (Types of chemical reactions) in your chemistry practical copy."
   }
 ];

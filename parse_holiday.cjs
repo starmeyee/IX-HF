@@ -13,6 +13,7 @@ blocks.forEach((block, index) => {
     
     let message = '';
     let file = '';
+    let projectData = '';
     
     lines.forEach(line => {
       const lowerLine = line.toLowerCase();
@@ -21,6 +22,9 @@ blocks.forEach((block, index) => {
       }
       if (lowerLine.includes('homework file :-')) {
          file = line.substring(lowerLine.indexOf('homework file :-') + 16).trim();
+      }
+      if (lowerLine.includes('project data :-')) {
+         projectData = line.substring(lowerLine.indexOf('project data :-') + 15).trim();
       }
     });
     
@@ -31,14 +35,23 @@ blocks.forEach((block, index) => {
       filename = parts[parts.length - 1].trim();
     }
     
-    if (subjectLine && message && filename) {
-      holidayData.push({
+    if (subjectLine && message && (filename || projectData)) {
+      const entry = {
         id: index + 1,
         subject: subjectLine,
-        message: message,
-        file: filename,
-        downloadUrl: encodeURI('/holiday_homework/' + filename)
-      });
+        message: message
+      };
+      
+      if (filename) {
+        entry.file = filename;
+        entry.downloadUrl = encodeURI('/holiday_homework/' + filename);
+      }
+      
+      if (projectData) {
+        entry.projectData = projectData;
+      }
+      
+      holidayData.push(entry);
     }
   }
 });

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Sun, Download, CheckCircle } from 'lucide-react';
+import { Calendar, Sun, Download, CheckCircle, FileText, X } from 'lucide-react';
 import { holidayData } from '../data/holidayData';
 
 export default function HolidayHomework() {
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const saved = localStorage.getItem('completedHolidayHomework');
@@ -89,29 +90,51 @@ export default function HolidayHomework() {
                 {task.message}
               </p>
               
-              {task.file && (
+              {(task.file || task.projectData) && (
                 <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
                   <h4 style={{ fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Attached Resource:</h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <a href={task.downloadUrl} download style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      background: 'var(--surface-hover)',
-                      border: '1px solid var(--border)',
-                      padding: '0.75rem',
-                      borderRadius: 'var(--radius-sm)',
-                      color: 'var(--text-primary)',
-                      cursor: 'pointer',
-                      fontSize: '0.85rem',
-                      textDecoration: 'none',
-                      transition: 'background 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--border)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-hover)'}
-                    >
-                      <Download size={16} color={isCompleted ? 'var(--success, #10B981)' : 'var(--tertiary)'} /> {task.file}
-                    </a>
+                    {task.projectData ? (
+                      <button onClick={() => setSelectedProject(task)} style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        background: 'var(--surface-hover)',
+                        border: '1px solid var(--border)',
+                        padding: '0.75rem',
+                        borderRadius: 'var(--radius-sm)',
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer',
+                        fontSize: '0.85rem',
+                        textAlign: 'left',
+                        transition: 'background 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'var(--border)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-hover)'}
+                      >
+                        <FileText size={16} color="var(--tertiary)" /> View Project Details
+                      </button>
+                    ) : (
+                      <a href={task.downloadUrl} download style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        background: 'var(--surface-hover)',
+                        border: '1px solid var(--border)',
+                        padding: '0.75rem',
+                        borderRadius: 'var(--radius-sm)',
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer',
+                        fontSize: '0.85rem',
+                        textDecoration: 'none',
+                        transition: 'background 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'var(--border)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-hover)'}
+                      >
+                        <Download size={16} color={isCompleted ? 'var(--success, #10B981)' : 'var(--tertiary)'} /> {task.file}
+                      </a>
+                    )}
                   </div>
                 </div>
               )}
@@ -119,6 +142,70 @@ export default function HolidayHomework() {
           );
         })}
       </div>
+
+      {selectedProject && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0, 0, 0, 0.7)',
+          backdropFilter: 'blur(8px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '1.5rem',
+          animation: 'fadeIn 0.2s ease'
+        }}>
+          <div className="glass-card" style={{
+            maxWidth: '600px',
+            width: '100%',
+            position: 'relative',
+            maxHeight: '90vh',
+            overflowY: 'auto',
+            borderTop: '4px solid var(--tertiary)'
+          }}>
+            <button 
+              onClick={() => setSelectedProject(null)}
+              style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: '50%',
+                width: '32px', height: '32px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer',
+                color: 'var(--text-secondary)'
+              }}
+            >
+              <X size={18} />
+            </button>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span className="badge holiday" style={{ display: 'inline-block' }}>{selectedProject.subject}</span>
+            </div>
+            
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontFamily: 'Outfit, sans-serif' }}>Project Details</h2>
+            
+            <div style={{ 
+              background: 'var(--surface-hover)', 
+              border: '1px solid var(--border)',
+              borderRadius: 'var(--radius-md)',
+              padding: '1.5rem',
+              color: 'var(--text-primary)',
+              lineHeight: '1.7',
+              fontSize: '1rem'
+            }}>
+              {selectedProject.projectData.split(/(?=\d\))/).map((point, i) => (
+                <div key={i} style={{ marginBottom: i > 0 ? '1rem' : '0' }}>
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
