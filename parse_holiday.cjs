@@ -15,18 +15,30 @@ blocks.forEach((block, index) => {
     let file = '';
     let projectData = '';
     
+    let isProjectData = false;
+    let projectDataLines = [];
+    
     lines.forEach(line => {
       const lowerLine = line.toLowerCase();
-      if (lowerLine.includes('message :-')) {
-        message = line.substring(lowerLine.indexOf('message :-') + 10).trim();
+      
+      if (lowerLine.startsWith('message :-')) {
+        message = line.substring(10).trim();
+        isProjectData = false;
       }
-      if (lowerLine.includes('homework file :-')) {
-         file = line.substring(lowerLine.indexOf('homework file :-') + 16).trim();
+      else if (lowerLine.startsWith('homework file :-')) {
+         file = line.substring(16).trim();
+         isProjectData = false;
       }
-      if (lowerLine.includes('project data :-')) {
-         projectData = line.substring(lowerLine.indexOf('project data :-') + 15).trim();
+      else if (lowerLine.startsWith('project data :-')) {
+         projectDataLines.push(line.substring(15).trim());
+         isProjectData = true;
+      }
+      else if (isProjectData) {
+         projectDataLines.push(line);
       }
     });
+    
+    projectData = projectDataLines.join('\n').trim();
     
     // Extract actual filename from Real DATA/Holiday homework/...
     let filename = '';

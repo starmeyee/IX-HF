@@ -94,18 +94,18 @@ export const holidayData = [
     "id": 14,
     "subject": "Physics Project",
     "message": "Do it in the ( waiting for Teacher Response)",
-    "projectData": "1) Project Work Draw all the cases for ray diagram in spherical mirror and spherical lens in a stick file.  2) Holiday Homework Complete NCERT question and answers along with intext questions answer in C.W notebook. 3. Write/ Solve the answers of PYQs BOARDS in your assignment notebook.(It is given in the form of pdf, get a print and answer all)"
+    "projectData": "### 1) Project Work\nDraw all the cases for ray diagram in spherical mirror and spherical lens in a stick file."
   },
   {
-    "id": 15,
+    "id": 17,
     "subject": "Biology Project",
     "message": "Do it in the stick file",
-    "projectData": "Biology 1) Project Work ( Models) a) Digestive system of human being (roll no. 1-20)  b) Respiratory system of human being (roll no. 21-40)  2) Do as directed a) Read chapter 5 (life processes)  b) Do intext and chapter end question and answers of chapter 5 (related to topics Nutrition and Respiration)"
+    "projectData": "### 1) Project Work (Models)\n- **a)** Digestive system of human being (Roll no. 1-20)\n- **b)** Respiratory system of human being (Roll no. 21-40)"
   },
   {
-    "id": 16,
+    "id": 19,
     "subject": "Chemistry Project",
     "message": "Do it in the stick file and Practical copy.",
-    "projectData": "1) Project Work Write all the chemical equations from chapter 1 to 4 in a file. You can make this file as colourful as you wish.  2) Practical Write experiment no. 1 (Types of chemical reactions) in your chemistry practical copy."
+    "projectData": "### 1) Project Work\nWrite all the chemical equations from chapter 1 to 4 in a file. You can make this file as colourful as you wish."
   }
 ];

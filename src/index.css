@@ -543,3 +543,27 @@ a {
     padding-bottom: 5rem;
   }
 }
+
+/* Markdown Content Styles */
+.markdown-content h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+.markdown-content h3:first-child {
+  margin-top: 0;
+}
+.markdown-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.markdown-content li {
+  margin-bottom: 0.25rem;
+}
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}

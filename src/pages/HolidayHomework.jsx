@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Sun, Download, CheckCircle, FileText, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import { holidayData } from '../data/holidayData';
 
 export default function HolidayHomework() {
@@ -220,20 +221,18 @@ export default function HolidayHomework() {
             
             <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)' }}>Project Details</h2>
             
-            <div style={{ 
-              background: 'var(--background)', 
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '1.5rem',
-              color: 'var(--text-primary)',
-              lineHeight: '1.7',
-              fontSize: '1rem'
-            }}>
-              {selectedProject.projectData.split(/(?=\d\))/).map((point, i) => (
-                <div key={i} style={{ marginBottom: i > 0 ? '1rem' : '0' }}>
-                  {point}
-                </div>
-              ))}
+            <div 
+              className="markdown-content"
+              style={{ 
+                background: 'var(--background)', 
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-md)',
+                padding: '1.5rem',
+                color: 'var(--text-primary)',
+                lineHeight: '1.7',
+                fontSize: '1rem'
+              }}>
+              <ReactMarkdown>{selectedProject.projectData}</ReactMarkdown>
             </div>
           </div>
         </div>
