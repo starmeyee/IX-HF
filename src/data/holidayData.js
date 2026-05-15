@@ -1,5 +1,12 @@
 export const holidayData = [
   {
+    "id": 1,
+    "subject": "Economics",
+    "message": "Do it in the assignment copy.",
+    "file": "holiday homework.txt",
+    "downloadUrl": "/holiday_homework/holiday homework.txt"
+  },
+  {
     "id": 2,
     "subject": "Social science Project",
     "message": "Each student has to do Project on the given topic individually.",

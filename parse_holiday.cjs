@@ -9,17 +9,18 @@ blocks.forEach((block, index) => {
   const lines = block.trim().split('\n');
   if (lines.length >= 3) {
     const subjectLine = lines[0].trim();
-    if (subjectLine.includes('Message :-') || subjectLine.includes('Homework File :-')) return;
+    if (subjectLine.toLowerCase().includes('message :-') || subjectLine.toLowerCase().includes('homework file :-')) return;
     
     let message = '';
     let file = '';
     
     lines.forEach(line => {
-      if (line.includes('Message :-')) {
-        message = line.replace('Message :-', '').trim();
+      const lowerLine = line.toLowerCase();
+      if (lowerLine.includes('message :-')) {
+        message = line.substring(lowerLine.indexOf('message :-') + 10).trim();
       }
-      if (line.includes('Homework File :-')) {
-         file = line.replace('Homework File :-', '').trim();
+      if (lowerLine.includes('homework file :-')) {
+         file = line.substring(lowerLine.indexOf('homework file :-') + 16).trim();
       }
     });
     
