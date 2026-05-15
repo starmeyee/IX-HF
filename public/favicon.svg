@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200">
+  <defs>
+    <style>
+      .icon-color { fill: #00296B; }
+      .icon-stroke { stroke: #00296B; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .bg-color { fill: white; }
+    </style>
+  </defs>
+
+  <!-- Browser Top Bar -->
+  <path d="M30,60 C30,54 34,50 40,50 L200,50 C206,50 210,54 210,60 L210,70 L30,70 Z" class="icon-color" />
+  <circle cx="45" cy="60" r="4" class="bg-color" />
+  <circle cx="60" cy="60" r="4" class="bg-color" />
+  <circle cx="75" cy="60" r="4" class="bg-color" />
+
+  <!-- Browser Body Outline -->
+  <path d="M30,70 L30,160 C30,166 34,170 40,170 L80,170 M210,70 L210,160 C210,166 206,170 200,170 L160,170" class="icon-stroke" stroke-width="6" />
+
+  <!-- Center Circle overlapping browser -->
+  <circle cx="120" cy="45" r="30" class="bg-color" stroke="#00296B" stroke-width="6" />
+
+  <!-- Graduation Cap -->
+  <path d="M92,38 L120,26 L148,38 L120,50 Z" class="icon-color" />
+  <path d="M102,43 V51 C102,59 138,59 138,51 V43 Z" class="icon-color" />
+  <rect x="144" y="39" width="3" height="12" class="icon-color" />
+  <path d="M142,51 L147,51 L149,59 L140,59 Z" class="icon-color" />
+
+  <!-- Left User -->
+  <circle cx="85" cy="115" r="14" class="icon-color" />
+  <path d="M60,160 C60,140 70,132 85,132 C100,132 110,140 110,160 Z" class="icon-color" />
+
+  <!-- Right User -->
+  <circle cx="155" cy="115" r="14" class="icon-color" />
+  <path d="M130,160 C130,140 140,132 155,132 C170,132 180,140 180,160 Z" class="icon-color" />
+
+  <!-- Center User (overlaps side users) -->
+  <circle cx="120" cy="105" r="18" class="icon-color" stroke="white" stroke-width="3" />
+  <path d="M90,160 C90,135 105,127 120,127 C135,127 150,135 150,160 Z" class="icon-color" stroke="white" stroke-width="3" />
+
+  <!-- Book Base -->
+  <path d="M35,185 C60,170 90,170 120,190 C150,170 180,170 205,185 L180,160 C150,145 120,160 120,160 C120,160 90,145 60,160 Z" class="bg-color" />
+  
+  <!-- Book upper pages -->
+  <path d="M50,165 C75,150 100,150 120,170 C140,150 165,150 190,165 L190,175 C165,160 140,160 120,180 C100,160 75,160 50,175 Z" class="icon-color" />
+  
+  <!-- Book Bottom outlines -->
+  <path d="M50,180 C75,165 100,165 120,185 C140,165 165,165 190,180 L190,186 C165,171 140,171 120,191 C100,171 75,171 50,186 Z" class="icon-color" />
+  
+  <!-- Center Book Crease -->
+  <path d="M120,170 V192" class="icon-stroke" stroke-width="4" />
+</svg>

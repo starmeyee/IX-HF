@@ -1,0 +1,35 @@
+Economics 
+Message :- Do it in the assignment copy.
+Homework FIlE :- Real DATA/Holiday homework/holiday homework.txt
+
+Social science Project 
+Message :- Each student has to do Project on the given topic individually. 
+Homework File :- Real DATA/Holiday homework/Social Science.txt
+
+Maths 
+Message :- To be prepare in thin classmate copy, Date of Submission:22.06.2026
+Homework File :- Real DATA/Holiday homework/Maths.pdf
+
+MATHS ACTIVITY WORK
+Message :- To be prepare in Practical Copy for Board Exam. 2027
+Homework File :- Real DATA/Holiday homework/Maths Activity.pdf
+
+Maths Project 
+Message :- To be prepare in Stick file for Board Exam. 2027
+Homework File :- Real DATA/Holiday homework/Maths Project.pdf
+
+Hindi
+Message :- Do it in the notebook
+Homework File :- Real DATA/Holiday homework/Hindi.pdf
+
+History
+Message :- DO it in the History homework copy
+Homework File :- Real DATA/Holiday homework/History.pdf
+
+English 
+Message :- Do it in notebook
+Homework File :- Real DATA/Holiday homework/English.pdf
+
+Civics
+Message :- Do it in Civics HW copy
+Homework File :- Real DATA/Holiday homework/Civics.pdf
