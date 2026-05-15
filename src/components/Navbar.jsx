@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-brand">
-        <img src="/favicon.svg?v=3" alt="10th HI Logo" style={{ width: 28, height: 28, borderRadius: 6 }} />
+        <img src="/favicon.svg?v=4" alt="10th HI Logo" style={{ width: 28, height: 28, borderRadius: 6 }} />
         10th HI
       </div>
       <div className="nav-links">
