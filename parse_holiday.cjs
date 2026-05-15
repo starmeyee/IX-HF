@@ -2,23 +2,55 @@ const fs = require('fs');
 
 const content = fs.readFileSync('Real DATA/Holiday homework/holiday homework.txt', 'utf8');
 
-const blocks = content.split(/\n\s*\n/);
+const rawLines = content.split('\n');
+const blocks = [];
+let currentBlock = [];
+
+for (let i = 0; i < rawLines.length; i++) {
+  const lowerLine = rawLines[i].toLowerCase();
+  
+  if (lowerLine.startsWith('message :-')) {
+    let subjectLine = '';
+    // Find the last non-empty line in currentBlock to be the subject
+    while (currentBlock.length > 0 && currentBlock[currentBlock.length - 1].trim() === '') {
+      currentBlock.pop();
+    }
+    if (currentBlock.length > 0) {
+      subjectLine = currentBlock.pop();
+    }
+    
+    // Push the previous block if it has content
+    if (currentBlock.length > 0) {
+      blocks.push(currentBlock);
+    }
+    
+    // Start new block
+    currentBlock = [subjectLine, rawLines[i]];
+  } else {
+    currentBlock.push(rawLines[i]);
+  }
+}
+if (currentBlock.length > 0) {
+  blocks.push(currentBlock);
+}
+
 const holidayData = [];
 
-blocks.forEach((block, index) => {
-  const lines = block.trim().split('\n');
-  if (lines.length >= 3) {
+blocks.forEach((lines, index) => {
+  if (lines.length >= 2) {
     const subjectLine = lines[0].trim();
-    if (subjectLine.toLowerCase().includes('message :-') || subjectLine.toLowerCase().includes('homework file :-')) return;
+    if (!subjectLine) return;
     
     let message = '';
-    let file = '';
+    let filesList = [];
     let projectData = '';
     
     let isProjectData = false;
     let projectDataLines = [];
     
-    lines.forEach(line => {
+    // Process from the second line onwards
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
       const lowerLine = line.toLowerCase();
       
       if (lowerLine.startsWith('message :-')) {
@@ -26,7 +58,7 @@ blocks.forEach((block, index) => {
         isProjectData = false;
       }
       else if (lowerLine.startsWith('homework file :-')) {
-         file = line.substring(16).trim();
+         filesList.push(line.substring(16).trim());
          isProjectData = false;
       }
       else if (lowerLine.startsWith('project data :-')) {
@@ -36,27 +68,35 @@ blocks.forEach((block, index) => {
       else if (isProjectData) {
          projectDataLines.push(line);
       }
-    });
+    }
     
     projectData = projectDataLines.join('\n').trim();
     
-    // Extract actual filename from Real DATA/Holiday homework/...
-    let filename = '';
-    if (file) {
-      const parts = file.split('/');
-      filename = parts[parts.length - 1].trim();
-    }
+    let processedFiles = [];
+    filesList.forEach(fileUrl => {
+      if (fileUrl) {
+        const parts = fileUrl.split('/');
+        const filename = parts[parts.length - 1].trim();
+        if (filename) {
+          processedFiles.push({
+            name: filename,
+            url: encodeURI('/holiday_homework/' + filename)
+          });
+        }
+      }
+    });
     
-    if (subjectLine && message && (filename || projectData)) {
+    if (subjectLine && message && (processedFiles.length > 0 || projectData)) {
       const entry = {
         id: index + 1,
         subject: subjectLine,
         message: message
       };
       
-      if (filename) {
-        entry.file = filename;
-        entry.downloadUrl = encodeURI('/holiday_homework/' + filename);
+      if (processedFiles.length > 0) {
+        entry.files = processedFiles;
+        entry.file = processedFiles[0].name;
+        entry.downloadUrl = processedFiles[0].url;
       }
       
       if (projectData) {

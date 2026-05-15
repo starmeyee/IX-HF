@@ -115,7 +115,7 @@ export default function HolidayHomework() {
                   {task.message}
                 </p>
                 
-                {(task.file || task.projectData) && (
+                {(task.files?.length > 0 || task.projectData) && (
                   <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.25rem' }}>
                     <h4 style={{ fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Attached Resource:</h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -139,27 +139,29 @@ export default function HolidayHomework() {
                         >
                           <FileText size={16} color="var(--tertiary)" /> View Project Details
                         </button>
-                      ) : (
-                        <a href={task.downloadUrl} download style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.5rem',
-                          background: 'var(--surface-hover)',
-                          border: '1px solid var(--border)',
-                          padding: '0.75rem',
-                          borderRadius: 'var(--radius-sm)',
-                          color: 'var(--text-primary)',
-                          cursor: 'pointer',
-                          fontSize: '0.85rem',
-                          textDecoration: 'none',
-                          transition: 'background 0.2s ease'
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = 'var(--border)'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-hover)'}
-                        >
-                          <Download size={16} color={isCompleted ? 'var(--success, #10B981)' : 'var(--tertiary)'} /> {task.file}
-                        </a>
-                      )}
+                      ) : (task.files && task.files.length > 0) ? (
+                        task.files.map((fileObj, idx) => (
+                          <a key={idx} href={fileObj.url} download style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            background: 'var(--surface-hover)',
+                            border: '1px solid var(--border)',
+                            padding: '0.75rem',
+                            borderRadius: 'var(--radius-sm)',
+                            color: 'var(--text-primary)',
+                            cursor: 'pointer',
+                            fontSize: '0.85rem',
+                            textDecoration: 'none',
+                            transition: 'background 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => e.currentTarget.style.background = 'var(--border)'}
+                          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-hover)'}
+                          >
+                            <Download size={16} color={isCompleted ? 'var(--success, #10B981)' : 'var(--tertiary)'} /> {fileObj.name}
+                          </a>
+                        ))
+                      ) : null}
                     </div>
                   </div>
                 )}

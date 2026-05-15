@@ -4,7 +4,7 @@ Homework FIlE :- Real DATA/Holiday homework/holiday homework.txt
 
 Social science Project 
 Message :- Each student has to do Project on the given topic individually. 
-Homework File :- Real DATA/Holiday homework/Social Science.txt
+Homework File :- public/holiday_homework/SST Project.pdf
 
 Maths 
 Message :- To be prepare in thin classmate copy, Date of Submission:22.06.2026
@@ -25,6 +25,7 @@ Homework File :- Real DATA/Holiday homework/Hindi.pdf
 History
 Message :- Do it in Holiday homework copy
 Homework File :- Real DATA/Holiday homework/History.pdf
+Homework File :- public/holiday_homework/History2.pdf
 
 English 
 Message :- Do it in notebook
@@ -33,6 +34,7 @@ Homework File :- Real DATA/Holiday homework/English.pdf
 Civics
 Message :- Do it in Civics HW copy
 Homework File :- Real DATA/Holiday homework/Civics.pdf
+Homework File :- public/holiday_homework/Civics2.pdf
 
 IT 
 Message :- Do it in the Homework copy 
@@ -103,3 +105,7 @@ Message :- Do it in the practical copy
 Project Data :- 
 ### Practical
 Write experiment no. 1 (Types of chemical reactions) in your chemistry practical copy.
+
+Geography
+Message :- Do it in the Assignment copy
+Homework File :- public/holiday_homework/Geography.pdf
