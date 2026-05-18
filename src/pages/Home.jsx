@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Users, UserCircle, ShieldCheck, Copy, Check } from 'lucide-react';
+import { Users, UserCircle, ShieldCheck, Copy, Check, BookOpen, CalendarDays, ClipboardList, Hourglass } from 'lucide-react';
+import { homeworkData } from '../data/homeworkData';
 
 const studentsData = [
   "Aditya Gupta", "Shreya", "Shourya", "Mihika", "Anuraj", "Parth", "Ravi", "Ruchir", "Sonali", "Yesh", 
@@ -35,13 +36,68 @@ export default function Home() {
     });
   };
 
+  // ── Session stats ──────────────────────────────────────────
+  const SESSION_START = new Date('2026-04-16');
+  const VACATION_DATE = new Date('2026-06-22');
+  const today         = new Date();
+
+  const calendarDaysElapsed = Math.floor((today - SESSION_START) / (1000 * 60 * 60 * 24));
+  const classDaysHeld       = homeworkData.length;                         // one entry per class day
+  const totalTasks          = homeworkData.reduce((acc, d) => acc + d.tasks.length, 0);
+  const daysToVacation      = Math.max(0, Math.floor((VACATION_DATE - today) / (1000 * 60 * 60 * 24)));
+  // ───────────────────────────────────────────────────────────
+
   return (
     <div className="animate-fade-in fade-in-up">
       <header className="page-header">
         <h1 className="page-title text-gradient">10th HI Overview</h1>
         <p className="page-subtitle">Welcome to the portal for class 10th HI</p>
       </header>
-      
+
+      {/* ── Session Stats ── */}
+      <div className="bento-grid mb-2" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+        {/* Class Days */}
+        <div className="glass-card glow-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--tertiary)' }}>
+            <BookOpen size={20} />
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Class Days Held</span>
+          </div>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{classDaysHeld}</p>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>since 16 April</span>
+        </div>
+
+        {/* Calendar Days Elapsed */}
+        <div className="glass-card glow-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <CalendarDays size={20} color="var(--primary, #6366f1)" />
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Days in Session</span>
+          </div>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{calendarDaysElapsed}</p>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>calendar days elapsed</span>
+        </div>
+
+        {/* Total Homework Tasks */}
+        <div className="glass-card glow-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <ClipboardList size={20} color="#f59e0b" />
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Total HW Tasks</span>
+          </div>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{totalTasks}</p>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>across all class days</span>
+        </div>
+
+        {/* Days to Vacation */}
+        <div className="glass-card glow-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <Hourglass size={20} color="#10b981" />
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Days to Vacation</span>
+          </div>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: daysToVacation <= 7 ? '#10b981' : 'var(--text-primary)', lineHeight: 1 }}>{daysToVacation}</p>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>till 22 June 2026</span>
+        </div>
+      </div>
+      {/* ── End Session Stats ── */}
+
       <div className="bento-grid mb-2">
         <div className="bento-item glass-card stat-card glow-hover">
           <div className="stat-icon primary-grad">
