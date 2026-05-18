@@ -1,6 +1,27 @@
 export const homeworkData = [
   {
     "id": 1,
+    "date": "Wednesday, 14 May 2026",
+    "tasks": [
+      {
+        "subject": "IT",
+        "description": "Draw the style toolbar and drawing toolbar.",
+        "type": "homework"
+      },
+      {
+        "subject": "History",
+        "description": "Complete the holiday homework.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Complete the holiday homework.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 2,
     "date": "Wednesday, 13 May 2026",
     "tasks": [
       {
@@ -21,7 +42,44 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 2,
+    "id": 3,
+    "date": "Monday, 12 May 2026",
+    "tasks": [
+      {
+        "subject": "Hindi",
+        "description": "शब्दार्थ याद करें।",
+        "type": "homework"
+      },
+      {
+        "subject": "English",
+        "description": "Practice determiners and complete it in the workbook.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "date": "Sunday, 11 May 2026",
+    "tasks": [
+      {
+        "subject": "Hindi",
+        "description": "पाठ 1 पढ़ें और वाक्य बनाएँ।",
+        "type": "homework"
+      },
+      {
+        "subject": "Physics",
+        "description": "Explain the rules and laws of refraction.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Complete till question number 11 of Chapter 11 (RS Aggarwal).",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 5,
     "date": "Saturday, 9 May 2026",
     "tasks": [
       {
@@ -57,7 +115,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 3,
+    "id": 6,
     "date": "Friday, 8 May 2026",
     "tasks": [
       {
@@ -83,7 +141,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 4,
+    "id": 7,
     "date": "Thursday, 7 May 2026",
     "tasks": [
       {
@@ -119,7 +177,38 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 5,
+    "id": 8,
+    "date": "Wednesday, 6 May 2026",
+    "tasks": [
+      {
+        "subject": "Hindi",
+        "description": "पाठ 1 पढ़ें और असाइनमेंट पूरा करें।",
+        "type": "homework"
+      },
+      {
+        "subject": "Physics",
+        "description": "Practice reflection numericals.",
+        "type": "homework"
+      },
+      {
+        "subject": "History",
+        "description": "Do the given work.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Do Exercise 10 of RS Aggarwal.",
+        "type": "homework"
+      },
+      {
+        "subject": "Economics",
+        "description": "Do the Q/Ans of Chapter 1 and prepare for the test.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 9,
     "date": "Tuesday, 5 May 2026",
     "tasks": [
       {
@@ -150,7 +239,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 6,
+    "id": 10,
     "date": "Monday, 4 May 2026",
     "tasks": [
       {
@@ -181,7 +270,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 7,
+    "id": 11,
     "date": "Saturday, 2 May 2026",
     "tasks": [
       {
@@ -212,7 +301,43 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 8,
+    "id": 12,
+    "date": "Thursday, 30 April 2026",
+    "tasks": [
+      {
+        "subject": "IT",
+        "description": "Draw the style bar.",
+        "type": "homework"
+      },
+      {
+        "subject": "Chemistry",
+        "description": "Read the chapter.",
+        "type": "homework"
+      },
+      {
+        "subject": "History",
+        "description": "Do the Q/Ans in your classwork copy.",
+        "type": "homework"
+      },
+      {
+        "subject": "Biology",
+        "description": "Draw the structure of the chloroplast.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Learn all trigonometrical ratios.",
+        "type": "homework"
+      },
+      {
+        "subject": "Economics",
+        "description": "Do the exercise Q/Ans of Chapter 1.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 13,
     "date": "Wednesday, 29 April 2026",
     "tasks": [
       {
@@ -233,7 +358,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 9,
+    "id": 14,
     "date": "Tuesday, 28 April 2026",
     "tasks": [
       {
@@ -259,7 +384,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 10,
+    "id": 15,
     "date": "Tuesday, 27 April 2026",
     "tasks": [
       {
@@ -295,7 +420,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 11,
+    "id": 16,
     "date": "Tuesday, 25 April 2026",
     "tasks": [
       {
@@ -331,7 +456,33 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 12,
+    "id": 17,
+    "date": "Friday, 24 April 2026",
+    "tasks": [
+      {
+        "subject": "Hindi",
+        "description": "पाठ 1 के प्रश्न-उत्तर करें।",
+        "type": "homework"
+      },
+      {
+        "subject": "Chemistry",
+        "description": "Read the chapter.",
+        "type": "homework"
+      },
+      {
+        "subject": "Biology",
+        "description": "Revise.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Do Exercise 2A of RS Aggarwal.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 18,
     "date": "Thursday, 23 April 2026",
     "tasks": [
       {
@@ -357,7 +508,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 13,
+    "id": 19,
     "date": "Wednesday, 22 April 2026",
     "tasks": [
       {
@@ -388,7 +539,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 14,
+    "id": 20,
     "date": "Tuesday, 21 April 2026",
     "tasks": [
       {
@@ -409,7 +560,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 15,
+    "id": 21,
     "date": "Monday, 20 April 2026",
     "tasks": [
       {
@@ -435,7 +586,7 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 16,
+    "id": 22,
     "date": "Saturday, 18 April 2026",
     "tasks": [
       {
@@ -461,7 +612,33 @@ export const homeworkData = [
     ]
   },
   {
-    "id": 17,
+    "id": 23,
+    "date": "Thursday, 17 April 2026",
+    "tasks": [
+      {
+        "subject": "Hindi",
+        "description": "मुहावरों के अर्थ लिखकर वाक्य प्रयोग करें और पाठ 1 से उर्दू शब्द खोजकर लिखें।",
+        "type": "homework"
+      },
+      {
+        "subject": "Geography",
+        "description": "Do the given questions.",
+        "type": "homework"
+      },
+      {
+        "subject": "Math",
+        "description": "Study the theory part of Exercise 2A.",
+        "type": "homework"
+      },
+      {
+        "subject": "English",
+        "description": "Write a diary entry on the given topic.",
+        "type": "homework"
+      }
+    ]
+  },
+  {
+    "id": 24,
     "date": "Thursday, 16 April 2026",
     "tasks": [
       {
