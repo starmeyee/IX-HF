@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Joyride, { STATUS } from 'react-joyride';
+import { Joyride, STATUS } from 'react-joyride';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { completeOnboarding } from '../auth/authService';
