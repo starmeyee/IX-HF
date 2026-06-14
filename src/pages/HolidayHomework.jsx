@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Calendar, Sun, Download, CheckCircle, FileText, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { holidayData } from '../data/holidayData';
+import { useAuth } from '../auth/AuthContext';
+import { updateHolidayHomework, getHolidayHomework } from '../auth/authService';
 
 // Build a flat list of all checkable items across every subject.
 // Multi-file subjects get one entry per file; single-file and project subjects get one entry total.
@@ -25,6 +27,7 @@ const checkItems = buildCheckItems();
 const totalItems = checkItems.length;
 
 export default function HolidayHomework() {
+  const { currentUser } = useAuth();
   const [completedKeys, setCompletedKeys] = useState(() => {
     const saved = localStorage.getItem('completedHolidayHomework_v2');
     if (saved) {
@@ -33,6 +36,29 @@ export default function HolidayHomework() {
     return [];
   });
   const [selectedProject, setSelectedProject] = useState(null);
+
+  // Sync from DB if user logs in
+  useEffect(() => {
+    if (currentUser) {
+      getHolidayHomework(currentUser.phone).then((keys) => {
+        // If DB has data, overwrite local state
+        if (keys && keys.length > 0) {
+          setCompletedKeys(keys);
+          localStorage.setItem('completedHolidayHomework_v2', JSON.stringify(keys));
+        } else {
+          // If DB is empty but we have local keys, sync local keys to DB
+          const saved = localStorage.getItem('completedHolidayHomework_v2');
+          let localKeys = [];
+          if (saved) {
+            try { localKeys = JSON.parse(saved); } catch { /* ignore */ }
+          }
+          if (localKeys.length > 0) {
+            updateHolidayHomework(currentUser.phone, localKeys).catch(console.error);
+          }
+        }
+      });
+    }
+  }, [currentUser]);
 
   // Handle Android hardware back button
   useEffect(() => {
@@ -59,6 +85,9 @@ export default function HolidayHomework() {
     setCompletedKeys(prev => {
       const updated = prev.includes(key) ? prev.filter(k => k !== key) : [...prev, key];
       localStorage.setItem('completedHolidayHomework_v2', JSON.stringify(updated));
+      if (currentUser) {
+        updateHolidayHomework(currentUser.phone, updated).catch(console.error);
+      }
       return updated;
     });
   };

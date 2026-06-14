@@ -45,3 +45,12 @@ export async function updatePassword(phone, newPassword) {
   const hash = await sha256(newPassword);
   await updateDoc(userRef(phone), { passwordHash: hash });
 }
+
+export async function updateHolidayHomework(phone, completedKeys) {
+  await updateDoc(userRef(phone), { completedHolidayHomework_v2: completedKeys });
+}
+
+export async function getHolidayHomework(phone) {
+  const user = await getUserByPhone(phone);
+  return user?.completedHolidayHomework_v2 || [];
+}
