@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, User } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 
 export default function Navbar() {
@@ -30,6 +30,11 @@ export default function Navbar() {
         <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
           <CalendarRange size={20} /><span>Calendar</span>
         </NavLink>
+        {currentUser?.isAdmin && (
+          <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <ShieldAlert size={20} /><span>Admin</span>
+          </NavLink>
+        )}
       </div>
 
       <div className="nav-auth">

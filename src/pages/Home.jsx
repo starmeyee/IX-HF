@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, UserCircle, ShieldCheck, Copy, Check, BookOpen, CalendarDays, ClipboardList, Hourglass, Lock } from 'lucide-react';
-import { homeworkData } from '../data/homeworkData';
+import { getHomework } from '../services/homeworkService';
 import { useAuth } from '../auth/AuthContext';
 
 const studentsData = [
@@ -44,8 +44,17 @@ export default function Home() {
   const today         = new Date();
 
   const calendarDaysElapsed = Math.floor((today - SESSION_START) / (1000 * 60 * 60 * 24));
-  const classDaysHeld       = homeworkData.length;                         // one entry per class day
-  const totalTasks          = homeworkData.reduce((acc, d) => acc + d.tasks.length, 0);
+  const [hwStats, setHwStats] = useState({ classDaysHeld: 0, totalTasks: 0 });
+
+  useEffect(() => {
+    getHomework().then(data => {
+      setHwStats({
+        classDaysHeld: data.length,
+        totalTasks: data.reduce((acc, d) => acc + (d.tasks?.length || 0), 0)
+      });
+    }).catch(console.error);
+  }, []);
+
   const daysToVacation      = Math.max(0, Math.ceil((VACATION_DATE - today) / (1000 * 60 * 60 * 24)));
   // ───────────────────────────────────────────────────────────
 
@@ -64,7 +73,7 @@ export default function Home() {
             <BookOpen size={20} />
             <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Class Days Held</span>
           </div>
-          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{classDaysHeld}</p>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwStats.classDaysHeld}</p>
           <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>since 16 April</span>
         </div>
 
@@ -84,7 +93,7 @@ export default function Home() {
             <ClipboardList size={20} color="#f59e0b" />
             <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Total HW Tasks</span>
           </div>
-          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{totalTasks}</p>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwStats.totalTasks}</p>
           <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>across all class days</span>
         </div>
 

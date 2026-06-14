@@ -9,6 +9,7 @@ import Homework from './pages/Homework';
 import HolidayHomework from './pages/HolidayHomework';
 import SchoolCalendar from './pages/SchoolCalendar';
 import ProfilePage from './pages/ProfilePage';
+import AdminPanel from './pages/AdminPanel';
 import { Heart } from 'lucide-react';
 
 function ScrollToTop() {
@@ -30,6 +31,7 @@ function AppInner() {
             <Route path="/holidays" element={<HolidayHomework />} />
             <Route path="/calendar" element={<SchoolCalendar />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/admin" element={<AdminPanel />} />
           </Routes>
         </main>
         <footer className="app-footer">
