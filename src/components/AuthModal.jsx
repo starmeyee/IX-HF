@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../auth/AuthContext';
-import { matchStudent } from '../auth/nameMatch';
+import { matchStudent, isNameInClass } from '../auth/nameMatch';
 import { getUserByPhone } from '../auth/authService';
 
 const STEPS = {
   CHOOSE: 'choose',         // login or register?
   REGISTER: 'register',     // name + phone + roll
+  REGISTER_OUTSIDER: 'register-outsider', // name + phone
   SET_PASS: 'set-pass',     // create password
   CREDENTIALS: 'creds',     // show "save your ID"
   LOGIN: 'login',           // phone + password
@@ -53,6 +54,24 @@ export default function AuthModal() {
       const existing = await getUserByPhone(phone);
       if (existing) { setErr('This phone is already registered. Please login.'); return; }
       await register(name.trim(), phone.trim(), roll);
+      setStep(STEPS.SET_PASS);
+    } catch (ex) {
+      setErr(ex.message);
+    } finally { setBusy(false); }
+  }
+
+  async function handleRegisterOutsider(e) {
+    e.preventDefault();
+    setErr('');
+    if (isNameInClass(name)) {
+      setErr('Warning: You seem to be a student of this classroom. Please register as a student using your roll number instead.');
+      return;
+    }
+    setBusy(true);
+    try {
+      const existing = await getUserByPhone(phone);
+      if (existing) { setErr('This phone is already registered. Please login.'); return; }
+      await register(name.trim(), phone.trim(), 0);
       setStep(STEPS.SET_PASS);
     } catch (ex) {
       setErr(ex.message);
@@ -129,15 +148,16 @@ export default function AuthModal() {
         {step === STEPS.CHOOSE && (
           <div className="auth-step">
             <h2>Welcome to 10th HI</h2>
-            <p className="auth-sub">Login or create your student account</p>
+            <p className="auth-sub">Login or create your account</p>
             <button className="auth-btn primary" onClick={() => setStep(STEPS.LOGIN)}>Login</button>
-            <button className="auth-btn secondary" onClick={() => setStep(STEPS.REGISTER)}>New here? Register</button>
+            <button className="auth-btn secondary" onClick={() => setStep(STEPS.REGISTER)}>New here? Register as Student</button>
+            <button className="auth-btn secondary" style={{marginTop: '0.5rem', background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-secondary)'}} onClick={() => setStep(STEPS.REGISTER_OUTSIDER)}>Not a student? Register as Outsider</button>
           </div>
         )}
 
         {step === STEPS.REGISTER && (
           <form className="auth-step" onSubmit={handleRegister}>
-            <h2>Create Account</h2>
+            <h2>Create Student Account</h2>
             <p className="auth-sub">Enter your details exactly as on your ID card</p>
             <label>Full Name (as on ID)</label>
             <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Aditya Gupta" required />
@@ -147,6 +167,20 @@ export default function AuthModal() {
             <input value={rollNo} onChange={(e) => setRollNo(e.target.value)} placeholder="1 – 40" type="number" min={1} max={40} required />
             {err && <p className="auth-err">{err}</p>}
             <button className="auth-btn primary" type="submit" disabled={busy}>{busy ? 'Verifying…' : 'Verify & Continue'}</button>
+            <button type="button" className="auth-link" onClick={() => { setErr(''); setStep(STEPS.CHOOSE); }}>← Back</button>
+          </form>
+        )}
+
+        {step === STEPS.REGISTER_OUTSIDER && (
+          <form className="auth-step" onSubmit={handleRegisterOutsider}>
+            <h2>Outsider Registration</h2>
+            <p className="auth-sub">Create an account to access shared materials</p>
+            <label>Full Name</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your full name" required />
+            <label>Phone Number</label>
+            <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="10-digit mobile number" type="tel" maxLength={10} required />
+            {err && <p className="auth-err">{err}</p>}
+            <button className="auth-btn primary" type="submit" disabled={busy}>{busy ? 'Processing…' : 'Continue'}</button>
             <button type="button" className="auth-link" onClick={() => { setErr(''); setStep(STEPS.CHOOSE); }}>← Back</button>
           </form>
         )}

@@ -23,3 +23,10 @@ export function matchStudent(enteredName, rollNo) {
   if (!firstNameMatches(enteredName, student.name)) return null;
   return student;
 }
+
+/**
+ * Checks if a given name belongs to anyone in the class based on first name matching.
+ */
+export function isNameInClass(enteredName) {
+  return rollList.some(student => firstNameMatches(enteredName, student.name));
+}

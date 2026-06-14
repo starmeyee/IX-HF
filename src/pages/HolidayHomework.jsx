@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Sun, Download, CheckCircle, FileText, X } from 'lucide-react';
+import { Calendar, Sun, Download, CheckCircle, FileText, X, Lock } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { holidayData } from '../data/holidayData';
 import { useAuth } from '../auth/AuthContext';
@@ -27,7 +27,8 @@ const checkItems = buildCheckItems();
 const totalItems = checkItems.length;
 
 export default function HolidayHomework() {
-  const { currentUser } = useAuth();
+  const { currentUser, openModal } = useAuth();
+  
   const [completedKeys, setCompletedKeys] = useState(() => {
     const saved = localStorage.getItem('completedHolidayHomework_v2');
     if (saved) {
@@ -100,6 +101,21 @@ export default function HolidayHomework() {
 
   const completedCount = completedKeys.length;
   const progress = Math.round((completedCount / totalItems) * 100) || 0;
+
+  if (!currentUser) {
+    return (
+      <div className="animate-fade-in fade-in-up" style={{ textAlign: 'center', marginTop: '4rem' }}>
+        <Lock size={48} color="var(--tertiary)" style={{ margin: '0 auto 1rem auto' }} />
+        <h1 className="page-title text-gradient">Locked Portal</h1>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+          You must be logged in to access the Holiday Homework portal.
+        </p>
+        <button className="auth-btn primary" onClick={openModal} style={{ margin: '0 auto' }}>
+          Login / Register
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>

@@ -1,8 +1,26 @@
 
-import { Calendar, CheckCircle2 } from 'lucide-react';
+import { Calendar, CheckCircle2, Lock } from 'lucide-react';
 import { homeworkData } from '../data/homeworkData';
+import { useAuth } from '../auth/AuthContext';
 
 export default function Homework() {
+  const { currentUser, openModal } = useAuth();
+
+  if (!currentUser) {
+    return (
+      <div className="animate-fade-in fade-in-up" style={{ textAlign: 'center', marginTop: '4rem' }}>
+        <Lock size={48} color="var(--tertiary)" style={{ margin: '0 auto 1rem auto' }} />
+        <h1 className="page-title text-gradient">Locked Portal</h1>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+          You must be logged in to access the Homework portal.
+        </p>
+        <button className="auth-btn primary" onClick={openModal} style={{ margin: '0 auto' }}>
+          Login / Register
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="animate-fade-in fade-in-up">
       <h1 className="page-title text-gradient">Homework</h1>

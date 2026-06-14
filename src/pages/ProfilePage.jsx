@@ -49,7 +49,7 @@ export default function ProfilePage() {
         </div>
 
         <h2 className="profile-name">{currentUser.name}</h2>
-        <p className="profile-roll">Class 10th HI · Roll No. {currentUser.rollNo}</p>
+        <p className="profile-roll">{currentUser.rollNo === 0 ? 'Outsider Account' : `Class 10th HI · Roll No. ${currentUser.rollNo}`}</p>
 
         <div className="profile-info-grid">
           <div className="profile-info-item">
@@ -57,8 +57,8 @@ export default function ProfilePage() {
             <span className="profile-info-value">{maskedPhone}</span>
           </div>
           <div className="profile-info-item">
-            <span className="profile-info-label">Roll Number</span>
-            <span className="profile-info-value">{currentUser.rollNo}</span>
+            <span className="profile-info-label">{currentUser.rollNo === 0 ? 'Account Type' : 'Roll Number'}</span>
+            <span className="profile-info-value">{currentUser.rollNo === 0 ? 'Outsider' : currentUser.rollNo}</span>
           </div>
           <div className="profile-info-item">
             <span className="profile-info-label">Registered</span>
