@@ -40,13 +40,13 @@ export default function Home() {
 
   // ── Session stats ──────────────────────────────────────────
   const SESSION_START = new Date('2026-04-16');
-  const VACATION_DATE = new Date('2026-06-22');
+  const VACATION_DATE = new Date('2026-06-15');
   const today         = new Date();
 
   const calendarDaysElapsed = Math.floor((today - SESSION_START) / (1000 * 60 * 60 * 24));
   const classDaysHeld       = homeworkData.length;                         // one entry per class day
   const totalTasks          = homeworkData.reduce((acc, d) => acc + d.tasks.length, 0);
-  const daysToVacation      = Math.max(0, Math.floor((VACATION_DATE - today) / (1000 * 60 * 60 * 24)));
+  const daysToVacation      = Math.max(0, Math.ceil((VACATION_DATE - today) / (1000 * 60 * 60 * 24)));
   // ───────────────────────────────────────────────────────────
 
   return (
@@ -95,7 +95,7 @@ export default function Home() {
             <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Days to Vacation</span>
           </div>
           <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: daysToVacation <= 7 ? '#10b981' : 'var(--text-primary)', lineHeight: 1 }}>{daysToVacation}</p>
-          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>till 22 June 2026</span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>till 15 June 2026</span>
         </div>
       </div>
       {/* ── End Session Stats ── */}
