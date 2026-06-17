@@ -40,11 +40,13 @@ export default function Home() {
 
   // ── Session stats ──────────────────────────────────────────
   const SESSION_START = new Date('2026-04-16');
-  const VACATION_DATE = new Date('2026-06-15');
+  const VACATION_START = new Date('2026-06-15');
+  const SCHOOL_REOPENS = new Date('2026-07-07');
   const today         = new Date();
 
   const calendarDaysElapsed = Math.floor((today - SESSION_START) / (1000 * 60 * 60 * 24));
   const [hwStats, setHwStats] = useState({ classDaysHeld: 0, totalTasks: 0 });
+  const [hwLoading, setHwLoading] = useState(true);
 
   useEffect(() => {
     getHomework().then(data => {
@@ -52,10 +54,12 @@ export default function Home() {
         classDaysHeld: data.length,
         totalTasks: data.reduce((acc, d) => acc + (d.tasks?.length || 0), 0)
       });
-    }).catch(console.error);
+    }).catch(console.error).finally(() => setHwLoading(false));
   }, []);
 
-  const daysToVacation      = Math.max(0, Math.ceil((VACATION_DATE - today) / (1000 * 60 * 60 * 24)));
+  const isOnVacation = today >= VACATION_START;
+  const daysToVacation = Math.max(0, Math.ceil((VACATION_START - today) / (1000 * 60 * 60 * 24)));
+  const daysToReopen = Math.max(0, Math.ceil((SCHOOL_REOPENS - today) / (1000 * 60 * 60 * 24)));
   // ───────────────────────────────────────────────────────────
 
   return (
@@ -73,7 +77,7 @@ export default function Home() {
             <BookOpen size={20} />
             <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Class Days Held</span>
           </div>
-          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwStats.classDaysHeld}</p>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwLoading ? '…' : hwStats.classDaysHeld}</p>
           <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>since 16 April</span>
         </div>
 
@@ -93,18 +97,18 @@ export default function Home() {
             <ClipboardList size={20} color="#f59e0b" />
             <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Total HW Tasks</span>
           </div>
-          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwStats.totalTasks}</p>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: 'var(--text-primary)', lineHeight: 1 }}>{hwLoading ? '…' : hwStats.totalTasks}</p>
           <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>across all class days</span>
         </div>
 
-        {/* Days to Vacation */}
+        {/* Days to Vacation / Reopen */}
         <div className="glass-card glow-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1.25rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <Hourglass size={20} color="#10b981" />
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>Days to Vacation</span>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-secondary)' }}>{isOnVacation ? 'School Reopens In' : 'Days to Vacation'}</span>
           </div>
-          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: daysToVacation <= 7 ? '#10b981' : 'var(--text-primary)', lineHeight: 1 }}>{daysToVacation}</p>
-          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>till 15 June 2026</span>
+          <p style={{ fontSize: '2.2rem', fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: '#10b981', lineHeight: 1 }}>{isOnVacation ? daysToReopen : daysToVacation}</p>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>{isOnVacation ? 'till 7 July 2026 🎉' : 'till 15 June 2026'}</span>
         </div>
       </div>
       {/* ── End Session Stats ── */}

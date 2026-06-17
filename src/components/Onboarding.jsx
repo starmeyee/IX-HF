@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Joyride, STATUS } from 'react-joyride';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
@@ -123,7 +123,6 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
   const { currentUser } = useAuth();
   const [run, setRun] = useState(false);
   const [steps, setSteps] = useState([]);
-  const hasRunThisSession = useRef(false);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -135,11 +134,12 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
       return;
     }
 
-    // Normal run check
-    if (!currentUser.onboardingCompleted && currentUser.role !== ROLES.ADMIN && !hasRunThisSession.current) {
+    // Normal run check — use both Firestore field and localStorage as guard
+    const localKey = `onboarding_done_${currentUser.phone}`;
+    const alreadyDone = currentUser.onboardingCompleted || localStorage.getItem(localKey);
+    if (!alreadyDone && currentUser.role !== ROLES.ADMIN) {
       setSteps(currentUser.role === ROLES.MONITOR ? getMonitorSteps(currentUser) : getStudentSteps(currentUser));
       setRun(true);
-      hasRunThisSession.current = true;
     }
   }, [currentUser, forceRun, forceRole]);
 
@@ -149,11 +149,11 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
     
     if (finishedStatuses.includes(status)) {
       setRun(false);
-      // If it was a forced run, call the callback to reset it
       if (forceRun && onCloseForceRun) {
         onCloseForceRun();
-      } else if (currentUser && !currentUser.onboardingCompleted) {
-        // Otherwise save to DB
+      } else if (currentUser) {
+        // Mark done in both localStorage (immediate) and Firestore (persistent)
+        localStorage.setItem(`onboarding_done_${currentUser.phone}`, '1');
         completeOnboarding(currentUser.phone).catch(console.error);
       }
     }

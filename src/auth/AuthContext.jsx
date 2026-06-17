@@ -26,7 +26,6 @@ export function AuthProvider({ children }) {
         })
         .finally(() => setLoading(false));
     } else {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       setLoading(false);
     }
   }, []);
@@ -91,7 +90,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{
-      currentUser: currentUser ? { ...currentUser, isAdmin: currentUser.phone === '8102783645' } : null,
+      currentUser: currentUser ? { ...currentUser, isAdmin: currentUser.role === 'ADMIN' } : null,
       loading,
       modalOpen, openModal, closeModal,
       register, savePassword, login, logout,
