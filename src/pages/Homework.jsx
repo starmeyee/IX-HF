@@ -1,60 +1,55 @@
-import { Calendar, Lock, Loader2, Share2, Download } from 'lucide-react';
+import { Calendar, Lock, Loader2, Copy, Check } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { toBlob } from 'html-to-image';
+import { useEffect, useState } from 'react';
 import { getHomework } from '../services/homeworkService';
-import ShareCard from '../components/ShareCard';
 
-function useSharingCard() {
-  const [sharing, setSharing] = useState(null); // { id, date, tasks }
-  const cardRef = useRef(null);
+function formatForWhatsApp(day) {
+  const date = day.date?.trim() || '';
+  const tasks = day.tasks || [];
 
-  const share = useCallback(async (day) => {
-    setSharing({ id: day.id, date: day.date, tasks: day.tasks || [] });
+  const taskLines = tasks.map((t, i) =>
+    `*${i + 1}. ${t.subject}*\n${t.description.trim()}`
+  ).join('\n\n');
 
-    // Wait a tick for the ShareCard to mount and fonts to render
-    await new Promise((r) => setTimeout(r, 80));
+  return `📚 *Homework — ${date}*\n\n${taskLines}\n\n> _Shared via 10th HI Portal_`;
+}
 
-    try {
-      const blob = await toBlob(cardRef.current, { pixelRatio: 2 });
-      if (!blob) throw new Error('Capture failed');
+function CopyButton({ day }) {
+  const [copied, setCopied] = useState(false);
 
-      const file = new File([blob], `homework-${day.date}.png`, { type: 'image/png' });
-      const shareData = {
-        title: `Homework – ${day.date}`,
-        text: `📚 10th HI Homework\n${day.date}\n\n${(day.tasks || []).map(t => `• ${t.subject}: ${t.description}`).join('\n')}\n\n🔗 xhiportal.vercel.app`,
-        files: [file],
-      };
+  async function handleCopy() {
+    const text = formatForWhatsApp(day);
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
-      if (navigator.canShare?.(shareData)) {
-        await navigator.share(shareData);
-      } else if (navigator.share) {
-        // Files not supported — share text only
-        await navigator.share({ title: shareData.title, text: shareData.text });
-      } else {
-        // Desktop fallback — download the image
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-    } catch (err) {
-      if (err.name !== 'AbortError') console.error('Share failed', err);
-    } finally {
-      setSharing(null);
-    }
-  }, []);
-
-  return { sharing, cardRef, share };
+  return (
+    <button
+      onClick={handleCopy}
+      style={{
+        display: 'flex', alignItems: 'center', gap: '0.4rem',
+        background: copied ? 'rgba(16,185,129,0.12)' : 'var(--surface-hover)',
+        border: `1px solid ${copied ? 'rgba(16,185,129,0.4)' : 'var(--border)'}`,
+        color: copied ? '#6ee7b7' : 'var(--text-secondary)',
+        padding: '0.4rem 0.85rem',
+        borderRadius: 'var(--radius-sm)',
+        cursor: 'pointer',
+        fontSize: '0.82rem',
+        fontWeight: 600,
+        transition: 'all 0.2s',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {copied ? <><Check size={14} /> Copied!</> : <><Copy size={14} /> Copy for WhatsApp</>}
+    </button>
+  );
 }
 
 export default function Homework() {
   const { currentUser, openModal } = useAuth();
   const [homeworkList, setHomeworkList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { sharing, cardRef, share } = useSharingCard();
 
   useEffect(() => {
     if (currentUser) {
@@ -100,30 +95,7 @@ export default function Homework() {
                     <Calendar size={20} className="text-primary" />
                     {day.date?.replace(/_/g, '').replace(/Date:/i, '').trim()}
                   </h2>
-                  <button
-                    onClick={() => share(day)}
-                    disabled={sharing?.id === day.id}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '0.4rem',
-                      background: 'var(--surface-hover)',
-                      border: '1px solid var(--border)',
-                      color: 'var(--text-secondary)',
-                      padding: '0.4rem 0.85rem',
-                      borderRadius: 'var(--radius-sm)',
-                      cursor: 'pointer',
-                      fontSize: '0.82rem',
-                      fontWeight: 600,
-                      transition: 'all 0.2s',
-                      opacity: sharing?.id === day.id ? 0.6 : 1,
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.color = 'var(--primary)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
-                  >
-                    {sharing?.id === day.id
-                      ? <><Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> Capturing…</>
-                      : navigator.share ? <><Share2 size={14} /> Share</> : <><Download size={14} /> Save</>
-                    }
-                  </button>
+                  <CopyButton day={day} />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
@@ -149,11 +121,6 @@ export default function Homework() {
             ))
           )}
         </div>
-      )}
-
-      {/* Off-screen ShareCard — mounted only while capturing */}
-      {sharing && (
-        <ShareCard ref={cardRef} date={sharing.date} tasks={sharing.tasks} />
       )}
     </div>
   );
