@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X, BookOpen, CalendarDays, FlaskConical, GraduationCap, PartyPopper, Umbrella, Sun, Filter } from 'lucide-react';
 import { CALENDAR_EVENTS, EVENT_TYPES } from '../data/calendarData';
 import { getHomework } from '../services/homeworkService';
+import { getClosedDays } from '../services/calendarOverrideService';
 
 // homeworkByDate is now loaded from Firestore — see useEffect below.
 
@@ -77,6 +78,11 @@ export default function SchoolCalendar() {
     }).catch(console.error);
   }, []);
 
+  const [closedDays, setClosedDaysState] = useState(new Set());
+  useEffect(() => {
+    getClosedDays().then((days) => setClosedDaysState(new Set(days))).catch(console.error);
+  }, []);
+
   const { year, month } = ACADEMIC_MONTHS[monthIdx];
   const daysInMonth = getDaysInMonth(year, month);
   const firstDay = getFirstDayOfMonth(year, month);
@@ -102,7 +108,8 @@ export default function SchoolCalendar() {
   const passesFilter = (dateKey) => {
     if (filter === 'ALL') return true;
     if (filter === 'HOMEWORK') return !!homeworkByDate[dateKey];
-    return getEventType(dateKey) === filter;
+    const effective = closedDays.has(dateKey) ? 'HOLIDAY_VACATION' : getEventType(dateKey);
+    return effective === filter;
   };
 
   // Build calendar grid
@@ -110,7 +117,9 @@ export default function SchoolCalendar() {
   for (let i = 0; i < firstDay; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
-  const selectedType = selectedDate ? getEventType(selectedDate) : null;
+  const selectedType = selectedDate
+    ? (closedDays.has(selectedDate) ? 'HOLIDAY_VACATION' : getEventType(selectedDate))
+    : null;
   const selectedTypeInfo = selectedType ? EVENT_TYPES[selectedType] : null;
   const selectedHW = selectedDate ? homeworkByDate[selectedDate] : null;
   const SelectedIcon = selectedType ? EVENT_ICONS[selectedType] : null;
@@ -244,7 +253,7 @@ export default function SchoolCalendar() {
             {cells.map((day, i) => {
               if (!day) return <div key={`empty-${i}`} />;
               const dateKey = toDateKey(year, month, day);
-              const evType = getEventType(dateKey);
+              const evType = closedDays.has(dateKey) ? 'HOLIDAY_VACATION' : getEventType(dateKey);
               const evInfo = EVENT_TYPES[evType];
               const hasHW = !!homeworkByDate[dateKey];
               const isToday = dateKey === todayKey;
