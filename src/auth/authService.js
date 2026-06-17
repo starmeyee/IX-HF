@@ -76,3 +76,17 @@ export async function setAttendance(phone, absentDays) {
   return cleaned;
 }
 
+
+// ── Daily homework completion ──────────────────────────────────
+// Keys are "{homeworkDocId}_{taskIndex}" strings.
+
+export async function getHomeworkDone(phone) {
+  const user = await getUserByPhone(phone);
+  return user?.completedHomework || [];
+}
+
+export async function setHomeworkDone(phone, doneKeys) {
+  const cleaned = Array.from(new Set(doneKeys));
+  await updateDoc(userRef(phone), { completedHomework: cleaned });
+  return cleaned;
+}
