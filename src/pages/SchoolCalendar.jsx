@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X, BookOpen, CalendarDays, FlaskConical, GraduationCap, PartyPopper, Umbrella, Sun, Filter } from 'lucide-react';
 import { CALENDAR_EVENTS, EVENT_TYPES } from '../data/calendarData';
 import { getHomework } from '../services/homeworkService';
-import { toDateKey } from '../data/attendanceUtils';
 
 // homeworkByDate is now loaded from Firestore — see useEffect below.
 
