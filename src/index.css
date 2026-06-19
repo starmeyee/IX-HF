@@ -1780,3 +1780,19 @@ a {
 }
 .whatsnew-actions { display: flex; gap: 0.6rem; }
 .whatsnew-actions .auth-btn { flex: 1; margin-top: 0; }
+
+
+/* ─── Tour progress dots + skip ──────────────────────────────── */
+.tour-dots { display: flex; align-items: center; gap: 0.4rem; }
+.tour-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--border); transition: all 0.2s;
+}
+.tour-dot.active { background: var(--primary); width: 20px; border-radius: 4px; }
+.tour-skip-link {
+  display: block; margin: 0.85rem auto 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-muted); font-size: 0.8rem; text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.tour-skip-link:hover { color: var(--text-secondary); }

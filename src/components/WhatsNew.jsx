@@ -13,35 +13,37 @@ import {
 const STORAGE_KEY = (phone) => `whatsnew_v1_${phone}`;
 
 // Tour steps shown after the user taps "Take a tour".
+// Centered cards (no element spotlight) — clearer than highlighting bits of
+// the page, and there's nothing underneath to accidentally click.
 const TOUR_STEPS = [
   {
-    target: '[data-tour="syllabus-card"]',
+    target: 'body',
+    placement: 'center',
     title: 'Syllabus Tracking',
     icon: <BookMarked size={22} />,
-    content: 'Track how much of every subject is completed by the class and tick off what your own copy has covered — all the way down to each topic.',
-    placement: 'bottom',
+    content: 'On your dashboard you\'ll find a Syllabus Progress bar. Open it to see how much of every subject the class has completed — and tick off what your own copy has covered, topic by topic.',
     disableBeacon: true,
   },
   {
-    target: '[data-tour="attendance-stat"]',
+    target: 'body',
+    placement: 'center',
     title: 'New Attendance % (CBSE style)',
     icon: <TrendingUp size={22} />,
-    content: 'Your attendance is now the average of each month\'s attendance — the same way CBSE calculates it — so every month counts equally.',
-    placement: 'bottom',
+    content: 'Your attendance percentage is now the average of each month\'s attendance — the same way CBSE calculates it — so every month counts equally.',
   },
   {
-    target: '.nav-links a[href="/homework"]',
+    target: 'body',
+    placement: 'center',
     title: 'Classwork Log',
     icon: <ClipboardList size={22} />,
-    content: 'The Homework page now has a Classwork tab — see exactly what was done in each period, every day.',
-    placement: 'bottom',
+    content: 'The Homework page now has a Classwork tab, and your dashboard shows the latest classwork — so you can see exactly what was done in each period, every day.',
   },
   {
-    target: '.nav-user-menu',
+    target: 'body',
+    placement: 'center',
     title: 'Stay Notified',
     icon: <Bell size={22} />,
-    content: 'Manage your notifications and view the alert history any time from your profile. That\'s it — enjoy the new features!',
-    placement: 'bottom',
+    content: 'Turn on notifications to get instant alerts for new notices, homework and classwork. You can view the full alert history any time from your profile. Enjoy the new features!',
   },
 ];
 
@@ -55,13 +57,22 @@ const WhatsNewTooltip = ({ index, step, backProps, closeProps, primaryProps, too
     </div>
     <div className="tooltip-body stagger-2">{step.content}</div>
     <div className="tooltip-footer stagger-3">
-      <div className="tooltip-progress">{index + 1} / {step.totalSteps}</div>
+      {/* Progress dots */}
+      <div className="tour-dots">
+        {Array.from({ length: step.totalSteps }).map((_, i) => (
+          <span key={i} className={`tour-dot ${i === index ? 'active' : ''}`} />
+        ))}
+      </div>
       <div className="tooltip-controls">
-        {!isLastStep && <button {...closeProps} className="tooltip-skip">Skip</button>}
         {index > 0 && <button {...backProps} className="tooltip-btn secondary">Back</button>}
-        <button {...primaryProps} className="tooltip-btn primary">{isLastStep ? 'Done' : 'Next'}</button>
+        <button {...primaryProps} className="tooltip-btn primary">
+          {isLastStep ? 'Got it!' : `Next (${index + 1}/${step.totalSteps})`}
+        </button>
       </div>
     </div>
+    {!isLastStep && (
+      <button {...closeProps} className="tour-skip-link">Skip tour</button>
+    )}
   </div>
 );
 
@@ -204,9 +215,11 @@ export default function WhatsNew() {
         showSkipButton
         scrollToFirstStep
         disableScrollParentFix
+        disableOverlayClose
+        spotlightClicks={false}
         tooltipComponent={WhatsNewTooltip}
         callback={handleTourCallback}
-        styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.65)', zIndex: 10000, arrowColor: 'var(--surface)' } }}
+        styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.75)', zIndex: 10000, arrowColor: 'var(--surface)' } }}
       />
     </>
   );
