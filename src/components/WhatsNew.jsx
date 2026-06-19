@@ -202,9 +202,11 @@ export default function WhatsNew() {
         run={runTour}
         continuous
         showSkipButton
+        scrollToFirstStep
+        disableScrollParentFix
         tooltipComponent={WhatsNewTooltip}
         callback={handleTourCallback}
-        styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.65)' } }}
+        styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.65)', zIndex: 10000, arrowColor: 'var(--surface)' } }}
       />
     </>
   );

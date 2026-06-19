@@ -183,6 +183,7 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
       styles={{
         options: {
           overlayColor: 'rgba(0, 0, 0, 0.65)',
+          zIndex: 10000,
         }
       }}
     />
