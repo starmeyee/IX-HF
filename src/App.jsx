@@ -19,6 +19,8 @@ import ClassInfoPage from './pages/ClassInfoPage';
 import AdminServicesPage from './pages/AdminServicesPage';
 import { Heart } from 'lucide-react';
 
+import { useActivityLogger } from './hooks/useActivityLogger';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -26,6 +28,7 @@ function ScrollToTop() {
 }
 
 function AppInner() {
+  useActivityLogger();
   return (
     <>
       <ScrollToTop />
