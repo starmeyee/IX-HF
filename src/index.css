@@ -2138,16 +2138,75 @@ a {
 .marks-banner-body p { color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.85rem; }
 
 /* ─── Test Scores Page ────────────────────────────────────────── */
-.ts-scores-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.ts-cards-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1rem; }
 
-.ts-score-bar-wrap { display: flex; flex-direction: column; gap: 0.3rem; }
-.ts-score-bar-header { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--text-secondary); }
-.ts-score-track { height: 10px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.ts-score-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  background: rgba(255,255,255,0.02);
+}
+.ts-score-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+.ts-score-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.ts-score-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.ts-score-track {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: visible;
+  position: relative;
+}
 .ts-score-fill { height: 100%; border-radius: 999px; transition: width 0.5s ease; }
+.ts-avg-marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 16px;
+  background: rgba(139,92,246,0.6);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.ts-track-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+.ts-avg-label { color: rgba(139,92,246,0.8); }
 
-.ts-avg-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0.6rem 0.75rem;
+.ts-rank-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+.ts-rank-row strong { color: var(--text-primary); }
+
+.ts-my-avg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.9rem;
   background: rgba(139,92,246,0.06);
   border: 1px solid rgba(139,92,246,0.2);
   border-radius: var(--radius-sm);
@@ -2158,8 +2217,51 @@ a {
 
 .ts-improvement {
   display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.85rem; margin-bottom: 1rem;
+  font-size: 0.85rem;
 }
+
+.ts-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 1.25rem 0 0.75rem;
+}
+
+.ts-analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.ts-stat-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.ts-stat-label { font-size: 0.72rem; color: var(--text-muted); }
+.ts-stat-val { font-size: 1rem; font-weight: 700; }
+
+.ts-compare-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+.ts-compare-row { display: flex; align-items: center; gap: 0.75rem; }
+.ts-compare-label { font-size: 0.8rem; color: var(--text-secondary); width: 48px; flex-shrink: 0; }
+.ts-compare-bars { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.ts-compare-bar-wrap {
+  display: flex; align-items: center; gap: 0.5rem;
+  height: 14px;
+}
+.ts-compare-bar {
+  height: 100%; border-radius: 999px; min-width: 2px;
+  transition: width 0.5s ease;
+}
+.ts-compare-bar.avg { background: rgba(139,92,246,0.35); }
+.ts-compare-val { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
 
 .ts-complaints { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
 .ts-complaint-item {
