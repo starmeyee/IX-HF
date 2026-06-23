@@ -8,7 +8,7 @@ import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, User
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher } from '../services/teacherService';
-import { getPendingNotes, approveNote, rejectNote } from '../services/notesService';
+import { getPendingNotes, approveNote, rejectNote, deleteNote, getPublishedNotes } from '../services/notesService';
 import { earnSparks, SPARK_UPLOAD_REWARD } from '../services/sparksService';
 
 const TABS = [
@@ -461,12 +461,19 @@ function MergeTab() {
 
 // ── Notes Review Tab ──────────────────────────────────────────
 function NotesReviewTab() {
-  const [notes,  setNotes]  = useState(null);
-  const [busy,   setBusy]   = useState(null);
+  const [notes,     setNotes]     = useState(null);
+  const [published, setPublished] = useState(null);
+  const [busy,      setBusy]      = useState(null);
+  const [showPub,   setShowPub]   = useState(false);
 
   useEffect(() => {
     getPendingNotes().then(setNotes).catch(() => setNotes([]));
   }, []);
+
+  useEffect(() => {
+    if (!showPub || published !== null) return;
+    getPublishedNotes().then(setPublished).catch(() => setPublished([]));
+  }, [showPub]);
 
   async function handleApprove(n) {
     setBusy(n.id);
@@ -480,7 +487,7 @@ function NotesReviewTab() {
 
   async function handleReject(n) {
     const reason = prompt(`Reason for rejecting "${n.title}" (students will see this):`);
-    if (reason === null) return; // cancelled
+    if (reason === null) return;
     setBusy(n.id);
     try {
       await rejectNote(n.id, reason.trim());
@@ -489,48 +496,88 @@ function NotesReviewTab() {
     finally { setBusy(null); }
   }
 
+  async function handleDelete(id, fromPublished) {
+    if (!confirm('Permanently delete this note?')) return;
+    setBusy(id);
+    try {
+      await deleteNote(id);
+      if (fromPublished) setPublished(prev => prev.filter(x => x.id !== id));
+      else setNotes(prev => prev.filter(x => x.id !== id));
+    } catch (e) { alert(e.message); }
+    finally { setBusy(null); }
+  }
+
+  function NoteRow({ n, fromPublished }) {
+    return (
+      <div className="marks-complaint-row">
+        <div className="marks-complaint-info">
+          <strong>{n.title}</strong>
+          <span className="as-muted" style={{ marginLeft: '0.5rem', fontSize: '0.82rem' }}>
+            {n.subjectName} · {n.chapterName}
+          </span>
+          <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
+            by {n.uploaderName}
+            {n.description && <span> · "{n.description}"</span>}
+          </div>
+          <div style={{ marginTop: '0.4rem' }}>
+            <a href={`https://docs.google.com/viewer?url=${encodeURIComponent(n.cloudinaryUrl)}`}
+              target="_blank" rel="noopener noreferrer"
+              style={{ fontSize: '0.8rem', color: 'var(--primary)' }}>
+              Preview PDF ↗
+            </a>
+          </div>
+        </div>
+        <div className="marks-complaint-actions">
+          {!fromPublished && (
+            <>
+              <button className="marks-btn approve" onClick={() => handleApprove(n)} disabled={!!busy}>
+                <CheckCircle size={14} /> Approve (+4✦)
+              </button>
+              <button className="marks-btn reject" onClick={() => handleReject(n)} disabled={!!busy}>
+                <XCircle size={14} /> Reject
+              </button>
+            </>
+          )}
+          <button className="marks-btn delete" onClick={() => handleDelete(n.id, fromPublished)} disabled={!!busy}>
+            <Trash2 size={13} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (notes === null) return <p className="as-muted">Loading…</p>;
 
   return (
     <div>
       <h4 className="as-section-title" style={{ marginBottom: '0.75rem' }}>
-        <BookOpen size={14} /> Pending Notes ({notes.length})
+        <BookOpen size={14} /> Pending ({notes.length})
       </h4>
-      {notes.length === 0 ? (
-        <p className="as-muted">No pending notes to review.</p>
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {notes.map(n => (
-            <div key={n.id} className="marks-complaint-row">
-              <div className="marks-complaint-info">
-                <strong>{n.title}</strong>
-                <span className="as-muted" style={{ marginLeft: '0.5rem', fontSize: '0.82rem' }}>
-                  {n.subjectName} · {n.chapterName}
-                </span>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
-                  by {n.uploaderName}
-                  {n.description && <span> · "{n.description}"</span>}
+      {notes.length === 0
+        ? <p className="as-muted">No pending notes to review.</p>
+        : <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {notes.map(n => <NoteRow key={n.id} n={n} fromPublished={false} />)}
+          </div>
+      }
+
+      <div style={{ marginTop: '1.5rem', borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>
+        <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem', padding: 0, fontFamily: 'inherit', fontSize: '0.88rem' }}
+          onClick={() => setShowPub(o => !o)}>
+          <CheckCircle size={14} color="#10b981" /> Published Notes {showPub ? '▲' : '▼'}
+        </button>
+        {showPub && (
+          <div style={{ marginTop: '0.75rem' }}>
+            {published === null
+              ? <p className="as-muted">Loading…</p>
+              : published.length === 0
+              ? <p className="as-muted">No published notes yet.</p>
+              : <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  {published.map(n => <NoteRow key={n.id} n={n} fromPublished={true} />)}
                 </div>
-                <div style={{ marginTop: '0.4rem' }}>
-                  <a href={`https://docs.google.com/viewer?url=${encodeURIComponent(n.cloudinaryUrl.replace('/raw/upload/fl_inline/', '/raw/upload/'))}`}
-                    target="_blank" rel="noopener noreferrer"
-                    style={{ fontSize: '0.8rem', color: 'var(--primary)' }}>
-                    Preview PDF ↗
-                  </a>
-                </div>
-              </div>
-              <div className="marks-complaint-actions">
-                <button className="marks-btn approve" onClick={() => handleApprove(n)} disabled={!!busy}>
-                  <CheckCircle size={14} /> Approve (+4✦)
-                </button>
-                <button className="marks-btn reject" onClick={() => handleReject(n)} disabled={!!busy}>
-                  <XCircle size={14} /> Reject
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+            }
+          </div>
+        )}
+      </div>
     </div>
   );
 }

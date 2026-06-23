@@ -1,5 +1,5 @@
 import {
-  collection, doc, addDoc, getDoc, getDocs, updateDoc,
+  collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc,
   query, where,
 } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -43,6 +43,17 @@ export async function approveNote(id) {
 
 export async function rejectNote(id, reason = '') {
   await updateDoc(doc(db, COL, id), { status: 'rejected', rejectionReason: reason, rejectedAt: Date.now() });
+}
+
+export async function deleteNote(id) {
+  await deleteDoc(doc(db, COL, id));
+}
+
+export async function getPublishedNotes() {
+  const q = query(collection(db, COL), where('status', '==', 'published'));
+  const snap = await getDocs(q);
+  return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .sort((a, b) => (b.approvedAt || 0) - (a.approvedAt || 0));
 }
 
 export async function getMyNotes(phone) {
