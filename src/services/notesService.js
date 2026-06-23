@@ -65,5 +65,7 @@ export async function uploadNotePDF(file) {
   });
   if (!res.ok) throw new Error('Upload failed. Try again.');
   const json = await res.json();
-  return { url: json.secure_url, publicId: json.public_id };
+  // Insert fl_inline so browser renders PDF inline instead of downloading
+  const url = (json.secure_url || '').replace('/raw/upload/', '/raw/upload/fl_inline/');
+  return { url, publicId: json.public_id };
 }

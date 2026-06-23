@@ -1,11 +1,14 @@
-import { X, ExternalLink } from 'lucide-react';
+import { X } from 'lucide-react';
 
-/**
- * Full-screen modal PDF viewer using Google Docs viewer embed.
- * No download option exposed.
- */
+/** Ensure fl_inline flag is in the Cloudinary URL for inline PDF rendering */
+function inlineUrl(url) {
+  if (!url) return '';
+  if (url.includes('fl_inline')) return url;
+  return url.replace('/raw/upload/', '/raw/upload/fl_inline/');
+}
+
 export default function NotesViewer({ note, onClose }) {
-  const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(note.cloudinaryUrl)}&embedded=true`;
+  const pdfUrl = inlineUrl(note.cloudinaryUrl);
 
   return (
     <div className="notes-viewer-overlay" onClick={onClose}>
@@ -21,10 +24,9 @@ export default function NotesViewer({ note, onClose }) {
         </div>
         <iframe
           className="notes-viewer-frame"
-          src={viewerUrl}
+          src={pdfUrl}
           title={note.title}
           frameBorder="0"
-          allowFullScreen
         />
         <div className="notes-viewer-footer">
           Uploaded by <strong>{note.uploaderName}</strong>
