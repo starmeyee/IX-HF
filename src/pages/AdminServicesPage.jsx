@@ -4,15 +4,18 @@ import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { resetWhatsNew } from '../auth/authService';
 import { getAllUsers, getActivitySummary } from '../services/adminService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound } from 'lucide-react';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher } from '../services/teacherService';
+import { getPendingNotes, approveNote, rejectNote } from '../services/notesService';
+import { earnSparks, SPARK_UPLOAD_REWARD } from '../services/sparksService';
 
 const TABS = [
   { id: 'users',      label: 'User Directory',  Icon: Users },
   { id: 'activity',   label: 'Activity',         Icon: Activity },
   { id: 'marks',      label: 'Marks Complaints', Icon: FileText },
+  { id: 'notes',      label: 'Notes Review',     Icon: BookOpen },
   { id: 'teachers',   label: 'Teachers',         Icon: GraduationCap },
   { id: 'merge',      label: 'Merge Profiles',   Icon: GitMerge },
   { id: 'onboarding', label: 'Onboarding',       Icon: Settings },
@@ -456,6 +459,80 @@ function MergeTab() {
   );
 }
 
+// ── Notes Review Tab ──────────────────────────────────────────
+function NotesReviewTab() {
+  const [notes,  setNotes]  = useState(null);
+  const [busy,   setBusy]   = useState(null);
+
+  useEffect(() => {
+    getPendingNotes().then(setNotes).catch(() => setNotes([]));
+  }, []);
+
+  async function handleApprove(n) {
+    setBusy(n.id);
+    try {
+      await approveNote(n.id);
+      await earnSparks(n.uploaderPhone, SPARK_UPLOAD_REWARD, `Notes approved: ${n.title}`);
+      setNotes(prev => prev.filter(x => x.id !== n.id));
+    } catch (e) { alert(e.message); }
+    finally { setBusy(null); }
+  }
+
+  async function handleReject(n) {
+    if (!confirm(`Reject "${n.title}"?`)) return;
+    setBusy(n.id);
+    try {
+      await rejectNote(n.id);
+      setNotes(prev => prev.filter(x => x.id !== n.id));
+    } catch (e) { alert(e.message); }
+    finally { setBusy(null); }
+  }
+
+  if (notes === null) return <p className="as-muted">Loading…</p>;
+
+  return (
+    <div>
+      <h4 className="as-section-title" style={{ marginBottom: '0.75rem' }}>
+        <BookOpen size={14} /> Pending Notes ({notes.length})
+      </h4>
+      {notes.length === 0 ? (
+        <p className="as-muted">No pending notes to review.</p>
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          {notes.map(n => (
+            <div key={n.id} className="marks-complaint-row">
+              <div className="marks-complaint-info">
+                <strong>{n.title}</strong>
+                <span className="as-muted" style={{ marginLeft: '0.5rem', fontSize: '0.82rem' }}>
+                  {n.subjectName} · {n.chapterName}
+                </span>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
+                  by {n.uploaderName}
+                  {n.description && <span> · "{n.description}"</span>}
+                </div>
+                <div style={{ marginTop: '0.4rem' }}>
+                  <a href={n.cloudinaryUrl} target="_blank" rel="noopener noreferrer"
+                    style={{ fontSize: '0.8rem', color: 'var(--primary)' }}>
+                    Preview PDF ↗
+                  </a>
+                </div>
+              </div>
+              <div className="marks-complaint-actions">
+                <button className="marks-btn approve" onClick={() => handleApprove(n)} disabled={!!busy}>
+                  <CheckCircle size={14} /> Approve (+4✦)
+                </button>
+                <button className="marks-btn reject" onClick={() => handleReject(n)} disabled={!!busy}>
+                  <XCircle size={14} /> Reject
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Teachers Tab ──────────────────────────────────────────────
 function TeachersTab() {
   const [teachers, setTeachers] = useState(null);
@@ -597,6 +674,7 @@ export default function AdminServicesPage() {
         {tab === 'users'      && <UsersTab />}
         {tab === 'activity'   && <ActivityTab />}
         {tab === 'marks'      && <MarksTab />}
+        {tab === 'notes'      && <NotesReviewTab />}
         {tab === 'teachers'   && <TeachersTab />}
         {tab === 'merge'      && <MergeTab />}
         {tab === 'onboarding' && <OnboardingTab currentUser={currentUser} navigate={navigate} triggerTour={triggerTour} />}

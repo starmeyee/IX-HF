@@ -20,6 +20,7 @@ import AdminServicesPage from './pages/AdminServicesPage';
 import TestScoresPage from './pages/TestScoresPage';
 import NotificationsPage from './pages/NotificationsPage';
 import MathsDashboard from './pages/MathsDashboard';
+import NotesPage from './pages/NotesPage';
 import { Heart } from 'lucide-react';
 
 import { useActivityLogger } from './hooks/useActivityLogger';
@@ -52,6 +53,7 @@ function AppInner() {
             <Route path="/test-scores" element={<TestScoresPage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/maths" element={<MathsDashboard />} />
+            <Route path="/notes" element={<NotesPage />} />
           </Routes>
         </main>
         <footer className="app-footer">

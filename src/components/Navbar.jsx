@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Calculator } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Calculator, BookCopy } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import NotificationHistory from './NotificationHistory';
@@ -47,8 +47,8 @@ export default function Navbar() {
           <BookOpen size={20} /><span>Homework</span>
         </NavLink>
         {currentUser?.role !== ROLES.TEACHER && (
-          <NavLink to="/holidays" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <CalendarHeart size={20} /><span>Holidays</span>
+          <NavLink to="/notes" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <BookCopy size={20} /><span>Notes</span>
           </NavLink>
         )}
         <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
@@ -97,6 +97,11 @@ export default function Navbar() {
                   <button className="nav-dropdown-item" onClick={() => go('/class-info')}>
                     <Users size={15} /> Class Info
                   </button>
+                  {currentUser.role !== ROLES.TEACHER && (
+                    <button className="nav-dropdown-item" onClick={() => go('/holidays')}>
+                      <CalendarHeart size={15} /> Holiday Homework
+                    </button>
+                  )}
                   {(currentUser.isAdmin || currentUser.role === ROLES.MONITOR) && (
                     <button className="nav-dropdown-item" onClick={() => go('/admin')}>
                       <ShieldAlert size={15} /> Monitor Panel

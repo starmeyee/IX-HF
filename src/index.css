@@ -2722,3 +2722,215 @@ a {
   padding: 0;
   font-family: inherit;
 }
+
+/* ═══════════════════════════════════════════════════════
+   NOTES EXCHANGE + SPARKS
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Page layout ── */
+.notes-page { max-width: 700px; margin: 0 auto; padding: 0 1rem 6rem; }
+.notes-login-prompt {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; text-align: center; padding: 4rem 1rem; color: var(--text-primary);
+}
+.notes-login-prompt p { color: var(--text-secondary); }
+
+/* ── Header ── */
+.notes-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 2rem 0 1rem; gap: 1rem; flex-wrap: wrap;
+}
+.notes-title {
+  font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em; margin: 0 0 0.2rem; display: flex; align-items: center; gap: 0.4rem;
+}
+.notes-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
+
+/* ── Spark wallet ── */
+.spark-wallet {
+  display: flex; align-items: center; gap: 0.35rem;
+  background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 20px; padding: 0.4rem 0.9rem; white-space: nowrap;
+}
+.spark-wallet-count { font-weight: 800; font-size: 1rem; color: #f59e0b; }
+.spark-wallet-label { font-size: 0.78rem; color: var(--text-secondary); font-weight: 600; }
+
+/* ── Tabs ── */
+.notes-tabs {
+  display: flex; gap: 0.25rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+.notes-tab {
+  padding: 0.55rem 1rem; background: none; border: none; border-bottom: 2px solid transparent;
+  color: var(--text-secondary); font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  transition: color 0.15s, border-color 0.15s; margin-bottom: -1px; font-family: inherit;
+}
+.notes-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* ── Section cards ── */
+.notes-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr)); gap: 1rem;
+}
+.notes-section-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.3rem;
+  cursor: pointer; text-align: left; transition: border-color 0.2s, transform 0.15s;
+  position: relative;
+}
+.notes-section-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+.notes-section-name { font-weight: 700; font-size: 1rem; color: var(--text-primary); }
+.notes-section-meta { font-size: 0.78rem; color: var(--text-muted); }
+.notes-section-arrow { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+/* ── Breadcrumb ── */
+.notes-breadcrumb {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.notes-back-btn {
+  display: flex; align-items: center; gap: 0.35rem; background: none;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-size: 0.82rem; font-weight: 600;
+  padding: 0.3rem 0.75rem; cursor: pointer; transition: border-color 0.15s;
+  font-family: inherit;
+}
+.notes-back-btn:hover { border-color: var(--primary); color: var(--primary); }
+.notes-crumbs { font-size: 0.82rem; color: var(--text-muted); }
+
+/* ── List rows (subjects, chapters, notes) ── */
+.notes-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.notes-row {
+  display: flex; align-items: center; gap: 0.75rem; width: 100%;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem; cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  text-align: left; font-family: inherit; color: var(--text-primary);
+}
+.notes-row:hover { border-color: var(--primary); background: var(--surface-hover); }
+.notes-row-name { flex: 1; font-weight: 600; font-size: 0.92rem; }
+.notes-row-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── Chapter title ── */
+.notes-chapter-title {
+  font-size: 1rem; font-weight: 700; color: var(--text-primary);
+  margin: 0 0 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+}
+
+/* ── Notes list item ── */
+.notes-list-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem;
+}
+.notes-list-info { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.notes-list-title { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notes-list-desc  { font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notes-list-meta  { font-size: 0.75rem; color: var(--text-muted); }
+.notes-view-btn {
+  display: flex; align-items: center; gap: 0.3rem; white-space: nowrap;
+  background: var(--primary); color: #fff; border: none; border-radius: var(--radius-sm);
+  padding: 0.45rem 0.9rem; font-size: 0.82rem; font-weight: 700; cursor: pointer;
+  transition: opacity 0.15s; font-family: inherit; flex-shrink: 0;
+}
+.notes-view-btn:hover { opacity: 0.88; }
+.notes-cost { font-size: 0.72rem; opacity: 0.8; }
+
+/* ── Empty state ── */
+.notes-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  padding: 2.5rem 1rem; text-align: center; color: var(--text-secondary);
+}
+.notes-muted { color: var(--text-muted); font-size: 0.9rem; padding: 1rem 0; }
+
+/* ── My submissions ── */
+.notes-submission-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+.notes-submission-info { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
+.notes-submission-status { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+.notes-status-label { font-size: 0.78rem; font-weight: 600; text-transform: capitalize; }
+.notes-status-label.pending   { color: #f59e0b; }
+.notes-status-label.published { color: #10b981; }
+.notes-status-label.rejected  { color: #ef4444; }
+.notes-earned { font-size: 0.78rem; font-weight: 700; color: #10b981; }
+
+/* ── Spark log ── */
+.spark-log-balance-row {
+  display: flex; align-items: center; gap: 0.5rem; font-weight: 700;
+  padding: 0.75rem 0 1rem; border-bottom: 1px solid var(--border); margin-bottom: 0.75rem;
+}
+.spark-log-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.spark-log-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem; font-size: 0.85rem;
+}
+.spark-log-delta { font-weight: 700; min-width: 48px; display: flex; align-items: center; gap: 0.25rem; }
+.spark-log-delta.earn  { color: #10b981; }
+.spark-log-delta.spend { color: #ef4444; }
+.spark-log-reason { flex: 1; color: var(--text-secondary); font-size: 0.82rem; }
+.spark-log-balance { color: var(--text-muted); font-size: 0.78rem; white-space: nowrap; }
+
+/* ── Upload FAB ── */
+.notes-upload-fab {
+  position: fixed; bottom: 5rem; right: 1.25rem; z-index: 50;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--primary); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(139,92,246,0.45);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.notes-upload-fab:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(139,92,246,0.55); }
+
+/* ── Viewer modal ── */
+.notes-viewer-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+}
+.notes-viewer-modal {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+  width: 100%; max-width: 860px; max-height: 92vh;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.notes-viewer-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;
+  padding: 0.85rem 1rem; border-bottom: 1px solid var(--border);
+}
+.notes-viewer-title { display: flex; flex-direction: column; gap: 0.15rem; }
+.notes-viewer-title span:first-child { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
+.notes-viewer-meta { font-size: 0.78rem; color: var(--text-muted); }
+.notes-viewer-close {
+  background: none; border: none; color: var(--text-secondary); cursor: pointer;
+  padding: 0.25rem; border-radius: 4px; flex-shrink: 0; line-height: 1;
+}
+.notes-viewer-close:hover { color: var(--text-primary); }
+.notes-viewer-frame { flex: 1; width: 100%; min-height: 500px; border: none; }
+.notes-viewer-footer {
+  padding: 0.5rem 1rem; font-size: 0.78rem; color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Upload modal ── */
+.notes-upload-modal {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+  width: 100%; max-width: 480px; max-height: 92vh; overflow-y: auto;
+}
+.notes-upload-form {
+  display: flex; flex-direction: column; gap: 0.6rem; padding: 1rem;
+}
+.notes-upload-label { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+.notes-upload-select {
+  width: 100%; padding: 0.55rem 0.9rem;
+  background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-primary); font-size: 0.9rem; outline: none; font-family: inherit;
+}
+.notes-upload-select:disabled { opacity: 0.5; }
+.notes-file-picker {
+  display: flex; align-items: center; gap: 0.5rem; cursor: pointer;
+  border: 2px dashed var(--border); border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem; color: var(--text-muted); font-size: 0.88rem;
+  transition: border-color 0.15s;
+}
+.notes-file-picker:hover { border-color: var(--primary); color: var(--primary); }
