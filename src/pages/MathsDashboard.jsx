@@ -6,9 +6,10 @@ import {
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { MATH_MARKS_RAW, MAX_MARKS } from '../data/mathMarks';
+import { getOverrides } from '../services/marksService';
 import { BarChart2, Download, FileText, TrendingUp, Users, Trophy, AlertTriangle, Star, Share2 } from 'lucide-react';
 
-// ─── Brand colours (X HI Main palette) ──────────────────────
+// ─── Brand colours ───────────────────────────────────────────
 const C = {
   primary:   '#8b5cf6',
   secondary: '#ec4899',
@@ -19,35 +20,26 @@ const C = {
 };
 const GRADE_COLORS = [C.danger, C.warning, C.info, C.primary, C.success];
 
-// ─── Data processing ─────────────────────────────────────────
-function parse(v) { return (v === 'Ab' || v === undefined) ? null : v; }
+// ─── Data processing (override-aware) ────────────────────────
+function resolveScore(overrides, roll, test) {
+  const ov = overrides[roll];
+  if (ov && ov[test] !== undefined) return ov[test];
+  const val = MATH_MARKS_RAW.find(r => r.roll === roll)?.[test];
+  return (val === 'Ab' || val === undefined) ? null : val;
+}
 
-const STUDENTS = MATH_MARKS_RAW.map(s => {
-  const t1 = parse(s.test1);
-  const t2 = parse(s.test2);
-  const t1Eff = s.test1 === 'Ab' ? 0 : t1;
-  const t2Eff = s.test2 === 'Ab' ? 0 : t2;
-  const eff = [t1Eff, t2Eff].filter(v => v !== null);
-  const avg  = eff.length ? eff.reduce((a, b) => a + b, 0) / eff.length : null;
-  const total = eff.length ? eff.reduce((a, b) => a + b, 0) : null;
-  const improvement = (t1Eff !== null && t2Eff !== null) ? t2Eff - t1Eff : null;
-  const absentBoth  = t1 === null && t2 === null;
-  return { ...s, t1, t2, avg, total, improvement, absentBoth };
-});
-
-const t1Scores = STUDENTS.filter(s => s.t1 !== null).map(s => s.t1);
-const t2Scores = STUDENTS.filter(s => s.t2 !== null).map(s => s.t2);
-const t1Avg = (t1Scores.reduce((a, b) => a + b, 0) / t1Scores.length).toFixed(2);
-const t2Avg = (t2Scores.reduce((a, b) => a + b, 0) / t2Scores.length).toFixed(2);
-const t2Present = t2Scores.length;
-const t2Absent  = STUDENTS.length - t2Present;
-const attendanceRatio = ((t2Present / STUDENTS.length) * 100).toFixed(1);
-const highestScorer = [...STUDENTS].filter(s => s.avg !== null).sort((a, b) => b.avg - a.avg)[0];
-const absentBothList = STUDENTS.filter(s => s.absentBoth);
-const top10 = [...STUDENTS].filter(s => s.avg !== null).sort((a, b) => b.avg - a.avg).slice(0, 10);
-const top5  = top10.slice(0, 5);
-const mostImproved = [...STUDENTS].filter(s => s.improvement !== null && s.t1 !== null).sort((a, b) => b.improvement - a.improvement).slice(0, 5);
-const needAttention = [...STUDENTS].filter(s => s.avg !== null && s.avg < 4).sort((a, b) => a.avg - b.avg);
+function buildStudents(overrides) {
+  return MATH_MARKS_RAW.map(s => {
+    const t1 = resolveScore(overrides, s.roll, 'test1');
+    const t2 = resolveScore(overrides, s.roll, 'test2');
+    const eff = [t1, t2].filter(v => v !== null);
+    const avg  = eff.length ? eff.reduce((a, b) => a + b, 0) / eff.length : null;
+    const total = eff.length ? eff.reduce((a, b) => a + b, 0) : null;
+    const improvement = (t1 !== null && t2 !== null) ? t2 - t1 : null;
+    const absentBoth  = t1 === null && t2 === null;
+    return { ...s, t1, t2, avg, total, improvement, absentBoth };
+  });
+}
 
 function getBadge(s) {
   if (s.absentBoth)    return { label: 'Absent Both',    color: C.danger };
@@ -59,13 +51,11 @@ function getBadge(s) {
   return               { label: 'Needs Help',           color: C.danger };
 }
 
-function shortName(s) {
-  return s.name.split(' ')[0];
-}
+function shortName(s) { return s.name.split(' ')[0]; }
 
 // ─── Export helpers ──────────────────────────────────────────
-function downloadCSV() {
-  const rows = STUDENTS.map(s => [
+function downloadCSV(students) {
+  const rows = students.map(s => [
     s.roll, `"${s.name}"`,
     s.t1 ?? 'Absent', s.t2 ?? 'Absent',
     s.total ?? '-', s.avg != null ? s.avg.toFixed(2) : '-',
@@ -79,16 +69,16 @@ function downloadCSV() {
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
 }
 
-function downloadPDF() {
+function downloadPDF(students, t1Avg, t2Avg, attendanceRatio) {
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
   doc.setFontSize(18); doc.setTextColor(139, 92, 246);
   doc.text('Maths Weekly Test Dashboard — Class 10 HI', 14, 18);
   doc.setFontSize(10); doc.setTextColor(100);
-  doc.text(`Generated: ${new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}  |  Students: ${STUDENTS.length}  |  T1 Avg: ${t1Avg}  |  T2 Avg: ${t2Avg}  |  Attendance: ${attendanceRatio}%`, 14, 26);
+  doc.text(`Generated: ${new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}  |  Students: ${students.length}  |  T1 Avg: ${t1Avg}  |  T2 Avg: ${t2Avg}  |  Attendance: ${attendanceRatio}%`, 14, 26);
   autoTable(doc, {
     startY: 32,
     head: [['Roll', 'Name', 'Test 1', 'Test 2', 'Total', 'Average', 'Status', 'Evaluation']],
-    body: STUDENTS.map(s => [
+    body: students.map(s => [
       s.roll, s.name,
       s.t1 ?? 'Absent', s.t2 ?? 'Absent',
       s.total ?? '—', s.avg?.toFixed(2) ?? '—',
@@ -149,18 +139,41 @@ function HighlightRow({ s, color, rank, extra }) {
 
 // ─── Main component ───────────────────────────────────────────
 export default function MathsDashboard() {
+  const [overrides, setOverrides] = useState({});
   const [search,    setSearch]    = useState('');
   const [sortKey,   setSortKey]   = useState('roll');
   const [sortDir,   setSortDir]   = useState('asc');
   const [distFilt,  setDistFilt]  = useState('both');
   const [fullFilt,  setFullFilt]  = useState('both');
 
-  // Update page title
   useEffect(() => {
     const prev = document.title;
     document.title = 'Maths Dashboard — 10th HI';
     return () => { document.title = prev; };
   }, []);
+
+  useEffect(() => {
+    getOverrides().then(setOverrides).catch(() => {});
+  }, []);
+
+  // All derived data — recomputed whenever overrides change
+  const STUDENTS = useMemo(() => buildStudents(overrides), [overrides]);
+
+  const t1Scores = useMemo(() => STUDENTS.filter(s => s.t1 !== null).map(s => s.t1), [STUDENTS]);
+  const t2Scores = useMemo(() => STUDENTS.filter(s => s.t2 !== null).map(s => s.t2), [STUDENTS]);
+  const t1Avg = useMemo(() => (t1Scores.reduce((a, b) => a + b, 0) / t1Scores.length).toFixed(2), [t1Scores]);
+  const t2Avg = useMemo(() => (t2Scores.reduce((a, b) => a + b, 0) / t2Scores.length).toFixed(2), [t2Scores]);
+  const t2Present = t2Scores.length;
+  const t2Absent  = STUDENTS.length - t2Present;
+  const attendanceRatio = ((t2Present / STUDENTS.length) * 100).toFixed(1);
+
+  const highestScorer  = useMemo(() => [...STUDENTS].filter(s => s.avg !== null).sort((a, b) => b.avg - a.avg)[0], [STUDENTS]);
+  const absentBothList = useMemo(() => STUDENTS.filter(s => s.absentBoth), [STUDENTS]);
+  const top10          = useMemo(() => [...STUDENTS].filter(s => s.avg !== null).sort((a, b) => b.avg - a.avg).slice(0, 10), [STUDENTS]);
+  const top5           = top10.slice(0, 5);
+  const mostImproved   = useMemo(() => [...STUDENTS].filter(s => s.improvement !== null && s.t1 !== null).sort((a, b) => b.improvement - a.improvement).slice(0, 5), [STUDENTS]);
+  const needAttention  = useMemo(() => [...STUDENTS].filter(s => s.avg !== null && s.avg < 4).sort((a, b) => a.avg - b.avg), [STUDENTS]);
+  const allScores      = [...t1Scores, ...t2Scores];
 
   // Score distribution data (reactive)
   const distScores = useMemo(() => {
@@ -169,7 +182,7 @@ export default function MathsDashboard() {
     if (distFilt === 't1') return t1;
     if (distFilt === 't2') return t2;
     return [...t1, ...t2];
-  }, [distFilt]);
+  }, [distFilt, STUDENTS]);
 
   const distributionData = [
     { range: '0–2', count: distScores.filter(v => v <= 2).length },
@@ -191,16 +204,14 @@ export default function MathsDashboard() {
       if (typeof vb === 'string') vb = vb.charCodeAt(0);
       return sortDir === 'asc' ? va - vb : vb - va;
     });
-  }, [search, sortKey, sortDir]);
+  }, [search, sortKey, sortDir, STUDENTS]);
 
   const fullMarkStudents = useMemo(() =>
     STUDENTS.filter(s =>
       fullFilt === 't1' ? s.t1 === MAX_MARKS :
       fullFilt === 't2' ? s.t2 === MAX_MARKS :
       s.t1 === MAX_MARKS || s.t2 === MAX_MARKS
-    ), [fullFilt]);
-
-  const allScores = [...t1Scores, ...t2Scores];
+    ), [fullFilt, STUDENTS]);
 
   return (
     <div className="md-page">
@@ -215,10 +226,10 @@ export default function MathsDashboard() {
           Weekly Test 1 &amp; Test 2 · Class 10 HI · {STUDENTS.length} Students
         </p>
         <div className="md-hero-actions">
-          <button className="md-btn-primary" onClick={downloadPDF}>
+          <button className="md-btn-primary" onClick={() => downloadPDF(STUDENTS, t1Avg, t2Avg, attendanceRatio)}>
             <FileText size={15} /> Export PDF
           </button>
-          <button className="md-btn-secondary" onClick={downloadCSV}>
+          <button className="md-btn-secondary" onClick={() => downloadCSV(STUDENTS)}>
             <Download size={15} /> Download CSV
           </button>
           <button className="md-btn-secondary" onClick={() => {
