@@ -6,7 +6,7 @@ import {
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { MATH_MARKS_RAW, MAX_MARKS } from '../data/mathMarks';
-import { BarChart2, Download, FileText, TrendingUp, Users, Trophy, AlertTriangle, Star } from 'lucide-react';
+import { BarChart2, Download, FileText, TrendingUp, Users, Trophy, AlertTriangle, Star, Share2 } from 'lucide-react';
 
 // ─── Brand colours (X HI Main palette) ──────────────────────
 const C = {
@@ -220,6 +220,17 @@ export default function MathsDashboard() {
           </button>
           <button className="md-btn-secondary" onClick={downloadCSV}>
             <Download size={15} /> Download CSV
+          </button>
+          <button className="md-btn-secondary" onClick={() => {
+            const url = `${window.location.origin}/maths-share`;
+            if (navigator.share) {
+              navigator.share({ title: 'Maths Dashboard — Class 10 HI', url });
+            } else {
+              navigator.clipboard.writeText(url);
+              alert('Link copied! Share it on WhatsApp.');
+            }
+          }}>
+            <Share2 size={15} /> Share
           </button>
         </div>
       </div>

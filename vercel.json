@@ -5,6 +5,10 @@
       "destination": "/api/share"
     },
     {
+      "source": "/maths-share",
+      "destination": "/api/maths-share"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

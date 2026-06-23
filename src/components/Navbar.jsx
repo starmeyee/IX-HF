@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Calculator } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2 } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import NotificationHistory from './NotificationHistory';
 
@@ -50,9 +50,6 @@ export default function Navbar() {
         </NavLink>
         <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
           <CalendarRange size={20} /><span>Calendar</span>
-        </NavLink>
-        <NavLink to="/maths" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <Calculator size={20} /><span>Maths</span>
         </NavLink>
         {(currentUser?.isAdmin || currentUser?.role === 'MONITOR') && (
           <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
