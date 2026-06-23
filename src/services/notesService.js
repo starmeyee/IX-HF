@@ -1,6 +1,6 @@
 import {
   collection, doc, addDoc, getDoc, getDocs, updateDoc,
-  query, where, orderBy,
+  query, where,
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
@@ -23,17 +23,18 @@ export async function getNotesByChapter(chapterId) {
   const q = query(
     collection(db, COL),
     where('chapterId', '==', chapterId),
-    where('status', '==', 'published'),
-    orderBy('approvedAt', 'desc')
+    where('status', '==', 'published')
   );
   const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .sort((a, b) => (b.approvedAt || 0) - (a.approvedAt || 0));
 }
 
 export async function getPendingNotes() {
-  const q = query(collection(db, COL), where('status', '==', 'pending'), orderBy('createdAt', 'desc'));
+  const q = query(collection(db, COL), where('status', '==', 'pending'));
   const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .sort((a, b) => b.createdAt - a.createdAt);
 }
 
 export async function approveNote(id) {
@@ -45,9 +46,10 @@ export async function rejectNote(id, reason = '') {
 }
 
 export async function getMyNotes(phone) {
-  const q = query(collection(db, COL), where('uploaderPhone', '==', phone), orderBy('createdAt', 'desc'));
+  const q = query(collection(db, COL), where('uploaderPhone', '==', phone));
   const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .sort((a, b) => b.createdAt - a.createdAt);
 }
 
 /** Upload PDF to Cloudinary unsigned, returns { url, publicId } */
