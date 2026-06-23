@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { MATH_MARKS_RAW, MAX_MARKS } from '../data/mathMarks';
 import { getOverrides, fileComplaint, getMyComplaint } from '../services/marksService';
-import { AlertCircle, CheckCircle, Clock, TrendingUp, TrendingDown, Minus, Trophy, Users, BarChart2 } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, TrendingUp, TrendingDown, Minus, Trophy, Users, BarChart2, LayoutDashboard } from 'lucide-react';
 
 // Apply overrides to a raw value
 function resolve(overrides, roll, test) {
@@ -274,6 +274,14 @@ export default function TestScoresPage() {
             <AlertCircle size={15} /> Report incorrect marks
           </button>
         )}
+
+        <button
+          className="auth-btn"
+          style={{ width: '100%', marginTop: '0.75rem', background: 'linear-gradient(135deg, #8b5cf6, #ec4899)' }}
+          onClick={() => navigate('/maths')}
+        >
+          <LayoutDashboard size={15} /> View Full Maths Dashboard
+        </button>
 
         {showForm && (
           <form onSubmit={handleSubmit} className="ts-complaint-form">
