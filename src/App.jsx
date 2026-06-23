@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import AuthModal from './components/AuthModal';
 import Onboarding from './components/Onboarding';
@@ -7,7 +7,7 @@ import WhatsNew from './components/WhatsNew';
 import InstallPrompt from './components/InstallPrompt';
 import NotificationPrompt from './components/NotificationPrompt';
 import ForegroundToast from './components/ForegroundToast';
-import { AuthProvider } from './auth/AuthContext';
+import { AuthProvider, useAuth } from './auth/AuthContext';
 import StudentDashboard from './pages/StudentDashboard';
 import Homework from './pages/Homework';
 import HolidayHomework from './pages/HolidayHomework';
@@ -22,7 +22,8 @@ import NotificationsPage from './pages/NotificationsPage';
 import MathsDashboard from './pages/MathsDashboard';
 import NotesPage from './pages/NotesPage';
 import { Heart } from 'lucide-react';
-
+import { checkAndConsumeEmailLink } from './firebase';
+import { markEmailVerified } from './auth/authService';
 import { useActivityLogger } from './hooks/useActivityLogger';
 
 function ScrollToTop() {
@@ -33,6 +34,36 @@ function ScrollToTop() {
 
 function AppInner() {
   useActivityLogger();
+  const navigate = useNavigate();
+  const { refreshUser } = useAuth();
+  // pendingReset: { phone } — set when email-reset link is clicked; triggers reset form in AuthModal
+  const [resetPhone, setResetPhone] = useState(null);
+
+  useEffect(() => {
+    async function handleEmailLink() {
+      try {
+        const result = await checkAndConsumeEmailLink(window.location.href);
+        if (!result) return;
+        // Clean the URL so the link params don't linger
+        window.history.replaceState(null, '', window.location.pathname);
+        if (result.emailAction === 'verify') {
+          // Get phone from session to mark verified
+          const phone = localStorage.getItem('auth_phone');
+          if (phone) {
+            await markEmailVerified(phone);
+            await refreshUser(phone);
+          }
+          navigate('/profile', { state: { emailVerified: true } });
+        } else if (result.emailAction === 'reset' && result.phone) {
+          setResetPhone(result.phone);
+        }
+      } catch (err) {
+        console.warn('Email link handling failed:', err);
+      }
+    }
+    handleEmailLink();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
       <ScrollToTop />
@@ -71,7 +102,7 @@ function AppInner() {
           </p>
         </footer>
       </div>
-      <AuthModal />
+      <AuthModal resetPhone={resetPhone} onResetConsumed={() => setResetPhone(null)} />
       <Onboarding />
       <WhatsNew />
       <InstallPrompt />

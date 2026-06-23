@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { matchStudent } from '../auth/nameMatch';
 import { getUserByPhone } from '../auth/authService';
+import { sendEmailLink } from '../firebase';
 import { getTeachers } from '../services/teacherService';
 import { GraduationCap, User } from 'lucide-react';
 
@@ -13,9 +14,8 @@ const S = {
   SET_PASS:     'set-pass',      // create password
   DONE:         'done',          // success screen
   LOGIN:        'login',         // phone + password
-  FORGOT_SEND:  'otp-send',
-  FORGOT_VFY:   'otp-verify',
-  RESET_PASS:   'reset-pass',
+  FORGOT_SEND:  'otp-send',      // enter phone → send email link
+  RESET_PASS:   'reset-pass',    // new password (after email link)
   // --- teacher ---
   TEACHER_LOGIN: 'teacher-login',
 };
@@ -34,10 +34,10 @@ function Dots({ step }) {
   );
 }
 
-export default function AuthModal() {
+export default function AuthModal({ resetPhone, onResetConsumed }) {
   const {
     modalOpen, closeModal,
-    register, savePassword, login, sendOtp, verifyOtp, resetPassword,
+    register, savePassword, login, resetPassword,
     loginTeacherCtx,
   } = useAuth();
 
@@ -52,12 +52,20 @@ export default function AuthModal() {
   const [rollNo,    setRollNo]    = useState('');
   const [password,  setPassword]  = useState('');
   const [password2, setPassword2] = useState('');
-  const [otp,       setOtp]       = useState('');
-  const [otpPhone,  setOtpPhone]  = useState('');
+  const [otpPhone,  setOtpPhone]  = useState(''); // phone used for reset
 
   // teacher fields
   const [teacherId, setTeacherId] = useState('');
   const [tPassword, setTPassword] = useState('');
+
+  // When App.jsx detects a reset email link, open the modal at RESET_PASS
+  useEffect(() => {
+    if (resetPhone) {
+      setOtpPhone(resetPhone);
+      setStep(S.RESET_PASS);
+      onResetConsumed?.();
+    }
+  }, [resetPhone]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (step === S.TEACHER_LOGIN && teachers.length === 0) {
@@ -65,12 +73,12 @@ export default function AuthModal() {
     }
   }, [step]);
 
-  if (!modalOpen) return null;
+  if (!modalOpen && step !== S.RESET_PASS) return null;
 
   function reset() {
     setStep(S.PICK); setErr('');
     setPhone(''); setName(''); setRollNo('');
-    setPassword(''); setPassword2(''); setOtp(''); setOtpPhone('');
+    setPassword(''); setPassword2(''); setOtpPhone('');
     setTeacherId(''); setTPassword('');
   }
 
@@ -126,27 +134,25 @@ export default function AuthModal() {
     finally { setBusy(false); }
   }
 
-  // ── STUDENT: forgot password ──────────────────────────────
-  async function handleSendOtp(e) {
-    e.preventDefault(); setErr('');
-    const user = await getUserByPhone(otpPhone.trim());
-    if (!user) { setErr('No account found with this phone number.'); return; }
-    setBusy(true);
-    try {
-      await sendOtp(otpPhone.trim());
-      setStep(S.FORGOT_VFY);
-    } catch (ex) { setErr('Failed to send OTP. ' + ex.message); }
-    finally { setBusy(false); }
-  }
-
-  async function handleVerifyOtp(e) {
+  // ── STUDENT: forgot password — send email reset link ─────────
+  async function handleSendResetLink(e) {
     e.preventDefault(); setErr(''); setBusy(true);
     try {
-      await verifyOtp(otp.trim());
-      setStep(S.RESET_PASS);
-    } catch { setErr('Invalid OTP. Try again.'); }
-    finally { setBusy(false); }
+      const user = await getUserByPhone(otpPhone.trim());
+      if (!user) { setErr('No account found with this phone number.'); setBusy(false); return; }
+      if (!user.email || !user.emailVerified) {
+        setErr('No verified email on this account. Add one in your Profile page first.');
+        setBusy(false); return;
+      }
+      await sendEmailLink(user.email, 'reset', user.phone);
+      setStep('reset-link-sent');
+    } catch (ex) {
+      setErr('Failed to send link: ' + ex.message);
+    } finally {
+      setBusy(false);
+    }
   }
+
 
   async function handleResetPassword(e) {
     e.preventDefault(); setErr('');
@@ -298,40 +304,36 @@ export default function AuthModal() {
 
         {/* ── FORGOT SEND ── */}
         {step === S.FORGOT_SEND && (
-          <form className="auth-step" onSubmit={handleSendOtp}>
+          <form className="auth-step" onSubmit={handleSendResetLink}>
             <h2>Reset Password</h2>
-            <p className="auth-sub">Enter your registered phone number.</p>
+            <p className="auth-sub">Enter your registered phone number. A reset link will be sent to your verified email.</p>
             <label>Phone Number</label>
             <input value={otpPhone} onChange={e => setOtpPhone(e.target.value)}
               type="tel" placeholder="Your registered phone" maxLength={10} required autoFocus />
             {err && <p className="auth-err">{err}</p>}
             <button className="auth-btn primary" type="submit" disabled={busy}>
-              {busy ? 'Sending OTP…' : 'Send OTP'}
+              {busy ? 'Sending…' : 'Send Reset Link'}
             </button>
             <button type="button" className="auth-link"
               onClick={() => { setErr(''); setStep(S.LOGIN); }}>← Back to Login</button>
           </form>
         )}
 
-        {/* ── FORGOT VERIFY ── */}
-        {step === S.FORGOT_VFY && (
-          <form className="auth-step" onSubmit={handleVerifyOtp}>
-            <h2>Enter OTP</h2>
-            <p className="auth-sub">We sent a 6-digit OTP to +91 {otpPhone}</p>
-            <label>OTP</label>
-            <input value={otp} onChange={e => setOtp(e.target.value)}
-              type="text" placeholder="6-digit OTP" maxLength={6} required autoFocus />
-            {err && <p className="auth-err">{err}</p>}
-            <button className="auth-btn primary" type="submit" disabled={busy}>
-              {busy ? 'Verifying…' : 'Verify OTP'}
-            </button>
-          </form>
+        {/* ── RESET LINK SENT ── */}
+        {step === 'reset-link-sent' && (
+          <div className="auth-step">
+            <div className="auth-success-icon">📧</div>
+            <h2>Check your email</h2>
+            <p className="auth-sub">We sent a password reset link to your verified email. Click it to set a new password.</p>
+            <button className="auth-btn secondary" onClick={handleClose}>Close</button>
+          </div>
         )}
 
         {/* ── RESET PASSWORD ── */}
         {step === S.RESET_PASS && (
           <form className="auth-step" onSubmit={handleResetPassword}>
             <h2>New Password</h2>
+            <p className="auth-sub">Set a new password for your account.</p>
             <label>New Password</label>
             <input value={password} onChange={e => setPassword(e.target.value)}
               type="password" placeholder="Min 6 characters" required autoFocus />

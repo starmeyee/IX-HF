@@ -42,6 +42,14 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  async function refreshUser(phone) {
+    const user = await getUserByPhone(phone);
+    if (user) {
+      user.role = getUserRole(user.rollNo);
+      setCurrentUser(user);
+    }
+  }
+
   function openModal() { setModalOpen(true); }
   function closeModal() { setModalOpen(false); }
 
@@ -124,6 +132,7 @@ export function AuthProvider({ children }) {
       modalOpen, openModal, closeModal,
       register, savePassword, login, logout, loginTeacherCtx,
       sendOtp, verifyOtp, resetPassword,
+      refreshUser,
       forceTour,
       triggerTour: (role) => setForceTour({ role }),
       clearTour: () => setForceTour(null),

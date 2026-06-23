@@ -1,4 +1,4 @@
-import { doc, getDoc, getDocs, collection, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, getDocs, collection, setDoc, updateDoc, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 
 async function sha256(text) {
@@ -146,6 +146,28 @@ function randomKey() {
   const arr = new Uint8Array(32);
   crypto.getRandomValues(arr);
   return Array.from(arr).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+// ── Email verification ─────────────────────────────────────────
+
+export async function saveEmail(phone, email) {
+  await updateDoc(userRef(phone), { email: email.toLowerCase(), emailVerified: false });
+}
+
+export async function markEmailVerified(phone) {
+  await updateDoc(userRef(phone), { emailVerified: true });
+}
+
+export async function getUserByEmail(email) {
+  const q = query(collection(db, 'users'), where('email', '==', email.toLowerCase()));
+  const snap = await getDocs(q);
+  if (snap.empty) return null;
+  const data = snap.docs[0].data();
+  if (data.mergedInto) {
+    const primarySnap = await getDoc(doc(db, 'users', data.mergedInto));
+    return primarySnap.exists() ? primarySnap.data() : null;
+  }
+  return data;
 }
 
 export async function ensureBroadcastKey(phone) {

@@ -2939,3 +2939,34 @@ a {
   padding: 3rem 1rem; gap: 0.5rem; color: var(--text-secondary); text-align: center;
   height: 100%;
 }
+
+/* ── Profile email section ───────────────────────────────────── */
+.profile-email-section {
+  width: 100%;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile-email-form {
+  width: 100%;
+  text-align: left;
+}
+.profile-email-msg {
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  color: var(--primary);
+}
+.profile-email-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}

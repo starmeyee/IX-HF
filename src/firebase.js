@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getMessaging, isSupported } from 'firebase/messaging';
 
@@ -36,4 +36,38 @@ export async function getMessagingIfSupported() {
     console.warn('Firebase Messaging not supported:', err);
     return null;
   }
+}
+
+// ── Email link helpers ─────────────────────────────────────────
+
+/**
+ * Sends a Firebase Auth email link.
+ * emailAction: 'verify' | 'reset'
+ * phone: only required for 'reset'
+ */
+export async function sendEmailLink(email, emailAction, phone) {
+  const base = `${window.location.origin}/?emailAction=${emailAction}`;
+  const continueUrl = emailAction === 'reset' ? `${base}&phone=${encodeURIComponent(phone)}` : base;
+  await sendSignInLinkToEmail(auth, email, {
+    url: continueUrl,
+    handleCodeInApp: true,
+  });
+  localStorage.setItem('emailForLink', email);
+}
+
+/**
+ * Checks if the current URL is a sign-in link and consumes it.
+ * Returns { email, emailAction, phone } if handled, null otherwise.
+ */
+export async function checkAndConsumeEmailLink(href) {
+  if (!isSignInWithEmailLink(auth, href)) return null;
+  const params = new URLSearchParams(new URL(href).search);
+  const emailAction = params.get('emailAction');
+  const phone = params.get('phone') || null;
+  const email = localStorage.getItem('emailForLink');
+  if (!email) return { emailAction, phone, email: null, needsEmail: true };
+  await signInWithEmailLink(auth, email, href);
+  await auth.signOut();
+  localStorage.removeItem('emailForLink');
+  return { emailAction, phone, email };
 }
