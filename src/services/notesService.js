@@ -2,7 +2,8 @@ import {
   collection, doc, addDoc, getDoc, getDocs, updateDoc,
   query, where,
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { db, storage } from '../firebase';
 
 const COL = 'notes';
 
@@ -52,18 +53,11 @@ export async function getMyNotes(phone) {
     .sort((a, b) => b.createdAt - a.createdAt);
 }
 
-/** Upload PDF to Cloudinary unsigned, returns { url, publicId } */
+/** Upload PDF to Firebase Storage, returns { url, publicId } */
 export async function uploadNotePDF(file) {
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-  const preset    = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-  const fd = new FormData();
-  fd.append('file', file);
-  fd.append('upload_preset', preset);
-  fd.append('resource_type', 'raw');
-  const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
-    method: 'POST', body: fd,
-  });
-  if (!res.ok) throw new Error('Upload failed. Try again.');
-  const json = await res.json();
-  return { url: json.secure_url, publicId: json.public_id };
+  const path = `notes/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+  const storageRef = ref(storage, path);
+  const snap = await uploadBytesResumable(storageRef, file, { contentType: 'application/pdf' });
+  const url = await getDownloadURL(snap.ref);
+  return { url, publicId: path };
 }
