@@ -52,7 +52,7 @@ export async function sendEmailLink(email, emailAction, phone) {
     url: continueUrl,
     handleCodeInApp: true,
   });
-  localStorage.setItem('emailForLink', email);
+  localStorage.setItem('emailForSignIn', email);
 }
 
 /**
@@ -64,10 +64,14 @@ export async function checkAndConsumeEmailLink(href) {
   const params = new URLSearchParams(new URL(href).search);
   const emailAction = params.get('emailAction');
   const phone = params.get('phone') || null;
-  const email = localStorage.getItem('emailForLink');
-  if (!email) return { emailAction, phone, email: null, needsEmail: true };
+  let email = localStorage.getItem('emailForSignIn');
+  if (!email) {
+    // Opened on a different device — ask the user
+    email = window.prompt('Please enter the email address you used to request this link.');
+    if (!email) return null;
+  }
   await signInWithEmailLink(auth, email, href);
   await auth.signOut();
-  localStorage.removeItem('emailForLink');
+  localStorage.removeItem('emailForSignIn');
   return { emailAction, phone, email };
 }
