@@ -61,26 +61,6 @@ export default function Navbar() {
       <div className="nav-auth">
         {currentUser ? (
           <div className="nav-user-menu">
-            {/* Notification bell */}
-            <div className="nav-notif-wrap" ref={notifRef}>
-              <button
-                className={`nav-bell-btn ${notifOpen ? 'active' : ''}`}
-                onClick={() => { setNotifOpen(v => !v); setDropdownOpen(false); }}
-                title="Notifications"
-                aria-label="Notifications"
-              >
-                <Bell size={18} />
-              </button>
-              {notifOpen && (
-                <div className="nav-notif-panel">
-                  <div className="nav-notif-header">
-                    <Bell size={15} /> Notification History
-                  </div>
-                  <NotificationHistory />
-                </div>
-              )}
-            </div>
-
             {/* Profile dropdown */}
             <div className="nav-profile-wrap" ref={dropdownRef}>
               <button
@@ -125,6 +105,26 @@ export default function Navbar() {
                   <button className="nav-dropdown-item nav-dropdown-logout" onClick={() => { setDropdownOpen(false); logout(); navigate('/'); }}>
                     <LogOut size={15} /> Logout
                   </button>
+                </div>
+              )}
+            </div>
+
+            {/* Notification bell — right of avatar */}
+            <div className="nav-notif-wrap" ref={notifRef}>
+              <button
+                className={`nav-bell-btn ${notifOpen ? 'active' : ''}`}
+                onClick={() => { setNotifOpen(v => !v); setDropdownOpen(false); }}
+                title="Notifications"
+                aria-label="Notifications"
+              >
+                <Bell size={18} />
+              </button>
+              {notifOpen && (
+                <div className="nav-notif-panel">
+                  <div className="nav-notif-header">
+                    <Bell size={15} /> Notifications
+                  </div>
+                  <NotificationHistory limit={3} onViewAll={() => { setNotifOpen(false); navigate('/notifications'); }} />
                 </div>
               )}
             </div>

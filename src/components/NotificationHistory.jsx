@@ -26,8 +26,8 @@ function relativeTime(ms) {
  * Chronological list of every notification the class has been sent.
  * Read-only; shown inside a collapsible section on the Profile page.
  */
-export default function NotificationHistory() {
-  const [items, setItems] = useState(null); // null = loading
+export default function NotificationHistory({ limit, onViewAll }) {
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -53,9 +53,12 @@ export default function NotificationHistory() {
     );
   }
 
+  const visible = limit ? items.slice(0, limit) : items;
+  const hasMore = limit && items.length > limit;
+
   return (
     <div className="notif-history">
-      {items.map((n) => {
+      {visible.map((n) => {
         const meta = TYPE_META[n.type] || TYPE_META.broadcast;
         const Icon = meta.icon;
         return (
@@ -74,6 +77,11 @@ export default function NotificationHistory() {
           </div>
         );
       })}
+      {hasMore && onViewAll && (
+        <button className="notif-view-all-btn" onClick={onViewAll}>
+          View all notifications →
+        </button>
+      )}
     </div>
   );
 }

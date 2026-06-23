@@ -962,12 +962,12 @@ a {
   width: 320px;
   max-height: 420px;
   overflow-y: auto;
-  background: rgba(18, 18, 21, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 8, 10, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   z-index: 200;
   padding: 0.75rem;
 }
@@ -983,6 +983,23 @@ a {
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
 }
+
+.notif-view-all-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: none;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+}
+.notif-view-all-btn:hover { background: rgba(139, 92, 246, 0.1); }
 
 /* ─── Nav Profile Dropdown ────────────────────────────────── */
 .nav-profile-wrap {

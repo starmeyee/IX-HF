@@ -18,6 +18,7 @@ import SyllabusPage from './pages/SyllabusPage';
 import ClassInfoPage from './pages/ClassInfoPage';
 import AdminServicesPage from './pages/AdminServicesPage';
 import TestScoresPage from './pages/TestScoresPage';
+import NotificationsPage from './pages/NotificationsPage';
 import { Heart } from 'lucide-react';
 
 import { useActivityLogger } from './hooks/useActivityLogger';
@@ -48,6 +49,7 @@ function AppInner() {
             <Route path="/class-info" element={<ClassInfoPage />} />
             <Route path="/admin-services" element={<AdminServicesPage />} />
             <Route path="/test-scores" element={<TestScoresPage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
           </Routes>
         </main>
         <footer className="app-footer">
