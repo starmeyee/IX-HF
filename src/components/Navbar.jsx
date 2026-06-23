@@ -113,7 +113,10 @@ export default function Navbar() {
             <div className="nav-notif-wrap" ref={notifRef}>
               <button
                 className={`nav-bell-btn ${notifOpen ? 'active' : ''}`}
-                onClick={() => { setNotifOpen(v => !v); setDropdownOpen(false); }}
+                onClick={() => {
+                  if (window.innerWidth < 768) { navigate('/notifications'); return; }
+                  setNotifOpen(v => !v); setDropdownOpen(false);
+                }}
                 title="Notifications"
                 aria-label="Notifications"
               >
