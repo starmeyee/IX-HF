@@ -59,7 +59,7 @@ function NotesListItem({ note, onView, free }) {
         {note.description && <span className="notes-list-desc">{note.description}</span>}
         <span className="notes-list-meta">by {note.uploaderName} · {new Date(note.approvedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
       </div>
-      <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
+      <div className="notes-list-actions">
         <button className="notes-view-btn" onClick={() => onView(note)}>
           <FileText size={14} /> View{!free && <span className="notes-cost"> -{SPARK_VIEW_COST}✦</span>}
           {free && <span className="notes-cost" style={{ color: '#10b981' }}> Free</span>}
