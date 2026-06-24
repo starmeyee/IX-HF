@@ -208,6 +208,7 @@ function OnboardingTab({ currentUser, navigate, triggerTour }) {
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
         <button className="auth-btn secondary" style={{ flex: 1 }} onClick={() => { triggerTour(ROLES.STUDENT); navigate('/'); }}>Test Student Tour</button>
         <button className="auth-btn secondary" style={{ flex: 1 }} onClick={() => { triggerTour(ROLES.MONITOR); navigate('/'); }}>Test Monitor Tour</button>
+        <button className="auth-btn secondary" style={{ flex: 1 }} onClick={() => { triggerTour(ROLES.TEACHER); navigate('/'); }}>Test Teacher Tour</button>
       </div>
       <button className="auth-btn secondary" style={{ width: '100%', marginTop: '0.25rem' }}
         onClick={() => { localStorage.removeItem(`onboarding_done_${currentUser.phone}`); alert('Onboarding reset. Refresh to trigger.'); }}>

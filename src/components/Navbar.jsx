@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Calculator, BookCopy } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import NotificationHistory from './NotificationHistory';
@@ -43,9 +43,11 @@ export default function Navbar() {
         <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
           <Home size={20} /><span>Dashboard</span>
         </NavLink>
-        <NavLink to="/homework" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <BookOpen size={20} /><span>Homework</span>
-        </NavLink>
+        {currentUser?.role !== ROLES.TEACHER && (
+          <NavLink to="/homework" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <BookOpen size={20} /><span>Homework</span>
+          </NavLink>
+        )}
         {currentUser?.role !== ROLES.TEACHER && (
           <NavLink to="/notes" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <BookCopy size={20} /><span>Notes</span>
@@ -55,8 +57,8 @@ export default function Navbar() {
           <CalendarRange size={20} /><span>Calendar</span>
         </NavLink>
         {currentUser?.role === ROLES.TEACHER && (
-          <NavLink to="/maths" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <Calculator size={20} /><span>Maths</span>
+          <NavLink to="/teacher-tools" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <Wrench size={20} /><span>Teacher Tools</span>
           </NavLink>
         )}
         {(currentUser?.isAdmin || currentUser?.role === ROLES.MONITOR) && (

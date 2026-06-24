@@ -3,7 +3,7 @@ import { Joyride, STATUS } from 'react-joyride';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { completeOnboarding } from '../auth/authService';
-import { Sparkles, HandMetal, Navigation, Compass, LayoutDashboard, CalendarCheck } from 'lucide-react';
+import { Sparkles, HandMetal, Navigation, Compass, LayoutDashboard, CalendarCheck, Wrench } from 'lucide-react';
 
 const CustomTooltip = ({
   index,
@@ -15,42 +15,33 @@ const CustomTooltip = ({
   isLastStep,
 }) => {
   const { currentUser } = useAuth();
-  const isMonitor = currentUser?.role === ROLES.MONITOR;
-  
+  const isMonitor  = currentUser?.role === ROLES.MONITOR;
+  const isTeacher  = currentUser?.role === ROLES.TEACHER;
+  const accentVar  = isMonitor ? 'var(--secondary)' : isTeacher ? '#10b981' : 'var(--primary)';
+  const gradientBg = isMonitor
+    ? 'linear-gradient(135deg, var(--secondary), #f472b6)'
+    : isTeacher
+      ? 'linear-gradient(135deg, #10b981, #3b82f6)'
+      : 'linear-gradient(135deg, var(--primary), #a78bfa)';
+
   return (
-    <div 
-      {...tooltipProps} 
-      className={`custom-tooltip spring-up ${isMonitor ? 'role-monitor' : 'role-student'}`}
+    <div
+      {...tooltipProps}
+      className={`custom-tooltip spring-up ${isMonitor ? 'role-monitor' : isTeacher ? 'role-teacher' : 'role-student'}`}
     >
       <div className="tooltip-header stagger-1">
-        {step.icon && <span style={{ color: isMonitor ? 'var(--secondary)' : 'var(--primary)' }}>{step.icon}</span>}
-        <h3 className="tooltip-title" style={{
-          background: isMonitor ? 'linear-gradient(135deg, var(--secondary), #f472b6)' : 'linear-gradient(135deg, var(--primary), #a78bfa)',
-          WebkitBackgroundClip: 'text',
-          color: 'transparent'
-        }}>
+        {step.icon && <span style={{ color: accentVar }}>{step.icon}</span>}
+        <h3 className="tooltip-title" style={{ background: gradientBg, WebkitBackgroundClip: 'text', color: 'transparent' }}>
           {step.title}
         </h3>
       </div>
-      <div className="tooltip-body stagger-2">
-        {step.content}
-      </div>
+      <div className="tooltip-body stagger-2">{step.content}</div>
       <div className="tooltip-footer stagger-3">
-        <div className="tooltip-progress">
-          {index + 1} / {step.totalSteps}
-        </div>
+        <div className="tooltip-progress">{index + 1} / {step.totalSteps}</div>
         <div className="tooltip-controls">
-          {!isLastStep && (
-            <button {...closeProps} className="tooltip-skip">
-              Skip
-            </button>
-          )}
-          {index > 0 && (
-            <button {...backProps} className="tooltip-btn secondary">
-              Back
-            </button>
-          )}
-          <button {...primaryProps} className="tooltip-btn primary" style={{ background: isMonitor ? 'var(--secondary)' : 'var(--primary)' }}>
+          {!isLastStep && <button {...closeProps} className="tooltip-skip">Skip</button>}
+          {index > 0 && <button {...backProps} className="tooltip-btn secondary">Back</button>}
+          <button {...primaryProps} className="tooltip-btn primary" style={{ background: accentVar }}>
             {isLastStep ? 'Finish' : 'Next'}
           </button>
         </div>
@@ -58,6 +49,40 @@ const CustomTooltip = ({
     </div>
   );
 };
+
+const getTeacherSteps = (user) => [
+  {
+    target: 'body',
+    placement: 'center',
+    title: `Welcome, ${user.name.split(' ')[0]}!`,
+    icon: <HandMetal size={24} />,
+    content: 'This is your Teacher Dashboard. Let\'s take a quick look at what\'s available to you.',
+    disableBeacon: true,
+    totalSteps: 4,
+  },
+  {
+    target: '[data-tour="attendance-panel"]',
+    title: 'Class Attendance',
+    icon: <CalendarCheck size={22} />,
+    content: 'See the monthly attendance average across all students at a glance right from your dashboard.',
+    placement: 'top',
+    totalSteps: 4,
+  },
+  {
+    target: '.nav-links a[href="/teacher-tools"]',
+    title: 'Teacher Tools',
+    icon: <Wrench size={22} />,
+    content: 'Post and manage class notices, view attendance stats, and access the Maths Dashboard — all from one place.',
+    totalSteps: 4,
+  },
+  {
+    target: '.nav-user-menu',
+    title: 'Your Profile',
+    icon: <Sparkles size={22} />,
+    content: 'Click your initials to access your profile, class info, and account settings.',
+    totalSteps: 4,
+  },
+];
 
 const getStudentSteps = (user) => [
   {
@@ -127,13 +152,17 @@ const getMonitorSteps = (user) => [
   }
 ];
 
+function stepsForRole(user) {
+  if (user.role === ROLES.TEACHER)  return getTeacherSteps(user);
+  if (user.role === ROLES.MONITOR)  return getMonitorSteps(user);
+  return getStudentSteps(user);
+}
+
 export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
   const { currentUser, forceTour, clearTour } = useAuth();
   const [run, setRun] = useState(false);
   const [steps, setSteps] = useState([]);
 
-  // Determine effective force values — props (from ProfilePage test) take
-  // precedence; context (global trigger from triggerTour()) is the fallback.
   const effectiveForceRun  = forceRun  || !!forceTour;
   const effectiveForceRole = forceRole || forceTour?.role || null;
 
@@ -141,15 +170,19 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
     if (!currentUser) return;
 
     if (effectiveForceRun && effectiveForceRole) {
-      setSteps(effectiveForceRole === ROLES.MONITOR ? getMonitorSteps(currentUser) : getStudentSteps(currentUser));
+      // Build a fake user with the forced role so stepsForRole picks the right set
+      setSteps(stepsForRole({ ...currentUser, role: effectiveForceRole }));
       setRun(true);
       return;
     }
 
+    // Admins and teachers get no automatic onboarding
+    if (currentUser.role === ROLES.ADMIN) return;
+
     const localKey = `onboarding_done_${currentUser.phone}`;
     const alreadyDone = currentUser.onboardingCompleted || localStorage.getItem(localKey);
-    if (!alreadyDone && currentUser.role !== ROLES.ADMIN) {
-      setSteps(currentUser.role === ROLES.MONITOR ? getMonitorSteps(currentUser) : getStudentSteps(currentUser));
+    if (!alreadyDone) {
+      setSteps(stepsForRole(currentUser));
       setRun(true);
     }
   }, [currentUser, effectiveForceRun, effectiveForceRole]);
@@ -180,12 +213,7 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
       showSkipButton
       tooltipComponent={CustomTooltip}
       callback={handleJoyrideCallback}
-      styles={{
-        options: {
-          overlayColor: 'rgba(0, 0, 0, 0.65)',
-          zIndex: 10000,
-        }
-      }}
+      styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.65)', zIndex: 10000 } }}
     />
   );
 }
