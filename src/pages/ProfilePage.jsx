@@ -33,6 +33,9 @@ export default function ProfilePage() {
     if (!currentUser) navigate('/');
   }, [currentUser, navigate]);
 
+  const isTeacher = currentUser?.role === ROLES.TEACHER;
+  const identifier = isTeacher ? currentUser?.id : currentUser?.phone;
+
   if (currentUser && loadedPhotoForPhone !== identifier) {
     setLoadedPhotoForPhone(identifier);
     setPhoto(localStorage.getItem(`photo_${identifier}`) || null);
@@ -86,8 +89,6 @@ export default function ProfilePage() {
 
   if (!currentUser) return null;
 
-  const isTeacher = currentUser.role === ROLES.TEACHER;
-  const identifier = isTeacher ? currentUser.id : currentUser.phone;
   const maskedPhone = isTeacher
     ? currentUser.id
     : currentUser.phone?.replace(/(\d{2})\d{6}(\d{2})/, '$1XXXXXX$2') ?? '—';
