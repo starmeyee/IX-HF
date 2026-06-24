@@ -2846,12 +2846,12 @@ a {
 
 /* ── My submissions ── */
 .notes-submission-row {
-  display: flex; align-items: center; gap: 0.75rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 0.85rem 1rem;
 }
-.notes-submission-info { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
-.notes-submission-status { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+.notes-submission-info { display: flex; flex-direction: column; gap: 0.1rem; }
+.notes-submission-status { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
 .notes-status-label { font-size: 0.78rem; font-weight: 600; text-transform: capitalize; }
 .notes-status-label.pending   { color: #f59e0b; }
 .notes-status-label.published { color: #10b981; }
@@ -2865,15 +2865,15 @@ a {
 }
 .spark-log-list { display: flex; flex-direction: column; gap: 0.4rem; }
 .spark-log-item {
-  display: flex; align-items: center; gap: 0.75rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 0.6rem 0.9rem; font-size: 0.85rem;
 }
-.spark-log-delta { font-weight: 700; min-width: 48px; display: flex; align-items: center; gap: 0.25rem; }
+.spark-log-delta { font-weight: 700; min-width: 48px; display: flex; align-items: center; gap: 0.25rem; flex-shrink: 0; }
 .spark-log-delta.earn  { color: #10b981; }
 .spark-log-delta.spend { color: #ef4444; }
-.spark-log-reason { flex: 1; color: var(--text-secondary); font-size: 0.82rem; }
-.spark-log-balance { color: var(--text-muted); font-size: 0.78rem; white-space: nowrap; }
+.spark-log-reason { flex: 1; min-width: 0; color: var(--text-secondary); font-size: 0.82rem; word-break: break-word; }
+.spark-log-balance { color: var(--text-muted); font-size: 0.78rem; white-space: nowrap; margin-left: auto; }
 
 /* ── Upload FAB ── */
 .notes-upload-fab {
