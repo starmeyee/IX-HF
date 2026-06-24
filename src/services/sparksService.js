@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export const INITIAL_SPARKS = 10;
@@ -39,4 +39,14 @@ export async function spendSparks(phone, amount, reason) {
 
 export async function earnSparks(phone, amount, reason) {
   return adjustSparks(phone, +amount, { type: 'earn', amount, reason });
+}
+
+export async function getPurchasedChapters(phone) {
+  const snap = await getDoc(userRef(phone));
+  if (!snap.exists()) return [];
+  return snap.data().purchasedChapters || [];
+}
+
+export async function purchaseChapter(phone, chapterId) {
+  await updateDoc(userRef(phone), { purchasedChapters: arrayUnion(chapterId) });
 }

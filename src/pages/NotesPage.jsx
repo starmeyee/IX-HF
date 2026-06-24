@@ -1,15 +1,18 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ChevronRight, ArrowLeft, Upload, FileText, Clock, CheckCircle, XCircle, Zap } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Joyride, STATUS } from 'react-joyride';
+import { ChevronRight, ArrowLeft, Upload, FileText, Clock, CheckCircle, XCircle, Zap, HelpCircle } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { syllabusData } from '../data/syllabusData';
-import { getNotesByChapter, getMyNotes } from '../services/notesService';
-import { getSparks, getSparkLog, spendSparks, SPARK_VIEW_COST, INITIAL_SPARKS } from '../services/sparksService';
+import { getNotesByChapter, getMyNotes, getPublishedNotes } from '../services/notesService';
+import {
+  getSparks, getSparkLog, spendSparks,
+  getPurchasedChapters, purchaseChapter,
+  SPARK_VIEW_COST, INITIAL_SPARKS,
+} from '../services/sparksService';
 import NotesViewer from '../components/NotesViewer';
 import UploadNoteModal from '../components/UploadNoteModal';
 
-// Spark icon SVG
 export function SparkIcon({ size = 14, color = 'currentColor' }) {
   return (
     <svg width={size} height={size} viewBox="0 0 14 14" fill="none" style={{ display: 'inline', verticalAlign: 'middle' }}>
@@ -20,7 +23,7 @@ export function SparkIcon({ size = 14, color = 'currentColor' }) {
 
 function SparkWallet({ sparks }) {
   return (
-    <div className="spark-wallet">
+    <div className="spark-wallet" data-tour="spark-wallet">
       <SparkIcon size={15} color="#f59e0b" />
       <span className="spark-wallet-count">{sparks}</span>
       <span className="spark-wallet-label">Sparks</span>
@@ -38,7 +41,7 @@ function SectionCard({ section, onClick }) {
   );
 }
 
-function NotesListItem({ note, onView }) {
+function NotesListItem({ note, onView, free }) {
   return (
     <div className="notes-list-item">
       <div className="notes-list-info">
@@ -48,7 +51,8 @@ function NotesListItem({ note, onView }) {
       </div>
       <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
         <button className="notes-view-btn" onClick={() => onView(note)}>
-          <FileText size={14} /> View <span className="notes-cost">-{SPARK_VIEW_COST}✦</span>
+          <FileText size={14} /> View{!free && <span className="notes-cost"> -{SPARK_VIEW_COST}✦</span>}
+          {free && <span className="notes-cost" style={{ color: '#10b981' }}> Free</span>}
         </button>
         <a
           className="notes-view-btn"
@@ -57,9 +61,7 @@ function NotesListItem({ note, onView }) {
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: 'none', background: 'var(--surface-hover)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
-        >
-          ⬇
-        </a>
+        >⬇</a>
       </div>
     </div>
   );
@@ -78,41 +80,97 @@ function SparkLogItem({ entry }) {
   );
 }
 
+// ── Joyride steps ─────────────────────────────────────────────
+const TOUR_STEPS = [
+  {
+    target: '[data-tour="spark-wallet"]',
+    title: 'Your Sparks Wallet',
+    content: 'This is your Sparks balance. Spend Sparks to unlock chapter notes. You start with 10 — earn more by uploading your own notes.',
+    disableBeacon: true,
+    placement: 'bottom',
+  },
+  {
+    target: '[data-tour="tab-browse"]',
+    title: 'Browse Notes',
+    content: 'Browse notes by Section → Subject → Chapter. Viewing a chapter for the first time costs 2 Sparks — after that, all notes in that chapter are free forever.',
+    placement: 'bottom',
+  },
+  {
+    target: '[data-tour="tab-purchases"]',
+    title: 'Your Purchases',
+    content: 'Every chapter you\'ve unlocked appears here. Re-read any of those notes anytime, completely free.',
+    placement: 'bottom',
+  },
+  {
+    target: '[data-tour="tab-mysubmissions"]',
+    title: 'My Submissions',
+    content: 'Track notes you\'ve uploaded here. Once an admin approves your note, you automatically earn 4 Sparks.',
+    placement: 'bottom',
+  },
+  {
+    target: '[data-tour="upload-fab"]',
+    title: 'Upload Notes',
+    content: 'Tap here to upload a PDF note for any chapter. Submit it for admin review — approval earns you 4 Sparks.',
+    placement: 'top',
+  },
+].map((s, i, arr) => ({ ...s, totalSteps: arr.length }));
+
+// Simple tooltip matching the project's custom tooltip style
+function TourTooltip({ index, step, backProps, closeProps, primaryProps, tooltipProps, isLastStep }) {
+  return (
+    <div {...tooltipProps} className="custom-tooltip spring-up">
+      <div className="tooltip-header stagger-1">
+        <h3 className="tooltip-title" style={{ background: 'linear-gradient(135deg, var(--primary), #a78bfa)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
+          {step.title}
+        </h3>
+      </div>
+      <div className="tooltip-body stagger-2">{step.content}</div>
+      <div className="tooltip-footer stagger-3">
+        <div className="tooltip-progress">{index + 1} / {step.totalSteps}</div>
+        <div className="tooltip-controls">
+          {!isLastStep && <button {...closeProps} className="tooltip-skip">Skip</button>}
+          {index > 0 && <button {...backProps} className="tooltip-btn secondary">Back</button>}
+          <button {...primaryProps} className="tooltip-btn primary">{isLastStep ? 'Finish' : 'Next'}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main Page ─────────────────────────────────────────────────
 export default function NotesPage() {
   const { currentUser, openModal } = useAuth();
-  const navigate = useNavigate();
 
   // Drill-down state
-  const [view,    setView]    = useState('sections'); // sections | subjects | chapters | notes
+  const [view,    setView]    = useState('sections');
   const [section, setSection] = useState(null);
   const [subject, setSubject] = useState(null);
   const [chapter, setChapter] = useState(null);
 
-  // Data state
-  const [chapterNotes, setChapterNotes] = useState([]);
-  const [notesLoading, setNotesLoading] = useState(false);
-  const [noteCounts,   setNoteCounts]   = useState({}); // chapterId → count (lazy)
+  // Data
+  const [chapterNotes,       setChapterNotes]       = useState([]);
+  const [notesLoading,       setNotesLoading]       = useState(false);
+  const [sparks,             setSparks]             = useState(INITIAL_SPARKS);
+  const [sparkLog,           setSparkLog]           = useState([]);
+  const [purchasedChapters,  setPurchasedChapters]  = useState(new Set());
+  const [purchasedNotes,     setPurchasedNotes]     = useState(null); // null = not loaded yet
+  const [myNotes,            setMyNotes]            = useState(null);
 
-  // Sparks
-  const [sparks,    setSparks]    = useState(INITIAL_SPARKS);
-  const [sparkLog,  setSparkLog]  = useState([]);
-  const [logTab,    setLogTab]    = useState('browse'); // browse | mysubmissions | log
-
-  // Modals
-  const [viewingNote, setViewingNote]   = useState(null);
-  const [showUpload,  setShowUpload]    = useState(false);
-
-  // My submissions
-  const [myNotes, setMyNotes] = useState(null);
+  // UI
+  const [logTab,      setLogTab]      = useState('browse');
+  const [viewingNote, setViewingNote] = useState(null);
+  const [showUpload,  setShowUpload]  = useState(false);
+  const [tourRun,     setTourRun]     = useState(false);
 
   const isStudent = currentUser && currentUser.role !== ROLES.TEACHER;
 
-  // Load sparks
+  // Load sparks + purchased chapters on mount
   useEffect(() => {
     if (!currentUser || !isStudent) return;
     getSparks(currentUser.phone).then(setSparks).catch(() => {});
-    getSparkLog(currentUser.phone).then(setSparkLog).catch(() => {});
+    getPurchasedChapters(currentUser.phone)
+      .then(ids => setPurchasedChapters(new Set(ids)))
+      .catch(() => {});
   }, [currentUser]);
 
   // Load notes when chapter selected
@@ -124,6 +182,15 @@ export default function NotesPage() {
       .catch(() => setChapterNotes([]))
       .finally(() => setNotesLoading(false));
   }, [chapter, view]);
+
+  // Load purchased notes tab
+  useEffect(() => {
+    if (logTab !== 'purchases' || !currentUser || !isStudent) return;
+    if (purchasedChapters.size === 0) { setPurchasedNotes([]); return; }
+    getPublishedNotes()
+      .then(all => setPurchasedNotes(all.filter(n => purchasedChapters.has(n.chapterId))))
+      .catch(() => setPurchasedNotes([]));
+  }, [logTab, purchasedChapters]);
 
   // Load my submissions
   useEffect(() => {
@@ -142,7 +209,7 @@ export default function NotesPage() {
   function goChapter(ch)  { setChapter(ch);  setView('notes'); }
 
   function goBack() {
-    if (view === 'notes')    { setView('chapters'); setChapter(null); setChapterNotes([]); }
+    if (view === 'notes')         { setView('chapters'); setChapter(null); setChapterNotes([]); }
     else if (view === 'chapters') { setView('subjects'); setSubject(null); }
     else if (view === 'subjects') { setView('sections'); setSection(null); }
   }
@@ -150,27 +217,34 @@ export default function NotesPage() {
   async function handleView(note) {
     if (!currentUser) { openModal(); return; }
     if (!isStudent) return;
-    const sessionKey = `viewed_${note.id}`;
-    const alreadyViewed = sessionStorage.getItem(sessionKey);
 
-    if (!alreadyViewed) {
-      if (sparks < SPARK_VIEW_COST) {
-        alert(`You need ${SPARK_VIEW_COST} ✦ Sparks to view notes. Upload notes to earn more!`);
-        return;
-      }
-      const newBal = await spendSparks(currentUser.phone, SPARK_VIEW_COST, `Viewed: ${note.title}`);
-      setSparks(newBal);
-      sessionStorage.setItem(sessionKey, '1');
+    // Already purchased this chapter — free
+    if (purchasedChapters.has(note.chapterId)) {
+      setViewingNote(note);
+      return;
     }
+
+    // Charge sparks and record purchase
+    if (sparks < SPARK_VIEW_COST) {
+      alert(`You need ${SPARK_VIEW_COST} ✦ Sparks to unlock this chapter. Upload notes to earn more!`);
+      return;
+    }
+    const newBal = await spendSparks(currentUser.phone, SPARK_VIEW_COST, `Unlocked chapter: ${note.chapterName}`);
+    await purchaseChapter(currentUser.phone, note.chapterId);
+    setSparks(newBal);
+    setPurchasedChapters(prev => new Set([...prev, note.chapterId]));
     setViewingNote(note);
   }
 
   function onUploadSuccess() {
     setShowUpload(false);
-    // Refresh my submissions if open
     if (logTab === 'mysubmissions') {
       getMyNotes(currentUser.phone).then(setMyNotes).catch(() => {});
     }
+  }
+
+  function handleTourEnd({ status }) {
+    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) setTourRun(false);
   }
 
   if (!currentUser) {
@@ -193,11 +267,7 @@ export default function NotesPage() {
     );
   }
 
-  const breadcrumb = [
-    section && section.sectionName,
-    subject && subject.subjectName,
-    chapter && chapter.chapterName,
-  ].filter(Boolean);
+  const breadcrumb = [section?.sectionName, subject?.subjectName, chapter?.chapterName].filter(Boolean);
 
   const STATUS_ICON = {
     pending:   <Clock size={13} color="#f59e0b" />,
@@ -205,14 +275,46 @@ export default function NotesPage() {
     rejected:  <XCircle size={13} color="#ef4444" />,
   };
 
+  // Group purchased notes by chapter for the Purchases tab
+  const purchasedByChapter = purchasedNotes
+    ? purchasedNotes.reduce((acc, n) => {
+        if (!acc[n.chapterId]) acc[n.chapterId] = { chapterName: n.chapterName, subjectName: n.subjectName, notes: [] };
+        acc[n.chapterId].notes.push(n);
+        return acc;
+      }, {})
+    : {};
+
+  const TABS = [
+    { id: 'browse',        label: 'Browse',         tourAttr: 'tab-browse' },
+    { id: 'purchases',     label: `Purchases${purchasedChapters.size ? ` (${purchasedChapters.size})` : ''}`, tourAttr: 'tab-purchases' },
+    { id: 'mysubmissions', label: 'My Submissions',  tourAttr: 'tab-mysubmissions' },
+    { id: 'log',           label: 'Spark Log',       tourAttr: null },
+  ];
+
   return (
     <div className="notes-page animate-fade-in">
+
+      <Joyride
+        steps={TOUR_STEPS}
+        run={tourRun}
+        continuous
+        tooltipComponent={TourTooltip}
+        callback={handleTourEnd}
+        styles={{ options: { overlayColor: 'rgba(0,0,0,0.65)', zIndex: 10000 } }}
+      />
 
       {/* Header */}
       <div className="notes-header">
         <div>
-          <h1 className="notes-title">
+          <h1 className="notes-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <SparkIcon size={20} color="#f59e0b" /> Notes Exchange
+            <button
+              onClick={() => setTourRun(true)}
+              title="How does this work?"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '0 0.1rem', display: 'flex', alignItems: 'center' }}
+            >
+              <HelpCircle size={17} />
+            </button>
           </h1>
           <p className="notes-subtitle">Browse, view, and share chapter notes</p>
         </div>
@@ -221,8 +323,13 @@ export default function NotesPage() {
 
       {/* Tabs */}
       <div className="notes-tabs">
-        {[['browse', 'Browse'], ['mysubmissions', 'My Submissions'], ['log', 'Spark Log']].map(([id, label]) => (
-          <button key={id} className={`notes-tab ${logTab === id ? 'active' : ''}`} onClick={() => setLogTab(id)}>
+        {TABS.map(({ id, label, tourAttr }) => (
+          <button
+            key={id}
+            className={`notes-tab ${logTab === id ? 'active' : ''}`}
+            onClick={() => setLogTab(id)}
+            {...(tourAttr ? { 'data-tour': tourAttr } : {})}
+          >
             {label}
           </button>
         ))}
@@ -231,21 +338,13 @@ export default function NotesPage() {
       {/* ── BROWSE TAB ── */}
       {logTab === 'browse' && (
         <>
-          {/* Breadcrumb + back */}
           {view !== 'sections' && (
             <div className="notes-breadcrumb">
-              <button className="notes-back-btn" onClick={goBack}>
-                <ArrowLeft size={15} /> Back
-              </button>
-              <span className="notes-crumbs">
-                Notes {breadcrumb.map((b, i) => (
-                  <span key={i}> / {b}</span>
-                ))}
-              </span>
+              <button className="notes-back-btn" onClick={goBack}><ArrowLeft size={15} /> Back</button>
+              <span className="notes-crumbs">Notes {breadcrumb.map((b, i) => <span key={i}> / {b}</span>)}</span>
             </div>
           )}
 
-          {/* Sections grid */}
           {view === 'sections' && (
             <div className="notes-grid">
               {syllabusData.map(sec => (
@@ -254,7 +353,6 @@ export default function NotesPage() {
             </div>
           )}
 
-          {/* Subjects list */}
           {view === 'subjects' && section && (
             <div className="notes-list">
               {section.subjects.map(sub => (
@@ -267,22 +365,28 @@ export default function NotesPage() {
             </div>
           )}
 
-          {/* Chapters list */}
           {view === 'chapters' && subject && (
             <div className="notes-list">
               {subject.chapters.map(ch => (
                 <button key={ch.chapterId} className="notes-row" onClick={() => goChapter(ch)}>
                   <span className="notes-row-name">{ch.chapterName}</span>
+                  {purchasedChapters.has(ch.chapterId)
+                    ? <span style={{ fontSize: '0.75rem', color: '#10b981' }}>✓ Unlocked</span>
+                    : <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>-{SPARK_VIEW_COST}✦</span>}
                   <ChevronRight size={15} />
                 </button>
               ))}
             </div>
           )}
 
-          {/* Notes list */}
           {view === 'notes' && chapter && (
             <div>
-              <h3 className="notes-chapter-title">{chapter.chapterName}</h3>
+              <h3 className="notes-chapter-title">
+                {chapter.chapterName}
+                {purchasedChapters.has(chapter.chapterId) && (
+                  <span style={{ fontSize: '0.75rem', color: '#10b981', marginLeft: '0.5rem' }}>✓ Unlocked</span>
+                )}
+              </h3>
               {notesLoading ? (
                 <p className="notes-muted">Loading notes…</p>
               ) : chapterNotes.length === 0 ? (
@@ -294,13 +398,48 @@ export default function NotesPage() {
               ) : (
                 <div className="notes-list">
                   {chapterNotes.map(note => (
-                    <NotesListItem key={note.id} note={note} onView={handleView} />
+                    <NotesListItem
+                      key={note.id}
+                      note={note}
+                      onView={handleView}
+                      free={purchasedChapters.has(note.chapterId)}
+                    />
                   ))}
                 </div>
               )}
             </div>
           )}
         </>
+      )}
+
+      {/* ── PURCHASES TAB ── */}
+      {logTab === 'purchases' && (
+        <div>
+          {purchasedNotes === null ? (
+            <p className="notes-muted">Loading…</p>
+          ) : purchasedNotes.length === 0 ? (
+            <div className="notes-empty">
+              <FileText size={32} color="var(--text-muted)" />
+              <p>No purchases yet.</p>
+              <p style={{ fontSize: '0.85rem' }}>Browse notes and spend Sparks to unlock chapters. They'll appear here for free re-reading.</p>
+            </div>
+          ) : (
+            <div className="notes-list">
+              {Object.entries(purchasedByChapter).map(([chId, { chapterName, subjectName, notes }]) => (
+                <div key={chId} style={{ marginBottom: '1rem' }}>
+                  <div style={{ padding: '0.4rem 0', borderBottom: '1px solid var(--border)', marginBottom: '0.4rem' }}>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{chapterName}</span>
+                    <span className="notes-list-meta" style={{ marginLeft: '0.5rem' }}>{subjectName}</span>
+                    <span style={{ fontSize: '0.75rem', color: '#10b981', marginLeft: '0.5rem' }}>✓ Unlocked</span>
+                  </div>
+                  {notes.map(note => (
+                    <NotesListItem key={note.id} note={note} onView={handleView} free />
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       )}
 
       {/* ── MY SUBMISSIONS TAB ── */}
@@ -317,14 +456,9 @@ export default function NotesPage() {
                   <div className="notes-submission-info">
                     <span className="notes-list-title">{n.title}</span>
                     <span className="notes-list-meta">{n.subjectName} · {n.chapterName}</span>
-                    {n.status === 'rejected' && n.rejectionReason && (
+                    {n.status === 'rejected' && (
                       <span style={{ fontSize: '0.8rem', color: '#ef4444', marginTop: '0.2rem' }}>
-                        ⚠ Admin: {n.rejectionReason}
-                      </span>
-                    )}
-                    {n.status === 'rejected' && !n.rejectionReason && (
-                      <span style={{ fontSize: '0.8rem', color: '#ef4444', marginTop: '0.2rem' }}>
-                        ⚠ Rejected by admin
+                        ⚠ {n.rejectionReason ? `Admin: ${n.rejectionReason}` : 'Rejected by admin'}
                       </span>
                     )}
                   </div>
@@ -358,16 +492,11 @@ export default function NotesPage() {
       )}
 
       {/* Upload FAB */}
-      <button className="notes-upload-fab" onClick={() => setShowUpload(true)} title="Upload Notes">
+      <button className="notes-upload-fab" data-tour="upload-fab" onClick={() => setShowUpload(true)} title="Upload Notes">
         <Upload size={20} />
       </button>
 
-      {/* Notes viewer modal */}
-      {viewingNote && (
-        <NotesViewer note={viewingNote} onClose={() => setViewingNote(null)} />
-      )}
-
-      {/* Upload modal */}
+      {viewingNote && <NotesViewer note={viewingNote} onClose={() => setViewingNote(null)} />}
       {showUpload && (
         <UploadNoteModal
           currentUser={currentUser}
