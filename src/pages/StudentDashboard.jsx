@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
-import { CalendarCheck, BookOpen, TrendingUp, LogIn, ClipboardCheck, ArrowRight, Check, BookMarked, ClipboardList } from 'lucide-react';
+import { CalendarCheck, BookOpen, TrendingUp, LogIn, ClipboardCheck, ArrowRight, Check, BookMarked, ClipboardList, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
@@ -62,6 +62,9 @@ export default function StudentDashboard() {
   const [absentDays, setAbsentDays] = useState([]);
   const [attendanceLoaded, setAttendanceLoaded] = useState(false);
   const [closedDays, setClosedDays] = useState([]);
+  const [emailReminderDismissed, setEmailReminderDismissed] = useState(
+    () => !!sessionStorage.getItem('email_reminder_dismissed')
+  );
 
   // Latest homework entry (today or last working day that has data)
   const [latestHw, setLatestHw] = useState(null); // { date, tasks[] }
@@ -257,6 +260,30 @@ export default function StudentDashboard() {
       <MarksBanner />
       <MergeBanner />
       <NoticeBar />
+
+      {/* Recovery email reminder */}
+      {!currentUser.email && !emailReminderDismissed && (
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem',
+          padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)',
+          background: 'rgba(139,92,246,0.08)', border: '1px solid rgba(139,92,246,0.25)',
+        }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+            <Mail size={15} color="var(--primary)" />
+            Add a recovery email to reset your password if you ever forget it.
+          </span>
+          <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
+            <button className="auth-btn primary" style={{ padding: '0.3rem 0.75rem', fontSize: '0.8rem' }}
+              onClick={() => navigate('/profile')}>
+              Add Email
+            </button>
+            <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1rem', lineHeight: 1 }}
+              onClick={() => { sessionStorage.setItem('email_reminder_dismissed', '1'); setEmailReminderDismissed(true); }}>
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Syllabus progress summary */}
       <div
