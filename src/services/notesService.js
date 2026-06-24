@@ -75,15 +75,13 @@ export async function getMyNotes(phone) {
     .sort((a, b) => b.createdAt - a.createdAt);
 }
 
-/** Upload PDF to Vercel Blob via server-side API route. Returns { url } */
+/** Upload PDF directly from browser to Vercel Blob. Returns { url } */
 export async function uploadNotePDF(file) {
-  const fd = new FormData();
-  fd.append('file', file, file.name);
-  const res = await fetch('/api/upload-note', { method: 'POST', body: fd });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err?.error || 'Upload failed. Try again.');
-  }
-  const { url } = await res.json();
-  return { url };
+  const { upload } = await import('@vercel/blob/client');
+  const blob = await upload(`notes/${Date.now()}-${file.name}`, file, {
+    access: 'public',
+    handleUploadUrl: '/api/upload-note',
+    contentType: 'application/pdf',
+  });
+  return { url: blob.url };
 }

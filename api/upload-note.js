@@ -1,36 +1,41 @@
-import { put } from '@vercel/blob';
-import { IncomingForm } from 'formidable';
-import { readFileSync } from 'fs';
-
-export const config = { api: { bodyParser: false } };
-
-const MAX_BYTES = 10 * 1024 * 1024;
-
-function parseForm(req) {
-  return new Promise((resolve, reject) => {
-    const form = new IncomingForm({ maxFileSize: MAX_BYTES, filter: p => p.mimetype === 'application/pdf' });
-    form.parse(req, (err, _fields, files) => {
-      if (err) return reject(err);
-      const file = Array.isArray(files.file) ? files.file[0] : files.file;
-      if (!file) return reject(new Error('No PDF file received.'));
-      resolve(file);
-    });
-  });
-}
+/**
+ * Client-upload token endpoint for Vercel Blob.
+ * The browser calls this to get an upload token, then uploads
+ * the file directly to Vercel Blob (bypasses the 4.5 MB function limit).
+ */
+import { handleUpload } from '@vercel/blob/client';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const file = await parseForm(req);
-    const buffer = readFileSync(file.filepath);
-    const blob = await put(`notes/${Date.now()}-${file.originalFilename || 'note.pdf'}`, buffer, {
-      access: 'public',
-      contentType: 'application/pdf',
+    const body = await new Promise((resolve, reject) => {
+      let data = '';
+      req.on('data', chunk => { data += chunk; });
+      req.on('end', () => { try { resolve(JSON.parse(data)); } catch (e) { reject(e); } });
+      req.on('error', reject);
     });
-    return res.status(200).json({ url: blob.url });
+
+    const jsonResponse = await handleUpload({
+      body,
+      request: req,
+      onBeforeGenerateToken: async (pathname) => {
+        // Validate: only PDFs allowed, max 10 MB
+        if (!pathname.endsWith('.pdf')) throw new Error('Only PDF files are allowed.');
+        return {
+          allowedContentTypes: ['application/pdf'],
+          maximumSizeInBytes: 10 * 1024 * 1024,
+          tokenPayload: JSON.stringify({ pathname }),
+        };
+      },
+      onUploadCompleted: async () => {
+        // Nothing to do server-side after upload
+      },
+    });
+
+    return res.status(200).json(jsonResponse);
   } catch (err) {
     console.error('[upload-note]', err);
-    return res.status(500).json({ error: err.message || 'Upload failed.' });
+    return res.status(400).json({ error: err.message || 'Upload failed.' });
   }
 }
