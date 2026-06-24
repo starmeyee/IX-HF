@@ -68,6 +68,12 @@ export async function getPublishedNotes() {
     .sort((a, b) => (b.approvedAt || 0) - (a.approvedAt || 0));
 }
 
+export async function getNoteById(id) {
+  const snap = await getDoc(doc(db, COL, id));
+  if (!snap.exists()) return null;
+  return { id: snap.id, ...snap.data() };
+}
+
 export async function getMyNotes(phone) {
   const q = query(collection(db, COL), where('uploaderPhone', '==', phone));
   const snap = await getDocs(q);

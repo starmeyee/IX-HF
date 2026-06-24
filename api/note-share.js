@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   }
 
   const imgUrl  = `${origin}/api/og-image?type=notes&title=${encodeURIComponent(title)}&lines=${encodeURIComponent([subject, chapter].filter(Boolean).join('|'))}`;
-  const appUrl  = `${origin}/notes`;
+  const appUrl  = `${origin}/notes?noteId=${encodeURIComponent(noteId)}`;
 
   const html = `<!doctype html>
 <html lang="en">

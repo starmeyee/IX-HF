@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Joyride, STATUS } from 'react-joyride';
+import { useSearchParams } from 'react-router-dom';
 import { ChevronRight, ArrowLeft, Upload, FileText, Clock, CheckCircle, XCircle, Zap, HelpCircle, Share2 } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { syllabusData } from '../data/syllabusData';
-import { getNotesByChapter, getMyNotes, getPublishedNotes } from '../services/notesService';
+import { getNotesByChapter, getMyNotes, getPublishedNotes, getNoteById } from '../services/notesService';
 import {
   getSparks, getSparkLog, spendSparks,
   getPurchasedChapters, purchaseChapter,
@@ -158,6 +159,7 @@ function TourTooltip({ index, step, backProps, closeProps, primaryProps, tooltip
 // ── Main Page ─────────────────────────────────────────────────
 export default function NotesPage() {
   const { currentUser, openModal } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Drill-down state
   const [view,    setView]    = useState('sections');
@@ -186,6 +188,21 @@ export default function NotesPage() {
     const key = `notes_tour_done_${currentUser.phone}`;
     if (!localStorage.getItem(key)) setTourRun(true);
   }, [currentUser]);
+
+  // Deep-link: ?noteId=<id> → auto drill-down to that chapter
+  useEffect(() => {
+    const noteId = searchParams.get('noteId');
+    if (!noteId) return;
+    getNoteById(noteId).then(note => {
+      if (!note) return;
+      const sec = syllabusData.find(s => s.sectionId === note.sectionId);
+      const sub = sec?.subjects.find(s => s.subjectId === note.subjectId);
+      const ch  = sub?.chapters.find(c => c.chapterId === note.chapterId);
+      if (!sec || !sub || !ch) return;
+      setSection(sec); setSubject(sub); setChapter(ch); setView('notes');
+      setSearchParams({}, { replace: true }); // clean URL
+    }).catch(() => {});
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const isStudent = currentUser && currentUser.role !== ROLES.TEACHER;
 
