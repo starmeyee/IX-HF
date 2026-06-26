@@ -153,9 +153,12 @@ const getMonitorSteps = (user) => [
 ];
 
 function stepsForRole(user) {
-  if (user.role === ROLES.TEACHER)  return getTeacherSteps(user);
-  if (user.role === ROLES.MONITOR)  return getMonitorSteps(user);
-  return getStudentSteps(user);
+  let steps;
+  if (user.role === ROLES.TEACHER)  steps = getTeacherSteps(user);
+  else if (user.role === ROLES.MONITOR) steps = getMonitorSteps(user);
+  else steps = getStudentSteps(user);
+  // disableBeacon on every step — prevents black dot when target isn't visible
+  return steps.map(s => ({ ...s, disableBeacon: true }));
 }
 
 export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
@@ -177,12 +180,12 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
 
     if (currentUser.role === ROLES.ADMIN) return;
 
+    // localStorage is the authoritative fast-path — avoids re-triggering on every refreshUser call
     const localKey = `onboarding_done_${currentUser.phone}`;
-    const alreadyDone = currentUser.onboardingCompleted || localStorage.getItem(localKey);
-    if (!alreadyDone) {
-      setSteps(stepsForRole(currentUser));
-      setRun(true);
-    }
+    if (localStorage.getItem(localKey) || currentUser.onboardingCompleted) return;
+
+    setSteps(stepsForRole(currentUser));
+    setRun(true);
   }, [currentUser?.phone, currentUser?.onboardingCompleted, effectiveForceRun, effectiveForceRole]);
 
   const handleJoyrideCallback = useCallback((data) => {

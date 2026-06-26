@@ -243,7 +243,7 @@ const TOUR_STEPS = [
     content: 'Have good notes? Upload a PDF for any chapter. Submit it — if the admin approves, you earn 4 Sparks. Tap the ? anytime to see this guide again.',
     placement: 'top',
   },
-].map((s, i, arr) => ({ ...s, totalSteps: arr.length }));
+].map((s, i, arr) => ({ ...s, totalSteps: arr.length, disableBeacon: true }));
 
 // Simple tooltip matching the project's custom tooltip style
 function TourTooltip({ index, step, backProps, closeProps, primaryProps, tooltipProps, isLastStep }) {
