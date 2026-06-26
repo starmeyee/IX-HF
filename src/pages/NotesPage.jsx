@@ -190,7 +190,7 @@ function NotesListItem({ note, onView, onDownload, free, sparks }) {
           onClose={() => setShowModal(false)}
           onView={() => onView(note)}
           onDownload={() => onDownload(note)}
-          onPurchaseAndAction={(action) => action === 'view' ? onView(note, true) : onDownload(note, true)}
+          onPurchaseAndAction={(action) => action === 'view' ? onView(note) : onDownload(note)}
         />
       )}
     </div>
@@ -367,21 +367,16 @@ export default function NotesPage() {
     else if (view === 'subjects') { setView('sections'); setSection(null); }
   }
 
-  async function handleView(note, skipPurchaseCheck = false) {
+  async function handleView(note) {
     if (!currentUser) { openModal(); return; }
     if (!isStudent) return;
 
-    // Already purchased this chapter — free
-    if (purchasedChapters.has(note.chapterId) || skipPurchaseCheck) {
-      if (!purchasedChapters.has(note.chapterId)) {
-        // coming from modal after payment already handled
-      }
+    if (purchasedChapters.has(note.chapterId)) {
       logActivity(currentUser.phone, `Notes: viewed "${note.title}" (${note.chapterName})`);
       setViewingNote(note);
       return;
     }
 
-    // Charge sparks and record purchase
     if (sparks < SPARK_VIEW_COST) {
       alert(`You need ${SPARK_VIEW_COST} ✦ Sparks to unlock this chapter. Upload notes to earn more!`);
       return;
@@ -394,24 +389,21 @@ export default function NotesPage() {
     setViewingNote(note);
   }
 
-  async function handleDownload(note, skipPurchaseCheck = false) {
+  async function handleDownload(note) {
     if (!currentUser) { openModal(); return; }
     if (!isStudent) return;
 
-    const alreadyOwned = purchasedChapters.has(note.chapterId);
-    if (!alreadyOwned && !skipPurchaseCheck) {
-      // opened via direct download — show modal (handled by NotesListItem)
-      return;
-    }
-    if (!alreadyOwned) {
-      // charge sparks then download
+    if (!purchasedChapters.has(note.chapterId)) {
+      if (sparks < SPARK_VIEW_COST) {
+        alert(`You need ${SPARK_VIEW_COST} ✦ Sparks. Upload notes to earn more!`);
+        return;
+      }
       const newBal = await spendSparks(currentUser.phone, SPARK_VIEW_COST, `Unlocked chapter: ${note.chapterName}`);
       await purchaseChapter(currentUser.phone, note.chapterId);
       logActivity(currentUser.phone, `Notes: downloaded "${note.title}" (${note.chapterName})`);
       setSparks(newBal);
       setPurchasedChapters(prev => new Set([...prev, note.chapterId]));
     }
-    // Trigger download
     const a = document.createElement('a');
     a.href = note.blobUrl;
     a.download = note.title + '.pdf';
