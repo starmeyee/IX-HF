@@ -4,7 +4,9 @@ import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { resetWhatsNew } from '../auth/authService';
 import { getAllUsers, getActivitySummary } from '../services/adminService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen } from 'lucide-react';
+import { calcAttendance } from '../data/attendanceUtils';
+import { getClosedDays } from '../services/calendarOverrideService';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher } from '../services/teacherService';
@@ -44,10 +46,13 @@ function relativeTime(ms) {
 // ── Users Tab ─────────────────────────────────────────────────
 function UsersTab() {
   const [users, setUsers] = useState(null);
+  const [closedDays, setClosedDays] = useState([]);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    getAllUsers().then(setUsers).catch(() => setUsers([]));
+    Promise.all([getAllUsers(), getClosedDays()])
+      .then(([u, c]) => { setUsers(u); setClosedDays(c); })
+      .catch(() => setUsers([]));
   }, []);
 
   const filtered = (users || [])
@@ -78,6 +83,8 @@ function UsersTab() {
                   <th>Name</th>
                   <th>Phone</th>
                   <th>Role</th>
+                  <th>Email</th>
+                  <th>Attendance</th>
                   <th>Joined</th>
                 </tr>
               </thead>
@@ -95,6 +102,21 @@ function UsersTab() {
                         <span className="as-role-badge" style={{ color: rs.color, background: rs.bg }}>
                           <RIcon size={11} /> {u.role}
                         </span>
+                      </td>
+                      <td>
+                        {u.email ? (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: u.emailVerified ? '#6ee7b7' : '#fbbf24', fontSize: '0.82rem' }}>
+                            {u.emailVerified ? <MailCheck size={12} /> : <Mail size={12} />}
+                            {u.email}
+                          </span>
+                        ) : <span className="as-muted-cell">—</span>}
+                      </td>
+                      <td>
+                        {(() => {
+                          const att = calcAttendance(u.attendance_absentDays || [], undefined, closedDays);
+                          const c = att.percentage >= 75 ? '#6ee7b7' : att.percentage >= 60 ? '#fbbf24' : '#f87171';
+                          return <span style={{ color: c, fontWeight: 600 }}>{att.percentage}% <span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.78rem' }}>({att.presentDays}/{att.totalDays})</span></span>;
+                        })()}
                       </td>
                       <td className="as-muted-cell">{u.createdAt ? new Date(u.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}</td>
                     </tr>
