@@ -5,6 +5,9 @@ import { CALENDAR_EVENTS } from './calendarData';
 // from here up to (and including) the current day.
 export const SESSION_START = '2026-04-16';
 
+// Last day of the academic session (used for full-year projections).
+export const SESSION_END = '2027-03-31';
+
 // Event types that mean school is CLOSED → not counted for attendance.
 const NON_WORKING_EVENT_TYPES = new Set(['SUNDAY', 'HOLIDAY_VACATION']);
 
@@ -173,4 +176,57 @@ export function calcMonthlyAveragedPercentage(absentKeys = [], endKey = todayKey
 
   const avg = monthlyPercents.reduce((a, b) => a + b, 0) / monthlyPercents.length;
   return Math.round(avg * 10) / 10; // one decimal
+}
+
+/**
+ * Full-year attendance projection.
+ *
+ * Uses the complete session window (SESSION_START → SESSION_END) as the
+ * denominator. Days not yet reached are assumed "present" (best-case
+ * projection). Returns:
+ *   - totalYearDays   : total working days in the full academic year
+ *   - daysElapsed     : working days from session start to today
+ *   - projectedPct    : if the student keeps their current absence rate
+ *   - absolutePct     : absences / totalYearDays (already-missed days only)
+ *   - canMissMore     : how many more days they can be absent and still hit 75%
+ *                       (negative means they've already exceeded CBSE limit)
+ */
+export function calcYearAttendance(absentKeys = [], closedDays) {
+  const closed = toClosedSet(closedDays);
+  const today  = todayKey();
+
+  const allYearDays  = getWorkingDays(SESSION_START, SESSION_END, closed);
+  const elapsedDays  = getWorkingDays(SESSION_START, today, closed);
+  const totalYear    = allYearDays.length;
+  const elapsed      = elapsedDays.length;
+
+  const elapsedSet   = new Set(elapsedDays);
+  const validAbsent  = Array.from(new Set(absentKeys)).filter(k => elapsedSet.has(k));
+  const absentCount  = validAbsent.length;
+  const presentSoFar = elapsed - absentCount;
+
+  // Projected %: assume same absence rate continues for remaining days
+  const remaining    = totalYear - elapsed;
+  const absenceRate  = elapsed === 0 ? 0 : absentCount / elapsed;
+  const projAbsent   = absentCount + Math.round(absenceRate * remaining);
+  const projPresent  = totalYear - projAbsent;
+  const projectedPct = totalYear === 0 ? 100 : Math.round((projPresent / totalYear) * 1000) / 10;
+
+  // Absolute %: only counts days already missed vs full year
+  const absolutePct  = totalYear === 0 ? 100 : Math.round((presentSoFar / totalYear) * 1000) / 10;
+
+  // Days can still miss: floor((totalYear * 0.25) - absentCount)
+  // CBSE allows up to 25% absence, i.e. must attend at least 75%
+  const maxAllowed   = Math.floor(totalYear * 0.25);
+  const canMissMore  = maxAllowed - absentCount;
+
+  return {
+    totalYearDays: totalYear,
+    daysElapsed:   elapsed,
+    absentCount,
+    projectedPct,
+    absolutePct,
+    canMissMore,
+    maxAllowed,
+  };
 }

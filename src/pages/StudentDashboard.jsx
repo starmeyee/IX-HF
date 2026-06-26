@@ -16,7 +16,7 @@ import { getSyllabus, getCompletedTopics } from '../services/syllabusService';
 import { getAllClasswork } from '../services/classworkService';
 import { getPublishedNotes } from '../services/notesService';
 import { allTopics, statsForTopics, toSets } from '../data/syllabusStats';
-import { calcAttendance, todayKey, toDateKey } from '../data/attendanceUtils';
+import { calcAttendance, calcYearAttendance, todayKey, toDateKey } from '../data/attendanceUtils';
 import { holidayData } from '../data/holidayData';
 
 // Build total checkable holiday homework items (same logic as HolidayHomework page)
@@ -181,7 +181,8 @@ export default function StudentDashboard() {
     });
   }, [currentUser]);
 
-  const stats = useMemo(() => calcAttendance(absentDays, undefined, closedDays), [absentDays, closedDays]);
+  const stats     = useMemo(() => calcAttendance(absentDays, undefined, closedDays), [absentDays, closedDays]);
+  const yearStats = useMemo(() => calcYearAttendance(absentDays, closedDays), [absentDays, closedDays]);
 
   // Fetch 3 most recent published notes once
   useEffect(() => {
@@ -248,6 +249,30 @@ export default function StudentDashboard() {
           <span className="dash-stat-value">{attendanceLoaded ? stats.absentDays : '…'}</span>
           <span className="dash-stat-sub" style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
             View calendar <ArrowRight size={12} />
+          </span>
+        </div>
+
+        {/* Projected full-year attendance */}
+        <div className="glass-card dash-stat glow-hover" title="Projected attendance for the full academic year">
+          <span className="dash-stat-label"><TrendingUp size={16} /> Projected %</span>
+          <span className={`dash-stat-value ${attendanceLoaded ? (yearStats.projectedPct >= 75 ? 'att-pct-good' : yearStats.projectedPct >= 60 ? 'att-pct-warn' : 'att-pct-bad') : ''}`}>
+            {attendanceLoaded ? `${yearStats.projectedPct}%` : '…'}
+          </span>
+          <span className="dash-stat-sub">full year · {yearStats.totalYearDays} total days</span>
+        </div>
+
+        {/* CBSE threshold — days you can still miss */}
+        <div className="glass-card dash-stat glow-hover" title="How many more days you can be absent and stay above 75% for the year">
+          <span className="dash-stat-label"><CalendarCheck size={16} /> Can Miss</span>
+          <span className={`dash-stat-value ${attendanceLoaded ? (yearStats.canMissMore > 10 ? 'att-pct-good' : yearStats.canMissMore > 0 ? 'att-pct-warn' : 'att-pct-bad') : ''}`}>
+            {attendanceLoaded ? (yearStats.canMissMore > 0 ? yearStats.canMissMore : 0) : '…'}
+          </span>
+          <span className="dash-stat-sub" style={{ color: attendanceLoaded && yearStats.canMissMore < 0 ? '#ef4444' : undefined }}>
+            {attendanceLoaded
+              ? yearStats.canMissMore < 0
+                ? `⚠ exceeded by ${Math.abs(yearStats.canMissMore)} days`
+                : 'more days · CBSE 75% rule'
+              : 'more days · CBSE 75% rule'}
           </span>
         </div>
 
