@@ -486,6 +486,8 @@ export default function NotesPage() {
         steps={TOUR_STEPS}
         run={tourRun}
         continuous
+        showSkipButton
+        disableScrolling
         tooltipComponent={TourTooltip}
         callback={handleTourEnd}
         styles={{ options: { overlayColor: 'rgba(0,0,0,0.65)', zIndex: 10000 } }}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Joyride, STATUS } from 'react-joyride';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
@@ -159,7 +159,7 @@ function stepsForRole(user) {
 }
 
 export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
-  const { currentUser, forceTour, clearTour } = useAuth();
+  const { currentUser, forceTour, clearTour, refreshUser } = useAuth();
   const [run, setRun] = useState(false);
   const [steps, setSteps] = useState([]);
 
@@ -170,13 +170,11 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
     if (!currentUser) return;
 
     if (effectiveForceRun && effectiveForceRole) {
-      // Build a fake user with the forced role so stepsForRole picks the right set
       setSteps(stepsForRole({ ...currentUser, role: effectiveForceRole }));
       setRun(true);
       return;
     }
 
-    // Admins and teachers get no automatic onboarding
     if (currentUser.role === ROLES.ADMIN) return;
 
     const localKey = `onboarding_done_${currentUser.phone}`;
@@ -185,22 +183,26 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
       setSteps(stepsForRole(currentUser));
       setRun(true);
     }
-  }, [currentUser, effectiveForceRun, effectiveForceRole]);
+  }, [currentUser?.phone, currentUser?.onboardingCompleted, effectiveForceRun, effectiveForceRole]);
 
-  const handleJoyrideCallback = (data) => {
+  const handleJoyrideCallback = useCallback((data) => {
     const { status } = data;
-    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
-      setRun(false);
-      if (forceRun && onCloseForceRun) {
-        onCloseForceRun();
-      } else if (forceTour) {
-        clearTour();
-      } else if (currentUser) {
-        localStorage.setItem(`onboarding_done_${currentUser.phone}`, '1');
-        completeOnboarding(currentUser.phone).catch(console.error);
-      }
+    if (![STATUS.FINISHED, STATUS.SKIPPED].includes(status)) return;
+
+    setRun(false); // stop immediately — prevents beacon artifact
+
+    if (forceRun && onCloseForceRun) {
+      onCloseForceRun();
+    } else if (forceTour) {
+      clearTour();
+    } else if (currentUser) {
+      const localKey = `onboarding_done_${currentUser.phone}`;
+      localStorage.setItem(localKey, '1'); // write immediately so refresh doesn't re-trigger
+      completeOnboarding(currentUser.phone)
+        .then(() => refreshUser(currentUser.phone)) // sync currentUser.onboardingCompleted
+        .catch(console.error);
     }
-  };
+  }, [currentUser, forceRun, forceTour, onCloseForceRun, clearTour, refreshUser]);
 
   if (!currentUser) return null;
 
@@ -209,8 +211,8 @@ export default function Onboarding({ forceRun, forceRole, onCloseForceRun }) {
       steps={steps}
       run={run}
       continuous
-      showProgress
       showSkipButton
+      disableScrolling
       tooltipComponent={CustomTooltip}
       callback={handleJoyrideCallback}
       styles={{ options: { overlayColor: 'rgba(0, 0, 0, 0.65)', zIndex: 10000 } }}
