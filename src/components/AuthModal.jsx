@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
+import { TEST_PHONE } from '../auth/roles';
 import { matchStudent } from '../auth/nameMatch';
 import { getUserByPhone } from '../auth/authService';
 import { sendEmailLink } from '../firebase';
@@ -99,7 +100,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
   async function handleRegister(e) {
     e.preventDefault(); setErr('');
     const roll = parseInt(rollNo, 10);
-    if (!matchStudent(name, roll)) {
+    if (phone.trim() !== TEST_PHONE && !matchStudent(name, roll)) {
       setErr('Name or roll number doesn\'t match our records. Check and try again.');
       return;
     }
