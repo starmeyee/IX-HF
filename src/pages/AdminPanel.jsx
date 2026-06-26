@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList } from 'lucide-react';
+import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList, Users, Mail, MailCheck } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import SyllabusProgressBar from '../components/SyllabusProgressBar';
 import { addHomework } from '../services/homeworkService';
@@ -12,7 +12,8 @@ import { getClasswork, setClasswork } from '../services/classworkService';
 import { getPeriodsForDate, weekdayName } from '../data/routine';
 import { notifyClass, notifyClassSafe } from '../services/notify';
 import { statsForTopics, chapterTopics } from '../data/syllabusStats';
-import { isWorkingDay, fromDateKey } from '../data/attendanceUtils';
+import { isWorkingDay, fromDateKey, calcAttendance } from '../data/attendanceUtils';
+import { getAllUsers } from '../services/adminService';
 import { ROLES } from '../auth/roles';
 
 function canAccess(user) {
@@ -898,6 +899,77 @@ function BroadcastManager({ currentUser }) {
   );
 }
 
+// ── Users directory (admin only) ───────────────────────────────
+function UsersManager() {
+  const [users, setUsers] = useState(null);
+  const [closedDays, setClosedDays] = useState([]);
+
+  useEffect(() => {
+    Promise.all([getAllUsers(), getClosedDays()])
+      .then(([u, c]) => { setUsers(u); setClosedDays(c); })
+      .catch(console.error);
+  }, []);
+
+  if (users === null) return (
+    <div className="glass-card" style={{ marginBottom: '2rem' }}>
+      <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', marginBottom: '0.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem', color: 'var(--text-primary)' }}>
+        <Users size={20} /> All Users
+      </h2>
+      <p style={{ color: 'var(--text-muted)' }}>Loading…</p>
+    </div>
+  );
+
+  const sorted = [...users].filter((u) => !u.mergedInto).sort((a, b) => (a.rollNo || 999) - (b.rollNo || 999));
+
+  return (
+    <div className="glass-card" style={{ marginBottom: '2rem' }}>
+      <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', marginBottom: '0.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem', color: 'var(--text-primary)' }}>
+        <Users size={20} /> All Users <span style={{ fontSize: '0.85rem', fontWeight: 400, color: 'var(--text-muted)' }}>({sorted.length})</span>
+      </h2>
+
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+          <thead>
+            <tr style={{ color: 'var(--text-muted)', textAlign: 'left', borderBottom: '1px solid var(--border)' }}>
+              <th style={{ padding: '0.4rem 0.6rem' }}>#</th>
+              <th style={{ padding: '0.4rem 0.6rem' }}>Name</th>
+              <th style={{ padding: '0.4rem 0.6rem' }}>Phone</th>
+              <th style={{ padding: '0.4rem 0.6rem' }}>Email</th>
+              <th style={{ padding: '0.4rem 0.6rem' }}>Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((u) => {
+              const att = calcAttendance(u.attendance_absentDays || [], undefined, closedDays);
+              const pctColor = att.percentage >= 75 ? '#6ee7b7' : att.percentage >= 60 ? '#fbbf24' : '#f87171';
+              return (
+                <tr key={u.phone} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <td style={{ padding: '0.5rem 0.6rem', color: 'var(--text-muted)' }}>{u.rollNo || '—'}</td>
+                  <td style={{ padding: '0.5rem 0.6rem', color: 'var(--text-primary)', fontWeight: 500 }}>{u.name}</td>
+                  <td style={{ padding: '0.5rem 0.6rem', color: 'var(--text-secondary)' }}>{u.phone}</td>
+                  <td style={{ padding: '0.5rem 0.6rem' }}>
+                    {u.email ? (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: u.emailVerified ? '#6ee7b7' : '#fbbf24' }}>
+                        {u.emailVerified ? <MailCheck size={13} /> : <Mail size={13} />}
+                        {u.email}
+                      </span>
+                    ) : (
+                      <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>—</span>
+                    )}
+                  </td>
+                  <td style={{ padding: '0.5rem 0.6rem', color: pctColor, fontWeight: 600 }}>
+                    {att.percentage}% <span style={{ fontWeight: 400, color: 'var(--text-muted)', fontSize: '0.78rem' }}>({att.presentDays}/{att.totalDays})</span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminPanel() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -922,6 +994,7 @@ export default function AdminPanel() {
 
       <NoticesManager currentUser={currentUser} />
       {isAdminUser(currentUser) && <BroadcastManager currentUser={currentUser} />}
+      {isAdminUser(currentUser) && <UsersManager />}
       <HomeworkManager currentUser={currentUser} />
       <ClassworkManager currentUser={currentUser} />
       <SyllabusManager currentUser={currentUser} />
