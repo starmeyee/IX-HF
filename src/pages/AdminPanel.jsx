@@ -7,7 +7,7 @@ import SyllabusProgressBar from '../components/SyllabusProgressBar';
 import { addHomework } from '../services/homeworkService';
 import { getNotices, addNotice, updateNotice, deleteNotice } from '../services/noticeService';
 import { getClosedDays, addClosedDay, removeClosedDay } from '../services/calendarOverrideService';
-import { getSyllabus, getCompletedTopics, setCompletedBulk, toggleCompletedTopic, addTopicToChapter } from '../services/syllabusService';
+import { getSyllabus, getCompletedTopics, setCompletedBulk, toggleCompletedTopic, addTopicToChapter, deleteTopicFromChapter, hideBaseTopic } from '../services/syllabusService';
 import { getClasswork, setClasswork } from '../services/classworkService';
 import { getPeriodsForDate, weekdayName } from '../data/routine';
 import { notifyClass, notifyClassSafe } from '../services/notify';
@@ -490,6 +490,23 @@ function SyllabusManager({ currentUser }) {
     }
   }
 
+  async function handleDeleteTopic(chapterId, topicId, topicName) {
+    if (!window.confirm(`Delete topic "${topicName}"?`)) return;
+    setBusy(true);
+    try {
+      if (topicId.includes('-x')) {
+        await deleteTopicFromChapter(chapterId, topicId);
+      } else {
+        await hideBaseTopic(topicId);
+      }
+      setReloadKey((k) => k + 1);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   const activeSection = sections?.find((s) => s.sectionId === sectionId) || null;
   const activeSubject = activeSection?.subjects.find((s) => s.subjectId === subjectId) || null;
 
@@ -623,17 +640,27 @@ function SyllabusManager({ currentUser }) {
                     {chapter.topics.map((topic) => {
                       const done = completedSet.has(topic.topicId);
                       return (
-                        <button
-                          key={topic.topicId}
-                          className={`syllabus-admin-topic ${done ? 'done' : ''}`}
-                          onClick={() => handleToggle(topic.topicId)}
-                          style={{ width: '100%', textAlign: 'left', cursor: 'pointer' }}
-                        >
-                          <span className={`syllabus-topic-box ${done ? 'checked' : ''}`} style={done ? { background: '#10b981', borderColor: '#10b981' } : undefined}>
-                            {done && <Check size={13} color="#fff" strokeWidth={3} />}
-                          </span>
-                          <span className="syllabus-topic-name">{topic.topicName}</span>
-                        </button>
+                        <div key={topic.topicId} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                          <button
+                            className={`syllabus-admin-topic ${done ? 'done' : ''}`}
+                            onClick={() => handleToggle(topic.topicId)}
+                            style={{ flex: 1, textAlign: 'left', cursor: 'pointer' }}
+                          >
+                            <span className={`syllabus-topic-box ${done ? 'checked' : ''}`} style={done ? { background: '#10b981', borderColor: '#10b981' } : undefined}>
+                              {done && <Check size={13} color="#fff" strokeWidth={3} />}
+                            </span>
+                            <span className="syllabus-topic-name">{topic.topicName}</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteTopic(chapter.chapterId, topic.topicId, topic.topicName)}
+                            disabled={busy}
+                            title="Delete this topic"
+                            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '0.25rem', flexShrink: 0 }}
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
                       );
                     })}
 

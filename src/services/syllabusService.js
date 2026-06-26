@@ -26,12 +26,37 @@ import { syllabusData } from '../data/syllabusData';
 const CONFIG = 'config';
 const COMPLETED_DOC = 'syllabusCompleted';
 const EXTRA_DOC = 'syllabusExtraTopics';
+const HIDDEN_DOC = 'syllabusHiddenTopics';
 
 function completedRef() {
   return doc(db, CONFIG, COMPLETED_DOC);
 }
 function extraRef() {
   return doc(db, CONFIG, EXTRA_DOC);
+}
+function hiddenRef() {
+  return doc(db, CONFIG, HIDDEN_DOC);
+}
+
+/** Returns the set of hidden (deleted) base topic IDs. */
+export async function getHiddenTopics() {
+  const snap = await getDoc(hiddenRef());
+  if (!snap.exists()) return new Set();
+  return new Set(snap.data().hidden || []);
+}
+
+/** Adds a base topic ID to the hidden list (soft-delete). */
+export async function hideBaseTopic(topicId) {
+  const hidden = await getHiddenTopics();
+  hidden.add(topicId);
+  await setDoc(hiddenRef(), { hidden: Array.from(hidden) }, { merge: true });
+}
+
+/** Removes a topic ID from the hidden list (restore). */
+export async function restoreBaseTopic(topicId) {
+  const hidden = await getHiddenTopics();
+  hidden.delete(topicId);
+  await setDoc(hiddenRef(), { hidden: Array.from(hidden) }, { merge: true });
 }
 
 // ── Extra (monitor-added) topics ───────────────────────────────
@@ -44,16 +69,16 @@ export async function getExtraTopics() {
 }
 
 /**
- * Returns the full syllabus (base + monitor-added topics) as a deep-cloned
- * array, so callers can safely read without mutating the bundled base.
+ * Returns the full syllabus (base + monitor-added topics, minus hidden) as a
+ * deep-cloned array.
  */
 export async function getSyllabus() {
-  const extra = await getExtraTopics();
-  return mergeSyllabus(extra);
+  const [extra, hidden] = await Promise.all([getExtraTopics(), getHiddenTopics()]);
+  return mergeSyllabus(extra, hidden);
 }
 
-/** Synchronous merge of the bundled base with an extra-topics map. */
-export function mergeSyllabus(extraTopics = {}) {
+/** Synchronous merge of the bundled base with an extra-topics map, filtering hidden IDs. */
+export function mergeSyllabus(extraTopics = {}, hiddenTopics = new Set()) {
   return syllabusData.map((section) => ({
     ...section,
     subjects: section.subjects.map((subject) => ({
@@ -63,7 +88,7 @@ export function mergeSyllabus(extraTopics = {}) {
         return {
           ...chapter,
           topics: [
-            ...chapter.topics.map((t) => ({ ...t })),
+            ...chapter.topics.filter((t) => !hiddenTopics.has(t.topicId)).map((t) => ({ ...t })),
             ...added.map((t) => ({ ...t })),
           ],
         };
@@ -93,6 +118,17 @@ export async function addTopicToChapter(chapterId, topicName) {
   const next = { ...extra, [chapterId]: [...list, { topicId, topicName: name }] };
   await setDoc(extraRef(), { topics: next }, { merge: true });
   return { topicId, topicName: name };
+}
+
+/**
+ * Removes a monitor-added topic from a chapter. Only works for extra topics
+ * (those with topicId containing '-x'). Base syllabus topics are ignored.
+ */
+export async function deleteTopicFromChapter(chapterId, topicId) {
+  const extra = await getExtraTopics();
+  const list = extra[chapterId] || [];
+  const next = { ...extra, [chapterId]: list.filter((t) => t.topicId !== topicId) };
+  await setDoc(extraRef(), { topics: next }, { merge: true });
 }
 
 // ── Completed topics (monitor/admin, global) ───────────────────
