@@ -6,12 +6,14 @@ import { resetWhatsNew, resetTestAccount, setTestAccountRole, getUserByPhone } f
 import { getAllUsers, getActivitySummary, purgeTestData } from '../services/adminService';
 import { calcAttendance } from '../data/attendanceUtils';
 import { getClosedDays } from '../services/calendarOverrideService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical } from 'lucide-react';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher } from '../services/teacherService';
 import { getPendingNotes, approveNote, rejectNote, deleteNote, getPublishedNotes } from '../services/notesService';
 import { earnSparks, SPARK_UPLOAD_REWARD } from '../services/sparksService';
+import { getAllClasswork } from '../services/classworkService';
+import { getHomework } from '../services/homeworkService';
 
 const TABS = [
   { id: 'users',      label: 'User Directory',  Icon: Users },
@@ -22,6 +24,7 @@ const TABS = [
   { id: 'merge',      label: 'Merge Profiles',   Icon: GitMerge },
   { id: 'onboarding', label: 'Onboarding',       Icon: Settings },
   { id: 'test',       label: 'Test Account',     Icon: FlaskConical },
+  { id: 'data',       label: 'Data Export',      Icon: Download },
 ];
 
 const ROLE_STYLE = {
@@ -789,6 +792,58 @@ function TestAccountTab() {
   );
 }
 
+// ── Data Export Tab ───────────────────────────────────────────
+function DataExportTab() {
+  const [busy, setBusy] = useState(false);
+  const [msg,  setMsg]  = useState('');
+
+  async function handleDownload() {
+    setBusy(true); setMsg('Fetching data…');
+    try {
+      const [homework, classwork] = await Promise.all([getHomework(), getAllClasswork()]);
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        homework,
+        classwork,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = `homework-classwork-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setMsg(`✓ Downloaded — ${homework.length} homework, ${classwork.length} classwork entries.`);
+    } catch (e) {
+      setMsg('Error: ' + e.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div style={{ maxWidth: 480 }}>
+      <p className="as-muted" style={{ marginBottom: '1.25rem' }}>
+        Downloads a JSON file with every homework and classwork record from Firestore, sorted newest first.
+      </p>
+      <button
+        className="auth-btn primary"
+        onClick={handleDownload}
+        disabled={busy}
+        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+      >
+        <Download size={16} />
+        {busy ? 'Fetching…' : 'Download JSON'}
+      </button>
+      {msg && (
+        <p style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{msg}</p>
+      )}
+    </div>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────
 export default function AdminServicesPage() {
   const { currentUser, triggerTour } = useAuth();
@@ -825,6 +880,7 @@ export default function AdminServicesPage() {
         {tab === 'merge'      && <MergeTab />}
         {tab === 'onboarding' && <OnboardingTab currentUser={currentUser} navigate={navigate} triggerTour={triggerTour} />}
         {tab === 'test'       && <TestAccountTab />}
+        {tab === 'data'       && <DataExportTab />}
       </div>
     </div>
   );
