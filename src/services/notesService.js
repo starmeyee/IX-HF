@@ -1,3 +1,4 @@
+import { upload } from '@vercel/blob/client';
 import {
   collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc,
   query, where,
@@ -95,7 +96,6 @@ export async function getMyNotes(phone) {
 
 /** Upload PDF directly from browser to Vercel Blob. Returns { url } */
 export async function uploadNotePDF(file) {
-  const { upload } = await import('@vercel/blob/client');
   const blob = await upload(`notes/${Date.now()}-${file.name}`, file, {
     access: 'public',
     handleUploadUrl: '/api/upload-note',
