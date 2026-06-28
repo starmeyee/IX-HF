@@ -6,6 +6,7 @@ import { holidayData } from '../data/holidayData';
 import { useAuth } from '../auth/AuthContext';
 import { updateHolidayHomework, getHolidayHomework } from '../auth/authService';
 import { getNotesByChapter } from '../services/notesService';
+import { getSparks, spendSparks, purchaseChapter, getPurchasedChapters, SPARK_VIEW_COST } from '../services/sparksService';
 import UploadNoteModal from '../components/UploadNoteModal';
 
 // Build a flat list of all checkable items across every subject.
@@ -28,8 +29,20 @@ const totalItems = checkItems.length;
 
 // Per-task answers panel
 function AnswersPanel({ task, currentUser, openModal, onUploadClick }) {
-  const [answers,  setAnswers]  = useState(null); // null = not loaded
-  const [expanded, setExpanded] = useState(false);
+  const [answers,          setAnswers]          = useState(null);
+  const [expanded,         setExpanded]         = useState(false);
+  const [sparks,           setSparks]           = useState(null);
+  const [purchased,        setPurchased]        = useState(new Set());
+  const [busy,             setBusy]             = useState(null); // note.id being unlocked
+
+  // Load sparks + purchases when user is known
+  useEffect(() => {
+    if (!currentUser) return;
+    getSparks(currentUser.phone).then(setSparks).catch(() => {});
+    getPurchasedChapters(currentUser.phone)
+      .then(ids => setPurchased(new Set(ids)))
+      .catch(() => {});
+  }, [currentUser]);
 
   async function load() {
     if (answers !== null) return;
@@ -42,7 +55,34 @@ function AnswersPanel({ task, currentUser, openModal, onUploadClick }) {
     setExpanded(v => !v);
   }
 
+  async function handleOpen(note) {
+    if (!currentUser) { openModal(); return; }
+    const chId = `hh-${task.id}`;
+    if (purchased.has(chId)) {
+      window.open(note.blobUrl, '_blank');
+      return;
+    }
+    if (sparks < SPARK_VIEW_COST) {
+      alert(`You need ${SPARK_VIEW_COST} ✦ Sparks to unlock this answer. Upload notes to earn more!`);
+      return;
+    }
+    setBusy(note.id);
+    try {
+      const newBal = await spendSparks(currentUser.phone, SPARK_VIEW_COST, `Unlocked HH answer: ${note.title}`);
+      await purchaseChapter(currentUser.phone, chId);
+      setSparks(newBal);
+      setPurchased(prev => new Set([...prev, chId]));
+      window.open(note.blobUrl, '_blank');
+    } catch (e) {
+      alert('Failed: ' + e.message);
+    } finally {
+      setBusy(null);
+    }
+  }
+
   const count = answers?.length ?? null;
+  const chId  = `hh-${task.id}`;
+  const free  = purchased.has(chId);
 
   return (
     <div style={{ marginTop: '1rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1rem' }}>
@@ -58,6 +98,10 @@ function AnswersPanel({ task, currentUser, openModal, onUploadClick }) {
         >
           {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
           Classmates' Answers{count !== null ? ` (${count})` : ''}
+          {!free && sparks !== null && (
+            <span style={{ fontSize: '0.75rem', color: '#f59e0b', fontWeight: 500 }}>· -{SPARK_VIEW_COST}✦</span>
+          )}
+          {free && <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 500 }}>· Unlocked ✓</span>}
         </button>
 
         <button
@@ -92,17 +136,16 @@ function AnswersPanel({ task, currentUser, openModal, onUploadClick }) {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
               {answers.map(note => (
-                <a
+                <button
                   key={note.id}
-                  href={note.blobUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => handleOpen(note)}
+                  disabled={busy === note.id}
                   style={{
                     display: 'flex', alignItems: 'center', gap: '0.5rem',
                     background: 'var(--surface-hover)', border: '1px solid var(--border)',
                     borderRadius: 'var(--radius-sm)', padding: '0.55rem 0.75rem',
-                    textDecoration: 'none', color: 'var(--text-primary)',
-                    fontSize: '0.83rem', transition: 'background 0.15s',
+                    color: 'var(--text-primary)', cursor: 'pointer',
+                    fontSize: '0.83rem', transition: 'background 0.15s', textAlign: 'left', width: '100%',
                   }}
                   onMouseEnter={e => e.currentTarget.style.background = 'var(--border)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'var(--surface-hover)'}
@@ -116,8 +159,13 @@ function AnswersPanel({ task, currentUser, openModal, onUploadClick }) {
                       by {note.uploaderName}
                     </div>
                   </div>
-                  <Download size={13} color="var(--text-muted)" style={{ flexShrink: 0 }} />
-                </a>
+                  {busy === note.id
+                    ? <span style={{ fontSize: '0.75rem', color: '#f59e0b' }}>…</span>
+                    : free
+                    ? <Download size={13} color="#10b981" style={{ flexShrink: 0 }} />
+                    : <span style={{ fontSize: '0.75rem', color: '#f59e0b', flexShrink: 0 }}>-{SPARK_VIEW_COST}✦</span>
+                  }
+                </button>
               ))}
             </div>
           )}

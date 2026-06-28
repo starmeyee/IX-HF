@@ -269,15 +269,42 @@ function TourTooltip({ index, step, backProps, closeProps, primaryProps, tooltip
 }
 
 // ── Holiday Homework answers view ────────────────────────────
-function HHNotesView({ task, onUpload }) {
+function HHNotesView({ task, onUpload, currentUser, sparks, setSparks, purchasedChapters, setPurchasedChapters }) {
   const [notes,   setNotes]   = useState(null);
   const [viewing, setViewing] = useState(null);
+  const [busy,    setBusy]    = useState(null);
+
+  const free = purchasedChapters?.has(task.chapterId);
 
   useEffect(() => {
     getNotesByChapter(task.chapterId)
       .then(setNotes)
       .catch(() => setNotes([]));
   }, [task.chapterId]);
+
+  async function handleOpen(note, action) {
+    if (!currentUser) return;
+    if (free) {
+      action === 'view' ? setViewing(note) : window.open(note.blobUrl, '_blank');
+      return;
+    }
+    if (sparks < SPARK_VIEW_COST) {
+      alert(`You need ${SPARK_VIEW_COST} ✦ Sparks to unlock this answer. Upload notes to earn more!`);
+      return;
+    }
+    setBusy(note.id);
+    try {
+      const newBal = await spendSparks(currentUser.phone, SPARK_VIEW_COST, `Unlocked HH answer: ${note.title}`);
+      await purchaseChapter(currentUser.phone, task.chapterId);
+      setSparks(newBal);
+      setPurchasedChapters(prev => new Set([...prev, task.chapterId]));
+      action === 'view' ? setViewing(note) : window.open(note.blobUrl, '_blank');
+    } catch (e) {
+      alert('Failed: ' + e.message);
+    } finally {
+      setBusy(null);
+    }
+  }
 
   return (
     <div>
@@ -310,19 +337,17 @@ function HHNotesView({ task, onUpload }) {
                 <span className="notes-list-meta">by {note.uploaderName} · {new Date(note.approvedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
               </div>
               <div className="notes-list-actions">
-                <button className="notes-view-btn" onClick={() => setViewing(note)}>
-                  <FileText size={14} /> View
+                <button className="notes-view-btn" disabled={busy === note.id} onClick={() => handleOpen(note, 'view')}>
+                  <FileText size={14} /> {free ? 'View' : `View -${SPARK_VIEW_COST}✦`}
                 </button>
-                <a
-                  href={note.blobUrl}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
                   className="notes-view-btn"
-                  style={{ background: 'var(--surface-hover)', color: 'var(--text-primary)', border: '1px solid var(--border)', textDecoration: 'none' }}
+                  disabled={busy === note.id}
+                  onClick={() => handleOpen(note, 'download')}
+                  style={{ background: 'var(--surface-hover)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
                 >
                   <Download size={13} />
-                </a>
+                </button>
               </div>
             </div>
           ))}
@@ -690,6 +715,11 @@ export default function NotesPage() {
           {view === 'hh-notes' && chapter && (
             <HHNotesView
               task={chapter}
+              currentUser={currentUser}
+              sparks={sparks}
+              setSparks={setSparks}
+              purchasedChapters={purchasedChapters}
+              setPurchasedChapters={setPurchasedChapters}
               onUpload={() => {
                 const hhTask = holidayData.find(t => `hh-${t.id}` === chapter.chapterId);
                 setUploadHHTask(hhTask || null);
