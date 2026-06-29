@@ -4143,3 +4143,104 @@ a {
   text-align: left;
 }
 .rec-section-titlebtn:hover { color: var(--primary); }
+
+/* ─── Teacher Records Page (rtp-*) ──────────────────────────── */
+.rtp-page { max-width: 960px; }
+
+.rtp-card { border-radius: var(--radius-lg); }
+
+/* Search row inside a table section */
+.rtp-search-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-hover);
+}
+
+.rtp-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-family: inherit;
+}
+.rtp-search-input::placeholder { color: var(--text-muted); }
+
+/* Desktop: show table, hide cards */
+.rtp-table-view  { display: block; }
+.rtp-mobile-view { display: none; }
+
+/* Mobile (< 640px): hide table, show cards */
+@media (max-width: 639px) {
+  .rtp-table-view  { display: none; }
+  .rtp-mobile-view { display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem; }
+
+  .rtp-student-card {
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .rtp-student-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .rtp-roll-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.25);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .rtp-student-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .rtp-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rtp-field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .rtp-field-row:last-child { border-bottom: none; }
+
+  .rtp-field-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    flex: 1;
+  }
+
+  /* Make edit input wider on mobile card */
+  .rtp-mobile-view .rec-edit-input { width: 100px; }
+  .rtp-mobile-view .rec-view-cell  { min-width: 80px; text-align: right; }
+  .rtp-mobile-view .rec-check-cell { width: 36px; height: 36px; font-size: 1rem; }
+}

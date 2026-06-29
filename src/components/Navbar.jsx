@@ -80,6 +80,11 @@ export default function Navbar() {
             <Wrench size={20} /><span>Teacher Tools</span>
           </NavLink>
         )}
+        {currentUser?.role === ROLES.TEACHER && (currentUser.recordTables?.length > 0) && (
+          <NavLink to="/teacher-records" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <ClipboardList size={20} /><span>Records</span>
+          </NavLink>
+        )}
         {(currentUser?.isAdmin || currentUser?.role === ROLES.MONITOR) && (
           <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <ShieldAlert size={20} /><span>Monitor Panel</span>
@@ -124,7 +129,7 @@ export default function Navbar() {
                     </button>
                   )}
                   {currentUser.role === ROLES.TEACHER && (currentUser.recordTables?.length > 0) && (
-                    <button className="nav-dropdown-item" onClick={() => go('/teacher-tools')}>
+                    <button className="nav-dropdown-item" onClick={() => go('/teacher-records')}>
                       <ClipboardList size={15} /> Records
                     </button>
                   )}

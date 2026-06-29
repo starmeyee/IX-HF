@@ -15,7 +15,6 @@ import { calcAttendance } from '../data/attendanceUtils';
 import { notifyClassSafe } from '../services/notify';
 import MarksManager from '../components/MarksManager';
 import TeacherSyllabusView from '../components/TeacherSyllabusView';
-import TeacherRecordsView from '../components/TeacherRecordsView';
 
 // ── Notice Tool ───────────────────────────────────────────────
 function NoticeTool({ currentUser }) {
@@ -207,11 +206,18 @@ export default function TeacherToolsPage() {
 
       {/* Records module — only for teachers with at least one table granted */}
       {(currentUser.recordTables?.length > 0) && (
-        <div className="glass-card rec-page" style={{ padding: 0, background: 'none', boxShadow: 'none' }}>
-          <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: '0 0 1rem 0', padding: '0 1.25rem' }}>
-            <ClipboardList size={20} color="var(--primary)" /> Records
-          </h2>
-          <TeacherRecordsView recordTables={currentUser.recordTables} />
+        <div className="glass-card glow-hover" style={{ cursor: 'pointer' }} onClick={() => navigate('/teacher-records')}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 600, fontSize: '0.95rem' }}>
+              <ClipboardList size={18} color="var(--primary)" /> Records
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 400 }}>
+                {currentUser.recordTables.length} table{currentUser.recordTables.length !== 1 ? 's' : ''} assigned
+              </span>
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
+              Edit &amp; update <ArrowRight size={13} />
+            </span>
+          </div>
         </div>
       )}
 
