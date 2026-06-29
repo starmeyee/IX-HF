@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { TEST_PHONE } from '../auth/roles';
 import { matchStudent } from '../auth/nameMatch';
@@ -41,6 +42,12 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
     register, savePassword, login, resetPassword,
     loginTeacherCtx,
   } = useAuth();
+  const navigate = useNavigate();
+
+  function consumeRedirect() {
+    const path = sessionStorage.getItem('redirect_after_login');
+    if (path) { sessionStorage.removeItem('redirect_after_login'); navigate(path); }
+  }
 
   const [step, setStep]         = useState(S.PICK);
   const [err, setErr]           = useState('');
@@ -120,6 +127,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
     setBusy(true);
     try {
       await savePassword(phone.trim(), password);
+      consumeRedirect();
       setStep(S.DONE);
     } catch (ex) { setErr(ex.message); }
     finally { setBusy(false); }
@@ -130,6 +138,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
     e.preventDefault(); setErr(''); setBusy(true);
     try {
       await login(phone.trim(), password);
+      consumeRedirect();
       handleClose();
     } catch (ex) { setErr(ex.message); }
     finally { setBusy(false); }
@@ -172,6 +181,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
     e.preventDefault(); setErr(''); setBusy(true);
     try {
       await loginTeacherCtx(teacherId, tPassword);
+      consumeRedirect();
       handleClose();
     } catch (ex) { setErr(ex.message); }
     finally { setBusy(false); }

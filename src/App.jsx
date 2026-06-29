@@ -37,6 +37,19 @@ function ScrollToTop() {
   return null;
 }
 
+// Saves current non-root path so we can redirect there after login
+function RedirectCapture() {
+  const { currentUser, loading } = useAuth();
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    if (loading || currentUser) return;
+    if (pathname !== '/' && !pathname.startsWith('/notifications')) {
+      sessionStorage.setItem('redirect_after_login', pathname + search);
+    }
+  }, [pathname, search, currentUser, loading]);
+  return null;
+}
+
 function AppInner() {
   useActivityLogger();
   const navigate = useNavigate();
@@ -72,6 +85,7 @@ function AppInner() {
   return (
     <>
       <ScrollToTop />
+      <RedirectCapture />
       <div className="app-container">
         <Navbar />
         <main className="main-content">
