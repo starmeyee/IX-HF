@@ -1,12 +1,8 @@
 import {
   collection, doc, addDoc, getDocs, deleteDoc,
-  setDoc, updateDoc, query, orderBy, where, serverTimestamp,
+  setDoc, query, orderBy, where, serverTimestamp, FieldPath,
 } from 'firebase/firestore';
 import { db } from '../firebase';
-
-// Firestore layout:
-//   records/{tableId}          — table definition
-//   record_entries/{tableId}_{rollNo} — per-student row values
 
 const TABLES = 'records';
 const ENTRIES = 'record_entries';
@@ -44,16 +40,19 @@ export async function getMyEntries(rollNo) {
 }
 
 export async function setCellValue(tableId, rollNo, colId, value) {
+  // Single atomic write:
+  // - Creates the document if it doesn't exist
+  // - Merges ONLY the specified dot-path field (values.<colId>)
+  // - Never touches other columns already saved for this student
   const docRef = doc(db, ENTRIES, `${tableId}_${rollNo}`);
-
-  // Ensure the base document exists with tableId + rollNo, then
-  // use dot-notation to merge only the single column being changed.
-  // Two-step: setDoc creates if missing (merge keeps existing fields),
-  // then updateDoc uses dot-notation which Firestore correctly merges
-  // into the values map without clobbering other keys.
-  await setDoc(docRef, { tableId, rollNo, values: {} }, { merge: true });
-  await updateDoc(docRef, {
-    [`values.${colId}`]: value,
-    updatedAt: serverTimestamp(),
-  });
+  await setDoc(
+    docRef,
+    {
+      tableId,
+      rollNo,
+      [`values.${colId}`]: value,
+      updatedAt: serverTimestamp(),
+    },
+    { mergeFields: ['tableId', 'rollNo', `values.${colId}`, 'updatedAt'] }
+  );
 }
