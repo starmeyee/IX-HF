@@ -33,8 +33,9 @@ function buildStudents(overrides) {
     const t1 = resolveScore(overrides, s.roll, 'test1');
     const t2 = resolveScore(overrides, s.roll, 'test2');
     const eff = [t1, t2].filter(v => v !== null);
-    const avg  = eff.length ? eff.reduce((a, b) => a + b, 0) / eff.length : null;
-    const total = eff.length ? eff.reduce((a, b) => a + b, 0) : null;
+    // Absent counts as 0 — always average over 2 tests, not just present ones
+    const avg  = eff.length ? ((t1 ?? 0) + (t2 ?? 0)) / 2 : null;
+    const total = eff.length ? (t1 ?? 0) + (t2 ?? 0) : null;
     const improvement = (t1 !== null && t2 !== null) ? t2 - t1 : null;
     const absentBoth  = t1 === null && t2 === null;
     return { ...s, t1, t2, avg, total, improvement, absentBoth };
