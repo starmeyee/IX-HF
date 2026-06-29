@@ -2159,6 +2159,60 @@ a {
 .marks-banner-body p { color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.85rem; }
 
 /* ─── Test Scores Page ────────────────────────────────────────── */
+.ts-page {
+  padding: 2rem 1rem;
+}
+
+.ts-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.ts-header {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.ts-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ts-col-left {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+
+.ts-col-right {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ts-header { text-align: left; }
+
+  .ts-body {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .ts-col-left {
+    flex: 0 0 340px;
+    position: sticky;
+    top: 5rem;
+  }
+
+  .ts-col-right {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 .ts-cards-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1rem; }
 
 .ts-score-card {
