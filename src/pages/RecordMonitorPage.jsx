@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { rollList } from '../auth/rollList';
-import { getTables, getEntries, setCellValue } from '../services/recordsService';
-import { ClipboardList, Lock, ChevronDown, ChevronUp } from 'lucide-react';
+import { getTables, getEntries, setCellValue, updateTable } from '../services/recordsService';
+import { ClipboardList, Lock, ChevronDown, ChevronUp, Pencil, Check, X } from 'lucide-react';
 
 // ── Inline editable cell ───────────────────────────────────────
 function EditCell({ type, value, onChange }) {
@@ -48,10 +48,16 @@ function EditCell({ type, value, onChange }) {
 }
 
 // ── One table section ──────────────────────────────────────────
-function TableSection({ table }) {
+function TableSection({ table, onRenamed }) {
   const [entries, setEntries] = useState({});   // { rollNo: { values } }
   const [open, setOpen]       = useState(true);
   const [loading, setLoading] = useState(true);
+
+  // Rename state
+  const [editing, setEditing]   = useState(false);
+  const [titleDraft, setTitle]  = useState(table.title);
+  const [colDrafts, setColD]    = useState(table.columns.map(c => c.label));
+  const [savingMeta, setSaving] = useState(false);
 
   useEffect(() => {
     getEntries(table.id)
@@ -65,7 +71,6 @@ function TableSection({ table }) {
   }, [table.id]);
 
   async function handleChange(rollNo, colId, value) {
-    // Optimistic update
     setEntries(prev => ({
       ...prev,
       [rollNo]: { ...(prev[rollNo] || {}), [colId]: value },
@@ -78,18 +83,65 @@ function TableSection({ table }) {
     }
   }
 
+  function startEdit(e) {
+    e.stopPropagation();
+    setTitle(table.title);
+    setColD(table.columns.map(c => c.label));
+    setEditing(true);
+    setOpen(true);
+  }
+
+  async function saveMeta() {
+    if (!titleDraft.trim()) { alert('Title cannot be empty.'); return; }
+    setSaving(true);
+    try {
+      const columns = table.columns.map((c, i) => ({ ...c, label: (colDrafts[i] || c.label).trim() }));
+      await updateTable(table.id, { title: titleDraft.trim(), columns });
+      setEditing(false);
+      onRenamed?.();
+    } catch (err) {
+      alert('Could not save: ' + (err?.message || err));
+    } finally {
+      setSaving(false);
+    }
+  }
+
   return (
     <div className="rec-section-card">
-      <button className="rec-section-header" onClick={() => setOpen(v => !v)}>
-        <div className="rec-section-title">
-          {table.title}
-          {table.sensitive && <span className="rec-sensitive-badge"><Lock size={11} /> Sensitive</span>}
+      <div className="rec-section-header" style={{ cursor: editing ? 'default' : 'pointer' }}>
+        <div className="rec-section-title" style={{ flex: 1 }}>
+          {editing ? (
+            <input
+              className="rec-input"
+              value={titleDraft}
+              onChange={e => setTitle(e.target.value)}
+              onClick={e => e.stopPropagation()}
+              placeholder="Table name"
+              style={{ maxWidth: 240 }}
+            />
+          ) : (
+            <button className="rec-section-titlebtn" onClick={() => setOpen(v => !v)}>
+              {table.title}
+              {table.sensitive && <span className="rec-sensitive-badge"><Lock size={11} /> Sensitive</span>}
+            </button>
+          )}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          {table.description && <span className="rec-section-desc">{table.description}</span>}
-          {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          {editing ? (
+            <>
+              <button className="rec-icon-btn" onClick={saveMeta} disabled={savingMeta} title="Save"><Check size={16} /></button>
+              <button className="rec-icon-btn danger" onClick={() => setEditing(false)} title="Cancel"><X size={16} /></button>
+            </>
+          ) : (
+            <>
+              <button className="rec-icon-btn" onClick={startEdit} title="Rename table & columns"><Pencil size={15} /></button>
+              <button className="rec-icon-btn" onClick={() => setOpen(v => !v)} title={open ? 'Collapse' : 'Expand'}>
+                {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
+            </>
+          )}
         </div>
-      </button>
+      </div>
 
       {open && (
         loading ? <p className="rec-muted" style={{ padding: '1rem' }}>Loading…</p> : (
@@ -99,7 +151,18 @@ function TableSection({ table }) {
                 <tr>
                   <th>Roll</th>
                   <th>Name</th>
-                  {table.columns.map(c => <th key={c.id}>{c.label}</th>)}
+                  {table.columns.map((c, i) => (
+                    <th key={c.id}>
+                      {editing ? (
+                        <input
+                          className="rec-edit-input"
+                          style={{ width: '100%', minWidth: 80 }}
+                          value={colDrafts[i] ?? ''}
+                          onChange={e => setColD(d => d.map((v, idx) => idx === i ? e.target.value : v))}
+                        />
+                      ) : c.label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -137,9 +200,11 @@ export default function RecordMonitorPage() {
     if (!loading && currentUser && currentUser.role !== ROLES.MONITOR && currentUser.role !== ROLES.ADMIN) navigate('/');
   }, [currentUser, navigate]);
 
-  useEffect(() => {
+  function reload() {
     getTables().then(setTables).catch(console.error);
-  }, []);
+  }
+
+  useEffect(() => { reload(); }, []);
 
   if (!currentUser) return null;
 
@@ -161,7 +226,7 @@ export default function RecordMonitorPage() {
         </div>
       ) : (
         <div className="rec-sections">
-          {tables.map(t => <TableSection key={t.id} table={t} />)}
+          {tables.map(t => <TableSection key={t.id} table={t} onRenamed={reload} />)}
         </div>
       )}
     </div>

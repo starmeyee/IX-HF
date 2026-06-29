@@ -27,6 +27,16 @@ export async function deleteTable(tableId) {
   await deleteDoc(doc(db, TABLES, tableId));
 }
 
+// Update table metadata: title, description, and/or column labels.
+// Column ids and types are preserved so existing entry data stays mapped.
+export async function updateTable(tableId, { title, description, columns }) {
+  const patch = { updatedAt: serverTimestamp() };
+  if (title !== undefined) patch.title = title.trim();
+  if (description !== undefined) patch.description = description.trim();
+  if (columns !== undefined) patch.columns = columns;
+  await updateDoc(doc(db, TABLES, tableId), patch);
+}
+
 export async function getEntries(tableId) {
   const q = query(collection(db, ENTRIES), where('tableId', '==', tableId));
   const snap = await getDocs(q);

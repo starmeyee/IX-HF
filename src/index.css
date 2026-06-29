@@ -4127,3 +4127,19 @@ a {
   border-color: rgba(139,92,246,0.4);
   box-shadow: 0 0 24px -10px rgba(139,92,246,0.35);
 }
+
+/* Monitor records — inline-rename title button */
+.rec-section-titlebtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  text-align: left;
+}
+.rec-section-titlebtn:hover { color: var(--primary); }

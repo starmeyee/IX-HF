@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
-import { createTable, getTables, deleteTable } from '../services/recordsService';
-import { ClipboardList, Plus, Trash2, X, Lock, Unlock } from 'lucide-react';
+import { createTable, updateTable, getTables, deleteTable } from '../services/recordsService';
+import { ClipboardList, Plus, Trash2, X, Lock, Unlock, Pencil } from 'lucide-react';
 
 const COL_TYPES = [
   { value: 'check',  label: '✓ Check' },
@@ -11,12 +11,19 @@ const COL_TYPES = [
   { value: 'number', label: '# Number' },
 ];
 
-function CreateModal({ onClose, onCreated }) {
-  const [title, setTitle]       = useState('');
-  const [desc, setDesc]         = useState('');
-  const [sensitive, setSens]    = useState(false);
-  const [cols, setCols]         = useState([{ label: '', type: 'check' }]);
-  const [busy, setBusy]         = useState(false);
+// Modal used for BOTH create (no `table`) and edit (with `table`).
+function TableModal({ table, onClose, onSaved }) {
+  const isEdit = !!table;
+  const [title, setTitle]    = useState(table?.title || '');
+  const [desc, setDesc]      = useState(table?.description || '');
+  const [sensitive, setSens] = useState(table?.sensitive || false);
+  // Keep existing column ids/types on edit so entry data stays mapped.
+  const [cols, setCols]      = useState(
+    table?.columns?.length
+      ? table.columns.map(c => ({ ...c }))
+      : [{ label: '', type: 'check' }]
+  );
+  const [busy, setBusy]      = useState(false);
 
   function addCol() { setCols(c => [...c, { label: '', type: 'check' }]); }
   function removeCol(i) { setCols(c => c.filter((_, idx) => idx !== i)); }
@@ -29,12 +36,21 @@ function CreateModal({ onClose, onCreated }) {
     if (!title.trim()) return;
     const columns = cols
       .filter(c => c.label.trim())
-      .map((c, i) => ({ id: `col_${Date.now()}_${i}`, label: c.label.trim(), type: c.type }));
+      .map((c, i) => ({
+        // Preserve existing id; only generate a new one for newly added cols.
+        id: c.id || `col_${Date.now()}_${i}`,
+        label: c.label.trim(),
+        type: c.type,
+      }));
     if (!columns.length) return alert('Add at least one column.');
     setBusy(true);
     try {
-      await createTable({ title, description: desc, sensitive, columns });
-      onCreated();
+      if (isEdit) {
+        await updateTable(table.id, { title, description: desc, columns });
+      } else {
+        await createTable({ title, description: desc, sensitive, columns });
+      }
+      onSaved();
     } catch (err) {
       alert('Failed: ' + err.message);
     } finally {
@@ -46,7 +62,7 @@ function CreateModal({ onClose, onCreated }) {
     <div className="rec-modal-overlay" onClick={onClose}>
       <div className="rec-modal" onClick={e => e.stopPropagation()}>
         <div className="rec-modal-header">
-          <h2><ClipboardList size={18} /> New Record Table</h2>
+          <h2><ClipboardList size={18} /> {isEdit ? 'Edit Record Table' : 'New Record Table'}</h2>
           <button className="rec-icon-btn" onClick={onClose}><X size={18} /></button>
         </div>
 
@@ -60,23 +76,25 @@ function CreateModal({ onClose, onCreated }) {
             value={desc} onChange={e => setDesc(e.target.value)} rows={2}
           />
 
-          <label className="rec-toggle-row">
-            <button type="button" className={`rec-toggle ${sensitive ? 'on' : ''}`} onClick={() => setSens(v => !v)}>
-              {sensitive ? <Lock size={14} /> : <Unlock size={14} />}
-              {sensitive ? 'Sensitive — hidden from students' : 'Visible to all students'}
-            </button>
-          </label>
+          {/* Sensitive flag only editable on create (changing visibility later
+              could unexpectedly expose data; keep it fixed on edit). */}
+          {!isEdit && (
+            <label className="rec-toggle-row">
+              <button type="button" className={`rec-toggle ${sensitive ? 'on' : ''}`} onClick={() => setSens(v => !v)}>
+                {sensitive ? <Lock size={14} /> : <Unlock size={14} />}
+                {sensitive ? 'Sensitive — hidden from students' : 'Visible to all students'}
+              </button>
+            </label>
+          )}
 
-          {/* Fixed columns */}
           <div className="rec-col-section-label">Columns</div>
           <div className="rec-fixed-cols">
             <span className="rec-fixed-chip">Roll No.</span>
             <span className="rec-fixed-chip">Name</span>
           </div>
 
-          {/* Custom columns */}
           {cols.map((col, i) => (
-            <div key={i} className="rec-col-row">
+            <div key={col.id || i} className="rec-col-row">
               <input
                 className="rec-input rec-col-label" placeholder={`Column ${i + 1} label`}
                 value={col.label} onChange={e => updateCol(i, 'label', e.target.value)}
@@ -84,6 +102,7 @@ function CreateModal({ onClose, onCreated }) {
               <select
                 className="rec-select" value={col.type}
                 onChange={e => updateCol(i, 'type', e.target.value)}
+                title={col.id ? 'Changing type may not match existing data' : ''}
               >
                 {COL_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
               </select>
@@ -96,7 +115,7 @@ function CreateModal({ onClose, onCreated }) {
           </button>
 
           <button type="submit" className="auth-btn primary" disabled={busy} style={{ marginTop: '0.5rem' }}>
-            {busy ? 'Creating…' : 'Create Table'}
+            {busy ? 'Saving…' : isEdit ? 'Save Changes' : 'Create Table'}
           </button>
         </form>
       </div>
@@ -107,8 +126,9 @@ function CreateModal({ onClose, onCreated }) {
 export default function RecordAdminPage() {
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
-  const [tables, setTables]     = useState(null);
-  const [showModal, setModal]   = useState(false);
+  const [tables, setTables]   = useState(null);
+  const [showCreate, setCreate] = useState(false);
+  const [editTable, setEdit]  = useState(null);
 
   useEffect(() => {
     if (!loading && (!currentUser || currentUser.role !== ROLES.ADMIN)) navigate('/');
@@ -135,7 +155,7 @@ export default function RecordAdminPage() {
           <ClipboardList size={26} />
           <h1>Records — Admin</h1>
         </div>
-        <button className="auth-btn primary rec-new-btn" onClick={() => setModal(true)}>
+        <button className="auth-btn primary rec-new-btn" onClick={() => setCreate(true)}>
           <Plus size={15} /> New Record
         </button>
       </div>
@@ -161,19 +181,24 @@ export default function RecordAdminPage() {
                   {t.columns?.length ?? 0} custom column{t.columns?.length !== 1 ? 's' : ''}
                 </div>
               </div>
-              <button className="rec-icon-btn danger" onClick={() => handleDelete(t.id, t.title)} title="Delete table">
-                <Trash2 size={16} />
-              </button>
+              <div style={{ display: 'flex', gap: '0.25rem' }}>
+                <button className="rec-icon-btn" onClick={() => setEdit(t)} title="Edit table name & columns">
+                  <Pencil size={16} />
+                </button>
+                <button className="rec-icon-btn danger" onClick={() => handleDelete(t.id, t.title)} title="Delete table">
+                  <Trash2 size={16} />
+                </button>
+              </div>
             </div>
           ))}
         </div>
       )}
 
-      {showModal && (
-        <CreateModal
-          onClose={() => setModal(false)}
-          onCreated={() => { setModal(false); load(); }}
-        />
+      {showCreate && (
+        <TableModal onClose={() => setCreate(false)} onSaved={() => { setCreate(false); load(); }} />
+      )}
+      {editTable && (
+        <TableModal table={editTable} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); load(); }} />
       )}
     </div>
   );
