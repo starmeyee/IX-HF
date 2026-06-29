@@ -105,13 +105,13 @@ function CreateModal({ onClose, onCreated }) {
 }
 
 export default function RecordAdminPage() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [tables, setTables]     = useState(null);
   const [showModal, setModal]   = useState(false);
 
   useEffect(() => {
-    if (!currentUser || currentUser.role !== ROLES.ADMIN) navigate('/');
+    if (!loading && (!currentUser || currentUser.role !== ROLES.ADMIN)) navigate('/');
   }, [currentUser, navigate]);
 
   async function load() {

@@ -86,7 +86,7 @@ function ScoreCard({ label, value, stats, rank }) {
 }
 
 export default function TestScoresPage() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [overrides, setOverrides] = useState({});
   const [myComplaints, setMyComplaints] = useState([]);
@@ -96,11 +96,12 @@ export default function TestScoresPage() {
   const [err, setErr] = useState('');
 
   useEffect(() => {
+    if (loading) return;
     if (!currentUser) { navigate('/'); return; }
     if (currentUser.role === 'TEACHER') { navigate('/maths'); return; }
     getOverrides().then(setOverrides).catch(() => {});
     getMyComplaint(currentUser.phone).then(setMyComplaints).catch(() => {});
-  }, [currentUser, navigate]);
+  }, [currentUser, loading, navigate]);
 
   if (!currentUser) return null;
 

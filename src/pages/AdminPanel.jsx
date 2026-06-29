@@ -900,15 +900,13 @@ function BroadcastManager({ currentUser }) {
 
 
 export default function AdminPanel() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentUser === undefined) return;
-    if (!canAccess(currentUser)) {
-      navigate('/');
-    }
-  }, [currentUser, navigate]);
+    if (loading) return;
+    if (!canAccess(currentUser)) navigate('/');
+  }, [currentUser, loading, navigate]);
 
   if (!canAccess(currentUser)) return null;
 

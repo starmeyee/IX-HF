@@ -847,13 +847,13 @@ function DataExportTab() {
 
 // ── Page ──────────────────────────────────────────────────────
 export default function AdminServicesPage() {
-  const { currentUser, triggerTour } = useAuth();
+  const { currentUser, triggerTour, loading } = useAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState('users');
 
   useEffect(() => {
-    if (!currentUser || currentUser.role !== ROLES.ADMIN) navigate('/');
-  }, [currentUser, navigate]);
+    if (!loading && (!currentUser || currentUser.role !== ROLES.ADMIN)) navigate('/');
+  }, [currentUser, loading, navigate]);
 
   if (!currentUser || currentUser.role !== ROLES.ADMIN) return null;
 

@@ -127,13 +127,13 @@ function TableSection({ table }) {
 }
 
 export default function RecordMonitorPage() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [tables, setTables] = useState(null);
 
   useEffect(() => {
     if (!currentUser) return;
-    if (currentUser.role !== ROLES.MONITOR && currentUser.role !== ROLES.ADMIN) navigate('/');
+    if (!loading && currentUser && currentUser.role !== ROLES.MONITOR && currentUser.role !== ROLES.ADMIN) navigate('/');
   }, [currentUser, navigate]);
 
   useEffect(() => {

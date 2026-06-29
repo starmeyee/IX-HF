@@ -11,14 +11,14 @@ function ValueDisplay({ type, value }) {
 }
 
 export default function RecordPage() {
-  const { currentUser } = useAuth();
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [tables, setTables]   = useState(null);
   const [entries, setEntries] = useState({});  // { tableId: { values } }
 
   useEffect(() => {
-    if (!currentUser) navigate('/');
-  }, [currentUser, navigate]);
+    if (!loading && !currentUser) navigate('/');
+  }, [currentUser, loading, navigate]);
 
   useEffect(() => {
     if (!currentUser?.rollNo) return;

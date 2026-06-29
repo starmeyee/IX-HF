@@ -8,7 +8,7 @@ import { sendEmailLink } from '../firebase';
 import packageJson from '../../package.json';
 
 export default function ProfilePage() {
-  const { currentUser, logout, refreshUser } = useAuth();
+  const { currentUser, loading, logout, refreshUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const fileRef = useRef();
@@ -30,8 +30,8 @@ export default function ProfilePage() {
   }, [verifiedToast]);
 
   useEffect(() => {
-    if (!currentUser) navigate('/');
-  }, [currentUser, navigate]);
+    if (!loading && !currentUser) navigate('/');
+  }, [currentUser, loading, navigate]);
 
   const isTeacher = currentUser?.role === ROLES.TEACHER;
   const identifier = isTeacher ? currentUser?.id : currentUser?.phone;
