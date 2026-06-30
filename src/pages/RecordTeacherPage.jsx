@@ -6,6 +6,63 @@ import { ROLES } from '../auth/roles';
 import { rollList } from '../auth/rollList';
 import { getTables, getEntries, setCellValue } from '../services/recordsService';
 
+// ── Analytics card: shows column stats derived from entries ──────
+function AnalyticsCard({ table, entries, compact = false }) {
+  const total = rollList.length;
+
+  const stats = table.columns.map(col => {
+    if (col.type === 'check') {
+      const checked = rollList.filter(s => entries[s.rollNo]?.[col.id] === true).length;
+      return { label: col.label, value: `${checked}/${total}`, pct: total ? checked / total : 0, type: 'check' };
+    }
+    if (col.type === 'number') {
+      const vals = rollList.map(s => entries[s.rollNo]?.[col.id]).filter(v => v !== undefined && v !== '' && v !== null);
+      const filled = vals.length;
+      const avg = filled ? (vals.reduce((a, b) => a + Number(b), 0) / filled).toFixed(1) : '—';
+      return { label: col.label, value: `${filled}/${total}`, sub: filled ? `avg ${avg}` : null, pct: total ? filled / total : 0, type: 'number' };
+    }
+    const filled = rollList.filter(s => {
+      const v = entries[s.rollNo]?.[col.id];
+      return v !== undefined && v !== '' && v !== null;
+    }).length;
+    return { label: col.label, value: `${filled}/${total}`, pct: total ? filled / total : 0, type: 'text' };
+  });
+
+  if (compact) {
+    return (
+      <div className="rec-analytics-chips">
+        {stats.map(s => (
+          <span
+            key={s.label}
+            className={`rec-analytics-chip ${s.type === 'check' ? (s.pct === 1 ? 'chip-full' : s.pct >= 0.5 ? 'chip-half' : 'chip-low') : 'chip-neutral'}`}
+            title={s.label}
+          >
+            <span className="chip-label">{s.label}</span>
+            <span className="chip-value">{s.value}</span>
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="rec-analytics-card">
+      {stats.map(s => (
+        <div key={s.label} className="rec-analytics-stat">
+          <div className="rec-stat-label">{s.label}</div>
+          <div className={`rec-stat-value ${s.type === 'check' ? (s.pct === 1 ? 'stat-full' : s.pct >= 0.5 ? 'stat-half' : 'stat-low') : ''}`}>
+            {s.value}
+          </div>
+          {s.sub && <div className="rec-stat-sub">{s.sub}</div>}
+          <div className="rec-stat-bar">
+            <div className="rec-stat-bar-fill" style={{ width: `${Math.round(s.pct * 100)}%` }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── Inline editable cell ──────────────────────────────────────
 function EditCell({ type, value, onChange }) {
   const [editing, setEditing] = useState(false);
@@ -58,7 +115,7 @@ function EditCell({ type, value, onChange }) {
 // ── Single table section ──────────────────────────────────────
 function TableSection({ table }) {
   const [entries, setEntries] = useState({});
-  const [open,    setOpen]    = useState(true);
+  const [open,    setOpen]    = useState(false);
   const [loading, setLoading] = useState(true);
   const [search,  setSearch]  = useState('');
 
@@ -93,7 +150,11 @@ function TableSection({ table }) {
             <span className="rec-sensitive-badge"><Lock size={11} /> Sensitive</span>
           )}
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flex: 1, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+          {/* Analytics chips shown in header when collapsed and data loaded */}
+          {!open && !loading && (
+            <AnalyticsCard table={table} entries={entries} compact />
+          )}
           {table.description && (
             <span className="rec-section-desc">{table.description}</span>
           )}
@@ -103,6 +164,9 @@ function TableSection({ table }) {
 
       {open && (
         <>
+          {/* Analytics full card */}
+          {!loading && <AnalyticsCard table={table} entries={entries} />}
+
           {/* Search bar */}
           <div className="rtp-search-row">
             <Search size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />

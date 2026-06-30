@@ -6,6 +6,65 @@ import { rollList } from '../auth/rollList';
 import { getTables, getEntries, setCellValue, updateTable } from '../services/recordsService';
 import { ClipboardList, Lock, ChevronDown, ChevronUp, Pencil, Check, X } from 'lucide-react';
 
+// ── Analytics card: shows column stats derived from entries ──────
+function AnalyticsCard({ table, entries, compact = false }) {
+  const total = rollList.length;
+
+  const stats = table.columns.map(col => {
+    if (col.type === 'check') {
+      const checked = rollList.filter(s => entries[s.rollNo]?.[col.id] === true).length;
+      return { label: col.label, value: `${checked}/${total}`, pct: total ? checked / total : 0, type: 'check' };
+    }
+    if (col.type === 'number') {
+      const vals = rollList.map(s => entries[s.rollNo]?.[col.id]).filter(v => v !== undefined && v !== '' && v !== null);
+      const filled = vals.length;
+      const avg = filled ? (vals.reduce((a, b) => a + Number(b), 0) / filled).toFixed(1) : '—';
+      return { label: col.label, value: `${filled}/${total}`, sub: filled ? `avg ${avg}` : null, pct: total ? filled / total : 0, type: 'number' };
+    }
+    // text
+    const filled = rollList.filter(s => {
+      const v = entries[s.rollNo]?.[col.id];
+      return v !== undefined && v !== '' && v !== null;
+    }).length;
+    return { label: col.label, value: `${filled}/${total}`, pct: total ? filled / total : 0, type: 'text' };
+  });
+
+  if (compact) {
+    // Inline chips shown in the collapsed header
+    return (
+      <div className="rec-analytics-chips">
+        {stats.map(s => (
+          <span
+            key={s.label}
+            className={`rec-analytics-chip ${s.type === 'check' ? (s.pct === 1 ? 'chip-full' : s.pct >= 0.5 ? 'chip-half' : 'chip-low') : 'chip-neutral'}`}
+            title={s.label}
+          >
+            <span className="chip-label">{s.label}</span>
+            <span className="chip-value">{s.value}</span>
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="rec-analytics-card">
+      {stats.map(s => (
+        <div key={s.label} className="rec-analytics-stat">
+          <div className="rec-stat-label">{s.label}</div>
+          <div className={`rec-stat-value ${s.type === 'check' ? (s.pct === 1 ? 'stat-full' : s.pct >= 0.5 ? 'stat-half' : 'stat-low') : ''}`}>
+            {s.value}
+          </div>
+          {s.sub && <div className="rec-stat-sub">{s.sub}</div>}
+          <div className="rec-stat-bar">
+            <div className="rec-stat-bar-fill" style={{ width: `${Math.round(s.pct * 100)}%` }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── Inline editable cell ───────────────────────────────────────
 function EditCell({ type, value, onChange }) {
   const [editing, setEditing] = useState(false);
@@ -50,7 +109,7 @@ function EditCell({ type, value, onChange }) {
 // ── One table section ──────────────────────────────────────────
 function TableSection({ table, onRenamed }) {
   const [entries, setEntries] = useState({});   // { rollNo: { values } }
-  const [open, setOpen]       = useState(true);
+  const [open, setOpen]       = useState(false);
   const [loading, setLoading] = useState(true);
 
   // Rename state
@@ -126,6 +185,10 @@ function TableSection({ table, onRenamed }) {
             </button>
           )}
         </div>
+        {/* Analytics chips visible when collapsed and data loaded */}
+        {!editing && !open && !loading && (
+          <AnalyticsCard table={table} entries={entries} compact />
+        )}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           {editing ? (
             <>
@@ -145,45 +208,48 @@ function TableSection({ table, onRenamed }) {
 
       {open && (
         loading ? <p className="rec-muted" style={{ padding: '1rem' }}>Loading…</p> : (
-          <div className="rec-table-wrap">
-            <table className="rec-table">
-              <thead>
-                <tr>
-                  <th>Roll</th>
-                  <th>Name</th>
-                  {table.columns.map((c, i) => (
-                    <th key={c.id}>
-                      {editing ? (
-                        <input
-                          className="rec-edit-input"
-                          style={{ width: '100%', minWidth: 80 }}
-                          value={colDrafts[i] ?? ''}
-                          onChange={e => setColD(d => d.map((v, idx) => idx === i ? e.target.value : v))}
-                        />
-                      ) : c.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rollList.map(student => (
-                  <tr key={student.rollNo}>
-                    <td className="rec-td-roll">{student.rollNo}</td>
-                    <td className="rec-td-name">{student.name}</td>
-                    {table.columns.map(col => (
-                      <td key={col.id}>
-                        <EditCell
-                          type={col.type}
-                          value={entries[student.rollNo]?.[col.id]}
-                          onChange={val => handleChange(student.rollNo, col.id, val)}
-                        />
-                      </td>
+          <>
+            <AnalyticsCard table={table} entries={entries} />
+            <div className="rec-table-wrap">
+              <table className="rec-table">
+                <thead>
+                  <tr>
+                    <th>Roll</th>
+                    <th>Name</th>
+                    {table.columns.map((c, i) => (
+                      <th key={c.id}>
+                        {editing ? (
+                          <input
+                            className="rec-edit-input"
+                            style={{ width: '100%', minWidth: 80 }}
+                            value={colDrafts[i] ?? ''}
+                            onChange={e => setColD(d => d.map((v, idx) => idx === i ? e.target.value : v))}
+                          />
+                        ) : c.label}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {rollList.map(student => (
+                    <tr key={student.rollNo}>
+                      <td className="rec-td-roll">{student.rollNo}</td>
+                      <td className="rec-td-name">{student.name}</td>
+                      {table.columns.map(col => (
+                        <td key={col.id}>
+                          <EditCell
+                            type={col.type}
+                            value={entries[student.rollNo]?.[col.id]}
+                            onChange={val => handleChange(student.rollNo, col.id, val)}
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )
       )}
     </div>
