@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import {
   isWorkingDay,
@@ -32,7 +32,7 @@ function getFirstWeekday(year, month) {
  * @param {string[]} absentDays - array of absent date keys
  * @param {(key:string)=>void} onToggle - called when a day is toggled
  */
-export default function AttendanceCalendar({ absentDays = [], onToggle, closedDays = [] }) {
+export default function AttendanceCalendar({ absentDays = [], onToggle, closedDays = [], onMonthStatsChange }) {
   const today = todayKey();
 
   const closedSet = useMemo(() => new Set(closedDays), [closedDays]);
@@ -67,8 +67,15 @@ export default function AttendanceCalendar({ absentDays = [], onToggle, closedDa
       working++;
       if (absentSet.has(key)) absent++;
     }
-    return { working, present: working - absent, absent };
+    const present = working - absent;
+    const percentage = working === 0 ? 100 : Math.round((present / working) * 100);
+    return { working, present, absent, percentage };
   }, [year, month, absentSet, today, closedSet]);
+
+  useEffect(() => {
+    onMonthStatsChange?.(monthStats);
+  }, [monthStats, onMonthStatsChange]);
+
 
   const daysInMonth = getDaysInMonth(year, month);
   const firstWeekday = getFirstWeekday(year, month);

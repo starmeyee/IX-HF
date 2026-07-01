@@ -153,7 +153,7 @@ export default function TeacherToolsPage() {
           students.map(u => getAttendance(u.phone).catch(() => []))
         );
         const pcts = attendances.map(absent =>
-          calcAttendance(absent, undefined, closed).monthlyAveragePercentage
+          calcAttendance(absent, undefined, closed).percentage
         );
         const avg = Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
         if (active) setClassAvgAtt(avg);

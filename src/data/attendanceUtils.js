@@ -3,7 +3,7 @@ import { CALENDAR_EVENTS } from './calendarData';
 // ── Configuration ──────────────────────────────────────────────
 // The academic session begins on this date. Attendance is counted
 // from here up to (and including) the current day.
-export const SESSION_START = '2026-04-16';
+export const SESSION_START = '2026-04-09';
 
 // Last day of the academic session (used for full-year projections).
 export const SESSION_END = '2027-03-31';

@@ -63,6 +63,7 @@ export default function StudentDashboard() {
 
   const [absentDays, setAbsentDays] = useState([]);
   const [attendanceLoaded, setAttendanceLoaded] = useState(false);
+  const [currentMonthPct, setCurrentMonthPct] = useState(null);
   const [closedDays, setClosedDays] = useState([]);
   const [emailReminderDismissed] = useState(false); // managed by UX system
 
@@ -213,7 +214,7 @@ export default function StudentDashboard() {
   }
 
   const firstName = currentUser.name.split(' ')[0];
-  const displayPct = stats.monthlyAveragePercentage;
+  const displayPct = Math.round(stats.percentage);
   const pctClass = displayPct >= 75 ? 'att-pct-good' : displayPct >= 60 ? 'att-pct-warn' : 'att-pct-bad';
 
   const tKey = todayKey();
@@ -234,7 +235,7 @@ export default function StudentDashboard() {
           <span className={`dash-stat-value ${pctClass}`}>
             {attendanceLoaded ? `${displayPct}%` : '…'}
           </span>
-          <span className="dash-stat-sub">{stats.presentDays}/{stats.totalDays} working days · monthly avg</span>
+          <span className="dash-stat-sub">{stats.presentDays}/{stats.totalDays} working days</span>
         </div>
 
         {/* Days Absent — scrolls to calendar, not navigate */}
@@ -476,8 +477,8 @@ export default function StudentDashboard() {
       <div className="glass-card" data-tour="attendance-panel" ref={attendancePanelRef}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
           <h2 className="section-title" style={{ marginBottom: 0 }}>My Attendance</h2>
-          <span className={`dash-stat-value ${pctClass}`} style={{ fontSize: '1.5rem' }}>
-            {attendanceLoaded ? `${displayPct}%` : '…'}
+          <span className={`dash-stat-value ${currentMonthPct >= 75 ? 'att-pct-good' : currentMonthPct >= 60 ? 'att-pct-warn' : 'att-pct-bad'}`} style={{ fontSize: '1.5rem' }}>
+            {currentMonthPct !== null ? `${currentMonthPct}%` : (attendanceLoaded ? `${displayPct}%` : '…')}
           </span>
         </div>
 
@@ -507,7 +508,12 @@ export default function StudentDashboard() {
           </div>
         )}
 
-        <AttendanceCalendar absentDays={absentDays} onToggle={handleToggle} closedDays={closedDays} />
+        <AttendanceCalendar 
+          absentDays={absentDays} 
+          onToggle={handleToggle} 
+          closedDays={closedDays} 
+          onMonthStatsChange={(stats) => setCurrentMonthPct(stats.percentage)} 
+        />
       </div>
     </div>
   );
