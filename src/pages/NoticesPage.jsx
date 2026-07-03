@@ -15,6 +15,7 @@ function formatDate(ms) {
 export default function NoticesPage() {
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   useEffect(() => {
     getNotices()
@@ -22,6 +23,8 @@ export default function NoticesPage() {
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  const visibleNotices = notices.slice(0, visibleCount);
 
   return (
     <div className="page-container animate-fade-in">
@@ -36,7 +39,7 @@ export default function NoticesPage() {
         <p className="notice-empty">No notices right now. You're all caught up! 🎉</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {notices.map((n, i) => (
+          {visibleNotices.map((n, i) => (
             <div key={n.id} className="glass-card notice-item" style={i === 0 ? { border: '1px solid var(--primary)', borderRadius: 'var(--radius)' } : {}}>
               {i === 0 && (
                 <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.25rem', display: 'block' }}>
@@ -51,6 +54,16 @@ export default function NoticesPage() {
               <CopyWhatsAppButton body={n.body} shareLink={`${window.location.origin}/api/notice-share?id=${n.id}`} style={{ marginTop: '0.5rem' }} />
             </div>
           ))}
+          
+          {notices.length > visibleCount && (
+            <button 
+              onClick={() => setVisibleCount(c => c + 10)}
+              className="auth-btn secondary"
+              style={{ marginTop: '0.5rem', width: '100%', padding: '0.75rem' }}
+            >
+              Load older notices
+            </button>
+          )}
         </div>
       )}
     </div>

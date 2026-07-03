@@ -54,6 +54,9 @@ function NoticesManager({ currentUser }) {
     setReloadKey((k) => k + 1);
   }, []);
 
+  const [visibleCount, setVisibleCount] = useState(5);
+  const visibleNotices = notices.slice(0, visibleCount);
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -152,7 +155,7 @@ function NoticesManager({ currentUser }) {
           <p style={{ color: 'var(--text-muted)' }}>No notices posted yet.</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {notices.map((n) => (
+            {visibleNotices.map((n) => (
               <div key={n.id} className="notice-item">
                 <NoticeText>{n.body}</NoticeText>
                 <div className="notice-item-meta">
@@ -165,6 +168,16 @@ function NoticesManager({ currentUser }) {
                 <CopyWhatsAppButton body={n.body} shareLink={`${window.location.origin}/api/notice-share?id=${n.id}`} style={{ marginTop: '0.5rem' }} />
               </div>
             ))}
+            
+            {notices.length > visibleCount && (
+              <button 
+                onClick={() => setVisibleCount(c => c + 5)}
+                className="auth-btn secondary"
+                style={{ marginTop: '0.5rem', width: '100%', padding: '0.75rem' }}
+              >
+                Load more notices
+              </button>
+            )}
           </div>
         )}
       </div>
