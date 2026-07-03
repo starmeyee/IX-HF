@@ -26,6 +26,7 @@ import NotesPage from './pages/NotesPage';
 import NoticesPage from './pages/NoticesPage';
 import ManageNoticesPage from './pages/ManageNoticesPage';
 import TeacherToolsPage from './pages/TeacherToolsPage';
+import TestDataPage from './pages/TestDataPage';
 import RecordPage from './pages/RecordPage';
 import RecordMonitorPage from './pages/RecordMonitorPage';
 import RecordAdminPage from './pages/RecordAdminPage';
@@ -113,6 +114,7 @@ function AppInner() {
             <Route path="/notices" element={<NoticesPage />} />
             <Route path="/manage-notices" element={<ManageNoticesPage />} />
             <Route path="/teacher-tools" element={<TeacherToolsPage />} />
+            <Route path="/test-data" element={<TestDataPage />} />
             <Route path="/records" element={<RecordPage />} />
             <Route path="/records-monitor" element={<RecordMonitorPage />} />
             <Route path="/records-admin" element={<RecordAdminPage />} />

@@ -11,6 +11,7 @@ import { getAttendance, setAttendance, getHolidayHomework, getHomeworkDone, setH
 import MergeBanner from '../components/MergeBanner';
 import MarksBanner from '../components/MarksBanner';
 import CampaignBanner from '../ux/components/CampaignBanner';
+import TestDataDashCard from '../components/TestDataDashCard';
 import { getHomework } from '../services/homeworkService';
 import { getClosedDays } from '../services/calendarOverrideService';
 import { getSyllabus, getCompletedTopics } from '../services/syllabusService';
@@ -273,6 +274,7 @@ export default function StudentDashboard() {
       <MarksBanner />
       <MergeBanner />
       <CampaignBanner campaignId="email-reminder-v1" />
+      <TestDataDashCard />
       <NoticeBar />
 
       {/* Syllabus progress summary */}

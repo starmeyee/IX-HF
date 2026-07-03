@@ -6,10 +6,11 @@ import { resetWhatsNew, resetTestAccount, setTestAccountRole, getUserByPhone } f
 import { getAllUsers, getActivitySummary, purgeTestData } from '../services/adminService';
 import { calcAttendance } from '../data/attendanceUtils';
 import { getClosedDays } from '../services/calendarOverrideService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList } from 'lucide-react';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher, setTeacherMarksAccess, setTeacherSyllabusSubjects } from '../services/teacherService';
+import { getTestData, saveTestData } from '../services/testDataService';
 import { syllabusData } from '../data/syllabusData';
 import { getTables, setTeacherRecordTables } from '../services/recordsService';
 import UXCampaignAdmin from '../ux/admin/UXCampaignAdmin';
@@ -34,6 +35,7 @@ const TABS = [
   { id: 'test',       label: 'Test Account',     Icon: FlaskConical },
   { id: 'data',       label: 'Data Export',      Icon: Download },
   { id: 'records',    label: 'Records',           Icon: ClipboardList },
+  { id: 'testdata',   label: 'Test Data',         Icon: Beaker },
 ];
 
 const ROLE_STYLE = {
@@ -994,7 +996,284 @@ export default function AdminServicesPage() {
             </button>
           </div>
         )}
+        {tab === 'testdata'   && <TestDataTab />}
       </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Test Data Tab
+──────────────────────────────────────────────────────────────*/
+function newSection() {
+  return {
+    id: `sec_${Date.now()}`,
+    name: '',
+    date: '',
+    totalMarks: 0,
+    status: 'predicted',
+    subsections: [{ name: '', chapters: [''] }],
+  };
+}
+
+function TestDataTab() {
+  const [config, setConfig] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [expandedSec, setExpandedSec] = useState(null);
+
+  useEffect(() => {
+    getTestData().then(d => {
+      setConfig(d || {
+        visible: false,
+        testName: '',
+        description: '',
+        dateFrom: '',
+        dateTo: '',
+        period: '',
+        sections: [],
+      });
+    }).catch(console.error).finally(() => setLoading(false));
+  }, []);
+
+  function update(key, val) {
+    setConfig(prev => ({ ...prev, [key]: val }));
+  }
+
+  function updateSection(idx, key, val) {
+    setConfig(prev => {
+      const sections = prev.sections.map((s, i) => i === idx ? { ...s, [key]: val } : s);
+      return { ...prev, sections };
+    });
+  }
+
+  function updateSubsection(sIdx, subIdx, key, val) {
+    setConfig(prev => {
+      const sections = prev.sections.map((s, i) => {
+        if (i !== sIdx) return s;
+        const subsections = s.subsections.map((sub, j) => j === subIdx ? { ...sub, [key]: val } : sub);
+        return { ...s, subsections };
+      });
+      return { ...prev, sections };
+    });
+  }
+
+  function addSubsection(sIdx) {
+    setConfig(prev => {
+      const sections = prev.sections.map((s, i) => {
+        if (i !== sIdx) return s;
+        return { ...s, subsections: [...(s.subsections || []), { name: '', chapters: [''] }] };
+      });
+      return { ...prev, sections };
+    });
+  }
+
+  function removeSubsection(sIdx, subIdx) {
+    setConfig(prev => {
+      const sections = prev.sections.map((s, i) => {
+        if (i !== sIdx) return s;
+        return { ...s, subsections: s.subsections.filter((_, j) => j !== subIdx) };
+      });
+      return { ...prev, sections };
+    });
+  }
+
+  function setChapters(sIdx, subIdx, raw) {
+    const chapters = raw.split('\n').map(c => c.trim()).filter(Boolean);
+    updateSubsection(sIdx, subIdx, 'chapters', chapters);
+  }
+
+  async function handleSave() {
+    setSaving(true);
+    try {
+      await saveTestData(config);
+      alert('Saved successfully!');
+    } catch (err) {
+      console.error(err);
+      alert('Failed to save: ' + err.message);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  if (loading) return <p className="as-muted">Loading…</p>;
+
+  return (
+    <div style={{ maxWidth: 620, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+      {/* Visibility toggle */}
+      <div className="td-admin-card">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 600 }}>Show on Dashboard</h3>
+            <p className="as-muted" style={{ margin: '0.2rem 0 0', fontSize: '0.82rem' }}>
+              When off, the test card is hidden from all students.
+            </p>
+          </div>
+          <button
+            className={`td-toggle-btn ${config.visible ? 'on' : 'off'}`}
+            onClick={() => update('visible', !config.visible)}
+          >
+            {config.visible ? <ToggleRight size={28} /> : <ToggleLeft size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Basic info */}
+      <div className="td-admin-card">
+        <h3 className="td-admin-card-title">Basic Info</h3>
+        <div className="td-admin-field">
+          <label className="td-admin-label">Test Name</label>
+          <input className="td-admin-input" value={config.testName} onChange={e => update('testName', e.target.value)} placeholder="e.g. Unit Test 1" />
+        </div>
+        <div className="td-admin-field">
+          <label className="td-admin-label">Short Description (shown on dashboard card)</label>
+          <textarea className="td-admin-input td-admin-textarea" rows={2} value={config.description} onChange={e => update('description', e.target.value)} placeholder="e.g. First unit test covering all subjects" />
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+          <div className="td-admin-field">
+            <label className="td-admin-label">From Date</label>
+            <input className="td-admin-input" type="date" value={config.dateFrom} onChange={e => update('dateFrom', e.target.value)} />
+          </div>
+          <div className="td-admin-field">
+            <label className="td-admin-label">To Date</label>
+            <input className="td-admin-input" type="date" value={config.dateTo} onChange={e => update('dateTo', e.target.value)} />
+          </div>
+        </div>
+        <div className="td-admin-field">
+          <label className="td-admin-label">Timing / Period</label>
+          <input className="td-admin-input" value={config.period} onChange={e => update('period', e.target.value)} placeholder="e.g. 9:00 AM – 11:00 AM" />
+        </div>
+      </div>
+
+      {/* Sections */}
+      <div className="td-admin-card">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 className="td-admin-card-title" style={{ margin: 0 }}>Sections / Subjects</h3>
+          <button
+            className="auth-btn secondary"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.45rem 0.85rem', fontSize: '0.85rem' }}
+            onClick={() => {
+              const sec = newSection();
+              setConfig(prev => ({ ...prev, sections: [...(prev.sections || []), sec] }));
+              setExpandedSec(sec.id);
+            }}
+          >
+            <Plus size={14} /> Add Section
+          </button>
+        </div>
+
+        {(!config.sections || config.sections.length === 0) && (
+          <p className="as-muted">No sections yet. Click "Add Section" to begin.</p>
+        )}
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          {(config.sections || []).map((sec, sIdx) => (
+            <div key={sec.id} className="td-admin-section-row">
+              {/* Section collapse toggle */}
+              <div
+                className="td-admin-section-header"
+                onClick={() => setExpandedSec(expandedSec === sec.id ? null : sec.id)}
+              >
+                <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+                  {sec.name || <em style={{ color: 'var(--text-muted)' }}>Unnamed section</em>}
+                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>FM {sec.totalMarks || 0}</span>
+                  <button
+                    onClick={e => { e.stopPropagation(); setConfig(prev => ({ ...prev, sections: prev.sections.filter((_, i) => i !== sIdx) })); }}
+                    style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', display: 'flex' }}
+                    title="Delete section"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                  {expandedSec === sec.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </div>
+              </div>
+
+              {expandedSec === sec.id && (
+                <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                    <div className="td-admin-field">
+                      <label className="td-admin-label">Section Name</label>
+                      <input className="td-admin-input" value={sec.name} onChange={e => updateSection(sIdx, 'name', e.target.value)} placeholder="e.g. Science" />
+                    </div>
+                    <div className="td-admin-field">
+                      <label className="td-admin-label">Exam Date</label>
+                      <input className="td-admin-input" type="date" value={sec.date} onChange={e => updateSection(sIdx, 'date', e.target.value)} />
+                    </div>
+                    <div className="td-admin-field">
+                      <label className="td-admin-label">Full Marks (FM)</label>
+                      <input className="td-admin-input" type="number" min="0" value={sec.totalMarks} onChange={e => updateSection(sIdx, 'totalMarks', Number(e.target.value))} />
+                    </div>
+                    <div className="td-admin-field">
+                      <label className="td-admin-label">Syllabus Status</label>
+                      <select className="td-admin-input" value={sec.status} onChange={e => updateSection(sIdx, 'status', e.target.value)}>
+                        <option value="predicted">Predicted</option>
+                        <option value="accurate">Confirmed / Accurate</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Subsections */}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <label className="td-admin-label">Subsections &amp; Chapters</label>
+                      <button
+                        onClick={() => addSubsection(sIdx)}
+                        style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                      >
+                        <Plus size={12} /> Add subsection
+                      </button>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                      {(sec.subsections || []).map((sub, subIdx) => (
+                        <div key={subIdx} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '0.75rem' }}>
+                          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', alignItems: 'center' }}>
+                            <input
+                              className="td-admin-input"
+                              style={{ flex: 1, marginBottom: 0 }}
+                              value={sub.name}
+                              onChange={e => updateSubsection(sIdx, subIdx, 'name', e.target.value)}
+                              placeholder="Subsection name (e.g. Physics) — leave blank for none"
+                            />
+                            {(sec.subsections || []).length > 1 && (
+                              <button
+                                onClick={() => removeSubsection(sIdx, subIdx)}
+                                style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', display: 'flex', flexShrink: 0 }}
+                              >
+                                <X size={14} />
+                              </button>
+                            )}
+                          </div>
+                          <label className="td-admin-label">Chapters (one per line)</label>
+                          <textarea
+                            className="td-admin-input td-admin-textarea"
+                            rows={4}
+                            value={(sub.chapters || []).join('\n')}
+                            onChange={e => setChapters(sIdx, subIdx, e.target.value)}
+                            placeholder={'Chapter 1: Light\nChapter 2: Electricity'}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Save button */}
+      <button
+        className="auth-btn primary"
+        onClick={handleSave}
+        disabled={saving}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.85rem' }}
+      >
+        <Save size={16} /> {saving ? 'Saving…' : 'Save Test Data'}
+      </button>
     </div>
   );
 }
