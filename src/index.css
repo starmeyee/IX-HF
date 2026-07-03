@@ -3701,17 +3701,13 @@ a {
 
 .rec-table-wrap {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   border-top: 1px solid var(--border);
-  position: relative;
 }
 
 .rec-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
   font-size: 0.88rem;
-  min-width: max-content;
 }
 
 .rec-table th {
@@ -3731,44 +3727,13 @@ a {
   padding: 0.45rem 0.75rem;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   vertical-align: middle;
-  white-space: nowrap;
 }
 
 .rec-table tr:last-child td { border-bottom: none; }
 .rec-table tr:hover td { background: var(--surface-hover); }
 
-/* Make Roll and Name sticky on mobile! */
-.rec-table th:nth-child(1),
-.rec-table td:nth-child(1) {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background: var(--surface);
-}
-
-.rec-table th:nth-child(2),
-.rec-table td:nth-child(2) {
-  position: sticky;
-  left: 44px; /* width of Roll column */
-  z-index: 2;
-  background: var(--surface);
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-}
-
-/* Ensure headers stay above the sticky columns */
-.rec-table th:nth-child(1),
-.rec-table th:nth-child(2) {
-  z-index: 3;
-  background: var(--surface-hover);
-}
-
-.rec-table tr:hover td:nth-child(1),
-.rec-table tr:hover td:nth-child(2) {
-  background: var(--surface-hover);
-}
-
-.rec-td-roll { color: var(--text-muted); font-size: 0.8rem; width: 44px; min-width: 44px; max-width: 44px; text-align: center; }
-.rec-td-name { font-weight: 500; white-space: nowrap; min-width: 120px; }
+.rec-td-roll { color: var(--text-muted); font-size: 0.8rem; width: 44px; }
+.rec-td-name { font-weight: 500; white-space: nowrap; }
 
 /* ── Inline edit cells ── */
 .rec-check-cell {

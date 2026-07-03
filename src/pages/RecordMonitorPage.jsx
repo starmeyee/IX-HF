@@ -4,7 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import { rollList } from '../auth/rollList';
 import { getTables, getEntries, setCellValue, updateTable } from '../services/recordsService';
-import { ClipboardList, Lock, ChevronDown, ChevronUp, Pencil, Check, X } from 'lucide-react';
+import { ClipboardList, Lock, ChevronDown, ChevronUp, Pencil, Check, X, Search } from 'lucide-react';
 
 // ── Analytics card: shows column stats derived from entries ──────
 function AnalyticsCard({ table, entries, compact = false }) {
@@ -111,6 +111,7 @@ function TableSection({ table, onRenamed }) {
   const [entries, setEntries] = useState({});   // { rollNo: { values } }
   const [open, setOpen]       = useState(false);
   const [loading, setLoading] = useState(true);
+  const [search,  setSearch]  = useState('');
 
   // Rename state
   const [editing, setEditing]   = useState(false);
@@ -165,8 +166,12 @@ function TableSection({ table, onRenamed }) {
     }
   }
 
+  const filteredList = rollList.filter(s =>
+    !search || s.name.toLowerCase().includes(search.toLowerCase()) || String(s.rollNo).includes(search)
+  );
+
   return (
-    <div className="rec-section-card">
+    <div className="rec-section-card rtp-card">
       <div className="rec-section-header" style={{ cursor: editing ? 'default' : 'pointer' }}>
         <div className="rec-section-title" style={{ flex: 1 }}>
           {editing ? (
@@ -210,7 +215,26 @@ function TableSection({ table, onRenamed }) {
         loading ? <p className="rec-muted" style={{ padding: '1rem' }}>Loading…</p> : (
           <>
             <AnalyticsCard table={table} entries={entries} />
-            <div className="rec-table-wrap">
+            
+            <div className="rtp-search-row">
+              <Search size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
+              <input
+                className="rtp-search-input"
+                placeholder="Filter by name or roll…"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+              {search && (
+                <button
+                  onClick={() => setSearch('')}
+                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '0 0.2rem' }}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+
+            <div className="rtp-table-view rec-table-wrap">
               <table className="rec-table">
                 <thead>
                   <tr>
@@ -231,7 +255,7 @@ function TableSection({ table, onRenamed }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {rollList.map(student => (
+                  {filteredList.map(student => (
                     <tr key={student.rollNo}>
                       <td className="rec-td-roll">{student.rollNo}</td>
                       <td className="rec-td-name">{student.name}</td>
@@ -248,6 +272,49 @@ function TableSection({ table, onRenamed }) {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            <div className="rtp-mobile-view">
+              {editing && (
+                 <div className="rtp-student-card" style={{ background: 'var(--surface-hover)', borderColor: 'var(--primary)', marginBottom: '1rem' }}>
+                    <div className="rtp-student-header">
+                      <span className="rtp-student-name">Edit Columns</span>
+                    </div>
+                    <div className="rtp-fields">
+                      {table.columns.map((c, i) => (
+                        <div key={c.id} className="rtp-field-row">
+                          <span className="rtp-field-label">Column {i + 1}</span>
+                          <input
+                            className="rec-edit-input"
+                            style={{ flex: 1 }}
+                            value={colDrafts[i] ?? ''}
+                            onChange={e => setColD(d => d.map((v, idx) => idx === i ? e.target.value : v))}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                 </div>
+              )}
+              {filteredList.map(student => (
+                <div key={student.rollNo} className="rtp-student-card">
+                  <div className="rtp-student-header">
+                    <span className="rtp-roll-badge">{student.rollNo}</span>
+                    <span className="rtp-student-name">{student.name}</span>
+                  </div>
+                  <div className="rtp-fields">
+                    {table.columns.map(col => (
+                      <div key={col.id} className="rtp-field-row">
+                        <span className="rtp-field-label">{col.label}</span>
+                        <EditCell
+                          type={col.type}
+                          value={entries[student.rollNo]?.[col.id]}
+                          onChange={val => handleChange(student.rollNo, col.id, val)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         )
