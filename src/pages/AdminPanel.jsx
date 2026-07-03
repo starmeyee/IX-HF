@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import FormatToolbar from '../components/FormatToolbar';
@@ -29,51 +29,21 @@ function isAdminUser(user) {
 
 // ── Notices section ────────────────────────────────────────────
 function NoticesManager({ currentUser }) {
-  const [notices, setNotices] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [body, setBody] = useState('');
-  const [editingId, setEditingId] = useState(null);
   const [busy, setBusy] = useState(false);
-  const [reloadKey, setReloadKey] = useState(0);
   const textareaRef = useRef(null);
-
-  // Fetch notices on mount and whenever a reload is requested. State is
-  // only set inside async callbacks, never synchronously in the effect.
-  useEffect(() => {
-    let active = true;
-    getNotices()
-      .then((data) => { if (active) setNotices(data); })
-      .catch(console.error)
-      .finally(() => { if (active) setLoading(false); });
-    return () => { active = false; };
-  }, [reloadKey]);
-
-  // Trigger a reload from event handlers (setState here is allowed).
-  const refresh = useCallback(() => {
-    setLoading(true);
-    setReloadKey((k) => k + 1);
-  }, []);
-
-  const [visibleCount, setVisibleCount] = useState(5);
-  const visibleNotices = notices.slice(0, visibleCount);
-
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!body.trim()) return;
     setBusy(true);
     try {
-      if (editingId) {
-        await updateNotice(editingId, { body });
-      } else {
-        await addNotice({ body, authorName: currentUser.name, authorPhone: currentUser.phone });
-        // Fire-and-forget push to the class (admin only; safe no-op otherwise).
-        const preview = stripFormatting(body, 120);
-        notifyClassSafe(currentUser, { title: '📢 New Notice', body: preview, url: '/', type: 'notice' });
-      }
+      await addNotice({ body, authorName: currentUser.name, authorPhone: currentUser.phone });
+      // Fire-and-forget push to the class (admin only; safe no-op otherwise).
+      const preview = stripFormatting(body, 120);
+      notifyClassSafe(currentUser, { title: '📢 New Notice', body: preview, url: '/', type: 'notice' });
       setBody('');
-      setEditingId(null);
-      refresh();
+      alert('Notice posted successfully!');
     } catch (err) {
       console.error(err);
       alert('Failed to save notice: ' + err.message);
@@ -82,32 +52,10 @@ function NoticesManager({ currentUser }) {
     }
   }
 
-  function startEdit(notice) {
-    setEditingId(notice.id);
-    setBody(notice.body);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function cancelEdit() {
-    setEditingId(null);
-    setBody('');
-  }
-
-  async function handleDelete(id) {
-    if (!window.confirm('Delete this notice for everyone? This cannot be undone.')) return;
-    try {
-      await deleteNotice(id);
-      refresh();
-    } catch (err) {
-      console.error(err);
-      alert('Failed to delete: ' + err.message);
-    }
-  }
-
   return (
     <div className="glass-card" style={{ marginBottom: '2rem' }}>
       <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem', color: 'var(--text-primary)' }}>
-        <Megaphone size={20} /> {editingId ? 'Edit Notice' : 'Post a Notice'}
+        <Megaphone size={20} /> Post a Notice
       </h2>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -132,54 +80,15 @@ function NoticesManager({ currentUser }) {
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button type="submit" disabled={busy} className="auth-btn primary" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', flex: 1 }}>
-            <Save size={16} /> {busy ? 'Saving…' : editingId ? 'Update Notice' : 'Post Notice'}
-          </button>
-          {editingId && (
-            <button type="button" onClick={cancelEdit} className="auth-btn secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <X size={16} /> Cancel
-            </button>
-          )}
-        </div>
+        <button type="submit" disabled={busy} className="auth-btn primary" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', width: '100%' }}>
+          <Save size={16} /> {busy ? 'Posting…' : 'Post Notice'}
+        </button>
       </form>
 
-      {/* Existing notices */}
-      <div style={{ marginTop: '2rem' }}>
-        <h3 style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-          All Notices {notices.length > 0 && `(${notices.length})`}
-        </h3>
-        {loading ? (
-          <p style={{ color: 'var(--text-muted)' }}>Loading…</p>
-        ) : notices.length === 0 ? (
-          <p style={{ color: 'var(--text-muted)' }}>No notices posted yet.</p>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {visibleNotices.map((n) => (
-              <div key={n.id} className="notice-item">
-                <NoticeText>{n.body}</NoticeText>
-                <div className="notice-item-meta">
-                  <span>— {n.authorName}</span>
-                  <span style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button onClick={() => startEdit(n)} title="Edit" style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex' }}><Pencil size={15} /></button>
-                    <button onClick={() => handleDelete(n.id)} title="Delete" style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', display: 'flex' }}><Trash2 size={15} /></button>
-                  </span>
-                </div>
-                <CopyWhatsAppButton body={n.body} shareLink={`${window.location.origin}/api/notice-share?id=${n.id}`} style={{ marginTop: '0.5rem' }} />
-              </div>
-            ))}
-            
-            {notices.length > visibleCount && (
-              <button 
-                onClick={() => setVisibleCount(c => c + 5)}
-                className="auth-btn secondary"
-                style={{ marginTop: '0.5rem', width: '100%', padding: '0.75rem' }}
-              >
-                Load more notices
-              </button>
-            )}
-          </div>
-        )}
+      <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border)' }}>
+        <Link to="/manage-notices" className="auth-btn secondary" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}>
+          <Megaphone size={16} /> View all posted notices
+        </Link>
       </div>
     </div>
   );

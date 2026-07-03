@@ -24,6 +24,7 @@ import NotificationsPage from './pages/NotificationsPage';
 import MathsDashboard from './pages/MathsDashboard';
 import NotesPage from './pages/NotesPage';
 import NoticesPage from './pages/NoticesPage';
+import ManageNoticesPage from './pages/ManageNoticesPage';
 import TeacherToolsPage from './pages/TeacherToolsPage';
 import RecordPage from './pages/RecordPage';
 import RecordMonitorPage from './pages/RecordMonitorPage';
@@ -110,6 +111,7 @@ function AppInner() {
             <Route path="/maths" element={<MathsDashboard />} />
             <Route path="/notes" element={<NotesPage />} />
             <Route path="/notices" element={<NoticesPage />} />
+            <Route path="/manage-notices" element={<ManageNoticesPage />} />
             <Route path="/teacher-tools" element={<TeacherToolsPage />} />
             <Route path="/records" element={<RecordPage />} />
             <Route path="/records-monitor" element={<RecordMonitorPage />} />
