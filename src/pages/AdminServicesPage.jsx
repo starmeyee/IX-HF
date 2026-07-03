@@ -1021,10 +1021,13 @@ function TestDataTab() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [expandedSec, setExpandedSec] = useState(null);
+  // rawChapters: { 'sIdx_subIdx': string } — keeps the live textarea text
+  // so Enter/space aren't eaten by array conversion on every keystroke.
+  const [rawChapters, setRawChapters] = useState({});
 
   useEffect(() => {
     getTestData().then(d => {
-      setConfig(d || {
+      const initial = d || {
         visible: false,
         testName: '',
         description: '',
@@ -1032,7 +1035,16 @@ function TestDataTab() {
         dateTo: '',
         period: '',
         sections: [],
+      };
+      setConfig(initial);
+      // Pre-populate rawChapters from loaded data
+      const raw = {};
+      (initial.sections || []).forEach((sec, sIdx) => {
+        (sec.subsections || []).forEach((sub, subIdx) => {
+          raw[`${sIdx}_${subIdx}`] = (sub.chapters || []).join('\n');
+        });
       });
+      setRawChapters(raw);
     }).catch(console.error).finally(() => setLoading(false));
   }, []);
 
@@ -1079,14 +1091,30 @@ function TestDataTab() {
   }
 
   function setChapters(sIdx, subIdx, raw) {
-    const chapters = raw.split('\n').map(c => c.trim()).filter(Boolean);
-    updateSubsection(sIdx, subIdx, 'chapters', chapters);
+    // Just store the raw text — don't parse yet (preserves Enter/spaces while typing)
+    setRawChapters(prev => ({ ...prev, [`${sIdx}_${subIdx}`]: raw }));
   }
 
   async function handleSave() {
     setSaving(true);
     try {
-      await saveTestData(config);
+      // Before saving, flush all raw textarea text into config chapters arrays
+      const finalConfig = {
+        ...config,
+        sections: (config.sections || []).map((sec, sIdx) => ({
+          ...sec,
+          subsections: (sec.subsections || []).map((sub, subIdx) => {
+            const key = `${sIdx}_${subIdx}`;
+            const raw = rawChapters[key];
+            return raw !== undefined
+              ? { ...sub, chapters: raw.split('\n').map(c => c.trim()).filter(Boolean) }
+              : sub;
+          }),
+        })),
+      };
+      await saveTestData(finalConfig);
+      // Sync config state to match what was saved
+      setConfig(finalConfig);
       alert('Saved successfully!');
     } catch (err) {
       console.error(err);
@@ -1249,10 +1277,10 @@ function TestDataTab() {
                           <label className="td-admin-label">Chapters (one per line)</label>
                           <textarea
                             className="td-admin-input td-admin-textarea"
-                            rows={4}
-                            value={(sub.chapters || []).join('\n')}
+                            rows={5}
+                            value={rawChapters[`${sIdx}_${subIdx}`] ?? (sub.chapters || []).join('\n')}
                             onChange={e => setChapters(sIdx, subIdx, e.target.value)}
-                            placeholder={'Chapter 1: Light\nChapter 2: Electricity'}
+                            placeholder={'Chapter 1: Light\nChapter 2: Electricity\nChapter 3: Magnetic Effects'}
                           />
                         </div>
                       ))}
