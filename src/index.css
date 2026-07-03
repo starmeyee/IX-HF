@@ -5493,4 +5493,21 @@ a {
   .td-fm-strip-item { min-width: 80px; }
 }
 
-
+/* ─── Push Notice Animations ─────────────────────────────────── */
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.slide-up {
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.slide-down {
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}

@@ -6,13 +6,14 @@ import { resetWhatsNew, resetTestAccount, setTestAccountRole, getUserByPhone } f
 import { getAllUsers, getActivitySummary, purgeTestData } from '../services/adminService';
 import { calcAttendance } from '../data/attendanceUtils';
 import { getClosedDays } from '../services/calendarOverrideService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp, Megaphone, Send } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher, setTeacherMarksAccess, setTeacherSyllabusSubjects } from '../services/teacherService';
 import { getTestData, saveTestData } from '../services/testDataService';
 import { syllabusData } from '../data/syllabusData';
 import { getTables, setTeacherRecordTables } from '../services/recordsService';
+import { getInAppNotices, addInAppNotice, deleteInAppNotice } from '../services/inAppNoticeService';
 import UXCampaignAdmin from '../ux/admin/UXCampaignAdmin';
 
 // Flat list of all subjects across all sections for the syllabus toggle UI
@@ -36,6 +37,7 @@ const TABS = [
   { id: 'data',       label: 'Data Export',      Icon: Download },
   { id: 'records',    label: 'Records',           Icon: ClipboardList },
   { id: 'testdata',   label: 'Test Data',         Icon: Beaker },
+  { id: 'push',       label: 'Push Notices',      Icon: Megaphone },
 ];
 
 const ROLE_STYLE = {
@@ -56,6 +58,122 @@ function relativeTime(ms) {
   const day = Math.floor(hr / 24);
   if (day < 7) return `${day}d ago`;
   return new Date(ms).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' });
+}
+
+// ── Push Notices Tab ──────────────────────────────────────────
+function PushNoticesTab() {
+  const [notices, setNotices] = useState(null);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [isMandatory, setIsMandatory] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    loadNotices();
+  }, []);
+
+  function loadNotices() {
+    getInAppNotices().then(setNotices).catch(() => setNotices([]));
+  }
+
+  async function handleAdd(e) {
+    e.preventDefault();
+    if (!title.trim() || !body.trim()) return;
+    setBusy(true);
+    try {
+      await addInAppNotice({ title: title.trim(), body: body.trim(), isMandatory });
+      setTitle('');
+      setBody('');
+      setIsMandatory(false);
+      loadNotices();
+    } catch (err) {
+      alert('Failed to add notice: ' + err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleDelete(id) {
+    if (!window.confirm('Delete this push notice? It will no longer show for users who haven\\'t seen it.')) return;
+    try {
+      await deleteInAppNotice(id);
+      loadNotices();
+    } catch (err) {
+      alert('Failed to delete: ' + err.message);
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div className="as-card">
+        <h4 className="as-section-title"><Send size={15} /> Create Push Notice</h4>
+        <p className="as-muted" style={{ marginBottom: '1.25rem' }}>
+          This will pop up on the user's screen 5 seconds after they log in. If they have multiple unseen notices, they will appear one by one.
+        </p>
+        <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <input
+            type="text"
+            className="as-input"
+            placeholder="Notice Title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            required
+            maxLength={60}
+          />
+          <textarea
+            className="as-input"
+            placeholder="Notice Body"
+            value={body}
+            onChange={e => setBody(e.target.value)}
+            required
+            rows={3}
+            style={{ resize: 'vertical' }}
+          />
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.9rem', color: 'var(--text-primary)' }}>
+            <input 
+              type="checkbox" 
+              checked={isMandatory} 
+              onChange={e => setIsMandatory(e.target.checked)} 
+              style={{ width: 16, height: 16, accentColor: 'var(--primary)' }}
+            />
+            Mandatory (Users must click "I Understand" to dismiss)
+          </label>
+          <button type="submit" className="auth-btn primary" disabled={busy} style={{ alignSelf: 'flex-start', padding: '0.6rem 1.2rem', marginTop: '0.5rem' }}>
+            {busy ? 'Adding...' : 'Add Push Notice'}
+          </button>
+        </form>
+      </div>
+
+      <div className="as-card">
+        <h4 className="as-section-title"><Megaphone size={15} /> Active Push Notices</h4>
+        {notices === null ? (
+          <p className="as-muted">Loading...</p>
+        ) : notices.length === 0 ? (
+          <p className="as-muted">No active push notices.</p>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {notices.map(n => (
+              <div key={n.id} style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '1rem', background: 'var(--bg-card)', position: 'relative' }}>
+                <button 
+                  onClick={() => handleDelete(n.id)}
+                  style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: 'none', width: 28, height: 28, borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                  title="Delete Notice"
+                >
+                  <Trash2 size={14} />
+                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <h5 style={{ margin: 0, fontSize: '1.05rem', color: 'var(--text-primary)', paddingRight: '2rem' }}>{n.title}</h5>
+                  {n.isMandatory && <span style={{ fontSize: '0.7rem', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '0.1rem 0.4rem', borderRadius: 4, fontWeight: 600, textTransform: 'uppercase' }}>Mandatory</span>}
+                </div>
+                <p style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>{n.body}</p>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Created: {new Date(n.createdAt).toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 // ── Users Tab ─────────────────────────────────────────────────
@@ -997,6 +1115,7 @@ export default function AdminServicesPage() {
           </div>
         )}
         {tab === 'testdata'   && <TestDataTab />}
+        {tab === 'push'       && <PushNoticesTab />}
       </div>
     </div>
   );

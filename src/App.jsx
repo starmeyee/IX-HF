@@ -9,6 +9,7 @@ import NotificationPrompt from './components/NotificationPrompt';
 import ForegroundToast from './components/ForegroundToast';
 import { AuthProvider, useAuth } from './auth/AuthContext';
 import { UXProvider } from './ux/UXProvider';
+import InAppPushManager from './components/InAppPushManager';
 import UXRenderer from './ux/components/UXRenderer';
 import StudentDashboard from './pages/StudentDashboard';
 import Homework from './pages/Homework';
@@ -95,6 +96,7 @@ function AppInner() {
       <RedirectCapture />
       <div className="app-container">
         <Navbar />
+        <InAppPushManager />
         <main className="main-content">
           <NotificationPrompt />
           <Routes>
