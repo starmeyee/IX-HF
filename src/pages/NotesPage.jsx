@@ -323,6 +323,7 @@ export default function NotesPage() {
   const [purchasedChapters,  setPurchasedChapters]  = useState(new Set());
   const [purchasedNotes,     setPurchasedNotes]     = useState(null); // null = not loaded yet
   const [myNotes,            setMyNotes]            = useState(null);
+  const [availableChapters,  setAvailableChapters]  = useState(new Set());
 
   // UI
   const [logTab,      setLogTab]      = useState('browse');
@@ -335,7 +336,14 @@ export default function NotesPage() {
   useEffect(() => {
     if (!currentUser || !isStudent) return;
     const key = `ux_notes-tour-v1_${currentUser.phone}`;
-    if (!localStorage.getItem(key)) setTourRun(true);
+    if (!localStorage.getItem(key)) {
+      if (window.confirm("Would you like a quick tour of the Notes page?")) {
+        setTourRun(true);
+      } else {
+        localStorage.setItem(key, 'true');
+        markCampaignSeen('notes-tour-v1', currentUser.phone, 'local').catch(() => {});
+      }
+    }
   }, [currentUser]);
 
   // Deep-link: ?noteId=<id> → auto drill-down to that chapter
@@ -361,6 +369,10 @@ export default function NotesPage() {
     getSparks(currentUser.phone).then(setSparks).catch(() => {});
     getPurchasedChapters(currentUser.phone)
       .then(ids => setPurchasedChapters(new Set(ids)))
+      .catch(() => {});
+      
+    getPublishedNotes()
+      .then(notes => setAvailableChapters(new Set(notes.map(n => n.chapterId))))
       .catch(() => {});
   }, [currentUser]);
 
@@ -594,7 +606,10 @@ export default function NotesPage() {
             <div className="notes-list">
               {subject.chapters.map(ch => (
                 <button key={ch.chapterId} className="notes-row" onClick={() => goChapter(ch)}>
-                  <span className="notes-row-name">{ch.chapterName}</span>
+                  <span className="notes-row-name">
+                    {ch.chapterName}
+                    {availableChapters.has(ch.chapterId) && <span style={{display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10b981', marginLeft: '6px', verticalAlign: 'middle'}} title="Notes available"></span>}
+                  </span>
                   {purchasedChapters.has(ch.chapterId)
                     ? <span style={{ fontSize: '0.75rem', color: '#10b981' }}>✓ Unlocked</span>
                     : <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>-{SPARK_VIEW_COST}✦</span>}
@@ -642,7 +657,10 @@ export default function NotesPage() {
             <div className="notes-list">
               {holidayData.map(task => (
                 <button key={task.id} className="notes-row" onClick={() => { setChapter({ chapterId: `hh-${task.id}`, chapterName: task.subject }); setView('hh-notes'); }}>
-                  <span className="notes-row-name">{task.subject}</span>
+                  <span className="notes-row-name">
+                    {task.subject}
+                    {availableChapters.has(`hh-${task.id}`) && <span style={{display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10b981', marginLeft: '6px', verticalAlign: 'middle'}} title="Answers available"></span>}
+                  </span>
                   <span className="notes-row-meta" style={{ fontSize: '0.75rem', color: 'var(--text-muted)', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {task.message}
                   </span>
