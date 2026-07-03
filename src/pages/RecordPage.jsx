@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { getTables, getMyEntries, addRecordRequest } from '../services/recordsService';
-import { ClipboardList, AlertCircle, X, Send } from 'lucide-react';
+import { ClipboardList, AlertCircle, X, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 function ValueDisplay({ type, value }) {
   if (value === undefined || value === null || value === '') return <span className="rec-muted">—</span>;
@@ -10,17 +10,157 @@ function ValueDisplay({ type, value }) {
   return <span>{String(value)}</span>;
 }
 
-export default function RecordPage() {
-  const { currentUser, loading } = useAuth();
-  const navigate = useNavigate();
-  const [tables, setTables]   = useState(null);
-  const [entries, setEntries] = useState({});  // { tableId: { values } }
-
-  const [showModal, setShowModal] = useState(false);
+function ComplaintModal({ tables, currentUser, onClose, onSuccess }) {
   const [selectedTable, setSelectedTable] = useState('');
   const [selectedCol, setSelectedCol] = useState('');
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const activeTable = tables?.find(t => t.id === selectedTable);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!selectedTable || !selectedCol || !message.trim()) return;
+    setSubmitting(true);
+    try {
+      const col = activeTable.columns.find(c => c.id === selectedCol);
+      await addRecordRequest({
+        tableId: activeTable.id,
+        tableName: activeTable.title,
+        colId: col.id,
+        colName: col.label,
+        rollNo: currentUser.rollNo,
+        studentName: currentUser.name,
+        message: message.trim()
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        onClose();
+        onSuccess?.();
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+      alert('Failed to submit request. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <div className="complaint-overlay" onClick={onClose}>
+      <div className="complaint-modal" onClick={e => e.stopPropagation()}>
+
+        {/* Glow accent */}
+        <div className="complaint-glow" />
+
+        {/* Header */}
+        <div className="complaint-modal-header">
+          <div className="complaint-modal-icon">
+            <AlertCircle size={22} />
+          </div>
+          <div>
+            <h2 className="complaint-modal-title">Request Record Change</h2>
+            <p className="complaint-modal-subtitle">Tell the monitor what needs to be corrected</p>
+          </div>
+          <button className="complaint-close-btn" onClick={onClose} aria-label="Close">
+            <X size={18} />
+          </button>
+        </div>
+
+        {submitted ? (
+          <div className="complaint-success">
+            <div className="complaint-success-icon">
+              <CheckCircle2 size={48} strokeWidth={1.5} />
+            </div>
+            <h3>Request Submitted!</h3>
+            <p>The monitor will review your complaint and update your record.</p>
+          </div>
+        ) : (
+          <form className="complaint-form" onSubmit={handleSubmit}>
+            {/* Table select */}
+            <div className="complaint-field">
+              <label className="complaint-label">Which table?</label>
+              <div className="complaint-select-wrap">
+                <select
+                  className="complaint-select"
+                  value={selectedTable}
+                  onChange={e => { setSelectedTable(e.target.value); setSelectedCol(''); }}
+                  required
+                >
+                  <option value="">Select a table…</option>
+                  {tables?.map(t => (
+                    <option key={t.id} value={t.id}>{t.title}</option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="complaint-select-icon" />
+              </div>
+            </div>
+
+            {/* Column select — revealed after table chosen */}
+            <div className={`complaint-field complaint-field-animated ${selectedTable ? 'visible' : ''}`}>
+              <label className="complaint-label">Which column?</label>
+              <div className="complaint-select-wrap">
+                <select
+                  className="complaint-select"
+                  value={selectedCol}
+                  onChange={e => setSelectedCol(e.target.value)}
+                  required={!!selectedTable}
+                  disabled={!selectedTable}
+                >
+                  <option value="">Select a column…</option>
+                  {activeTable?.columns.map(c => (
+                    <option key={c.id} value={c.id}>{c.label}</option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="complaint-select-icon" />
+              </div>
+            </div>
+
+            {/* Message */}
+            <div className="complaint-field">
+              <label className="complaint-label">Describe the issue</label>
+              <textarea
+                className="complaint-textarea"
+                placeholder="e.g. I submitted my holiday homework but it's still showing ✗ No…"
+                rows={4}
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className={`complaint-submit-btn ${submitting ? 'loading' : ''}`}
+              disabled={submitting || !selectedTable || !selectedCol || !message.trim()}
+            >
+              {submitting ? (
+                <>
+                  <span className="complaint-spinner" />
+                  Submitting…
+                </>
+              ) : (
+                <>
+                  <Send size={16} />
+                  Submit Request
+                </>
+              )}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function RecordPage() {
+  const { currentUser, loading } = useAuth();
+  const navigate = useNavigate();
+  const [tables, setTables]   = useState(null);
+  const [entries, setEntries] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (!loading && !currentUser) navigate('/');
@@ -43,13 +183,14 @@ export default function RecordPage() {
 
   return (
     <div className="rec-page">
-      <div className="rec-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="rec-page-header rec-page-header--split">
         <div className="rec-page-title">
           <ClipboardList size={26} />
           <h1>My Records</h1>
         </div>
-        <button className="auth-btn secondary" onClick={() => setShowModal(true)} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-          <AlertCircle size={16} /> File complaint
+        <button className="complaint-trigger-btn" onClick={() => setShowModal(true)}>
+          <AlertCircle size={15} />
+          File Complaint
         </button>
       </div>
       <p className="rec-page-sub">Your class records, filled by monitors.</p>
@@ -92,100 +233,12 @@ export default function RecordPage() {
         </div>
       )}
 
-      {/* Complaint Modal */}
       {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
-              <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <AlertCircle size={20} /> Request Record Change
-              </h2>
-              <button className="icon-btn" onClick={() => setShowModal(false)}><X size={20} /></button>
-            </div>
-            
-            <form onSubmit={async (e) => {
-              e.preventDefault();
-              if (!selectedTable || !selectedCol || !message.trim()) return;
-              setSubmitting(true);
-              try {
-                const tbl = tables.find(t => t.id === selectedTable);
-                const col = tbl.columns.find(c => c.id === selectedCol);
-                
-                await addRecordRequest({
-                  tableId: tbl.id,
-                  tableName: tbl.title,
-                  colId: col.id,
-                  colName: col.label,
-                  rollNo: currentUser.rollNo,
-                  studentName: currentUser.name,
-                  message: message.trim()
-                });
-                
-                alert('Request submitted! Monitor will review it.');
-                setShowModal(false);
-                setSelectedTable('');
-                setSelectedCol('');
-                setMessage('');
-              } catch (err) {
-                console.error(err);
-                alert('Failed to submit request.');
-              } finally {
-                setSubmitting(false);
-              }
-            }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
-                <div>
-                  <label className="auth-label">Select Table</label>
-                  <select 
-                    className="auth-input" 
-                    value={selectedTable} 
-                    onChange={e => { setSelectedTable(e.target.value); setSelectedCol(''); }}
-                    required
-                  >
-                    <option value="">-- Choose Table --</option>
-                    {tables?.map(t => (
-                      <option key={t.id} value={t.id}>{t.title}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {selectedTable && (
-                  <div>
-                    <label className="auth-label">Select Column</label>
-                    <select 
-                      className="auth-input" 
-                      value={selectedCol} 
-                      onChange={e => setSelectedCol(e.target.value)}
-                      required
-                    >
-                      <option value="">-- Choose Column --</option>
-                      {tables.find(t => t.id === selectedTable)?.columns.map(c => (
-                        <option key={c.id} value={c.id}>{c.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                <div>
-                  <label className="auth-label">Message</label>
-                  <textarea
-                    className="auth-input"
-                    placeholder="e.g. I have completed my holiday homework but it shows ✗ No."
-                    rows={4}
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    required
-                    style={{ resize: 'vertical' }}
-                  />
-                </div>
-
-                <button type="submit" disabled={submitting} className="auth-btn primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                  <Send size={16} /> {submitting ? 'Submitting...' : 'Submit Request'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <ComplaintModal
+          tables={tables}
+          currentUser={currentUser}
+          onClose={() => setShowModal(false)}
+        />
       )}
     </div>
   );
