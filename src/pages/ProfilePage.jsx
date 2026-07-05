@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { Camera, ShieldAlert, ShieldCheck, User as UserIcon, Users, Mail, CheckCircle, Clock, FlaskConical } from 'lucide-react';
 import { ROLES, TEST_PHONE } from '../auth/roles';
-import { saveEmail, setTestAccountRole, resetTestAccount } from '../auth/authService';
+import { saveEmail, setTestAccountRole, resetTestAccount, clearEmail } from '../auth/authService';
 import { sendEmailLink } from '../firebase';
 import { useToast } from '../ux/hooks/useToast';
 import packageJson from '../../package.json';
@@ -115,6 +115,21 @@ export default function ProfilePage() {
     }
   }
 
+  async function handleChangeEmail() {
+    if (!window.confirm('Remove this email so you can enter a different one?')) return;
+    setEmailBusy(true); setEmailMsg('');
+    try {
+      await clearEmail(currentUser.phone);
+      await refreshUser(currentUser.phone);
+      setEmailInput('');
+      setShowEmailForm(true);
+    } catch (err) {
+      setEmailMsg('Failed: ' + err.message);
+    } finally {
+      setEmailBusy(false);
+    }
+  }
+
   if (!currentUser) return null;
 
   const maskedPhone = isTeacher
@@ -208,6 +223,11 @@ export default function ProfilePage() {
                 <button type="button" className="profile-email-resend"
                   onClick={handleResendVerification} disabled={emailBusy}>
                   {emailBusy ? 'Sending…' : 'Resend verification link'}
+                </button>
+                <button type="button" className="profile-email-resend"
+                  onClick={handleChangeEmail} disabled={emailBusy}
+                  style={{ marginTop: '0.4rem', color: 'var(--text-muted)', borderColor: 'rgba(113,113,122,0.35)' }}>
+                  ✏️ Wrong email? Change it
                 </button>
                 {emailMsg && <p className="profile-email-msg">{emailMsg}</p>}
               </>

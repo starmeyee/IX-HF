@@ -174,6 +174,11 @@ export async function saveEmail(phone, email) {
   await updateDoc(userRef(phone), { email: email.toLowerCase(), emailVerified: false });
 }
 
+export async function clearEmail(phone) {
+  await updateDoc(userRef(phone), { email: null, emailVerified: false });
+}
+
+
 export async function markEmailVerified(phone) {
   await updateDoc(userRef(phone), { emailVerified: true });
 }
