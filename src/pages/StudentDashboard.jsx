@@ -10,6 +10,7 @@ import SyllabusProgressBar from '../components/SyllabusProgressBar';
 import { getAttendance, setAttendance, getHolidayHomework, getHomeworkDone, setHomeworkDone, getCheckedTopics } from '../auth/authService';
 import MergeBanner from '../components/MergeBanner';
 import MarksBanner from '../components/MarksBanner';
+import ProfileCompletionBanner from '../components/ProfileCompletionBanner';
 import CampaignBanner from '../ux/components/CampaignBanner';
 import TestDataDashCard from '../components/TestDataDashCard';
 import { getHomework } from '../services/homeworkService';
@@ -269,6 +270,9 @@ export default function StudentDashboard() {
           </span>
         </div>
       </div>
+
+      {/* Profile completion banner — hides permanently at 100% */}
+      <ProfileCompletionBanner />
 
       {/* Notices */}
       <MarksBanner />

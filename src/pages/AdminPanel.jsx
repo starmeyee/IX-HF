@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList } from 'lucide-react';
+import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList, Users, Mail, Bell, RefreshCw } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import FormatToolbar from '../components/FormatToolbar';
 import NoticeText from '../components/NoticeText';
@@ -18,6 +18,9 @@ import { notifyClass, notifyClassSafe } from '../services/notify';
 import { statsForTopics, chapterTopics } from '../data/syllabusStats';
 import { isWorkingDay, fromDateKey } from '../data/attendanceUtils';
 import { ROLES, TEST_PHONE } from '../auth/roles';
+import { getAllUsers } from '../services/adminService';
+import { getDocs, collection } from 'firebase/firestore';
+import { db } from '../firebase';
 
 function canAccess(user) {
   return user && (user.isAdmin || user.role === ROLES.MONITOR || user.role === ROLES.ADMIN);
@@ -796,6 +799,130 @@ function BroadcastManager({ currentUser }) {
 }
 
 
+// ── Profile Completion Tracker ─────────────────────────────────
+function ProfileCompletionTracker() {
+  const [users, setUsers] = useState(null);
+  const [tokens, setTokens] = useState(new Set()); // phones with FCM tokens
+  const [loading, setLoading] = useState(true);
+
+  async function load() {
+    setLoading(true);
+    try {
+      const [allUsers, tokenSnap] = await Promise.all([
+        getAllUsers(),
+        getDocs(collection(db, 'fcmTokens')),
+      ]);
+      // Build set of phones that have at least one FCM token
+      const phoneSet = new Set(tokenSnap.docs.map(d => d.data().phone).filter(Boolean));
+      setTokens(phoneSet);
+      // Filter out teachers, merged accounts, outsiders
+      const students = allUsers
+        .filter(u => !u.mergedInto && u.rollNo !== undefined && u.rollNo !== 0)
+        .sort((a, b) => (a.rollNo || 999) - (b.rollNo || 999));
+      setUsers(students);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { load(); }, []);
+
+  function getCompletion(user) {
+    // Photo: can't check (localStorage only) — show as N/A
+    const hasEmail = !!(user.email && user.emailVerified);
+    const hasNotif = tokens.has(user.phone);
+    // Install: can't track server-side
+    const steps = [hasEmail, hasNotif];
+    const done = steps.filter(Boolean).length;
+    return { hasEmail, hasNotif, done, total: steps.length, pct: Math.round((done / steps.length) * 100) };
+  }
+
+  const sorted = users ? [...users].sort((a, b) => {
+    const ca = getCompletion(a); const cb = getCompletion(b);
+    return cb.pct - ca.pct;
+  }) : [];
+
+  return (
+    <div className="glass-card" style={{ marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
+        <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', margin: 0, color: 'var(--text-primary)' }}>
+          <Users size={18} /> Profile Completion Tracker
+        </h2>
+        <button
+          onClick={load}
+          style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '0.3rem 0.6rem', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.8rem' }}
+        >
+          <RefreshCw size={13} /> Refresh
+        </button>
+      </div>
+
+      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+        Tracks verifiable server-side steps only: recovery email verified + notifications enabled. Photo and install can't be tracked (browser-local).
+      </p>
+
+      {loading ? (
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Loading…</p>
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          {/* Legend */}
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <Mail size={12} /> Email verified
+            </span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <Bell size={12} /> Notifications enabled
+            </span>
+          </div>
+
+          {sorted.map(user => {
+            const { hasEmail, hasNotif, pct } = getCompletion(user);
+            const color = pct === 100 ? '#10b981' : pct >= 50 ? '#f59e0b' : '#ef4444';
+            return (
+              <div key={user.phone} style={{
+                display: 'flex', alignItems: 'center', gap: '0.75rem',
+                padding: '0.55rem 0.75rem',
+                background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)',
+                border: '1px solid var(--border)',
+              }}>
+                {/* Roll + Name */}
+                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', minWidth: 24, textAlign: 'right' }}>{user.rollNo}</span>
+                <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {user.name}
+                </span>
+
+                {/* Status dots */}
+                <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                  <span title={hasEmail ? 'Email verified' : 'No email'} style={{ fontSize: '0.75rem' }}>
+                    {hasEmail ? '✅' : '❌'}
+                  </span>
+                  <span title={hasNotif ? 'Notifications on' : 'Notifications off'} style={{ fontSize: '0.75rem' }}>
+                    {hasNotif ? '🔔' : '🔕'}
+                  </span>
+                </div>
+
+                {/* % badge */}
+                <span style={{
+                  fontSize: '0.75rem', fontWeight: 700, color, minWidth: 36, textAlign: 'right',
+                }}>
+                  {pct}%
+                </span>
+
+                {/* Mini progress bar */}
+                <div style={{ width: 48, height: 4, background: 'rgba(255,255,255,0.08)', borderRadius: 99, overflow: 'hidden', flexShrink: 0 }}>
+                  <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 99, transition: 'width 0.4s' }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 export default function AdminPanel() {
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
@@ -822,6 +949,7 @@ export default function AdminPanel() {
       <ClassworkManager currentUser={currentUser} />
       <SyllabusManager currentUser={currentUser} />
       {isAdminUser(currentUser) && <CalendarOverrideManager />}
+      {isAdminUser(currentUser) && <ProfileCompletionTracker />}
 
       {/* Records shortcut */}
       <div className="glass-card" style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', padding: '1rem 1.25rem' }}>

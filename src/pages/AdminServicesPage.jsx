@@ -94,7 +94,7 @@ function PushNoticesTab() {
   }
 
   async function handleDelete(id) {
-    if (!window.confirm('Delete this push notice? It will no longer show for users who haven\\'t seen it.')) return;
+    if (!window.confirm("Delete this push notice? It will no longer show for users who haven't seen it.")) return;
     try {
       await deleteInAppNotice(id);
       loadNotices();
