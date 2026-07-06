@@ -9,6 +9,7 @@ import NoticeBar from '../components/NoticeBar';
 import SyllabusProgressBar from '../components/SyllabusProgressBar';
 import { getAttendance, setAttendance, getHolidayHomework, getHomeworkDone, setHomeworkDone, getCheckedTopics } from '../auth/authService';
 import MergeBanner from '../components/MergeBanner';
+import AIDashboardSection from '../ai/AIDashboardSection';
 import MarksBanner from '../components/MarksBanner';
 import ProfileCompletionBanner from '../components/ProfileCompletionBanner';
 import CampaignBanner from '../ux/components/CampaignBanner';
@@ -229,6 +230,18 @@ export default function StudentDashboard() {
         <h1>{greeting()}, <span className="text-gradient">{firstName}</span> 👋</h1>
         <p>Here's your day at a glance.</p>
       </header>
+
+      {/* AI Personalization Section — renders only for logged-in students */}
+      <AIDashboardSection userData={{
+        attendance: stats,
+        absentDays,
+        holidayCompleted,
+        holidayTotal: HOLIDAY_TOTAL,
+        latestHw,
+        doneKeys,
+        syllabusStats,
+        latestClasswork,
+      }} />
 
       {/* Quick stats */}
       <div className="dash-stats-row">
