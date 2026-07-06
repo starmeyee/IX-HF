@@ -37,7 +37,7 @@ const TABS = [
   { id: 'data',       label: 'Data Export',      Icon: Download },
   { id: 'records',    label: 'Records',           Icon: ClipboardList },
   { id: 'testdata',   label: 'Test Data',         Icon: Beaker },
-  { id: 'push',       label: 'Push Notices',      Icon: Megaphone },
+  { id: 'push',       label: 'Pop-up Notifications', Icon: Megaphone },
 ];
 
 const ROLE_STYLE = {
@@ -65,6 +65,7 @@ function PushNoticesTab() {
   const [notices, setNotices] = useState(null);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [buttonText, setButtonText] = useState('');
   const [isMandatory, setIsMandatory] = useState(false);
   const [busy, setBusy] = useState(false);
 
@@ -81,9 +82,10 @@ function PushNoticesTab() {
     if (!title.trim() || !body.trim()) return;
     setBusy(true);
     try {
-      await addInAppNotice({ title: title.trim(), body: body.trim(), isMandatory });
+      await addInAppNotice({ title: title.trim(), body: body.trim(), buttonText: buttonText.trim(), isMandatory });
       setTitle('');
       setBody('');
+      setButtonText('');
       setIsMandatory(false);
       loadNotices();
     } catch (err) {
@@ -106,7 +108,7 @@ function PushNoticesTab() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div className="as-card">
-        <h4 className="as-section-title"><Send size={15} /> Create Push Notice</h4>
+        <h4 className="as-section-title"><Send size={15} /> Create Pop-up Notification</h4>
         <p className="as-muted" style={{ marginBottom: '1.25rem' }}>
           This will pop up on the user's screen 5 seconds after they log in. If they have multiple unseen notices, they will appear one by one.
         </p>
@@ -129,6 +131,14 @@ function PushNoticesTab() {
             rows={3}
             style={{ resize: 'vertical' }}
           />
+          <input
+            type="text"
+            className="as-input"
+            placeholder="Custom Button Text (Optional)"
+            value={buttonText}
+            onChange={e => setButtonText(e.target.value)}
+            maxLength={30}
+          />
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.9rem', color: 'var(--text-primary)' }}>
             <input 
               type="checkbox" 
@@ -139,17 +149,17 @@ function PushNoticesTab() {
             Mandatory (Users must click "I Understand" to dismiss)
           </label>
           <button type="submit" className="auth-btn primary" disabled={busy} style={{ alignSelf: 'flex-start', padding: '0.6rem 1.2rem', marginTop: '0.5rem' }}>
-            {busy ? 'Adding...' : 'Add Push Notice'}
+            {busy ? 'Adding...' : 'Add Pop-up Notification'}
           </button>
         </form>
       </div>
 
       <div className="as-card">
-        <h4 className="as-section-title"><Megaphone size={15} /> Active Push Notices</h4>
+        <h4 className="as-section-title"><Megaphone size={15} /> Active Pop-up Notifications</h4>
         {notices === null ? (
           <p className="as-muted">Loading...</p>
         ) : notices.length === 0 ? (
-          <p className="as-muted">No active push notices.</p>
+          <p className="as-muted">No active notifications.</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {notices.map(n => (
@@ -166,7 +176,24 @@ function PushNoticesTab() {
                   {n.isMandatory && <span style={{ fontSize: '0.7rem', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '0.1rem 0.4rem', borderRadius: 4, fontWeight: 600, textTransform: 'uppercase' }}>Mandatory</span>}
                 </div>
                 <p style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>{n.body}</p>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Created: {new Date(n.createdAt).toLocaleString()}</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Created: {new Date(n.createdAt).toLocaleString()}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                    Button: <strong>{n.buttonText || (n.isMandatory ? 'I Understand' : 'Acknowledge')}</strong>
+                  </div>
+                </div>
+                {n.acknowledgedBy && n.acknowledgedBy.length > 0 && (
+                  <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--border)', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+                    <strong>Acknowledged by ({n.acknowledgedBy.length}):</strong>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem', marginTop: '0.4rem' }}>
+                      {n.acknowledgedBy.map((user, idx) => (
+                        <span key={idx} style={{ background: 'var(--surface-hover)', padding: '0.1rem 0.4rem', borderRadius: 4 }}>
+                          {user}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -19,10 +19,19 @@ export async function deleteInAppNotice(id) {
   await deleteDoc(doc(db, 'in_app_notices', id));
 }
 
-export async function markInAppNoticeSeen(phone, noticeId) {
+export async function markInAppNoticeSeen(phone, userName, noticeId) {
   if (!phone || !noticeId) return;
   const userRef = doc(db, 'users', phone);
   await updateDoc(userRef, {
     seenInAppNotices: arrayUnion(noticeId)
   });
+
+  try {
+    const noticeRef = doc(db, 'in_app_notices', noticeId);
+    await updateDoc(noticeRef, {
+      acknowledgedBy: arrayUnion(userName || phone)
+    });
+  } catch (e) {
+    console.error("Failed to update acknowledgedBy list", e);
+  }
 }

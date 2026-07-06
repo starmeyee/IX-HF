@@ -39,7 +39,7 @@ export default function InAppPushManager() {
     
     // Mark as seen in Firestore
     try {
-      await markInAppNoticeSeen(currentUser.phone, currentNotice.id);
+      await markInAppNoticeSeen(currentUser.phone, currentUser.name || currentUser.rollNo || 'Student', currentNotice.id);
     } catch (e) {
       console.error(e);
     }
@@ -82,12 +82,12 @@ export default function InAppPushManager() {
           <div style={{ display: 'flex', gap: '0.75rem', flexDirection: isMandatory ? 'column' : 'row' }}>
             {isMandatory ? (
               <button className="complaint-submit-btn" onClick={handleDismiss} style={{ width: '100%', background: '#ef4444', boxShadow: '0 8px 24px -8px rgba(239, 68, 68, 0.5)' }}>
-                <Check size={16} /> I Understand
+                <Check size={16} /> {currentNotice.buttonText || 'I Understand'}
               </button>
             ) : (
               <>
                 <button className="complaint-submit-btn" onClick={handleDismiss} style={{ flex: 1 }}>
-                  <Check size={16} /> Acknowledge
+                  <Check size={16} /> {currentNotice.buttonText || 'Acknowledge'}
                 </button>
                 <button
                   onClick={handleDismiss}
