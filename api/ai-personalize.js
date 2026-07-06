@@ -66,7 +66,7 @@ Be encouraging but truthful. Never inflate numbers.`;
 // ─── In-Memory Rate Limit Store ───────────────────────────────────────────────
 // Resets on cold start. Key = hashed phone identifier, value = last request timestamp.
 const rateLimitMap = new Map();
-const RATE_LIMIT_MS = 5 * 60 * 1000; // 5 minutes
+const RATE_LIMIT_MS = 30 * 1000; // 30 seconds (reduced to avoid lockout during testing)
 
 /**
  * Simple djb2-style hash for a string — produces a deterministic numeric string.
@@ -174,11 +174,12 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'deepseek-ai/deepseek-r1',
+        model: 'deepseek-ai/deepseek-v4-pro',
         messages,
         temperature: 0.7,
         max_tokens: 1024,
         stream: false,
+        chat_template_kwargs: { thinking: false }
       }),
       signal: controller.signal,
     });

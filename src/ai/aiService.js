@@ -48,6 +48,7 @@ export function getCachedPersonalization(userId) {
       sessionStorage.removeItem(cacheKey(userId));
       return null;
     }
+    if (entry.data && entry.data._failed) return null;
     return entry.data ?? null;
   } catch {
     // sessionStorage unavailable or corrupted
@@ -83,7 +84,15 @@ export function setCachedPersonalization(userId, data, ttlMinutes = DEFAULT_TTL_
  * @returns {boolean}
  */
 export function isPersonalizationFresh(userId) {
-  return getCachedPersonalization(userId) !== null;
+  try {
+    const raw = sessionStorage.getItem(cacheKey(userId));
+    if (!raw) return false;
+    const entry = JSON.parse(raw);
+    if (!entry || !entry.expiresAt) return false;
+    return Date.now() <= entry.expiresAt;
+  } catch {
+    return false;
+  }
 }
 
 // ── Core fetch with retry ──────────────────────────────────────────────────────

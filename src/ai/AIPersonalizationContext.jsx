@@ -79,7 +79,8 @@ export function AIPersonalizationProvider({ children, userData }) {
           setCachedPersonalization(userId, result);
           setData(result);
         } else {
-          // AI returned null — graceful degradation: keep existing data or null
+          // AI returned null (failure). Cache the null result for 5 minutes so we don't spam the API on re-renders
+          setCachedPersonalization(userId, { _failed: true }, 5);
           setData((prev) => prev);
         }
       } catch (err) {
