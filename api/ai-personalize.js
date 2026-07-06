@@ -143,13 +143,13 @@ export default async function handler(req, res) {
   rateLimitMap.set(rateLimitKey, now);
 
   // ── Check API key ─────────────────────────────────────────────────────────────
-  const apiKey = process.env.NVIDIA_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY || process.env.NVIDIA_API_KEY; // fallback if they haven't changed the env name yet
   if (!apiKey) {
-    console.error('[ai-personalize] NVIDIA_API_KEY env variable is not set');
+    console.error('[ai-personalize] GROQ_API_KEY env variable is not set');
     return res.status(500).json({ error: 'AI service not configured' });
   }
 
-  // ── Call NVIDIA / DeepSeek API ────────────────────────────────────────────────
+  // ── Call Groq API ────────────────────────────────────────────────
   const contextStr = JSON.stringify(context, null, 2);
   const messages = [
     { role: 'system', content: SYSTEM_PROMPT },
@@ -159,7 +159,7 @@ export default async function handler(req, res) {
     },
   ];
 
-  console.log(`[ai-personalize] Calling DeepSeek for rollNo=${context?.profile?.rollNo || 'unknown'}`);
+  console.log(`[ai-personalize] Calling Groq for rollNo=${context?.profile?.rollNo || 'unknown'}`);
 
   // 30-second timeout via AbortController
   const controller = new AbortController();
@@ -167,19 +167,19 @@ export default async function handler(req, res) {
 
   let aiResponseText;
   try {
-    const response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'deepseek-ai/deepseek-v4-pro',
+        model: 'llama-3.3-70b-versatile',
         messages,
         temperature: 0.7,
         max_tokens: 1024,
         stream: false,
-        chat_template_kwargs: { thinking: false }
+        response_format: { type: "json_object" }
       }),
       signal: controller.signal,
     });
@@ -188,7 +188,7 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const errText = await response.text().catch(() => '');
-      console.error(`[ai-personalize] NVIDIA API error ${response.status}: ${errText.slice(0, 200)}`);
+      console.error(`[ai-personalize] Groq API error ${response.status}: ${errText.slice(0, 200)}`);
       return res.status(502).json({ error: 'AI provider error', status: response.status });
     }
 
