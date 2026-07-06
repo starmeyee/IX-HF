@@ -35,7 +35,8 @@ Return exactly this JSON shape:
       "title": "string",
       "description": "string (specific, not generic. do not greet the user here)"
     }
-  ]
+  ],
+  "motivation": "string (short, genuine motivational quote or personalized encouragement — no emojis)"
 }
 
 Card type guidelines:
@@ -70,6 +71,7 @@ function hashIdentifier(str) {
 function isValidAIResponse(obj) {
   if (!obj || typeof obj !== 'object') return false;
   if (!Array.isArray(obj.cards)) return false;
+  if (typeof obj.motivation !== 'string') return false;
   return true;
 }
 

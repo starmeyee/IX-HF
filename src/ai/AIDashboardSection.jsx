@@ -21,6 +21,7 @@ import AICardGrid from './components/AICardGrid';
  * This separation ensures hook ordering is correct.
  */
 import { Sparkles } from 'lucide-react';
+import AIMotivationBanner from './components/AIMotivationBanner';
 
 function AIDashboardContent() {
   const { data, loading } = useAIPersonalization();
@@ -41,6 +42,7 @@ function AIDashboardContent() {
       </div>
 
       <AICardGrid />
+      <AIMotivationBanner />
     </section>
   );
 }

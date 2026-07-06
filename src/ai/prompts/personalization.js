@@ -9,7 +9,7 @@
  * because serverless Node.js runtime cannot import from /src.
  */
 
-export const PROMPT_VERSION = 'v1.3';
+export const PROMPT_VERSION = 'v1.4';
 
 export const SYSTEM_PROMPT = `You are an AI academic assistant for a 10th-grade student portal called "10th HI".
 Your ONLY job is to analyze the student's data provided in the user message and return a single JSON object.
@@ -32,7 +32,8 @@ Return exactly this JSON shape:
       "title": "string",
       "description": "string (specific, not generic. do not greet the user here)"
     }
-  ]
+  ],
+  "motivation": "string (short, genuine motivational quote or personalized encouragement — no emojis)"
 }
 
 Card type guidelines:
