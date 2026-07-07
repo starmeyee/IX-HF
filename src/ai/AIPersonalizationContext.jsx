@@ -15,7 +15,7 @@
 import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { buildUserContext } from './contextEngine';
-import { generatePersonalization, getCachedPersonalization, setCachedPersonalization, isPersonalizationFresh } from './aiService';
+import { generatePersonalization, getCachedPersonalization, setCachedPersonalization, isPersonalizationFresh, getSeenInsights, clearPersonalizationCache, markInsightAsSeen } from './aiService';
 
 // ── Context Definition ─────────────────────────────────────────────────────────
 const AIPersonalizationContext = createContext({
@@ -72,7 +72,9 @@ export function AIPersonalizationProvider({ children, userData }) {
       setError(null);
 
       try {
-        const context = buildUserContext(currentUser, userData);
+        const seenTitles = getSeenInsights(userId);
+        const contextData = { ...userData, previouslyShown: seenTitles };
+        const context = buildUserContext(currentUser, contextData);
         const result = await generatePersonalization(context);
 
         if (result) {
@@ -115,11 +117,12 @@ export function AIPersonalizationProvider({ children, userData }) {
 
   // ── Public refresh function ───────────────────────────────────────────────────
   const refresh = useCallback(() => {
+    clearPersonalizationCache(userId);
     fetchPersonalization(true);
-  }, [fetchPersonalization]);
+  }, [fetchPersonalization, userId]);
 
   return (
-    <AIPersonalizationContext.Provider value={{ data, loading, error, refresh }}>
+    <AIPersonalizationContext.Provider value={{ data, loading, error, refresh, userId }}>
       {children}
     </AIPersonalizationContext.Provider>
   );

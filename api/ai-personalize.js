@@ -24,16 +24,23 @@ STRICT RULES:
 4. If a data field is missing or null, skip that insight entirely.
 5. No emojis in descriptions. Emojis in titles are allowed only if they feel natural.
 6. Be specific and personal, not generic. Reference actual numbers, subjects, and upcoming classes from context.
-7. Analyze 'upcomingRoutine' to prepare the student for tomorrow (e.g., if there's a specific class tomorrow, remind them to complete any pending homework for it, or sleep well if they have sports).
-8. Check 'pendingRecentHomework'. If a subject is in tomorrow's routine and its homework from a few days ago is still pending, make it an urgent alert.
-9. Return exactly 1 card containing the most important insight or reminder for the student right now.
+7. TIME-BASED OPTIMIZATION: 
+   - Morning: Do not remind about homework submission directly. Instead, tell them to "Make sure you carry your <Subject> book or copy" based on their pending homework or today's routine/notices.
+   - Afternoon: Remind them about their workload, e.g., "You have 3 homework tasks today, maybe take a quick nap first."
+   - Night: Focus on URGENT pending homework or tomorrow's tests/notices.
+8. NOTICES & ROLL NO: Check 'notices' and cross-reference with 'rollNo'. If a notice asks a specific roll number (or a range including theirs) to submit something (like Aadhar) or mentions a competition, prioritize that! 
+9. PRIORITY SYSTEM: Assign a numeric priority from 1 to 100.
+   - 90: Reminders for Games period or major events.
+   - 95: Urgent pending work or notice specifically mentioning their roll number.
+   - 1-89: Other insights based on importance.
+10. PREVIOUSLY SHOWN: Check 'previouslyShown'. Generate up to 3 cards. DO NOT repeat the exact same insights from 'previouslyShown' unless critically urgent. If you have absolutely nothing new to say, return an empty "cards" array.
 
 Return exactly this JSON shape:
 {
   "cards": [
     {
       "type": "reminder|achievement|tip|insight|alert",
-      "priority": "high|medium|low",
+      "priority": <number 1-100>,
       "title": "string",
       "description": "string (specific, not generic. do not greet the user here)"
     }
@@ -42,14 +49,13 @@ Return exactly this JSON shape:
 }
 
 Card type guidelines:
-- "reminder": upcoming deadlines, pending homework, tasks not completed
+- "reminder": upcoming deadlines, pending homework, tasks not completed, book reminders
 - "achievement": milestones hit, good attendance, completed assignments
 - "tip": study strategies based on their actual data patterns
-- "insight": data observations (attendance trends, syllabus coverage stats)
+- "insight": data observations (attendance trends, syllabus coverage stats, notices)
 - "alert": attendance below 75%, overdue homework, critical warnings
 
-Focus on the most urgent or impactful piece of data (e.g. poor attendance, incomplete homework, or a big achievement).
-Be encouraging but truthful. Never inflate numbers.`;
+Focus on the most urgent or impactful piece of data. Be encouraging but truthful. Never inflate numbers. Return up to 3 cards.`;
 
 // ─── In-Memory Rate Limit Store ───────────────────────────────────────────────
 // Resets on cold start. Key = hashed phone identifier, value = last request timestamp.
@@ -220,13 +226,14 @@ export default async function handler(req, res) {
   }
 
   // ── Enforce limits ────────────────────────────────────────────────────────────
-  parsed.cards = (parsed.cards || []).slice(0, 1);
+  parsed.cards = (parsed.cards || []).slice(0, 3);
 
-  // Sort cards: high → medium → low
-  const priorityOrder = { high: 0, medium: 1, low: 2 };
-  parsed.cards.sort(
-    (a, b) => (priorityOrder[a.priority] ?? 1) - (priorityOrder[b.priority] ?? 1)
-  );
+  // Sort cards: numeric priority descending
+  parsed.cards.sort((a, b) => {
+    const pA = typeof a.priority === 'number' ? a.priority : 1;
+    const pB = typeof b.priority === 'number' ? b.priority : 1;
+    return pB - pA;
+  });
 
   console.log(`[ai-personalize] Success: ${parsed.cards.length} cards for rollNo=${context?.profile?.rollNo || 'unknown'}`);
 

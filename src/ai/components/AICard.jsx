@@ -14,12 +14,7 @@ const TYPE_CONFIG = {
   alert: { icon: '⚠️', color: '#ef4444', label: 'Alert' },
 };
 
-// Priority → border opacity
-const PRIORITY_OPACITY = {
-  high: 1,
-  medium: 0.65,
-  low: 0.4,
-};
+// Removed string priority mapping since we use numeric priorities now (1-100)
 
 /**
  * @param {Object} props
@@ -33,7 +28,10 @@ export default function AICard({ card }) {
   if (!card) return null;
 
   const config = TYPE_CONFIG[card.type] || TYPE_CONFIG.insight;
-  const opacity = PRIORITY_OPACITY[card.priority] ?? 0.6;
+  const p = typeof card.priority === 'number' ? card.priority : 50;
+  let opacity = 0.4;
+  if (p >= 80) opacity = 1;
+  else if (p >= 50) opacity = 0.65;
   const borderColor = `color-mix(in srgb, ${config.color} ${Math.round(opacity * 100)}%, transparent)`;
 
   return (
@@ -55,7 +53,7 @@ export default function AICard({ card }) {
           <span className="ai-card-type-label" style={{ color: config.color }}>
             {config.label}
           </span>
-          {card.priority === 'high' && (
+          {typeof card.priority === 'number' && card.priority >= 90 && (
             <span className="ai-card-priority-badge">Urgent</span>
           )}
         </div>

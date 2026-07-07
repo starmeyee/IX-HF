@@ -19,7 +19,8 @@ import { PROMPT_VERSION } from './prompts/personalization.js';
 
 // ── Cache configuration ────────────────────────────────────────────────────────
 const CACHE_KEY_PREFIX = 'ai_personal_';
-const DEFAULT_TTL_MINUTES = 30;
+const SEEN_KEY_PREFIX = 'ai_seen_';
+const DEFAULT_TTL_MINUTES = 30; // 30 minutes cache for AI payload
 
 /**
  * Generates a session-storage cache key for a given userId (rollNo).
@@ -92,6 +93,61 @@ export function isPersonalizationFresh(userId) {
     return Date.now() <= entry.expiresAt;
   } catch {
     return false;
+  }
+}
+
+// ── Seen Insights Tracking (Checklist feature) ─────────────────────────────────
+
+/**
+ * Returns an array of insight titles recently shown to the user today.
+ */
+export function getSeenInsights(userId) {
+  try {
+    const raw = localStorage.getItem(`${SEEN_KEY_PREFIX}${userId}`);
+    if (!raw) return [];
+    const data = JSON.parse(raw);
+    
+    // Clear history if it's from a previous day
+    const today = new Date().toDateString();
+    if (data.date !== today) {
+      localStorage.removeItem(`${SEEN_KEY_PREFIX}${userId}`);
+      return [];
+    }
+    return data.titles || [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Marks a specific insight title as seen so AI doesn't repeat it.
+ */
+export function markInsightAsSeen(userId, title) {
+  if (!title) return;
+  try {
+    const seen = getSeenInsights(userId);
+    if (!seen.includes(title)) {
+      seen.push(title);
+      // keep only the last 10 to avoid huge arrays
+      if (seen.length > 10) seen.shift();
+      localStorage.setItem(`${SEEN_KEY_PREFIX}${userId}`, JSON.stringify({
+        date: new Date().toDateString(),
+        titles: seen
+      }));
+    }
+  } catch {
+    // Ignore storage errors
+  }
+}
+
+/**
+ * Clear the AI personalization cache so the next load fetches fresh insights.
+ */
+export function clearPersonalizationCache(userId) {
+  try {
+    sessionStorage.removeItem(cacheKey(userId));
+  } catch {
+    // ignore
   }
 }
 

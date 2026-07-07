@@ -57,6 +57,8 @@ function toDateKey(date) {
  *   @param {number}  data.holidayTotal      - Total holiday hw items
  *   @param {Object|null} data.syllabusStats - { completedPct, checkedPct, completed, total }
  *   @param {Object|null} data.latestClasswork - Latest classwork { date, periods[] }
+ *   @param {Array}   data.recentNotices     - Array of recent notices { body, createdAtMs }
+ *   @param {Array}   data.previouslyShown   - Array of recently shown insight titles to avoid repeating
  *
  * @returns {Object} Clean anonymized context object safe to send to AI endpoint.
  */
@@ -88,6 +90,8 @@ export function buildUserContext(user, data) {
     holidayTotal,
     syllabusStats,
     latestClasswork,
+    recentNotices = [],
+    previouslyShown = [],
   } = data || {};
 
   // Attendance section
@@ -173,6 +177,12 @@ export function buildUserContext(user, data) {
     latestClasswork: classworkSection,
   };
 
+  // ── Notices & History ────────────────────────────────────────────────────────
+  const recentNoticesList = recentNotices.map(n => ({
+    body: n.body,
+    time: new Date(n.createdAtMs).toLocaleString('en-US'),
+  }));
+
   // ── Temporal & Routine ─────────────────────────────────────────────────────────
   const tomorrow = new Date(now);
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -191,5 +201,5 @@ export function buildUserContext(user, data) {
     }
   };
 
-  return { profile, academic, temporal };
+  return { profile, academic, temporal, notices: recentNoticesList, previouslyShown };
 }

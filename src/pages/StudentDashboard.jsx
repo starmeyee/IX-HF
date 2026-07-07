@@ -15,6 +15,7 @@ import ProfileCompletionBanner from '../components/ProfileCompletionBanner';
 import CampaignBanner from '../ux/components/CampaignBanner';
 import TestDataDashCard from '../components/TestDataDashCard';
 import { getHomework } from '../services/homeworkService';
+import { getNotices } from '../services/noticeService';
 import { getClosedDays } from '../services/calendarOverrideService';
 import { getSyllabus, getCompletedTopics } from '../services/syllabusService';
 import { getAllClasswork } from '../services/classworkService';
@@ -90,6 +91,9 @@ export default function StudentDashboard() {
 
   // Recent published notes (dashboard teaser)
   const [recentNotes, setRecentNotes] = useState(null);
+  
+  // Recent notices for AI context
+  const [recentNotices, setRecentNotices] = useState([]);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -199,6 +203,16 @@ export default function StudentDashboard() {
       .catch(() => setRecentNotes([]));
   }, [currentUser]);
 
+  // Fetch recent notices
+  useEffect(() => {
+    if (!currentUser) return;
+    let active = true;
+    getNotices()
+      .then(all => { if (active) setRecentNotices(all.slice(0, 3)); })
+      .catch(console.error);
+    return () => { active = false; };
+  }, [currentUser]);
+
   const handleToggle = useCallback((key) => {
     if (!currentUser) return;
     setAbsentDays((prev) => {
@@ -247,6 +261,7 @@ export default function StudentDashboard() {
         doneKeys,
         syllabusStats,
         latestClasswork,
+        recentNotices,
       }} />
 
       {/* Quick stats */}

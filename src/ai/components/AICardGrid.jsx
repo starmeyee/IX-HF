@@ -7,11 +7,10 @@
  * - Cards are sorted high→medium→low (server sorts, but we enforce here too)
  */
 
+import { useEffect } from 'react';
 import { useAIPersonalization } from '../AIPersonalizationContext';
 import AICard from './AICard';
-
-// Priority sort order
-const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 };
+import { markInsightAsSeen, getSeenInsights } from '../aiService';
 
 function SkeletonCard() {
   return (
@@ -28,7 +27,7 @@ function SkeletonCard() {
 }
 
 export default function AICardGrid() {
-  const { data, loading } = useAIPersonalization();
+  const { data, loading, userId } = useAIPersonalization();
 
   if (loading) {
     return (
@@ -42,16 +41,32 @@ export default function AICardGrid() {
 
   if (!data?.cards || data.cards.length === 0) return null;
 
-  // Enforce max 5, sort by priority
+  // Sort by numeric priority descending
   const sorted = [...data.cards]
-    .slice(0, 5)
-    .sort((a, b) => (PRIORITY_ORDER[a.priority] ?? 1) - (PRIORITY_ORDER[b.priority] ?? 1));
+    .sort((a, b) => {
+      const pA = typeof a.priority === 'number' ? a.priority : 1;
+      const pB = typeof b.priority === 'number' ? b.priority : 1;
+      return pB - pA;
+    });
+
+  // Pick the highest priority card that hasn't been shown recently
+  // If all are shown, just pick the top one.
+  const seen = getSeenInsights(userId);
+  let topCard = sorted.find(c => !seen.includes(c.title));
+  if (!topCard) {
+    topCard = sorted[0]; // Fallback to highest priority if all seen
+  }
+
+  // Mark as seen on render
+  useEffect(() => {
+    if (topCard?.title && userId) {
+      markInsightAsSeen(userId, topCard.title);
+    }
+  }, [topCard?.title, userId]);
 
   return (
     <div className="ai-card-grid" aria-label="AI personalized insights">
-      {sorted.map((card, idx) => (
-        <AICard key={`ai-card-${idx}`} card={card} />
-      ))}
+      {topCard ? <AICard card={topCard} /> : null}
     </div>
   );
 }
