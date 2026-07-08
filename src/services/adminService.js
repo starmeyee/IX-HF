@@ -7,6 +7,11 @@ export async function getAllUsers() {
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 }
 
+export async function deleteUserDoc(phone) {
+  if (!phone) return;
+  await deleteDoc(doc(db, 'users', phone));
+}
+
 // ── Activity Logging ───────────────────────────────────────────
 // Schema: activityLogs/{phone} → { lastSeen, events: { pageName: count } }
 

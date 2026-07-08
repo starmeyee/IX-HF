@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES, TEST_PHONE } from '../auth/roles';
 import { resetWhatsNew, resetTestAccount, setTestAccountRole, getUserByPhone } from '../auth/authService';
-import { getAllUsers, getActivitySummary, purgeTestData } from '../services/adminService';
+import { getAllUsers, getActivitySummary, purgeTestData, deleteUserDoc } from '../services/adminService';
 import { calcAttendance } from '../data/attendanceUtils';
 import { getClosedDays } from '../services/calendarOverrideService';
 import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp, Megaphone, Send, Star } from 'lucide-react';
@@ -210,6 +210,7 @@ function UsersTab() {
   const [users, setUsers] = useState(null);
   const [closedDays, setClosedDays] = useState([]);
   const [query, setQuery] = useState('');
+  const [busyId, setBusyId] = useState(null);
 
   useEffect(() => {
     Promise.all([getAllUsers(), getClosedDays()])
@@ -220,6 +221,19 @@ function UsersTab() {
   const filtered = (users || [])
     .filter(u => u.name?.toLowerCase().includes(query.toLowerCase()) || String(u.rollNo).includes(query))
     .sort((a, b) => (a.rollNo || 999) - (b.rollNo || 999));
+
+  async function handleDelete(u) {
+    if (!window.confirm(`Are you sure you want to permanently delete ${u.name} (Roll ${u.rollNo})?`)) return;
+    setBusyId(u.id);
+    try {
+      await deleteUserDoc(u.id);
+      setUsers(prev => prev.filter(x => x.id !== u.id));
+    } catch (e) {
+      alert("Failed to delete user: " + e.message);
+    } finally {
+      setBusyId(null);
+    }
+  }
 
   return (
     <div>
@@ -248,6 +262,7 @@ function UsersTab() {
                   <th>Email</th>
                   <th>Attendance</th>
                   <th>Joined</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -281,6 +296,16 @@ function UsersTab() {
                         })()}
                       </td>
                       <td className="as-muted-cell">{u.createdAt ? new Date(u.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}</td>
+                      <td>
+                        <button 
+                          onClick={() => handleDelete(u)} 
+                          disabled={busyId === u.id}
+                          style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', padding: '0.25rem' }}
+                          title="Delete User"
+                        >
+                          <Trash2 size={15} />
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}
