@@ -26,8 +26,8 @@ export async function getUserByPhone(phone) {
 export async function registerUser({ name, phone, rollNo }) {
   const existing = await getUserByPhone(phone);
   if (existing) throw new Error('Phone already registered. Please login.');
-  // Prevent duplicate roll numbers (unless rollNo is 0 = outsider)
-  if (rollNo !== 0) {
+  // Prevent duplicate roll numbers (unless rollNo is 0 = outsider, or 85 = external star batch)
+  if (rollNo !== 0 && rollNo !== 85) {
     const allSnap = await getDocs(collection(db, 'users'));
     const dup = allSnap.docs.find(d => {
       const u = d.data();

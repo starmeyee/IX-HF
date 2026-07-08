@@ -35,6 +35,7 @@ import RecordAdminPage from './pages/RecordAdminPage';
 import RecordTeacherPage from './pages/RecordTeacherPage';
 import StudyTogetherPage from './pages/StudyTogetherPage';
 import StudyRoomPage from './pages/StudyRoomPage';
+import StarBatchPage from './pages/StarBatchPage';
 import { Heart } from 'lucide-react';
 import { checkAndConsumeEmailLink } from './firebase';
 import { markEmailVerified } from './auth/authService';
@@ -62,9 +63,16 @@ function RedirectCapture() {
 function AppInner() {
   useActivityLogger();
   const navigate = useNavigate();
-  const { refreshUser } = useAuth();
+  const { pathname } = useLocation();
+  const { refreshUser, currentUser } = useAuth();
   // pendingReset: { phone } — set when email-reset link is clicked; triggers reset form in AuthModal
   const [resetPhone, setResetPhone] = useState(null);
+
+  useEffect(() => {
+    if (currentUser?.role === 'STAR_BATCH_EXTERNAL' && !pathname.startsWith('/star-batch')) {
+      navigate('/star-batch', { replace: true });
+    }
+  }, [currentUser, pathname, navigate]);
 
   useEffect(() => {
     async function handleEmailLink() {
@@ -125,6 +133,7 @@ function AppInner() {
             <Route path="/teacher-records" element={<RecordTeacherPage />} />
             <Route path="/study-together" element={<StudyTogetherPage />} />
             <Route path="/study-together/:roomId" element={<StudyRoomPage />} />
+            <Route path="/star-batch" element={<StarBatchPage />} />
           </Routes>
         </main>
         <footer className="app-footer">

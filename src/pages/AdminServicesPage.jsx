@@ -6,7 +6,7 @@ import { resetWhatsNew, resetTestAccount, setTestAccountRole, getUserByPhone } f
 import { getAllUsers, getActivitySummary, purgeTestData } from '../services/adminService';
 import { calcAttendance } from '../data/attendanceUtils';
 import { getClosedDays } from '../services/calendarOverrideService';
-import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp, Megaphone, Send } from 'lucide-react';
+import { Users, Activity, Settings, Search, ShieldAlert, ShieldCheck, User, Users as UsersIcon, Clock, BarChart2, GitMerge, AlertTriangle, Check, FileText, CheckCircle, XCircle, Trash2, GraduationCap, Plus, KeyRound, BookOpen, Mail, MailCheck, FlaskConical, Download, ClipboardList, Beaker, X, Save, ToggleLeft, ToggleRight, ChevronDown, ChevronUp, Megaphone, Send, Star } from 'lucide-react';
 import { fetchDuplicates, mergeProfiles } from '../services/mergeService';
 import { getComplaints, updateComplaintStatus, applyOverride, deleteComplaint } from '../services/marksService';
 import { getTeachers, addTeacher, updateTeacherPassword, deleteTeacher, setTeacherMarksAccess, setTeacherSyllabusSubjects } from '../services/teacherService';
@@ -15,6 +15,7 @@ import { syllabusData } from '../data/syllabusData';
 import { getTables, setTeacherRecordTables } from '../services/recordsService';
 import { getInAppNotices, addInAppNotice, deleteInAppNotice } from '../services/inAppNoticeService';
 import UXCampaignAdmin from '../ux/admin/UXCampaignAdmin';
+import { getStarBatchConfig, setStarBatchCode, addInternalStudent, removeInternalStudent } from '../services/starBatchService';
 
 // Flat list of all subjects across all sections for the syllabus toggle UI
 const ALL_SUBJECTS = syllabusData.flatMap(sec =>
@@ -38,6 +39,7 @@ const TABS = [
   { id: 'records',    label: 'Records',           Icon: ClipboardList },
   { id: 'testdata',   label: 'Test Data',         Icon: Beaker },
   { id: 'push',       label: 'Pop-up Notifications', Icon: Megaphone },
+  { id: 'starbatch',  label: 'Star Batch',       Icon: Star },
 ];
 
 const ROLE_STYLE = {
@@ -1143,6 +1145,7 @@ export default function AdminServicesPage() {
         )}
         {tab === 'testdata'   && <TestDataTab />}
         {tab === 'push'       && <PushNoticesTab />}
+        {tab === 'starbatch'  && <StarBatchTab />}
       </div>
     </div>
   );
@@ -1448,6 +1451,97 @@ function TestDataTab() {
       >
         <Save size={16} /> {saving ? 'Saving…' : 'Save Test Data'}
       </button>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Star Batch Tab
+──────────────────────────────────────────────────────────────*/
+function StarBatchTab() {
+  const [config, setConfig] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [newCode, setNewCode] = useState('');
+  const [rollInput, setRollInput] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    loadConfig();
+  }, []);
+
+  function loadConfig() {
+    setLoading(true);
+    getStarBatchConfig().then(c => {
+      setConfig(c);
+      setNewCode(c.code);
+    }).finally(() => setLoading(false));
+  }
+
+  async function handleSetCode() {
+    if (newCode.length !== 4) return alert("Code must be 4 digits");
+    setBusy(true);
+    try {
+      await setStarBatchCode(newCode);
+      alert('Code updated');
+      loadConfig();
+    } catch(e) { alert(e.message); }
+    finally { setBusy(false); }
+  }
+
+  async function handleAddStudent(e) {
+    e.preventDefault();
+    if (!rollInput) return;
+    setBusy(true);
+    try {
+      await addInternalStudent(rollInput);
+      setRollInput('');
+      loadConfig();
+    } catch(e) { alert(e.message); }
+    finally { setBusy(false); }
+  }
+
+  async function handleRemove(roll) {
+    if (!window.confirm(`Remove roll ${roll} from Star Batch?`)) return;
+    setBusy(true);
+    try {
+      await removeInternalStudent(roll);
+      loadConfig();
+    } catch(e) { alert(e.message); }
+    finally { setBusy(false); }
+  }
+
+  if (loading) return <p className="as-muted">Loading...</p>;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div className="as-card">
+        <h4 className="as-section-title"><KeyRound size={15} /> 4-Digit Access Code</h4>
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+          <input className="as-input" type="text" maxLength={4} value={newCode} onChange={e => setNewCode(e.target.value)} style={{ width: 100 }} />
+          <button className="auth-btn primary" onClick={handleSetCode} disabled={busy}>Update Code</button>
+        </div>
+      </div>
+      
+      <div className="as-card">
+        <h4 className="as-section-title"><Star size={15} /> Internal Students</h4>
+        <form onSubmit={handleAddStudent} style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', marginBottom: '1rem' }}>
+          <input className="as-input" type="number" placeholder="Roll No." value={rollInput} onChange={e => setRollInput(e.target.value)} style={{ width: 120 }} />
+          <button className="auth-btn" type="submit" disabled={busy}>Add Student</button>
+        </form>
+        
+        {config?.internalRolls?.length > 0 ? (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {config.internalRolls.map(r => (
+              <span key={r} style={{ background: 'rgba(251, 191, 36, 0.1)', color: '#fbbf24', padding: '0.2rem 0.5rem', borderRadius: 4, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                Roll {r}
+                <button onClick={() => handleRemove(r)} style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', padding: 0 }}><X size={12}/></button>
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p className="as-muted">No internal students added.</p>
+        )}
+      </div>
     </div>
   );
 }

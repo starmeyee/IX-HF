@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy, ClipboardList, GraduationCap } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy, ClipboardList, GraduationCap, Star } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import NotificationHistory from './NotificationHistory';
@@ -59,36 +59,40 @@ export default function Navbar() {
         10th HI
       </div>
       <div className="nav-links">
-        <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <Home size={20} /><span>Dashboard</span>
-        </NavLink>
-        {currentUser?.role !== ROLES.TEACHER && (
-          <NavLink to="/homework" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <BookOpen size={20} /><span>Homework</span>
-          </NavLink>
-        )}
-        {currentUser?.role !== ROLES.TEACHER && (
-          <NavLink to="/notes" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <BookCopy size={20} /><span>Notes</span>
-          </NavLink>
-        )}
-        <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <CalendarRange size={20} /><span>Calendar</span>
-        </NavLink>
-        {currentUser?.role === ROLES.TEACHER && (
-          <NavLink to="/teacher-tools" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <Wrench size={20} /><span>Teacher Tools</span>
-          </NavLink>
-        )}
-        {currentUser?.role === ROLES.TEACHER && (currentUser.recordTables?.length > 0) && (
-          <NavLink to="/teacher-records" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <ClipboardList size={20} /><span>Records</span>
-          </NavLink>
-        )}
-        {(currentUser?.isAdmin || currentUser?.role === ROLES.MONITOR) && (
-          <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-            <ShieldAlert size={20} /><span>Monitor Panel</span>
-          </NavLink>
+        {currentUser?.role !== ROLES.STAR_BATCH_EXTERNAL && (
+          <>
+            <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              <Home size={20} /><span>Dashboard</span>
+            </NavLink>
+            {currentUser?.role !== ROLES.TEACHER && (
+              <NavLink to="/homework" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <BookOpen size={20} /><span>Homework</span>
+              </NavLink>
+            )}
+            {currentUser?.role !== ROLES.TEACHER && (
+              <NavLink to="/notes" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <BookCopy size={20} /><span>Notes</span>
+              </NavLink>
+            )}
+            <NavLink to="/calendar" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              <CalendarRange size={20} /><span>Calendar</span>
+            </NavLink>
+            {currentUser?.role === ROLES.TEACHER && (
+              <NavLink to="/teacher-tools" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <Wrench size={20} /><span>Teacher Tools</span>
+              </NavLink>
+            )}
+            {currentUser?.role === ROLES.TEACHER && (currentUser.recordTables?.length > 0) && (
+              <NavLink to="/teacher-records" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <ClipboardList size={20} /><span>Records</span>
+              </NavLink>
+            )}
+            {(currentUser?.isAdmin || currentUser?.role === ROLES.MONITOR) && (
+              <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                <ShieldAlert size={20} /><span>Monitor Panel</span>
+              </NavLink>
+            )}
+          </>
         )}
       </div>
 
@@ -159,6 +163,11 @@ export default function Navbar() {
                   <button className="nav-dropdown-item" onClick={() => go('/study-together')}>
                     <GraduationCap size={15} /> Study Together
                   </button>
+                  {(currentUser.role === ROLES.STAR_BATCH_EXTERNAL || currentUser.isStarBatch) && (
+                    <button className="nav-dropdown-item" onClick={() => go('/star-batch')}>
+                      <Star size={15} /> Starbatch Portal
+                    </button>
+                  )}
                   <div className="nav-dropdown-divider" />
                   <button className="nav-dropdown-item nav-dropdown-logout" onClick={() => { setDropdownOpen(false); logout(); navigate('/'); }}>
                     <LogOut size={15} /> Logout
