@@ -69,6 +69,8 @@ function AppInner() {
   // pendingReset: { phone } — set when email-reset link is clicked; triggers reset form in AuthModal
   const [resetPhone, setResetPhone] = useState(null);
 
+  const isStarBatchOrPortal = currentUser?.role === 'STAR_BATCH_EXTERNAL' || pathname.startsWith('/star-batch') || pathname === '/star-login';
+
   useEffect(() => {
     if (loading) return;
     if (currentUser?.role === 'STAR_BATCH_EXTERNAL' && !pathname.startsWith('/star-batch') && pathname !== '/star-login') {
@@ -107,10 +109,10 @@ function AppInner() {
       <RedirectCapture />
       <div className="app-container">
         <Navbar />
-        <InAppPushManager />
+        {!isStarBatchOrPortal && <InAppPushManager />}
         <main className="main-content">
-          <CTABanner />
-          <NotificationPrompt />
+          {!isStarBatchOrPortal && <CTABanner />}
+          {!isStarBatchOrPortal && <NotificationPrompt />}
           <Routes>
             <Route path="/" element={<StudentDashboard />} />
             <Route path="/homework" element={<Homework />} />
@@ -155,11 +157,15 @@ function AppInner() {
         </footer>
       </div>
       <AuthModal resetPhone={resetPhone} onResetConsumed={() => setResetPhone(null)} />
-      <Onboarding />
-      <WhatsNew />
-      <InstallPrompt />
-      <ForegroundToast />
-      <UXRenderer />
+      {!isStarBatchOrPortal && (
+        <>
+          <Onboarding />
+          <WhatsNew />
+          <InstallPrompt />
+          <ForegroundToast />
+          <UXRenderer />
+        </>
+      )}
     </>
   );
 }

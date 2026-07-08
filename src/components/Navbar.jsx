@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy, ClipboardList, GraduationCap, Star } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
@@ -11,9 +11,12 @@ const NOTIF_SEEN_KEY = 'notif_last_seen';
 export default function Navbar() {
   const { currentUser, openModal, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [hasUnread, setHasUnread] = useState(false);
+  
+  const isStarBatchOrPortal = currentUser?.role === ROLES.STAR_BATCH_EXTERNAL || location.pathname.startsWith('/star-batch') || location.pathname === '/star-login';
   const dropdownRef = useRef(null);
   const notifRef = useRef(null);
 
@@ -177,37 +180,39 @@ export default function Navbar() {
             </div>
 
             {/* Notification bell — right of avatar */}
-            <div className="nav-notif-wrap" ref={notifRef}>
-              <button
-                className={`nav-bell-btn ${notifOpen ? 'active' : ''}`}
-                onClick={() => {
-                  localStorage.setItem(NOTIF_SEEN_KEY, Date.now().toString());
-                  setHasUnread(false);
-                  if (window.innerWidth < 768) { navigate('/notifications'); return; }
-                  setNotifOpen(v => !v); setDropdownOpen(false);
-                }}
-                title="Notifications"
-                aria-label="Notifications"
-                style={{ position: 'relative' }}
-              >
-                <Bell size={18} />
-                {hasUnread && (
-                  <span style={{
-                    position: 'absolute', top: 4, right: 4,
-                    width: 8, height: 8, borderRadius: '50%',
-                    background: '#10b981', border: '2px solid var(--surface)',
-                  }} />
-                )}
-              </button>
-              {notifOpen && (
-                <div className="nav-notif-panel">
-                  <div className="nav-notif-header">
-                    <Bell size={15} /> Notifications
+            {!isStarBatchOrPortal && (
+              <div className="nav-notif-wrap" ref={notifRef}>
+                <button
+                  className={`nav-bell-btn ${notifOpen ? 'active' : ''}`}
+                  onClick={() => {
+                    localStorage.setItem(NOTIF_SEEN_KEY, Date.now().toString());
+                    setHasUnread(false);
+                    if (window.innerWidth < 768) { navigate('/notifications'); return; }
+                    setNotifOpen(v => !v); setDropdownOpen(false);
+                  }}
+                  title="Notifications"
+                  aria-label="Notifications"
+                  style={{ position: 'relative' }}
+                >
+                  <Bell size={18} />
+                  {hasUnread && (
+                    <span style={{
+                      position: 'absolute', top: 4, right: 4,
+                      width: 8, height: 8, borderRadius: '50%',
+                      background: '#10b981', border: '2px solid var(--surface)',
+                    }} />
+                  )}
+                </button>
+                {notifOpen && (
+                  <div className="nav-notif-panel">
+                    <div className="nav-notif-header">
+                      <Bell size={15} /> Notifications
+                    </div>
+                    <NotificationHistory limit={3} rollNo={currentUser?.rollNo} onViewAll={() => { setNotifOpen(false); navigate('/notifications'); }} />
                   </div>
-                  <NotificationHistory limit={3} rollNo={currentUser?.rollNo} onViewAll={() => { setNotifOpen(false); navigate('/notifications'); }} />
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           <button className="nav-item nav-login-btn" onClick={openModal}>
