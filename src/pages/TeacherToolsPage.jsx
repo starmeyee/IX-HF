@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { Megaphone, Users, BarChart2, ArrowRight, Bold, Italic, List, Save, Pencil, Trash2, X, BookMarked, ClipboardList } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import FormatToolbar from '../components/FormatToolbar';
 import NoticeText from '../components/NoticeText';
 import CopyWhatsAppButton from '../components/CopyWhatsAppButton';
 import { stripFormatting } from '../utils/whatsappFormat';
-import { useAuth } from '../auth/AuthContext';
 import { getNotices, addNotice, updateNotice, deleteNotice } from '../services/noticeService';
 import { getAllUsers } from '../services/adminService';
 import { getAttendance } from '../auth/authService';
@@ -138,6 +139,7 @@ function NoticeTool({ currentUser }) {
 
 // ── Main Page ─────────────────────────────────────────────────
 export default function TeacherToolsPage() {
+  useStarBatchRouteGuard();
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [classAvgAtt, setClassAvgAtt] = useState(null);

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { syllabusData } from '../data/syllabusData';
-import { ChevronRight, Plus, Image as ImageIcon, Send, Loader2, X, Star, BookOpen, ArrowLeft } from 'lucide-react';
+import { ChevronRight, Plus, Image as ImageIcon, Send, Loader2, X, Star, ArrowLeft } from 'lucide-react';
 import { addStarBatchQuestion, getStarBatchQuestions, uploadImageToCloudinary } from '../services/starBatchSyllabusService';
 import { useAuth } from '../auth/AuthContext';
 
 export default function StarBatchSyllabusPage() {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   // Drill-down state — same pattern as SyllabusPage
   const [sectionId, setSectionId] = useState(null);
@@ -15,6 +17,7 @@ export default function StarBatchSyllabusPage() {
   // Questions cache keyed by chapterId
   const [chapterQuestions, setChapterQuestions] = useState({});
   const [loadingChapters, setLoadingChapters] = useState({});
+  const [chapterLoadErrors, setChapterLoadErrors] = useState({});
 
   // Add Question Modal state
   const [addingToChapter, setAddingToChapter] = useState(null);
@@ -25,8 +28,21 @@ export default function StarBatchSyllabusPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
 
+  // Route guard: only users who have unlocked Star Batch may view or edit
+  // this page. Mirrors the check in StarBatchPage — do not access this page
+  // directly without going through the unlock flow first.
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/');
+    } else if (!currentUser.hasUnlockedStarBatch) {
+      navigate('/star-batch');
+    }
+  }, [currentUser, navigate]);
+
   const activeSection = syllabusData.find(s => s.sectionId === sectionId) || null;
   const activeSubject = activeSection?.subjects.find(s => s.subjectId === subjectId) || null;
+
+  if (!currentUser || !currentUser.hasUnlockedStarBatch) return null;
 
   // Load questions when a chapter is expanded
   async function toggleChapter(chapterId) {
@@ -34,10 +50,14 @@ export default function StarBatchSyllabusPage() {
     setOpenChapterId(chapterId);
     if (!chapterQuestions[chapterId]) {
       setLoadingChapters(p => ({ ...p, [chapterId]: true }));
+      setChapterLoadErrors(p => ({ ...p, [chapterId]: null }));
       try {
         const q = await getStarBatchQuestions(chapterId);
         setChapterQuestions(p => ({ ...p, [chapterId]: q }));
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+        setChapterLoadErrors(p => ({ ...p, [chapterId]: 'Failed to load questions. Please try again.' }));
+      }
       finally { setLoadingChapters(p => ({ ...p, [chapterId]: false })); }
     }
   }
@@ -52,12 +72,27 @@ export default function StarBatchSyllabusPage() {
     setFormError('');
   }
 
+  const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+  const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+
   function handleImageChange(e) {
     const file = e.target.files[0];
     if (!file) return;
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+      setFormError('Unsupported file type. Please upload a JPEG, PNG, WEBP, or GIF image.');
+      e.target.value = '';
+      return;
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      setFormError(`Image is too large (max ${MAX_IMAGE_BYTES / (1024 * 1024)}MB). Please choose a smaller file.`);
+      e.target.value = '';
+      return;
+    }
+    setFormError('');
     setImageFile(file);
     const r = new FileReader();
     r.onloadend = () => setImagePreview(r.result);
+    r.onerror = () => setFormError('Failed to read the selected image. Please try another file.');
     r.readAsDataURL(file);
   }
 
@@ -227,6 +262,17 @@ export default function StarBatchSyllabusPage() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>
                         <Loader2 size={15} style={{ animation: 'spin 1s linear infinite' }} /> Loading...
                       </div>
+                    ) : chapterLoadErrors[chapter.chapterId] ? (
+                      <div className="sb-error" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                        <span>{chapterLoadErrors[chapter.chapterId]}</span>
+                        <button
+                          type="button"
+                          onClick={() => { setOpenChapterId(null); toggleChapter(chapter.chapterId); }}
+                          style={{ background: 'none', border: 'none', color: '#fca5a5', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.8rem', flexShrink: 0 }}
+                        >
+                          Retry
+                        </button>
+                      </div>
                     ) : questions.length > 0 ? (
                       questions.map(q => (
                         <div key={q.id} className="sb-q-card">
@@ -270,6 +316,7 @@ export default function StarBatchSyllabusPage() {
                 placeholder="Topic Name (e.g. Important Numericals)"
                 value={topicName}
                 onChange={e => setTopicName(e.target.value)}
+                maxLength={120}
                 required
               />
               <textarea
@@ -277,6 +324,7 @@ export default function StarBatchSyllabusPage() {
                 placeholder="Type the question or notes here... (optional if uploading image)"
                 value={questionText}
                 onChange={e => setQuestionText(e.target.value)}
+                maxLength={4000}
               />
               <label className="sb-file-label">
                 <ImageIcon size={18} />

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { useNavigate, Link } from 'react-router-dom';
 import { ShieldAlert, Plus, Save, Trash2, Megaphone, Bold, Italic, List, Pencil, X, CalendarX, BookMarked, ChevronRight, Check, Send, ClipboardList, Users, Mail, Bell, RefreshCw, MousePointerClick, Eye, EyeOff, Link as LinkIcon } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -1102,6 +1103,7 @@ function CTABannerManager() {
 }
 
 export default function AdminPanel() {
+  useStarBatchRouteGuard();
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
 

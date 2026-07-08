@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ClipboardList, Lock, ChevronDown, ChevronUp, Search } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { ROLES } from '../auth/roles';
 import { rollList } from '../auth/rollList';
 import { getTables, getEntries, setCellValue } from '../services/recordsService';
@@ -254,6 +255,7 @@ function TableSection({ table }) {
 
 // ── Page ──────────────────────────────────────────────────────
 export default function RecordTeacherPage() {
+  useStarBatchRouteGuard();
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [tables, setTables] = useState(null);

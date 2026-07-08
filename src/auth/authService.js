@@ -26,8 +26,10 @@ export async function getUserByPhone(phone) {
 export async function registerUser({ name, phone, rollNo }) {
   const existing = await getUserByPhone(phone);
   if (existing) throw new Error('Phone already registered. Please login.');
-  // Prevent duplicate roll numbers (unless rollNo is 0 = outsider, or 85 = external star batch)
-  if (rollNo !== 0 && rollNo !== 85) {
+  // Prevent duplicate roll numbers (0 = outsider/unassigned, always allowed to repeat).
+  // Star Batch external signups now get a unique roll from getNextStarBatchRoll()
+  // (100-199), so they no longer need a special exemption here.
+  if (rollNo !== 0) {
     const allSnap = await getDocs(collection(db, 'users'));
     const dup = allSnap.docs.find(d => {
       const u = d.data();

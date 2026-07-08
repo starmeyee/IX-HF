@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { ROLES } from '../auth/roles';
 import { createTable, updateTable, getTables, deleteTable } from '../services/recordsService';
 import { ClipboardList, Plus, Trash2, X, Lock, Unlock, Pencil } from 'lucide-react';
@@ -124,6 +125,7 @@ function TableModal({ table, onClose, onSaved }) {
 }
 
 export default function RecordAdminPage() {
+  useStarBatchRouteGuard();
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [tables, setTables]   = useState(null);

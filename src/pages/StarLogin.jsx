@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
-import { getStarBatchConfig } from '../services/starBatchService';
+import { getStarBatchConfig, unlockStarBatchWithCode, getNextStarBatchRoll } from '../services/starBatchService';
 import { getUserByPhone, registerUser } from '../auth/authService';
-import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 import { Sparkles, ArrowRight, ShieldCheck, User } from 'lucide-react';
 
 export default function StarLogin() {
@@ -29,7 +27,7 @@ export default function StarLogin() {
     try {
       const config = await getStarBatchConfig();
       if (config.code !== code) {
-        throw new Error("Invalid access code.");
+        throw new Error("Invalid code.");
       }
       
       const existing = await getUserByPhone(phone.trim());
@@ -38,7 +36,8 @@ export default function StarLogin() {
         setStep(2);
       } else {
         if (!name.trim()) throw new Error("Name is required for new users.");
-        await registerUser({ name: name.trim(), phone: phone.trim(), rollNo: 85 });
+        const rollNo = await getNextStarBatchRoll();
+        await registerUser({ name: name.trim(), phone: phone.trim(), rollNo });
         setIsNewUser(true);
         setStep(2);
       }
@@ -62,8 +61,9 @@ export default function StarLogin() {
         await login(phone.trim(), password);
       }
       
-      // Update user document to mark unlocked
-      await updateDoc(doc(db, 'users', phone.trim()), { hasUnlockedStarBatch: true });
+      // Update user document to mark unlocked — goes through the single unlock
+      // function so both entry points share the same code-check + write logic.
+      await unlockStarBatchWithCode(phone.trim(), code);
       await refreshUser(phone.trim()); // To ensure contextual user is updated
       updateCurrentUser({ hasUnlockedStarBatch: true });
       

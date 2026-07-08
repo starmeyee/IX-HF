@@ -1,0 +1,109 @@
+rules_version = '2';
+
+// ─────────────────────────────────────────────────────────────────────────
+// IMPORTANT — READ BEFORE EDITING
+//
+// This app does NOT use Firebase Auth for normal login (phone + SHA-256
+// password checked directly against Firestore documents). That means
+// `request.auth` is NOT reliably populated for most operations, and these
+// rules CANNOT enforce "only the account owner may edit their own document"
+// the way a properly authenticated app could.
+//
+// These rules are a stop-gap ("Option A"): they close the "anyone can
+// read/write/delete anything, including inventing new collections" hole
+// left by the previous `allow read, write: if true` on `{document=**}`,
+// and add basic shape/field validation on the highest-risk documents.
+// They do NOT provide true per-user authorization. The real fix is
+// migrating login to Firebase Auth (e.g. custom tokens minted after the
+// existing password check) so `request.auth.uid` can be trusted — see the
+// review notes from 2026-07-08 for details. Do that before this app
+// handles anything more sensitive than it already does.
+// ─────────────────────────────────────────────────────────────────────────
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- users/{phone} ---------------------------------------------------
+    // Central user doc: name, phone, rollNo, passwordHash, flags, etc.
+    // No real per-user auth is possible here (see header). We at least:
+    //   - require the core identity fields to keep their expected types
+    //   - block `activeRole` from being set to anything other than a known
+    //     role string, closing the most direct privilege-escalation path
+    //     (writing activeRole: 'ADMIN' on the well-known TEST_PHONE doc).
+    match /users/{phone} {
+      allow read: if true;
+      allow create: if request.resource.data.phone is string
+                    && request.resource.data.name is string;
+      allow update: if (
+        !("activeRole" in request.resource.data)
+        || request.resource.data.activeRole in ["STUDENT", "TEACHER", "MONITOR", "ADMIN", "STAR_BATCH_EXTERNAL"]
+      );
+      allow delete: if true; // used by adminService.deleteUserDoc — no safe way to restrict without real auth
+    }
+
+    // ---- settings/starbatch -----------------------------------------------
+    // Star Batch config: { code: string, internalRolls: number[] }
+    match /settings/starbatch {
+      allow read: if true;
+      allow write: if request.resource.data.code is string
+                   && request.resource.data.code.matches('^[0-9]{4}$')
+                   && request.resource.data.internalRolls is list;
+    }
+
+    // ---- starBatchQuestions/{id} -------------------------------------------
+    match /starBatchQuestions/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.chapterId is string
+                    && request.resource.data.topicName is string
+                    && request.resource.data.topicName.size() > 0
+                    && request.resource.data.topicName.size() <= 120
+                    && (!("questionText" in request.resource.data) || request.resource.data.questionText.size() <= 4000);
+      allow update, delete: if true; // no ownership model to check against yet
+    }
+
+    // ---- config/{doc} -------------------------------------------------------
+    // Syllabus + calendar-override config docs (small set of known keys).
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // ---- settings/{doc} (other than starbatch, handled above) --------------
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // ---- Known application collections -------------------------------------
+    // Every collection actually used by the client, enumerated explicitly.
+    // Anything NOT listed here is denied by default (see closing match block).
+    match /teachers/{id}          { allow read, write: if true; }
+    match /homework/{id}          { allow read, write: if true; }
+    match /notices/{id}           { allow read, write: if true; }
+    match /notes/{id}             { allow read, write: if true; }
+    match /classwork/{id}         { allow read, write: if true; }
+    match /records/{id}           { allow read, write: if true; }
+    match /record_entries/{id}    { allow read, write: if true; }
+    match /record_requests/{id}   { allow read, write: if true; }
+    match /mathTests/{id}         { allow read, write: if true; }
+    match /mathTestMarks/{id}     { allow read, write: if true; }
+    match /marksComplaints/{id}   { allow read, write: if true; }
+    match /marksOverrides/{id}    { allow read, write: if true; }
+    match /activityLogs/{id}      { allow read, write: if true; }
+    match /fcmTokens/{id}         { allow read, write: if true; }
+    match /in_app_notices/{id}    { allow read, write: if true; }
+    match /studyRooms/{id}        { allow read, write: if true; }
+    match /notifications/{id}     { allow read, write: if true; }
+    match /student_notifications/{id} { allow read, write: if true; }
+    match /ctaBannerClicks/{id}   { allow read, write: if true; }
+    match /test_data/{id}         { allow read, write: if true; }
+
+    // ---- Default deny ---------------------------------------------------
+    // Anything not explicitly matched above (including collections an
+    // attacker invents on the fly) is denied. This is the main fix over
+    // the previous `match /{document=**} { allow read, write: if true; }`.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy, ClipboardList, GraduationCap, Star } from 'lucide-react';
+import { Home, BookOpen, CalendarHeart, CalendarRange, LogIn, LogOut, ShieldAlert, Bell, User, Users, BookMarked, BarChart2, Wrench, BookCopy, ClipboardList, GraduationCap, Star, CalendarCheck } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { ROLES } from '../auth/roles';
 import NotificationHistory from './NotificationHistory';
@@ -127,10 +127,12 @@ export default function Navbar() {
                   <button className="nav-dropdown-item" onClick={() => go('/profile')}>
                     <User size={15} /> Profile
                   </button>
-                  <button className="nav-dropdown-item" onClick={() => go('/class-info')}>
-                    <Users size={15} /> Class Info
-                  </button>
-                  {currentUser.role !== ROLES.TEACHER && (
+                  {currentUser.role !== ROLES.STAR_BATCH_EXTERNAL && (
+                    <button className="nav-dropdown-item" onClick={() => go('/class-info')}>
+                      <Users size={15} /> Class Info
+                    </button>
+                  )}
+                  {currentUser.role !== ROLES.TEACHER && currentUser.role !== ROLES.STAR_BATCH_EXTERNAL && (
                     <button className="nav-dropdown-item" onClick={() => go('/records')}>
                       <ClipboardList size={15} /> My Records
                     </button>
@@ -155,10 +157,12 @@ export default function Navbar() {
                       <ShieldAlert size={15} /> Admin Services
                     </button>
                   )}
-                  <button className="nav-dropdown-item" onClick={() => go('/syllabus')}>
-                    <BookMarked size={15} /> Syllabus Tracker
-                  </button>
-                  {currentUser.role !== ROLES.TEACHER && (
+                  {currentUser.role !== ROLES.STAR_BATCH_EXTERNAL && (
+                    <button className="nav-dropdown-item" onClick={() => go('/syllabus')}>
+                      <BookMarked size={15} /> Syllabus Tracker
+                    </button>
+                  )}
+                  {currentUser.role !== ROLES.TEACHER && currentUser.role !== ROLES.STAR_BATCH_EXTERNAL && (
                     <button className="nav-dropdown-item" onClick={() => go('/test-scores')}>
                       <BarChart2 size={15} /> Test Scores
                     </button>
@@ -166,6 +170,11 @@ export default function Navbar() {
                   <button className="nav-dropdown-item" onClick={() => go('/study-together')}>
                     <GraduationCap size={15} /> Study Together
                   </button>
+                  {currentUser.role === ROLES.STAR_BATCH_EXTERNAL && (
+                    <button className="nav-dropdown-item" onClick={() => go('/star-batch#attendance')}>
+                      <CalendarCheck size={15} /> Attendance
+                    </button>
+                  )}
                   {(currentUser.role === ROLES.STAR_BATCH_EXTERNAL || currentUser.isStarBatch) && (
                     <button className="nav-dropdown-item" onClick={() => go('/star-batch')}>
                       <Star size={15} /> Starbatch Portal

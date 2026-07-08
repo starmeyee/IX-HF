@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { MATH_MARKS_RAW, MAX_MARKS } from '../data/mathMarks';
 import { getOverrides, fileComplaint, getMyComplaint } from '../services/marksService';
 import { AlertCircle, CheckCircle, Clock, TrendingUp, TrendingDown, Minus, Trophy, Users, BarChart2, LayoutDashboard, AlertTriangle } from 'lucide-react';
@@ -86,6 +87,7 @@ function ScoreCard({ label, value, stats, rank }) {
 }
 
 export default function TestScoresPage() {
+  useStarBatchRouteGuard();
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
   const [overrides, setOverrides] = useState({});

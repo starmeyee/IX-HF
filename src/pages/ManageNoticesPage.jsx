@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Megaphone, Pencil, Trash2, ArrowLeft, X, Save } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
+import { useStarBatchRouteGuard } from '../auth/starBatchAccess';
 import { ROLES } from '../auth/roles';
 import { getNotices, deleteNotice, updateNotice } from '../services/noticeService';
 import NoticeText from '../components/NoticeText';
@@ -9,6 +10,7 @@ import CopyWhatsAppButton from '../components/CopyWhatsAppButton';
 import FormatToolbar from '../components/FormatToolbar';
 
 export default function ManageNoticesPage() {
+  useStarBatchRouteGuard();
   const { currentUser, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 

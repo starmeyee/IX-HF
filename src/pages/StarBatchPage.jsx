@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { unlockStarBatch } from '../services/starBatchService';
-import { Lock, Star, Sparkles, BookOpen, ChevronRight } from 'lucide-react';
+import { unlockStarBatchWithCode } from '../services/starBatchService';
+import { getAttendance, setAttendance } from '../auth/authService';
+import { getClosedDays } from '../services/calendarOverrideService';
+import AttendanceCalendar from '../components/AttendanceCalendar';
+import { Lock, Star, Sparkles, ChevronRight, CalendarCheck, GraduationCap, CalendarHeart } from 'lucide-react';
+
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MS = 30_000;
 
 export default function StarBatchPage() {
   const { currentUser, updateCurrentUser } = useAuth();
@@ -10,6 +16,15 @@ export default function StarBatchPage() {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  const [isLocked, setIsLocked] = useState(false);
+  const lockTimerRef = useRef(null);
+  const attendanceRef = useRef(null);
+
+  // Attendance state — same pattern as StudentDashboard, scoped to this user.
+  const [absentDays, setAbsentDays] = useState([]);
+  const [attendanceLoaded, setAttendanceLoaded] = useState(false);
+  const [closedDays, setClosedDays] = useState([]);
 
   useEffect(() => {
     if (!currentUser) {
@@ -17,20 +32,72 @@ export default function StarBatchPage() {
     }
   }, [currentUser, navigate]);
 
+  useEffect(() => () => clearTimeout(lockTimerRef.current), []);
+
+  // Load attendance + closed days once unlocked.
+  useEffect(() => {
+    if (!currentUser?.hasUnlockedStarBatch) return;
+    let cancelled = false;
+    Promise.all([getAttendance(currentUser.phone), getClosedDays()]).then(([days, closed]) => {
+      if (cancelled) return;
+      setAbsentDays(days);
+      setClosedDays(closed);
+      setAttendanceLoaded(true);
+    }).catch(() => {
+      if (!cancelled) setAttendanceLoaded(true);
+    });
+    return () => { cancelled = true; };
+  }, [currentUser?.hasUnlockedStarBatch, currentUser?.phone]);
+
+  // Scroll to the attendance section if the URL includes the #attendance anchor
+  // (used by the Navbar's "Attendance" link for external users).
+  useEffect(() => {
+    if (window.location.hash === '#attendance' && attendanceRef.current) {
+      attendanceRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [currentUser?.hasUnlockedStarBatch]);
+
+  const handleToggleAttendance = useCallback(async (dateKey) => {
+    if (!currentUser) return;
+    setAbsentDays(prev => {
+      const next = prev.includes(dateKey) ? prev.filter(d => d !== dateKey) : [...prev, dateKey];
+      setAttendance(currentUser.phone, next).catch(() => {});
+      return next;
+    });
+  }, [currentUser]);
+
   if (!currentUser) return null;
 
   async function handleUnlock(e) {
     e.preventDefault();
+    if (isLocked) return;
     setError('');
     setLoading(true);
     try {
-      await unlockStarBatch(currentUser.phone, code);
+      await unlockStarBatchWithCode(currentUser.phone, code);
       updateCurrentUser({ hasUnlockedStarBatch: true });
     } catch (err) {
-      setError(err.message);
+      const nextAttempts = attempts + 1;
+      setAttempts(nextAttempts);
+      if (nextAttempts >= MAX_ATTEMPTS) {
+        setIsLocked(true);
+        setError(`Too many incorrect attempts. Try again in ${Math.ceil(LOCKOUT_MS / 1000)}s.`);
+        lockTimerRef.current = setTimeout(() => {
+          setIsLocked(false);
+          setAttempts(0);
+        }, LOCKOUT_MS);
+      } else {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleCodeChange(e) {
+    // Restrict to digits only, max 4 chars — code is numeric by convention.
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 4);
+    setCode(digitsOnly);
   }
 
   if (!currentUser.hasUnlockedStarBatch) {
@@ -172,13 +239,16 @@ export default function StarBatchPage() {
             <div>
               <input
                 type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 className="star-unlock-input"
                 placeholder="••••"
                 value={code}
-                onChange={(e) => setCode(e.target.value)}
+                onChange={handleCodeChange}
                 maxLength={4}
                 required
                 autoComplete="off"
+                disabled={isLocked}
               />
             </div>
             {error && (
@@ -186,8 +256,8 @@ export default function StarBatchPage() {
                 {error}
               </div>
             )}
-            <button type="submit" className="star-unlock-btn" disabled={loading}>
-              {loading ? 'Verifying...' : 'Unlock Portal'}
+            <button type="submit" className="star-unlock-btn" disabled={loading || isLocked || code.length !== 4}>
+              {loading ? 'Verifying...' : isLocked ? 'Locked' : 'Unlock Portal'}
             </button>
           </form>
         </div>
@@ -197,6 +267,9 @@ export default function StarBatchPage() {
 
   return (
     <div className="dashboard" style={{ animation: 'fade-in 0.4s ease' }}>
+      <style>{`
+        .star-quick-link:hover { border-color: rgba(251, 191, 36, 0.4); }
+      `}</style>
       <div style={{ background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)', padding: '2rem', borderRadius: 'var(--radius-lg)', color: '#fff', display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', boxShadow: '0 8px 30px rgba(245, 158, 11, 0.3)' }}>
         <Sparkles size={40} />
         <div>
@@ -204,13 +277,11 @@ export default function StarBatchPage() {
           <p style={{ margin: 0, opacity: 0.9, fontSize: '1.05rem' }}>Welcome to the exclusive portal. Aiming for 85%+ excellence.</p>
         </div>
       </div>
-      
-      <div 
-        className="as-card" 
-        onClick={() => navigate('/star-syllabus')} 
-        style={{ cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(251,191,36,0.4)'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = ''}
+
+      <div
+        className="as-card star-quick-link"
+        onClick={() => navigate('/star-syllabus')}
+        style={{ cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}
       >
         <div>
           <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
@@ -219,6 +290,46 @@ export default function StarBatchPage() {
           <p className="as-muted" style={{ margin: 0 }}>Browse sections, subjects &amp; chapters. Add targeted questions per chapter.</p>
         </div>
         <ChevronRight size={22} color="#fbbf24" style={{ flexShrink: 0, marginLeft: '1rem' }} />
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+        <div
+          className="as-card star-quick-link"
+          onClick={() => navigate('/study-together')}
+          style={{ cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+        >
+          <GraduationCap size={22} color="#fbbf24" style={{ flexShrink: 0 }} />
+          <div>
+            <h4 style={{ margin: 0, fontSize: '0.95rem' }}>Study Together</h4>
+            <p className="as-muted" style={{ margin: 0, fontSize: '0.8rem' }}>Join a live study room</p>
+          </div>
+        </div>
+        <div
+          className="as-card star-quick-link"
+          onClick={() => navigate('/holidays')}
+          style={{ cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+        >
+          <CalendarHeart size={22} color="#fbbf24" style={{ flexShrink: 0 }} />
+          <div>
+            <h4 style={{ margin: 0, fontSize: '0.95rem' }}>Holiday Homework</h4>
+            <p className="as-muted" style={{ margin: 0, fontSize: '0.8rem' }}>View and track assignments</p>
+          </div>
+        </div>
+      </div>
+
+      <div ref={attendanceRef} className="as-card" style={{ padding: '1.5rem' }}>
+        <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+          <CalendarCheck size={20} color="#fbbf24" /> Your Attendance
+        </h3>
+        {!attendanceLoaded ? (
+          <p className="as-muted">Loading attendance...</p>
+        ) : (
+          <AttendanceCalendar
+            absentDays={absentDays}
+            onToggle={handleToggleAttendance}
+            closedDays={closedDays}
+          />
+        )}
       </div>
     </div>
   );
