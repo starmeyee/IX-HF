@@ -273,7 +273,21 @@ function HHNotesView({ task, onUpload, currentUser, sparks, setSparks, purchased
   async function handleOpen(note, action) {
     if (!currentUser) return;
     if (free) {
-      action === 'view' ? setViewing(note) : window.open(note.blobUrl, '_blank');
+      if (action === 'view') {
+        setViewing(note);
+      } else {
+        // Forced download — fetch blob so Chrome saves to downloads
+        try {
+          const res = await fetch(note.blobUrl, { mode: 'cors' });
+          const blob = await res.blob();
+          const objUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = objUrl;
+          a.download = `${(note.title || 'notes').replace(/[/\\:*?"<>|]/g, '_')}.pdf`;
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(objUrl), 10_000);
+        } catch { window.open(note.blobUrl, '_blank', 'noopener,noreferrer'); }
+      }
       return;
     }
     if (sparks < SPARK_VIEW_COST) {
@@ -286,7 +300,20 @@ function HHNotesView({ task, onUpload, currentUser, sparks, setSparks, purchased
       await purchaseChapter(currentUser.phone, task.chapterId);
       setSparks(newBal);
       setPurchasedChapters(prev => new Set([...prev, task.chapterId]));
-      action === 'view' ? setViewing(note) : window.open(note.blobUrl, '_blank');
+      if (action === 'view') {
+        setViewing(note);
+      } else {
+        try {
+          const res = await fetch(note.blobUrl, { mode: 'cors' });
+          const blob = await res.blob();
+          const objUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = objUrl;
+          a.download = `${(note.title || 'notes').replace(/[/\\:*?"<>|]/g, '_')}.pdf`;
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(objUrl), 10_000);
+        } catch { window.open(note.blobUrl, '_blank', 'noopener,noreferrer'); }
+      }
     } catch (e) {
       alert('Failed: ' + e.message);
     } finally {
@@ -499,6 +526,28 @@ export default function NotesPage() {
     setViewingNote(note);
   }
 
+  // ── Shared forced-download helper ──────────────────────────────
+  // <a href download> does NOT force download for cross-origin URLs in Chrome.
+  // We must fetch the file ourselves, create a blob, then trigger the download.
+  async function forcePdfDownload(url, title) {
+    try {
+      const res = await fetch(url, { mode: 'cors' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const blob = await res.blob();
+      const objUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objUrl;
+      a.download = `${(title || 'notes').replace(/[/\\:*?"<>|]/g, '_')}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(objUrl), 10_000);
+    } catch (err) {
+      console.error('Download failed, opening as fallback:', err);
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
   async function handleDownload(note) {
     if (!currentUser) { openModal(); return; }
     if (!isStudent) return;
@@ -514,13 +563,7 @@ export default function NotesPage() {
       setSparks(newBal);
       setPurchasedChapters(prev => new Set([...prev, note.chapterId]));
     }
-    const a = document.createElement('a');
-    a.href = note.blobUrl;
-    a.download = note.title + '.pdf';
-    a.target = '_blank';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    await forcePdfDownload(note.blobUrl, note.title);
   }
 
   function onUploadSuccess() {
