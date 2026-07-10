@@ -403,6 +403,59 @@ export default function NotesPage() {
   const [tourRun, setTourRun] = useState(false);
   const [showTourPrompt, setShowTourPrompt] = useState(false);
 
+  // AI Search State
+  const [aiSearchQuery, setAiSearchQuery] = useState('');
+  const [isAiSearching, setIsAiSearching] = useState(false);
+
+  async function handleAiSearch(e) {
+    e.preventDefault();
+    if (!aiSearchQuery.trim()) return;
+    setIsAiSearching(true);
+
+    try {
+      // Build a minimal syllabus context for the AI
+      let context = '';
+      for (const sec of syllabusData) {
+        for (const sub of sec.subjects) {
+          context += `${sec.sectionName} > ${sub.subjectName}:\n`;
+          for (const ch of sub.chapters) {
+            context += `  - ${ch.chapterName} (${ch.chapterId})\n`;
+          }
+        }
+      }
+
+      const res = await fetch('/api/ai-search-notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: aiSearchQuery, syllabusContext: context })
+      });
+
+      if (!res.ok) throw new Error('AI search failed.');
+      const data = await res.json();
+      
+      if (data.chapterId && data.chapterId !== 'Unknown') {
+        const foundSec = syllabusData.find(sec => sec.subjects.some(sub => sub.chapters.some(ch => ch.chapterId === data.chapterId)));
+        const foundSub = foundSec?.subjects.find(sub => sub.chapters.some(ch => ch.chapterId === data.chapterId));
+        const foundCh = foundSub?.chapters.find(ch => ch.chapterId === data.chapterId);
+        
+        if (foundSec && foundSub && foundCh) {
+          setSection(foundSec);
+          setSubject(foundSub);
+          setChapter(foundCh);
+          setView('notes');
+        } else {
+          alert('Could not find that topic. Try browsing manually.');
+        }
+      } else {
+        alert('Could not understand which chapter you need. Please try rephrasing or browsing manually.');
+      }
+    } catch (err) {
+      alert('AI Search Error: ' + err.message);
+    } finally {
+      setIsAiSearching(false);
+    }
+  }
+
   // Auto-prompt tour on first ever visit (replaced window.confirm with in-page modal)
   useEffect(() => {
     if (!currentUser || !isStudent) return;
@@ -675,6 +728,24 @@ export default function NotesPage() {
       {/* ── BROWSE TAB ── */}
       {logTab === 'browse' && (
         <>
+          {/* AI Search Bar */}
+          <form onSubmit={handleAiSearch} style={{ margin: '1rem 1.5rem', display: 'flex', gap: '0.5rem' }}>
+            <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center' }}>
+              <Search size={18} style={{ position: 'absolute', left: '1rem', color: 'rgba(255,255,255,0.4)' }} />
+              <input 
+                type="text" 
+                value={aiSearchQuery}
+                onChange={e => setAiSearchQuery(e.target.value)}
+                placeholder="What notes do you need? e.g. 'Class 10 Light' or 'Quadratic Equations'" 
+                style={{ width: '100%', padding: '0.8rem 1rem 0.8rem 2.8rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: '0.9rem', outline: 'none' }}
+              />
+            </div>
+            <button type="submit" disabled={isAiSearching || !aiSearchQuery.trim()} style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', color: '#fff', border: 'none', borderRadius: '12px', padding: '0 1.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: aiSearchQuery.trim() ? 'pointer' : 'not-allowed', fontWeight: 600, opacity: aiSearchQuery.trim() ? 1 : 0.5 }}>
+              {isAiSearching ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> : <Sparkles size={16} />}
+              AI Search
+            </button>
+          </form>
+
           {view !== 'sections' && (
             <div className="notes-breadcrumb">
               <button className="notes-back-btn" onClick={goBack}><ArrowLeft size={15} /> Back</button>
