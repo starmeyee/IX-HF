@@ -45,7 +45,7 @@ If you are unsure about a field, return "Unknown". Do not include any other text
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192', // fast and capable for this
+        model: 'llama-3.1-8b-instant', // optimized for ultra-low latency
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.2, // low temp for deterministic JSON
         response_format: { type: "json_object" }
