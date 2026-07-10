@@ -736,18 +736,18 @@ export default function NotesPage() {
       {logTab === 'browse' && (
         <>
           {/* AI Search Bar */}
-          <form onSubmit={handleAiSearch} style={{ margin: '1rem 1.5rem', display: 'flex', gap: '0.5rem' }}>
+          <form onSubmit={handleAiSearch} className="notes-ai-search-form">
             <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center' }}>
               <Search size={18} style={{ position: 'absolute', left: '1rem', color: 'rgba(255,255,255,0.4)' }} />
               <input 
                 type="text" 
                 value={aiSearchQuery}
                 onChange={e => setAiSearchQuery(e.target.value)}
-                placeholder="What notes do you need? e.g. 'Class 10 Light' or 'Quadratic Equations'" 
+                placeholder="What notes do you need? e.g. 'Class 10 Light'" 
                 style={{ width: '100%', padding: '0.8rem 1rem 0.8rem 2.8rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: '0.9rem', outline: 'none' }}
               />
             </div>
-            <button type="submit" disabled={isAiSearching || !aiSearchQuery.trim()} style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', color: '#fff', border: 'none', borderRadius: '12px', padding: '0 1.25rem', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: aiSearchQuery.trim() ? 'pointer' : 'not-allowed', fontWeight: 600, opacity: aiSearchQuery.trim() ? 1 : 0.5 }}>
+            <button type="submit" className="notes-ai-search-btn" disabled={isAiSearching || !aiSearchQuery.trim()}>
               {isAiSearching ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> : <Sparkles size={16} />}
               AI Search
             </button>

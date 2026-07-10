@@ -3090,6 +3090,42 @@ a {
 
 /* ── Page layout ── */
 .notes-page { max-width: 700px; margin: 0 auto; padding: 0 1rem 6rem; }
+
+.notes-ai-search-form {
+  margin: 1rem 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.notes-ai-search-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.notes-ai-search-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.notes-ai-search-btn:not(:disabled) {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .notes-ai-search-form {
+    margin: 1rem 0.5rem;
+    flex-direction: column;
+  }
+  .notes-ai-search-btn {
+    padding: 0.8rem;
+  }
+}
 .notes-login-prompt {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 1rem; text-align: center; padding: 4rem 1rem; color: var(--text-primary);
