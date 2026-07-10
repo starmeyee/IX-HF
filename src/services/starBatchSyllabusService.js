@@ -1,4 +1,4 @@
-import { collection, addDoc, query, where, getDocs, doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs, doc, updateDoc, arrayUnion, arrayRemove, serverTimestamp, writeBatch } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const MAX_TOPIC_LENGTH = 120;
@@ -32,6 +32,47 @@ export async function addStarBatchQuestion(chapterId, subjectId, topicName, ques
     reports: [],
     createdAt: serverTimestamp()
   });
+}
+
+export async function bulkUploadStarBatchQuestions(questionsArray, user) {
+  if (!Array.isArray(questionsArray)) throw new Error('Invalid JSON: Must be an array of questions.');
+  if (questionsArray.length === 0) throw new Error('No questions found in the file.');
+  if (questionsArray.length > 500) throw new Error('Maximum 500 questions allowed per bulk upload.');
+  if (!user) throw new Error('Missing user.');
+
+  const ref = collection(db, 'starBatchQuestions');
+  
+  // Firestore batch limit is 500 operations
+  const batch = writeBatch(db);
+
+  questionsArray.forEach((q, index) => {
+    const trimmedTopic = (q.topicName || '').trim();
+    const trimmedQuestion = (q.questionText || '').trim();
+
+    if (!q.chapterId) throw new Error(`Row ${index + 1}: Missing chapterId.`);
+    if (!q.subjectId) throw new Error(`Row ${index + 1}: Missing subjectId.`);
+    if (!trimmedQuestion && !q.imageUrl) throw new Error(`Row ${index + 1}: Missing question text or image.`);
+    if (!q.marks) throw new Error(`Row ${index + 1}: Missing marks.`);
+    if (!q.source) throw new Error(`Row ${index + 1}: Missing source.`);
+
+    const newDocRef = doc(ref);
+    batch.set(newDocRef, {
+      chapterId: q.chapterId,
+      subjectId: q.subjectId,
+      topicName: trimmedTopic || 'Untitled Topic',
+      questionText: trimmedQuestion,
+      imageUrl: q.imageUrl || null,
+      marks: q.marks,
+      source: q.source,
+      authorName: user.name || 'Admin Bulk Upload',
+      authorRoll: user.rollNo || 'Admin',
+      bookmarkedBy: [],
+      reports: [],
+      createdAt: serverTimestamp()
+    });
+  });
+
+  await batch.commit();
 }
 
 export async function getStarBatchQuestionsByChapter(chapterId) {

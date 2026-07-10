@@ -1,0 +1,22 @@
+[
+  {
+    "sectionId": "science",
+    "subjectId": "physics",
+    "chapterId": "phy-ch-3",
+    "topicName": "Important Derivation: Resistance in Series",
+    "questionText": "Derive the expression for the equivalent resistance when three resistors R1, R2, and R3 are connected in series. Explain the potential difference across each resistor.",
+    "imageUrl": "",
+    "marks": "5",
+    "source": "Previous Year"
+  },
+  {
+    "sectionId": "mathematics",
+    "subjectId": "algebra",
+    "chapterId": "math-alg-2",
+    "topicName": "Word Problem: Linear Equations",
+    "questionText": "Five years ago, Nuri was thrice as old as Sonu. Ten years later, Nuri will be twice as old as Sonu. How old are Nuri and Sonu?",
+    "imageUrl": "https://example.com/optional-image.jpg",
+    "marks": "3",
+    "source": "NCERT"
+  }
+]

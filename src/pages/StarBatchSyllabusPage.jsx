@@ -1,15 +1,17 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { syllabusData } from '../data/syllabusData';
-import { Plus, Image as ImageIcon, Send, Loader2, X, Star, Download, ChevronDown, Sparkles, Bookmark, Flag, Search, Filter } from 'lucide-react';
+import { Plus, Image as ImageIcon, Send, Loader2, X, Star, Download, ChevronDown, Sparkles, Bookmark, Flag, Search, Filter, FileJson } from 'lucide-react';
 import { 
   addStarBatchQuestion, 
   getAllStarBatchQuestions, 
   uploadImageToCloudinary,
   bookmarkQuestion,
-  reportQuestion
+  reportQuestion,
+  bulkUploadStarBatchQuestions
 } from '../services/starBatchSyllabusService';
 import { useAuth } from '../auth/AuthContext';
+import { getUserRole, ROLES } from '../auth/roles';
 
 // ── Text Similarity Helper (Dice Coefficient) ──
 function getBigrams(str) {
@@ -385,6 +387,34 @@ export default function StarBatchSyllabusPage() {
   // Derived state for filters
   const activeSection = syllabusData.find(s => s.sectionId === filterSection) || null;
 
+  const isAdmin = getUserRole(currentUser?.rollNo) === ROLES.ADMIN;
+  const fileInputRef = useRef(null);
+  const [isUploadingJSON, setIsUploadingJSON] = useState(false);
+
+  async function handleBulkUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!window.confirm("Are you sure you want to bulk upload these questions?")) {
+      e.target.value = '';
+      return;
+    }
+
+    setIsUploadingJSON(true);
+    try {
+      const text = await file.text();
+      const json = JSON.parse(text);
+      await bulkUploadStarBatchQuestions(json, currentUser);
+      alert('Bulk upload successful! Questions added.');
+      fetchQuestions(); // refresh
+    } catch (err) {
+      alert('Bulk upload failed: ' + err.message);
+    } finally {
+      setIsUploadingJSON(false);
+      e.target.value = '';
+    }
+  }
+
   const filteredQuestions = useMemo(() => {
     return questions.filter(q => {
       if (filterSubject && q.subjectId !== filterSubject) return false;
@@ -397,6 +427,9 @@ export default function StarBatchSyllabusPage() {
       return true;
     });
   }, [questions, filterSubject, filterChapter, searchQuery]);
+
+  const isFiltering = filterSection || filterSubject || filterChapter || searchQuery;
+  const displayedQuestions = isFiltering ? filteredQuestions : filteredQuestions.slice(0, 10);
 
   async function handleBookmark(id, isBookmarked) {
     // optimistic UI update
@@ -478,7 +511,7 @@ export default function StarBatchSyllabusPage() {
         .qb-action-btn.active { color: #fbbf24; }
         .qb-action-btn.danger:hover { color: #f87171; background: rgba(248,113,113,0.1); }
         
-        .sb-fab { position: fixed; bottom: 1.5rem; right: 1.25rem; z-index: 1000; width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: none; color: #000; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 8px 30px rgba(245,158,11,0.45), 0 2px 8px rgba(0,0,0,0.3); transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); -webkit-tap-highlight-color: transparent; }
+        .sb-fab { position: fixed; bottom: 5.5rem; right: 1.25rem; z-index: 1000; width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: none; color: #000; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 8px 30px rgba(245,158,11,0.45), 0 2px 8px rgba(0,0,0,0.3); transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); -webkit-tap-highlight-color: transparent; }
         .sb-fab:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 14px 40px rgba(245,158,11,0.55); }
         .sb-fab:active { transform: scale(0.96); }
         .sb-fab-label { font-size: 0.52rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
@@ -486,9 +519,20 @@ export default function StarBatchSyllabusPage() {
         @keyframes fade-in { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
       `}</style>
 
-      <div className="qb-header">
-        <h2 className="qb-title"><Star size={20} color="#fbbf24" /> Reliable Question Bank</h2>
-        <p className="qb-subtitle">Filter to find top quality exam questions, or add your own.</p>
+      <div className="qb-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h2 className="qb-title"><Star size={20} color="#fbbf24" /> Reliable Question Bank</h2>
+          <p className="qb-subtitle">Filter to find top quality exam questions, or add your own.</p>
+        </div>
+        {isAdmin && (
+          <div>
+            <input type="file" accept=".json" style={{ display: 'none' }} ref={fileInputRef} onChange={handleBulkUpload} />
+            <button onClick={() => fileInputRef.current?.click()} disabled={isUploadingJSON} style={{ background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.3)', color: '#fbbf24', padding: '0.5rem 0.8rem', borderRadius: '8px', fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600 }}>
+              {isUploadingJSON ? <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> : <FileJson size={14} />}
+              Bulk Upload
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="qb-filters">
@@ -529,9 +573,11 @@ export default function StarBatchSyllabusPage() {
       ) : (
         <div>
           <div style={{ marginBottom: '1rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)' }}>
-            Showing {filteredQuestions.length} question(s)
+            {isFiltering 
+              ? `Found ${filteredQuestions.length} question(s)` 
+              : `Showing recent ${displayedQuestions.length} questions (of ${questions.length} total)`}
           </div>
-          {filteredQuestions.map(q => {
+          {displayedQuestions.map(q => {
             const isBookmarked = (q.bookmarkedBy || []).includes(currentUser.id);
             const isReported = (q.reports || []).includes(currentUser.id);
             // Reconstruct path names for display if possible
