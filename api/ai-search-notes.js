@@ -4,20 +4,37 @@ export const config = {
 
 export default async function handler(req) {
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), { 
+      status: 405, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
   }
 
   const apiKey = process.env.GROQ_API_KEY || process.env.NVIDIA_API_KEY;
   if (!apiKey) {
     console.error('[ai-search] GROQ_API_KEY env variable is not set');
-    return new Response(JSON.stringify({ error: 'AI provider not configured' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'AI provider not configured in Vercel environment' }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' } 
+    });
   }
 
   try {
-    const { query, syllabusContext } = await req.json();
+    const body = await req.json();
+    const { query, syllabusContext } = body;
 
     if (!query || typeof query !== 'string') {
-      return new Response(JSON.stringify({ error: 'Missing search query' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing or invalid search query' }), { 
+        status: 400,
+        headers: { 'Content-Type': 'application/json' } 
+      });
+    }
+
+    if (!syllabusContext || typeof syllabusContext !== 'string') {
+      return new Response(JSON.stringify({ error: 'Missing syllabus context' }), { 
+        status: 400,
+        headers: { 'Content-Type': 'application/json' } 
+      });
     }
 
     const prompt = `
@@ -45,26 +62,40 @@ If no relevant chapter is found, return "Unknown" for the chapterId. Do not incl
       body: JSON.stringify({
         model: 'llama3-8b-8192',
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.1,
-        response_format: { type: "json_object" }
+        temperature: 0.1
       })
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error(`[ai-search] Groq API error ${response.status}: ${errText.slice(0, 200)}`);
-      throw new Error(`AI request failed: ${response.status}`);
+      console.error(`[ai-search] Groq API error ${response.status}: ${errText.slice(0, 500)}`);
+      return new Response(JSON.stringify({ 
+        error: `AI provider returned ${response.status}`,
+        details: errText.slice(0, 200)
+      }), { 
+        status: 502,
+        headers: { 'Content-Type': 'application/json' } 
+      });
     }
 
     const data = await response.json();
-    const resultText = data.choices?.[0]?.message?.content || '{}';
+    let resultText = data.choices?.[0]?.message?.content || '{}';
+    
+    // Clean up markdown code blocks if the AI decided to wrap the JSON
+    resultText = resultText.replace(/^```json\s*/, '').replace(/```$/, '').trim();
     
     let parsed;
     try {
       parsed = JSON.parse(resultText);
     } catch (e) {
       console.error('[ai-search] Failed to parse AI JSON:', resultText);
-      throw new Error('AI returned malformed JSON');
+      return new Response(JSON.stringify({ 
+        error: 'AI returned malformed JSON',
+        rawOutput: resultText
+      }), { 
+        status: 502,
+        headers: { 'Content-Type': 'application/json' } 
+      });
     }
 
     return new Response(JSON.stringify(parsed), {
@@ -72,7 +103,13 @@ If no relevant chapter is found, return "Unknown" for the chapterId. Do not incl
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
-    console.error('[ai-search] Error:', error);
-    return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500 });
+    console.error('[ai-search] Unexpected Error:', error);
+    return new Response(JSON.stringify({ 
+      error: error.message || 'Internal server error', 
+      stack: error.stack 
+    }), { 
+      status: 500, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
   }
 }

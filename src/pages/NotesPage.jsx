@@ -430,7 +430,14 @@ export default function NotesPage() {
         body: JSON.stringify({ query: aiSearchQuery, syllabusContext: context })
       });
 
-      if (!res.ok) throw new Error('AI search failed.');
+      if (!res.ok) {
+        let errMsg = 'AI search failed.';
+        try {
+          const errData = await res.json();
+          errMsg = errData.error || errData.details || errMsg;
+        } catch(e) {}
+        throw new Error(errMsg);
+      }
       const data = await res.json();
       
       if (data.chapterId && data.chapterId !== 'Unknown') {
