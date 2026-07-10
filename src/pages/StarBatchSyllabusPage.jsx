@@ -19,8 +19,8 @@ export default function StarBatchSyllabusPage() {
   const [loadingChapters, setLoadingChapters] = useState({});
   const [chapterLoadErrors, setChapterLoadErrors] = useState({});
 
-  // Which question card is expanded (shows text + image)
-  const [expandedQuestionId, setExpandedQuestionId] = useState(null);
+  // Topic popup modal — holds the question object being viewed
+  const [viewingQuestion, setViewingQuestion] = useState(null);
 
   // Add Question Modal state
   const [addingToChapter, setAddingToChapter] = useState(null);
@@ -50,9 +50,8 @@ export default function StarBatchSyllabusPage() {
 
   // Load questions when a chapter is expanded
   async function toggleChapter(chapterId) {
-    if (openChapterId === chapterId) { setOpenChapterId(null); setExpandedQuestionId(null); return; }
+    if (openChapterId === chapterId) { setOpenChapterId(null); return; }
     setOpenChapterId(chapterId);
-    setExpandedQuestionId(null);
     if (!chapterQuestions[chapterId]) {
       setLoadingChapters(p => ({ ...p, [chapterId]: true }));
       setChapterLoadErrors(p => ({ ...p, [chapterId]: null }));
@@ -183,22 +182,55 @@ export default function StarBatchSyllabusPage() {
         .sb-topic-chevron { color: rgba(251,191,36,0.6); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); flex-shrink: 0; }
         .sb-topic-chevron.open { transform: rotate(90deg); color: #fbbf24; }
 
-        /* ── Expanded content area ───────────────────── */
-        .sb-topic-body {
-          overflow: hidden;
-          max-height: 0;
-          opacity: 0;
-          transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease, padding 0.25s ease;
-          padding: 0 1rem;
+        /* ── View-question popup modal ────────────────── */
+        .sb-view-overlay {
+          position: fixed; inset: 0;
+          background: rgba(0,0,0,0.75);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          display: flex; align-items: flex-end; justify-content: center;
+          z-index: 9999; padding: 0;
+          animation: overlayIn 0.2s ease;
         }
-        .sb-topic-body.open {
-          max-height: 1200px;
-          opacity: 1;
-          padding: 0.75rem 1rem 1rem;
+        @keyframes overlayIn { from { opacity:0; } to { opacity:1; } }
+        @media (min-width: 600px) { .sb-view-overlay { align-items: center; padding: 1.5rem; } }
+        .sb-view-modal {
+          background: #0f1117;
+          border: 1px solid rgba(251,191,36,0.2);
+          border-radius: 22px 22px 0 0;
+          width: 100%; max-width: 520px;
+          max-height: 88vh; overflow-y: auto;
+          padding: 0 0 2rem;
+          box-shadow: 0 -24px 60px rgba(0,0,0,0.6);
+          animation: sheetUp 0.3s cubic-bezier(0.32,0.72,0,1);
         }
-        .sb-topic-text { color: #e2e8f0; font-size: 0.88rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 0.6rem; }
-        .sb-topic-img { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); display: block; margin-top: 0.5rem; }
-        .sb-topic-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0 -1rem; }
+        @keyframes sheetUp { from { transform: translateY(100%); opacity:0.5; } to { transform: translateY(0); opacity:1; } }
+        @media (min-width: 600px) {
+          .sb-view-modal { border-radius: 20px; animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+          @keyframes popIn { from { transform: scale(0.92); opacity:0; } to { transform: scale(1); opacity:1; } }
+        }
+        .sb-view-handle { width: 36px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin: 0.9rem auto 0; }
+        @media (min-width: 600px) { .sb-view-handle { display: none; } }
+        .sb-view-header {
+          position: sticky; top: 0;
+          background: #0f1117;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          padding: 1rem 1.25rem 1rem;
+          display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+        }
+        .sb-view-title { font-size: 1.1rem; font-weight: 700; color: #fbbf24; margin: 0; line-height: 1.3; }
+        .sb-view-author { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin: 0.25rem 0 0; }
+        .sb-view-close {
+          background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+          color: rgba(255,255,255,0.6); border-radius: 50%;
+          width: 32px; height: 32px; flex-shrink: 0;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; transition: all 0.2s;
+        }
+        .sb-view-close:hover { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.3); color: #f87171; }
+        .sb-view-body { padding: 1.25rem 1.25rem 0; }
+        .sb-view-text { color: #e2e8f0; font-size: 0.93rem; line-height: 1.65; white-space: pre-wrap; margin: 0 0 1.25rem; }
+        .sb-view-img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); display: block; }
 
         /* ── Misc ────────────────────────────────────── */
         .sb-empty { color: rgba(255,255,255,0.3); font-size: 0.85rem; font-style: italic; text-align: center; padding: 0.75rem 0; }
@@ -337,55 +369,25 @@ export default function StarBatchSyllabusPage() {
                         </button>
                       </div>
                     ) : questions.length > 0 ? (
-                      questions.map((q, idx) => {
-                        const isExpanded = expandedQuestionId === q.id;
-                        const hasContent = q.questionText || q.imageUrl;
-                        return (
-                          <div key={q.id}>
-                            {/* Collapsed topic pill */}
-                            <button
-                              className="sb-topic-pill"
-                              onClick={() => setExpandedQuestionId(isExpanded ? null : q.id)}
-                              aria-expanded={isExpanded}
-                            >
-                              <div className="sb-topic-pill-left">
-                                <div className="sb-topic-dot" />
-                                <div style={{ minWidth: 0 }}>
-                                  <div className="sb-topic-name">{q.topicName}</div>
-                                  <div className="sb-topic-meta">by {q.authorName}</div>
-                                </div>
-                              </div>
-                              <div className="sb-topic-right">
-                                {q.imageUrl && (
-                                  <span className="sb-topic-badge">📷 img</span>
-                                )}
-                                {hasContent && (
-                                  <ChevronRight
-                                    size={16}
-                                    className={`sb-topic-chevron${isExpanded ? ' open' : ''}`}
-                                  />
-                                )}
-                              </div>
-                            </button>
-
-                            {/* Expanded content — smooth CSS height animation */}
-                            <div className={`sb-topic-body${isExpanded ? ' open' : ''}`}>
-                              {idx > 0 && <hr className="sb-topic-divider" />}
-                              {q.questionText && (
-                                <p className="sb-topic-text">{q.questionText}</p>
-                              )}
-                              {q.imageUrl && (
-                                <img
-                                  src={q.imageUrl}
-                                  alt={q.topicName}
-                                  className="sb-topic-img"
-                                  loading="lazy"
-                                />
-                              )}
+                      questions.map(q => (
+                        <button
+                          key={q.id}
+                          className="sb-topic-pill"
+                          onClick={() => setViewingQuestion(q)}
+                        >
+                          <div className="sb-topic-pill-left">
+                            <div className="sb-topic-dot" />
+                            <div style={{ minWidth: 0 }}>
+                              <div className="sb-topic-name">{q.topicName}</div>
+                              <div className="sb-topic-meta">by {q.authorName}</div>
                             </div>
                           </div>
-                        );
-                      })
+                          <div className="sb-topic-right">
+                            {q.imageUrl && <span className="sb-topic-badge">📷 img</span>}
+                            <ChevronRight size={16} className="sb-topic-chevron" />
+                          </div>
+                        </button>
+                      ))
                     ) : (
                       <div className="sb-empty">No topics added yet. Use the + button to add one.</div>
                     )}
@@ -397,7 +399,38 @@ export default function StarBatchSyllabusPage() {
         </div>
       )}
 
-      {/* Add Question Modal */}
+      {/* ── View Question Popup ── */}
+      {viewingQuestion && (
+        <div className="sb-view-overlay" onClick={() => setViewingQuestion(null)}>
+          <div className="sb-view-modal" onClick={e => e.stopPropagation()}>
+            <div className="sb-view-handle" />
+            <div className="sb-view-header">
+              <div style={{ minWidth: 0 }}>
+                <p className="sb-view-title">{viewingQuestion.topicName}</p>
+                <p className="sb-view-author">Added by {viewingQuestion.authorName}</p>
+              </div>
+              <button className="sb-view-close" onClick={() => setViewingQuestion(null)}>
+                <X size={16} />
+              </button>
+            </div>
+            <div className="sb-view-body">
+              {viewingQuestion.questionText && (
+                <p className="sb-view-text">{viewingQuestion.questionText}</p>
+              )}
+              {viewingQuestion.imageUrl && (
+                <img
+                  src={viewingQuestion.imageUrl}
+                  alt={viewingQuestion.topicName}
+                  className="sb-view-img"
+                  loading="lazy"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Add Question Modal ── */}
       {addingToChapter && (
         <div className="sb-overlay" onClick={() => !isSubmitting && setAddingToChapter(null)}>
           <div className="sb-modal" onClick={e => e.stopPropagation()}>
