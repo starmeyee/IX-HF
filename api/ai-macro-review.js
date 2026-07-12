@@ -30,7 +30,7 @@ Data Summary:
 - Subject Performance: ${JSON.stringify(subjectAggregates)}
 - Persistent Weak Topics: ${JSON.stringify(weakTopics)}
 
-Analyze this macro-level data and provide a strategic performance report.
+Analyze this macro-level data and provide a structured strategic performance report.
 Focus on:
 1. Long-term trends (e.g., Which subjects are carrying their score? Which are dragging it down?)
 2. Identification of persistent weak areas that need fundamental re-learning versus quick revision.
@@ -39,9 +39,21 @@ Focus on:
 Rules:
 - Do not repeat the exact numbers back to the student blindly. Interpret them.
 - Be highly analytical, professional, and encouraging but firm.
-- Provide 3 to 5 comprehensive paragraphs or bullet points.
-- MUST return a valid JSON object with exactly one key "report" containing the markdown-formatted report string.
-Example: { "report": "### Strategic Analysis\\nYour Physics performance is strong, but...\\n\\n### Action Plan\\n1. Revise..." }
+- MUST return a valid JSON object matching the exact structure below.
+
+Expected JSON format:
+{
+  "summary": "A punchy, 1-2 sentence overall analytical summary.",
+  "strengths": ["Strength 1 (short)", "Strength 2 (short)"],
+  "weaknesses": ["Weakness 1 (short)", "Weakness 2 (short)"],
+  "focusDistribution": [
+    { "topic": "Subject/Topic Name", "percentage": 70, "reason": "Short reason for focus" },
+    { "topic": "Another Topic", "percentage": 30, "reason": "Short reason" }
+  ],
+  "actionPlan": [
+    { "title": "Action title", "description": "Action details", "time": "30 mins" }
+  ]
+}
     `.trim();
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -65,17 +77,16 @@ Example: { "report": "### Strategic Analysis\\nYour Physics performance is stron
     }
 
     const data = await response.json();
-    let report = "";
+    let reportData = null;
     try {
       const content = data.choices?.[0]?.message?.content || '{}';
-      const parsed = JSON.parse(content);
-      report = parsed.report || "Great effort over these tests. Keep practicing!";
+      reportData = JSON.parse(content);
     } catch (e) {
       console.error('Failed to parse AI review:', e);
-      report = "Keep up the great work! Focus on your weak subjects.";
+      reportData = { summary: "Keep up the great work! Focus on your weak subjects.", strengths: [], weaknesses: [], focusDistribution: [], actionPlan: [] };
     }
 
-    return new Response(JSON.stringify({ report }), {
+    return new Response(JSON.stringify({ reportData }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });

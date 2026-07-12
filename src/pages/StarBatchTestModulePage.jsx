@@ -3,7 +3,7 @@ import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getRecentTests, getUserTestHistory, getMacroReport, saveMacroReport } from '../services/starBatchTestService';
 import { syllabusData } from '../data/syllabusData';
-import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles } from 'lucide-react';
+import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles, AlertCircle, Clock, Flag } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
@@ -140,7 +140,7 @@ export default function StarBatchTestModulePage() {
     if (macroReport && macroReport.updatedAt) {
       const lastGen = macroReport.updatedAt.toDate ? macroReport.updatedAt.toDate() : new Date(macroReport.updatedAt);
       const hoursSince = (new Date() - lastGen) / (1000 * 60 * 60);
-      if (hoursSince < 24) {
+      if (hoursSince < 24 && currentUser?.activeRole !== 'ADMIN') {
         alert(`You can generate a new report in ${Math.ceil(24 - hoursSince)} hours.`);
         return;
       }
@@ -170,10 +170,10 @@ export default function StarBatchTestModulePage() {
       const data = await res.json();
       const userId = currentUser.id || currentUser.phone;
       
-      await saveMacroReport(userId, { report: data.report });
+      await saveMacroReport(userId, { report: data.reportData });
       
       setMacroReport({
-        report: data.report,
+        report: data.reportData,
         updatedAt: new Date()
       });
       
@@ -322,13 +322,86 @@ export default function StarBatchTestModulePage() {
               <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Comparing your performance against syllabus standards. Please wait 10-15 seconds.</p>
             </div>
           ) : macroReport ? (
-            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '1.5rem' }}>
-              <h3 style={{ margin: '0 0 1rem', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Sparkles size={20} /> AI Strategic Report
-              </h3>
-              <div style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: 1.6 }} className="markdown-body custom-md">
-                <ReactMarkdown>{macroReport.report}</ReactMarkdown>
+            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '2rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+                <h3 style={{ margin: '0', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.5rem' }}>
+                  <Sparkles size={24} /> AI Strategic Report
+                </h3>
               </div>
+              
+              {typeof macroReport.report === 'string' ? (
+                // Fallback for old string reports
+                <div style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: 1.6 }} className="markdown-body custom-md">
+                  <ReactMarkdown>{macroReport.report}</ReactMarkdown>
+                </div>
+              ) : (
+                // New structured UI
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div style={{ fontSize: '1.1rem', color: '#e2e8f0', lineHeight: 1.6, background: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    {macroReport.report.summary}
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '1.5rem' }}>
+                      <h4 style={{ margin: '0 0 1rem 0', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle size={18}/> Key Strengths</h4>
+                      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        {(macroReport.report.strengths || []).map((s, i) => (
+                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }}/> {s}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '1.5rem' }}>
+                      <h4 style={{ margin: '0 0 1rem 0', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><AlertCircle size={18}/> Critical Weaknesses</h4>
+                      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        {(macroReport.report.weaknesses || []).map((w, i) => (
+                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><XCircle size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }}/> {w}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {macroReport.report.focusDistribution && macroReport.report.focusDistribution.length > 0 && (
+                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.5rem' }}>
+                      <h4 style={{ margin: '0 0 1.5rem 0', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Target size={18}/> Recommended Focus Distribution</h4>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                        {macroReport.report.focusDistribution.map((f, i) => (
+                          <div key={i}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '0.5rem' }}>
+                              <div>
+                                <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.95rem' }}>{f.topic}</div>
+                                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>{f.reason}</div>
+                              </div>
+                              <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1.1rem' }}>{f.percentage}%</div>
+                            </div>
+                            <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '8px', overflow: 'hidden' }}>
+                              <div style={{ width: `${f.percentage}%`, background: '#f59e0b', height: '100%', borderRadius: '4px' }}></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {macroReport.report.actionPlan && macroReport.report.actionPlan.length > 0 && (
+                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.5rem' }}>
+                      <h4 style={{ margin: '0 0 1.5rem 0', color: '#a855f7', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Flag size={18}/> 48-Hour Action Plan</h4>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+                        {macroReport.report.actionPlan.map((action, i) => (
+                          <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '1.25rem', borderLeft: '4px solid #a855f7' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase' }}>Step {i+1}</div>
+                              {action.time && <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={12}/> {action.time}</div>}
+                            </div>
+                            <div style={{ color: '#fff', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.4rem' }}>{action.title}</div>
+                            <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: 1.5 }}>{action.description}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ) : null}
 
