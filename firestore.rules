@@ -99,6 +99,7 @@ service cloud.firestore {
     match /test_data/{id}         { allow read, write: if true; }
     match /starBatchTests/{id}    { allow read, write: if true; }
     match /starBatchTestAttempts/{id} { allow read, write: if true; }
+    match /starBatchMacroReports/{id} { allow read, write: if true; }
 
     // ---- Default deny ---------------------------------------------------
     // Anything not explicitly matched above (including collections an
