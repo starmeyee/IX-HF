@@ -1498,6 +1498,44 @@ function StarBatchTab() {
   const [newCode, setNewCode] = useState('');
   const [rollInput, setRollInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleFile = async (file) => {
+    if (!file) return;
+    if (file.type !== "application/json" && !file.name.endsWith(".json")) {
+      return alert("Please upload a valid JSON file.");
+    }
+    setBusy(true);
+    try {
+      const text = await file.text();
+      const json = JSON.parse(text);
+      await uploadTestJSON(json);
+      alert("Test uploaded successfully!");
+    } catch (err) {
+      alert("Failed to upload test: " + err.message);
+    } finally {
+      setBusy(false);
+    }
+  };
 
   useEffect(() => {
     loadConfig();
@@ -1589,33 +1627,45 @@ function StarBatchTab() {
       <div className="as-card">
         <h4 className="as-section-title"><BookOpen size={15} /> Upload Chapter MCQ Test</h4>
         <p className="as-muted" style={{ marginBottom: '1rem' }}>Upload a valid JSON file containing chapterId, subjectId, sectionId, title, and a questions array.</p>
-        <input 
-          type="file" 
-          accept=".json" 
-          onChange={async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            try {
-              const text = await file.text();
-              const json = JSON.parse(text);
-              await uploadTestJSON(json);
-              alert("Test uploaded successfully!");
-            } catch (err) {
-              alert("Failed to upload test: " + err.message);
-            } finally {
-              e.target.value = '';
-            }
-          }}
-          style={{ 
-            background: 'rgba(255,255,255,0.03)', 
-            padding: '1rem', 
-            borderRadius: '8px', 
-            border: '1px dashed rgba(255,255,255,0.1)',
+        <div 
+          onDragEnter={handleDrag} 
+          onDragLeave={handleDrag} 
+          onDragOver={handleDrag} 
+          onDrop={handleDrop}
+          style={{
+            background: dragActive ? 'rgba(251, 191, 36, 0.1)' : 'rgba(255,255,255,0.03)', 
+            padding: '3rem 1rem', 
+            borderRadius: '12px', 
+            border: \`2px dashed \${dragActive ? '#fbbf24' : 'rgba(255,255,255,0.2)'}\`,
             width: '100%',
-            cursor: 'pointer',
-            color: '#fff'
-          }} 
-        />
+            textAlign: 'center',
+            transition: 'all 0.2s',
+            position: 'relative'
+          }}
+        >
+          <div style={{ pointerEvents: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', color: dragActive ? '#fbbf24' : '#e2e8f0' }}>
+            <FileText size={32} style={{ opacity: 0.8 }} />
+            <div style={{ fontWeight: 600, fontSize: '1.1rem' }}>Drag & Drop your JSON file here</div>
+            <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>or click to browse</div>
+          </div>
+          <input 
+            type="file" 
+            accept=".json" 
+            disabled={busy}
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                handleFile(e.target.files[0]);
+              }
+              e.target.value = '';
+            }}
+            style={{ 
+              position: 'absolute',
+              top: 0, left: 0, width: '100%', height: '100%',
+              opacity: 0, cursor: 'pointer'
+            }} 
+          />
+        </div>
+        {busy && <div style={{ color: '#fbbf24', marginTop: '1rem', fontSize: '0.9rem', textAlign: 'center' }}>Uploading test... Please wait.</div>}
       </div>
     </div>
   );
