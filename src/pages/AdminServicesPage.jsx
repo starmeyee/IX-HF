@@ -17,7 +17,7 @@ import { getTables, setTeacherRecordTables } from '../services/recordsService';
 import { getInAppNotices, addInAppNotice, deleteInAppNotice } from '../services/inAppNoticeService';
 import UXCampaignAdmin from '../ux/admin/UXCampaignAdmin';
 import { getStarBatchConfig, setStarBatchCode, addInternalStudent, removeInternalStudent } from '../services/starBatchService';
-import { uploadTestJSON, getAllTestAttempts, getRecentTests } from '../services/starBatchTestService';
+import { uploadTestJSON, getAllTestAttempts, getRecentTests, getAllTests } from '../services/starBatchTestService';
 
 // Flat list of all subjects across all sections for the syllabus toggle UI
 const ALL_SUBJECTS = syllabusData.flatMap(sec =>
@@ -1499,10 +1499,16 @@ function StarBatchTab() {
   const [rollInput, setRollInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [dragActive, setDragActive] = useState(false);
-  
   const [attempts, setAttempts] = useState([]);
+  const [allBankTests, setAllBankTests] = useState([]);
   const [usersMap, setUsersMap] = useState({});
   const [testsMap, setTestsMap] = useState({});
+  
+  const [expandedBankSections, setExpandedBankSections] = useState({});
+  const [expandedBankSubjects, setExpandedBankSubjects] = useState({});
+
+  const toggleBankSection = (secId) => setExpandedBankSections(p => ({ ...p, [secId]: !p[secId] }));
+  const toggleBankSubject = (subId) => setExpandedBankSubjects(p => ({ ...p, [subId]: !p[subId] }));
 
   const handleDrag = (e) => {
     e.preventDefault();
@@ -1551,11 +1557,13 @@ function StarBatchTab() {
       getStarBatchConfig(),
       getAllTestAttempts(),
       getAllUsers(),
-      getRecentTests()
-    ]).then(([c, atts, usersList, testsList]) => {
+      getRecentTests(),
+      getAllTests()
+    ]).then(([c, atts, usersList, testsList, allTests]) => {
       setConfig(c);
       setNewCode(c.code);
       setAttempts(atts);
+      setAllBankTests(allTests);
       
       const uMap = {};
       usersList.forEach(u => {
@@ -1688,6 +1696,65 @@ function StarBatchTab() {
           />
         </div>
         {busy && <div style={{ color: '#fbbf24', marginTop: '1rem', fontSize: '0.9rem', textAlign: 'center' }}>Uploading test... Please wait.</div>}
+      </div>
+
+      <div className="as-card">
+        <h4 className="as-section-title"><BookOpen size={15} /> Question Bank Status</h4>
+        <p className="as-muted" style={{ marginBottom: '1rem' }}>See exactly how many questions are in the bank for each chapter.</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          {(() => {
+            const questionCountsByChapter = {};
+            allBankTests.forEach(test => {
+              if (test.chapterId && test.questions) {
+                questionCountsByChapter[test.chapterId] = (questionCountsByChapter[test.chapterId] || 0) + test.questions.length;
+              }
+            });
+            
+            return syllabusData.map(sec => (
+              <div key={sec.sectionId} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)' }}>
+                <div 
+                  onClick={() => toggleBankSection(sec.sectionId)}
+                  style={{ padding: '0.75rem 1rem', display: 'flex', justifyContent: 'space-between', cursor: 'pointer', fontWeight: 600, color: '#f1f5f9' }}
+                >
+                  {sec.sectionName}
+                  {expandedBankSections[sec.sectionId] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </div>
+                
+                {expandedBankSections[sec.sectionId] && (
+                  <div style={{ borderTop: '1px solid var(--border)', background: 'rgba(0,0,0,0.2)' }}>
+                    {sec.subjects.map(sub => (
+                      <div key={sub.subjectId}>
+                        <div 
+                          onClick={() => toggleBankSubject(sub.subjectId)}
+                          style={{ padding: '0.75rem 1rem 0.75rem 2rem', display: 'flex', justifyContent: 'space-between', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.02)', color: '#e2e8f0' }}
+                        >
+                          {sub.subjectName}
+                          {expandedBankSubjects[sub.subjectId] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </div>
+                        
+                        {expandedBankSubjects[sub.subjectId] && (
+                          <div style={{ padding: '0.5rem 1rem 0.5rem 3rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', borderBottom: '1px solid rgba(255,255,255,0.02)' }}>
+                            {sub.chapters.map(ch => {
+                              const qCount = questionCountsByChapter[ch.chapterId] || 0;
+                              return (
+                                <div key={ch.chapterId} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                  <span>{ch.chapterName}</span>
+                                  <span style={{ fontWeight: 600, color: qCount > 0 ? '#10b981' : 'rgba(255,255,255,0.3)', background: qCount > 0 ? 'rgba(16, 185, 129, 0.1)' : 'transparent', padding: '0.1rem 0.5rem', borderRadius: 4 }}>
+                                    {qCount} {qCount === 1 ? 'question' : 'questions'}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ));
+          })()}
+        </div>
       </div>
 
       <div className="as-card">

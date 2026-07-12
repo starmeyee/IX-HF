@@ -53,6 +53,12 @@ export async function getRecentTests() {
   return snap.docs.map(d => ({ id: d.id, ...d.data() }));
 }
 
+export async function getAllTests() {
+  const q = query(collection(db, 'starBatchTests'));
+  const snap = await getDocs(q);
+  return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
 export async function getTestByChapter(chapterId) {
   const q = query(collection(db, 'starBatchTests'), where('chapterId', '==', chapterId), limit(1));
   const snap = await getDocs(q);
