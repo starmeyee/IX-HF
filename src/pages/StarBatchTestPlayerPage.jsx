@@ -531,8 +531,6 @@ export default function StarBatchTestPlayerPage() {
           <div className="tp-q-card">
             <div className="tp-q-meta">
               <span>Q{currentQuestionIndex + 1}</span>
-              {activeQuestions[currentQuestionIndex].difficulty && <span>• {activeQuestions[currentQuestionIndex].difficulty}</span>}
-              {activeQuestions[currentQuestionIndex].topic && <span>• {activeQuestions[currentQuestionIndex].topic}</span>}
             </div>
             <p className="tp-q-text">{activeQuestions[currentQuestionIndex].text}</p>
 
