@@ -161,7 +161,7 @@ export default function StarBatchTestModulePage() {
                       style={isCompleted ? { background: 'rgba(255,255,255,0.1)', color: '#fff' } : {}}
                     >
                       <Play size={16} fill={isCompleted ? 'none' : 'currentColor'} /> 
-                      {isCompleted ? 'Retake Test' : 'Start Test'}
+                      {isCompleted ? 'New Practice Test' : 'Start Test'}
                     </button>
                   </div>
                 );
