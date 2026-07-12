@@ -3,7 +3,7 @@ import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getRecentTests, getUserTestHistory } from '../services/starBatchTestService';
 import { syllabusData } from '../data/syllabusData';
-import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle } from 'lucide-react';
+import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
 export default function StarBatchTestModulePage() {
@@ -11,6 +11,8 @@ export default function StarBatchTestModulePage() {
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState('tests'); // 'tests' | 'report'
+  const [expandedSubject, setExpandedSubject] = useState(null);
+  const [expandedChapter, setExpandedChapter] = useState(null);
   const [tests, setTests] = useState([]);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,14 +67,70 @@ export default function StarBatchTestModulePage() {
     .slice(0, 3)
     .map(entry => entry[0]);
 
-  if (loading) {
-    return (
+  // Grouping logic for History Drill-down
+  const chapterToSubjectMap = {};
+  const subjectNameMap = {};
+  const chapterNameMap = {};
+  
+  syllabusData.forEach(section => {
+    section.subjects.forEach(subject => {
+      subjectNameMap[subject.subjectId] = subject.subjectName;
+      subject.chapters.forEach(chapter => {
+        chapterToSubjectMap[chapter.chapterId] = subject.subjectId;
+        chapterNameMap[chapter.chapterId] = chapter.chapterName;
+      });
+    });
+  });
+
+  const subjectAggregatesMap = {};
+  history.forEach(attempt => {
+    const cId = attempt.chapterId;
+    // tests might not have chapterId if they are older or generic, fallback to 'misc'
+    const sId = cId ? (chapterToSubjectMap[cId] || 'misc') : 'misc';
+    
+    if (!subjectAggregatesMap[sId]) {
+      subjectAggregatesMap[sId] = {
+        subjectId: sId,
+        subjectName: subjectNameMap[sId] || 'Miscellaneous',
+        totalScore: 0,
+        totalMax: 0,
+        testsCount: 0,
+        chapters: {}
+      };
+    }
+    
+    const subj = subjectAggregatesMap[sId];
+    subj.totalScore += attempt.score || 0;
+    subj.totalMax += attempt.total || 0;
+    subj.testsCount += 1;
+    
+    const displayCId = cId || 'misc-chapter';
+    if (!subj.chapters[displayCId]) {
+      subj.chapters[displayCId] = {
+        chapterId: displayCId,
+        chapterName: chapterNameMap[displayCId] || 'General Tests',
+        totalScore: 0,
+        totalMax: 0,
+        testsCount: 0,
+        attempts: []
+      };
+    }
+    
+    const chap = subj.chapters[displayCId];
+    chap.totalScore += attempt.score || 0;
+    chap.totalMax += attempt.total || 0;
+    chap.testsCount += 1;
+    chap.attempts.push(attempt);
+  });
+
+  const subjectAggregates = Object.values(subjectAggregatesMap).sort((a, b) => b.testsCount - a.testsCount);
+
+  if (loading) return (
       <div style={{ textAlign: 'center', padding: '3rem 0', color: 'rgba(255,255,255,0.4)' }}>
         <Loader2 size={24} style={{ animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }} />
         Loading Test Data...
       </div>
     );
-  }
 
   if (error) {
     return (
@@ -172,67 +230,102 @@ export default function StarBatchTestModulePage() {
       )}
 
       {activeTab === 'report' && (
-        <div className="tm-report-grid">
-          <div className="tm-stat-box">
-            <h3 className="tm-stat-title"><TrendingUp size={20} color="#fbbf24" /> Performance Trend</h3>
-            {chartData.length === 0 ? (
-              <p style={{ color: 'rgba(255,255,255,0.4)' }}>Take some tests to see your trend!</p>
-            ) : (
-              <div style={{ width: '100%', height: 300 }}>
-                <ResponsiveContainer>
-                  <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                    <XAxis dataKey="name" stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} axisLine={false} />
-                    <YAxis stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} axisLine={false} domain={[0, 100]} />
-                    <Tooltip 
-                      contentStyle={{ background: '#1a1d2e', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
-                      itemStyle={{ color: '#fbbf24' }}
-                      formatter={(value, name, props) => [`${props.payload.rawScore} / ${props.payload.total} (${value.toFixed(1)}%)`, 'Score']}
-                    />
-                    <Bar dataKey="score" radius={[6, 6, 0, 0]}>
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.score >= 80 ? '#10b981' : entry.score >= 50 ? '#fbbf24' : '#ef4444'} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div className="tm-stat-box">
-              <h3 className="tm-stat-title"><Star size={20} color="#fbbf24" /> Focus Areas</h3>
-              {topWeakTopics.length === 0 ? (
-                <p style={{ color: 'rgba(255,255,255,0.4)', margin: 0 }}>No weak topics identified yet.</p>
-              ) : (
-                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  {topWeakTopics.map((topic, i) => (
-                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: '#e2e8f0' }}>
-                      <XCircle size={16} color="#ef4444" /> {topic}
-                    </li>
-                  ))}
-                </ul>
-              )}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          
+          <div className="tm-stat-box" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '1rem', alignItems: 'center', background: 'linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(5,150,105,0.05) 100%)', borderColor: 'rgba(16,185,129,0.2)' }}>
+            <div>
+              <h3 className="tm-stat-title" style={{ color: '#10b981', margin: '0 0 0.5rem' }}><Target size={20} /> Total Tests Taken</h3>
+              <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>{history.length}</div>
             </div>
             
-            <div className="tm-stat-box" style={{ background: 'linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(245,158,11,0.05) 100%)', borderColor: 'rgba(251,191,36,0.2)' }}>
-              <h3 className="tm-stat-title" style={{ color: '#fbbf24' }}>Recent AI Insight</h3>
-              <div style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.6, color: '#f1f5f9' }}>
-                {history.length > 0 ? (
-                  Array.isArray(history[0].aiReview) ? (
-                    <ul style={{ margin: 0, paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {history[0].aiReview.map((insight, idx) => <li key={idx}>{insight}</li>)}
-                    </ul>
-                  ) : (
-                    <p style={{ margin: 0 }}>{history[0].aiReview || 'Keep practicing to get detailed AI insights!'}</p>
-                  )
-                ) : (
-                  <p style={{ margin: 0 }}>Take a test to receive personalized AI feedback here.</p>
-                )}
-              </div>
-            </div>
+            <button 
+              onClick={() => alert("Macro Progress Report is coming soon! This will use AI to analyze your long-term progress across all tests.")}
+              style={{ background: '#10b981', color: '#000', border: 'none', padding: '0.8rem 1.2rem', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              <BrainCircuit size={18} /> Generate Macro Progress Report
+            </button>
           </div>
+
+          <h3 style={{ color: '#f8fafc', fontSize: '1.3rem', margin: '1rem 0 0' }}>Subject Performance</h3>
+          
+          {subjectAggregates.length === 0 ? (
+            <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', padding: '3rem 0' }}>No tests taken yet.</div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {subjectAggregates.map(subj => (
+                <div key={subj.subjectId} className="tm-stat-box" style={{ padding: '0', overflow: 'hidden' }}>
+                  <div 
+                    onClick={() => setExpandedSubject(expandedSubject === subj.subjectId ? null : subj.subjectId)}
+                    style={{ padding: '1.2rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', background: expandedSubject === subj.subjectId ? 'rgba(255,255,255,0.05)' : 'transparent' }}
+                  >
+                    <div>
+                      <h4 style={{ margin: '0 0 0.3rem', fontSize: '1.1rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <BookOpen size={18} color="#fbbf24" /> {subj.subjectName}
+                      </h4>
+                      <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)' }}>{subj.testsCount} Tests Taken</div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: (subj.totalScore/subj.totalMax)*100 >= 80 ? '#10b981' : (subj.totalScore/subj.totalMax)*100 >= 50 ? '#fbbf24' : '#ef4444' }}>
+                          {subj.totalMax > 0 ? Math.round((subj.totalScore / subj.totalMax) * 100) : 0}%
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>Average</div>
+                      </div>
+                      {expandedSubject === subj.subjectId ? <ChevronUp size={20} color="rgba(255,255,255,0.5)" /> : <ChevronDown size={20} color="rgba(255,255,255,0.5)" />}
+                    </div>
+                  </div>
+
+                  {expandedSubject === subj.subjectId && (
+                    <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: 'rgba(0,0,0,0.2)' }}>
+                      {Object.values(subj.chapters).map(chap => (
+                        <div key={chap.chapterId}>
+                          <div 
+                            onClick={() => setExpandedChapter(expandedChapter === chap.chapterId ? null : chap.chapterId)}
+                            style={{ padding: '1rem 1.5rem 1rem 3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.03)' }}
+                          >
+                            <div>
+                              <div style={{ fontSize: '0.95rem', color: '#e2e8f0', fontWeight: 500 }}>{chap.chapterName}</div>
+                              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.2rem' }}>{chap.testsCount} Attempts</div>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: (chap.totalScore/chap.totalMax)*100 >= 80 ? '#10b981' : (chap.totalScore/chap.totalMax)*100 >= 50 ? '#fbbf24' : '#ef4444' }}>
+                                {chap.totalMax > 0 ? Math.round((chap.totalScore / chap.totalMax) * 100) : 0}%
+                              </div>
+                              {expandedChapter === chap.chapterId ? <ChevronUp size={16} color="rgba(255,255,255,0.3)" /> : <ChevronDown size={16} color="rgba(255,255,255,0.3)" />}
+                            </div>
+                          </div>
+                          
+                          {expandedChapter === chap.chapterId && (
+                            <div style={{ padding: '0.5rem 1.5rem 1.5rem 4.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                              {chap.attempts.map((attempt) => (
+                                <div key={attempt.id} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', padding: '0.75rem 1rem', borderRadius: '8px', gap: '0.5rem' }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <Calendar size={14} color="rgba(255,255,255,0.5)" />
+                                    <span style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>
+                                      {attempt.createdAt?.toDate ? attempt.createdAt.toDate().toLocaleDateString() : new Date(attempt.createdAt).toLocaleDateString()}
+                                    </span>
+                                  </div>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#fff' }}>{attempt.score} / {attempt.total}</span>
+                                    <button 
+                                      onClick={() => navigate(`/star-tests/history/${attempt.id}`)}
+                                      style={{ background: 'rgba(251,191,36,0.1)', color: '#fbbf24', border: '1px solid rgba(251,191,36,0.2)', padding: '0.4rem 0.8rem', borderRadius: '6px', fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                                    >
+                                      View Analysis <ArrowRight size={12} />
+                                    </button>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

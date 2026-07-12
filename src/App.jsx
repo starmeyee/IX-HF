@@ -39,6 +39,7 @@ import StarBatchPage from './pages/StarBatchPage';
 import StarBatchSyllabusPage from './pages/StarBatchSyllabusPage';
 import StarBatchTestModulePage from './pages/StarBatchTestModulePage';
 import StarBatchTestPlayerPage from './pages/StarBatchTestPlayerPage';
+import HistoricalTestAnalysisPage from './pages/HistoricalTestAnalysisPage';
 import { Heart } from 'lucide-react';
 import { checkAndConsumeEmailLink } from './firebase';
 import { markEmailVerified } from './auth/authService';
@@ -139,6 +140,7 @@ function AppInner() {
             <Route path="/star-syllabus" element={<StarBatchSyllabusPage />} />
             <Route path="/star-tests" element={<StarBatchTestModulePage />} />
             <Route path="/star-tests/:testId" element={<StarBatchTestPlayerPage />} />
+            <Route path="/star-tests/history/:attemptId" element={<HistoricalTestAnalysisPage />} />
           </Routes>
         </main>
         <footer className="app-footer">

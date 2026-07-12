@@ -62,6 +62,13 @@ export async function submitTestAttempt(attemptData) {
   return docRef.id;
 }
 
+export async function getTestAttemptById(attemptId) {
+  const ref = doc(db, 'starBatchTestAttempts', attemptId);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) throw new Error("Attempt not found");
+  return { id: snap.id, ...snap.data() };
+}
+
 export async function getUserTestHistory(userId) {
   const q = query(collection(db, 'starBatchTestAttempts'), where('userId', '==', userId));
   const snap = await getDocs(q);
