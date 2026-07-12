@@ -140,7 +140,7 @@ export default function StarBatchTestModulePage() {
     if (macroReport && macroReport.updatedAt) {
       const lastGen = macroReport.updatedAt.toDate ? macroReport.updatedAt.toDate() : new Date(macroReport.updatedAt);
       const hoursSince = (new Date() - lastGen) / (1000 * 60 * 60);
-      if (hoursSince < 24 && currentUser?.activeRole !== 'ADMIN') {
+      if (hoursSince < 24 && currentUser?.role !== 'ADMIN') {
         alert(`You can generate a new report in ${Math.ceil(24 - hoursSince)} hours.`);
         return;
       }
