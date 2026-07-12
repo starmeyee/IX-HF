@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+const fs = require('fs');
+const path = require('path');
+
+const content = `import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { getTestById, submitTestAttempt, getUserTestAttemptsForTest, getTestAverageScore } from '../services/starBatchTestService';
@@ -37,7 +40,7 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
     let time = 5;
     if (t.accuracy <= 50) {
       level = "High"; color = "#ef4444"; icon = <AlertCircle size={16} color="#ef4444"/>;
-      reason = `${t.total - t.correct} incorrect answers`;
+      reason = \`\${t.total - t.correct} incorrect answers\`;
       time = 20;
     } else if (t.accuracy < 80) {
       level = "Medium"; color = "#fbbf24"; icon = <AlertCircle size={16} color="#fbbf24"/>;
@@ -66,17 +69,17 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
   }
   
   const perfectTopics = sortedTopics.filter(t => t.accuracy === 100 && t.total >= 2);
-  perfectTopics.forEach(t => strengths.push(`Strong conceptual understanding of ${t.topic}`));
+  perfectTopics.forEach(t => strengths.push(\`Strong conceptual understanding of \${t.topic}\`));
   
   const weakTopics = sortedTopics.filter(t => t.accuracy <= 50);
-  weakTopics.forEach(t => weaknesses.push(`Needs serious review in ${t.topic}`));
+  weakTopics.forEach(t => weaknesses.push(\`Needs serious review in \${t.topic}\`));
 
   if (mistakes.length === 0) strengths.push("No mistakes made. Flawless execution.");
   if (averageScore !== null && accuracy > averageScore) strengths.push("Score is above peer average");
   else if (averageScore !== null && accuracy < averageScore) weaknesses.push("Score is below peer average");
 
   // Summary
-  let summary = `You answered ${score} out of ${total} questions correctly. `;
+  let summary = \`You answered \${score} out of \${total} questions correctly. \`;
   if (mistakes.length === 0) {
     summary += "Your performance is flawless. You have mastered all topics covered in this test.";
   } else {
@@ -84,10 +87,10 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
       summary += "Your fundamentals are strong, with perfect performance in Easy questions. ";
     }
     if (weakTopics.length > 0) {
-      summary += `The main area for improvement is ${weakTopics[0].topic}, where accuracy dropped. `;
+      summary += \`The main area for improvement is \${weakTopics[0].topic}, where accuracy dropped. \`;
     }
     if (priorities.length > 0) {
-      summary += `Focus on a ${priorities[0].time}-minute revision session targeting ${priorities[0].topic}.`;
+      summary += \`Focus on a \${priorities[0].time}-minute revision session targeting \${priorities[0].topic}.\`;
     }
   }
 
@@ -96,7 +99,7 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
   if (priorities.length > 0) {
     mission = {
       topic: priorities[0].topic,
-      goal: `Increase ${priorities[0].topic} Accuracy`,
+      goal: \`Increase \${priorities[0].topic} Accuracy\`,
       time: priorities[0].time,
       currentAcc: priorities[0].accuracy,
       targetAcc: 80
@@ -113,7 +116,7 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
 
   const renderProgressBar = (correct, total, color) => (
     <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '8px', overflow: 'hidden', marginTop: '0.5rem' }}>
-      <div style={{ width: `${(correct/total)*100}%`, background: color, height: '100%', borderRadius: '4px' }}></div>
+      <div style={{ width: \`\${(correct/total)*100}%\`, background: color, height: '100%', borderRadius: '4px' }}></div>
     </div>
   );
 
@@ -131,7 +134,7 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
         </div>
         <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '1.5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.5rem' }}>Performance</div>
-          <div style={{ background: badgeColor + '20', color: badgeColor, border: `1px solid ${badgeColor}50`, padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 800, fontSize: '1.1rem' }}>
+          <div style={{ background: badgeColor + '20', color: badgeColor, border: \`1px solid \${badgeColor}50\`, padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: 800, fontSize: '1.1rem' }}>
             {badge}
           </div>
         </div>
@@ -201,7 +204,7 @@ function TestAnalyticsDashboard({ result, activeQuestions, answers, averageScore
           <h3 style={{ margin: '0 0 1rem 0', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Flag size={18} color="#f97316"/> Revision Priority</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
             {priorities.map((p, i) => (
-              <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: `1px solid ${p.color}30`, borderRadius: '12px', padding: '1rem', borderLeft: `4px solid ${p.color}` }}>
+              <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: \`1px solid \${p.color}30\`, borderRadius: '12px', padding: '1rem', borderLeft: \`4px solid \${p.color}\` }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <div style={{ color: p.color, fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     {p.icon} {p.level} Priority
@@ -480,7 +483,7 @@ export default function StarBatchTestPlayerPage() {
 
   return (
     <div style={{ animation: 'fade-in 0.4s ease', paddingBottom: '6rem', maxWidth: '800px', margin: '0 auto' }}>
-      <style>{`
+      <style>{\`
         .tp-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
         .tp-back { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; transition: all 0.2s; }
         .tp-back:hover { background: rgba(255,255,255,0.1); }
@@ -507,7 +510,7 @@ export default function StarBatchTestPlayerPage() {
         .tp-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         .tp-nav-btn.primary { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.3); color: #fbbf24; }
         .tp-nav-btn.primary:hover:not(:disabled) { background: rgba(251,191,36,0.25); }
-      `}</style>
+      \`}</style>
 
       <div className="tp-header">
         <button className="tp-back" onClick={() => navigate('/star-tests')}><ArrowLeft size={20} /></button>
@@ -543,7 +546,7 @@ export default function StarBatchTestPlayerPage() {
                 return (
                   <div 
                     key={optIndex} 
-                    className={`tp-opt ${optClass}`}
+                    className={\`tp-opt \${optClass}\`}
                     onClick={() => handleOptionSelect(currentQuestionIndex, optIndex)}
                   >
                     <div className="tp-opt-circle">
@@ -593,3 +596,7 @@ export default function StarBatchTestPlayerPage() {
     </div>
   );
 }
+`
+
+fs.writeFileSync(path.join(__dirname, '../src/pages/StarBatchTestPlayerPage.jsx'), content);
+console.log("Rewrite successful.");

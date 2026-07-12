@@ -220,7 +220,7 @@ export default function StarBatchTestModulePage() {
               <h3 className="tm-stat-title" style={{ color: '#fbbf24' }}>Recent AI Insight</h3>
               <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.6, color: '#f1f5f9' }}>
                 {history.length > 0 
-                  ? history[0].aiReview || 'Keep practicing to get detailed AI insights!' 
+                  ? (Array.isArray(history[0].aiReview) ? history[0].aiReview[0] : history[0].aiReview || 'Keep practicing to get detailed AI insights!')
                   : 'Take a test to receive personalized AI feedback here.'}
               </p>
             </div>
