@@ -218,11 +218,19 @@ export default function StarBatchTestModulePage() {
             
             <div className="tm-stat-box" style={{ background: 'linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(245,158,11,0.05) 100%)', borderColor: 'rgba(251,191,36,0.2)' }}>
               <h3 className="tm-stat-title" style={{ color: '#fbbf24' }}>Recent AI Insight</h3>
-              <p style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.6, color: '#f1f5f9' }}>
-                {history.length > 0 
-                  ? (Array.isArray(history[0].aiReview) ? history[0].aiReview[0] : history[0].aiReview || 'Keep practicing to get detailed AI insights!')
-                  : 'Take a test to receive personalized AI feedback here.'}
-              </p>
+              <div style={{ margin: 0, fontSize: '0.9rem', lineHeight: 1.6, color: '#f1f5f9' }}>
+                {history.length > 0 ? (
+                  Array.isArray(history[0].aiReview) ? (
+                    <ul style={{ margin: 0, paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {history[0].aiReview.map((insight, idx) => <li key={idx}>{insight}</li>)}
+                    </ul>
+                  ) : (
+                    <p style={{ margin: 0 }}>{history[0].aiReview || 'Keep practicing to get detailed AI insights!'}</p>
+                  )
+                ) : (
+                  <p style={{ margin: 0 }}>Take a test to receive personalized AI feedback here.</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
