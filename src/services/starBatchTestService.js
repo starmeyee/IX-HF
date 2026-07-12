@@ -108,3 +108,22 @@ export async function getTestAverageScore(testId) {
   
   return validCount > 0 ? totalPercentage / validCount : null;
 }
+
+// ── Macro Reports ──
+
+export async function getMacroReport(userId) {
+  const ref = doc(db, 'starBatchMacroReports', userId);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) return null;
+  return snap.data();
+}
+
+export async function saveMacroReport(userId, reportData) {
+  const ref = doc(db, 'starBatchMacroReports', userId);
+  await setDoc(ref, {
+    report: reportData.report,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  }, { merge: true });
+}
+

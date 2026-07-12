@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getRecentTests, getUserTestHistory } from '../services/starBatchTestService';
+import { getRecentTests, getUserTestHistory, getMacroReport, saveMacroReport } from '../services/starBatchTestService';
 import { syllabusData } from '../data/syllabusData';
-import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit } from 'lucide-react';
+import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
 export default function StarBatchTestModulePage() {
@@ -13,6 +14,8 @@ export default function StarBatchTestModulePage() {
   const [activeTab, setActiveTab] = useState('tests'); // 'tests' | 'report'
   const [expandedSubject, setExpandedSubject] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
+  const [macroReport, setMacroReport] = useState(null);
+  const [isGeneratingMacro, setIsGeneratingMacro] = useState(false);
   const [tests, setTests] = useState([]);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,12 +32,15 @@ export default function StarBatchTestModulePage() {
     setLoading(true);
     setError(null);
     try {
-      const [fetchedTests, fetchedHistory] = await Promise.all([
+      const userId = currentUser.id || currentUser.phone;
+      const [fetchedTests, fetchedHistory, fetchedMacro] = await Promise.all([
         getRecentTests(),
-        getUserTestHistory(currentUser.id || currentUser.phone)
+        getUserTestHistory(userId),
+        getMacroReport(userId)
       ]);
       setTests(fetchedTests);
       setHistory(fetchedHistory);
+      setMacroReport(fetchedMacro);
     } catch (e) {
       console.error(e);
       setError(e.message || "Failed to load test data");
@@ -124,6 +130,60 @@ export default function StarBatchTestModulePage() {
   });
 
   const subjectAggregates = Object.values(subjectAggregatesMap).sort((a, b) => b.testsCount - a.testsCount);
+
+  async function handleGenerateMacro() {
+    if (history.length === 0) {
+      alert("Take some tests first!");
+      return;
+    }
+    
+    if (macroReport && macroReport.updatedAt) {
+      const lastGen = macroReport.updatedAt.toDate ? macroReport.updatedAt.toDate() : new Date(macroReport.updatedAt);
+      const hoursSince = (new Date() - lastGen) / (1000 * 60 * 60);
+      if (hoursSince < 24) {
+        alert(`You can generate a new report in ${Math.ceil(24 - hoursSince)} hours.`);
+        return;
+      }
+    }
+
+    setIsGeneratingMacro(true);
+    try {
+      const overallAccuracy = history.length > 0 
+        ? Math.round((history.reduce((sum, h) => sum + (h.score/h.total), 0) / history.length) * 100)
+        : 0;
+        
+      const reqData = {
+        totalTests: history.length,
+        overallAccuracy,
+        subjectAggregates: subjectAggregates.map(s => ({ subject: s.subjectName, tests: s.testsCount, accuracy: Math.round((s.totalScore/s.totalMax)*100) })),
+        weakTopics: topWeakTopics
+      };
+
+      const res = await fetch('/api/ai-macro-review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reqData)
+      });
+      
+      if (!res.ok) throw new Error("Failed to generate report");
+      
+      const data = await res.json();
+      const userId = currentUser.id || currentUser.phone;
+      
+      await saveMacroReport(userId, { report: data.report });
+      
+      setMacroReport({
+        report: data.report,
+        updatedAt: new Date()
+      });
+      
+    } catch (e) {
+      console.error(e);
+      alert("Error generating report. Please try again.");
+    } finally {
+      setIsGeneratingMacro(false);
+    }
+  }
 
   if (loading) return (
       <div style={{ textAlign: 'center', padding: '3rem 0', color: 'rgba(255,255,255,0.4)' }}>
@@ -238,13 +298,39 @@ export default function StarBatchTestModulePage() {
               <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>{history.length}</div>
             </div>
             
-            <button 
-              onClick={() => alert("Macro Progress Report is coming soon! This will use AI to analyze your long-term progress across all tests.")}
-              style={{ background: '#10b981', color: '#000', border: 'none', padding: '0.8rem 1.2rem', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-            >
-              <BrainCircuit size={18} /> Generate Macro Progress Report
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
+              <button 
+                onClick={handleGenerateMacro}
+                disabled={isGeneratingMacro}
+                style={{ background: isGeneratingMacro ? 'rgba(16,185,129,0.5)' : '#10b981', color: '#000', border: 'none', padding: '0.8rem 1.2rem', borderRadius: '8px', fontWeight: 700, cursor: isGeneratingMacro ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', transition: 'all 0.2s' }}
+              >
+                {isGeneratingMacro ? <Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> : <BrainCircuit size={18} />}
+                {isGeneratingMacro ? 'Analyzing Data...' : 'Generate Macro Progress Report'}
+              </button>
+              {macroReport && macroReport.updatedAt && (
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>
+                  Last generated: {macroReport.updatedAt.toDate ? macroReport.updatedAt.toDate().toLocaleString() : new Date(macroReport.updatedAt).toLocaleString()}
+                </div>
+              )}
+            </div>
           </div>
+
+          {isGeneratingMacro ? (
+            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
+              <BrainCircuit size={56} color="#38bdf8" style={{ margin: '0 auto 1.5rem', animation: 'bounce 2s infinite' }} />
+              <h3 style={{ margin: '0 0 0.5rem', color: '#38bdf8', fontSize: '1.4rem' }}>AI is analyzing your entire history...</h3>
+              <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Comparing your performance against syllabus standards. Please wait 10-15 seconds.</p>
+            </div>
+          ) : macroReport ? (
+            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '1.5rem' }}>
+              <h3 style={{ margin: '0 0 1rem', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Sparkles size={20} /> AI Strategic Report
+              </h3>
+              <div style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: 1.6 }} className="markdown-body custom-md">
+                <ReactMarkdown>{macroReport.report}</ReactMarkdown>
+              </div>
+            </div>
+          ) : null}
 
           <h3 style={{ color: '#f8fafc', fontSize: '1.3rem', margin: '1rem 0 0' }}>Subject Performance</h3>
           
