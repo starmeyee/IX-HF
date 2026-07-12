@@ -1636,7 +1636,7 @@ function StarBatchTab() {
             background: dragActive ? 'rgba(251, 191, 36, 0.1)' : 'rgba(255,255,255,0.03)', 
             padding: '3rem 1rem', 
             borderRadius: '12px', 
-            border: \`2px dashed \${dragActive ? '#fbbf24' : 'rgba(255,255,255,0.2)'}\`,
+            border: `2px dashed ${dragActive ? '#fbbf24' : 'rgba(255,255,255,0.2)'}`,
             width: '100%',
             textAlign: 'center',
             transition: 'all 0.2s',
