@@ -46,8 +46,8 @@ Your output must be a JSON array of objects, separating out each chapter. Do not
 - `sectionId`: (String) The exact ID of the section from the Reference Guide below.
 - `title`: (String) A descriptive title for the test.
 - `questions`: (Array of Objects) 
-  - `text`: (String) The question text. **IMPORTANT**: You can and should use **Markdown** here! Use `**bold**`, bullet points (`- item`), or Markdown Tables (`| Col 1 | Col 2 |`) if a question requires a chart or structured data.
-  - `options`: (Array of Strings) Exactly 4 options.
+  - `text`: (String) The question text. **IMPORTANT**: You can and should use **Markdown** here! Use `**bold**`, bullet points (`- item`), or Markdown Tables (`| Col 1 | Col 2 |`) if a question requires a chart or structured data. Also use **LaTeX** for math and chemistry formulas! Wrap math and chemistry formulas in `$` (e.g. `$567x + 693 \times (-4)$` or `$H_2O$`).
+  - `options`: (Array of Strings) Exactly 4 options. Options fully support Markdown and LaTeX formulas (e.g. `"$2x$"`).
   - `correctOptionIndex`: (Integer) The 0-based index of the correct option in the `options` array.
   - `difficulty`: (String) "Easy", "Medium", or "Hard".
   - `topic`: (String) The specific topic the question belongs to (e.g. "Laws of Reflection").

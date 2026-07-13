@@ -7,6 +7,9 @@ import { Loader2, ArrowLeft, CheckCircle, XCircle, Sparkles, Target, BarChart2, 
 import TestAnalyticsDashboard from '../components/TestAnalyticsDashboard';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 export default function StarBatchTestPlayerPage() {
   const { testId } = useParams();
   const { currentUser } = useAuth();
@@ -245,6 +248,7 @@ export default function StarBatchTestPlayerPage() {
         .custom-md table { display: block; overflow-x: auto; white-space: nowrap; max-width: 100%; border-collapse: collapse; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
         .custom-md th, .custom-md td { padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.1); }
         .custom-md th { background: rgba(255,255,255,0.05); font-weight: 700; color: #fbbf24; }
+        .custom-md-opt p { margin: 0; padding: 0; display: inline-block; vertical-align: middle; }
         .tp-q-meta { font-size: 0.75rem; color: rgba(251,191,36,0.8); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; }
         
         .tp-opt { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; }
@@ -297,7 +301,7 @@ export default function StarBatchTestPlayerPage() {
               <span>Q{currentQuestionIndex + 1}</span>
             </div>
             <div className="tp-q-text markdown-body custom-md" style={{ marginBottom: '1.25rem' }}>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
                 {activeQuestions[currentQuestionIndex].text}
               </ReactMarkdown>
             </div>
@@ -315,7 +319,11 @@ export default function StarBatchTestPlayerPage() {
                     <div className="tp-opt-circle">
                       {String.fromCharCode(65 + optIndex)}
                     </div>
-                    <span style={{ flex: 1, color: isSelected ? '#fff' : '#e2e8f0' }}>{opt}</span>
+                    <span style={{ flex: 1, color: isSelected ? '#fff' : '#e2e8f0' }} className="markdown-body custom-md-opt">
+                      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
+                        {opt}
+                      </ReactMarkdown>
+                    </span>
                   </div>
                 );
               })}
