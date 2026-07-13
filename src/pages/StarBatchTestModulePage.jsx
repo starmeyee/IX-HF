@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getRecentTests, getUserTestHistory, getMacroReport, saveMacroReport } from '../services/starBatchTestService';
+import { getRecentTests, getMacroReport, saveMacroReport, subscribeToUserHistory } from '../services/starBatchTestService';
 import { syllabusData } from '../data/syllabusData';
 import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles, AlertCircle, Clock, Flag } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -28,29 +28,37 @@ export default function StarBatchTestModulePage() {
   useEffect(() => {
     if (!currentUser) navigate('/');
     else if (!currentUser.isStarBatch || !currentUser.hasUnlockedStarBatch) navigate('/star-batch');
-    else fetchData();
-  }, [currentUser, navigate]);
+    else {
+      let unsubscribe;
+      async function fetchStaticData() {
+        setLoading(true);
+        setError(null);
+        try {
+          const userId = currentUser.id || currentUser.phone;
+          const [fetchedTests, fetchedMacro] = await Promise.all([
+            getRecentTests(),
+            getMacroReport(userId)
+          ]);
+          setTests(fetchedTests);
+          setMacroReport(fetchedMacro);
+          
+          unsubscribe = subscribeToUserHistory(userId, (newHistory) => {
+            setHistory(newHistory);
+            setLoading(false); // First snapshot turns off loading
+          });
+        } catch (e) {
+          console.error(e);
+          setError(e.message || "Failed to load test data");
+          setLoading(false);
+        }
+      }
+      fetchStaticData();
 
-  async function fetchData() {
-    setLoading(true);
-    setError(null);
-    try {
-      const userId = currentUser.id || currentUser.phone;
-      const [fetchedTests, fetchedHistory, fetchedMacro] = await Promise.all([
-        getRecentTests(),
-        getUserTestHistory(userId),
-        getMacroReport(userId)
-      ]);
-      setTests(fetchedTests);
-      setHistory(fetchedHistory);
-      setMacroReport(fetchedMacro);
-    } catch (e) {
-      console.error(e);
-      setError(e.message || "Failed to load test data");
-    } finally {
-      setLoading(false);
+      return () => {
+        if (unsubscribe) unsubscribe();
+      };
     }
-  }
+  }, [currentUser, navigate]);
 
   const filteredTests = tests.filter(t => 
     t.questions?.length >= 20 &&

@@ -1,4 +1,4 @@
-import { collection, doc, setDoc, addDoc, getDocs, getDoc, query, where, orderBy, limit, serverTimestamp } from 'firebase/firestore';
+import { collection, doc, setDoc, addDoc, getDocs, getDoc, query, where, orderBy, limit, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 
 // ── Tests ──
@@ -130,6 +130,21 @@ export async function getUserTestHistory(userId) {
     const timeA = typeof a.createdAt?.toMillis === 'function' ? a.createdAt.toMillis() : (a.createdAt?.seconds ? a.createdAt.seconds * 1000 : 0);
     const timeB = typeof b.createdAt?.toMillis === 'function' ? b.createdAt.toMillis() : (b.createdAt?.seconds ? b.createdAt.seconds * 1000 : 0);
     return timeB - timeA;
+  });
+}
+
+export function subscribeToUserHistory(userId, callback) {
+  const q = query(collection(db, 'starBatchTestAttempts'), where('userId', '==', userId));
+  return onSnapshot(q, (snap) => {
+    const docs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    docs.sort((a, b) => {
+      const timeA = typeof a.createdAt?.toMillis === 'function' ? a.createdAt.toMillis() : (a.createdAt?.seconds ? a.createdAt.seconds * 1000 : 0);
+      const timeB = typeof b.createdAt?.toMillis === 'function' ? b.createdAt.toMillis() : (b.createdAt?.seconds ? b.createdAt.seconds * 1000 : 0);
+      return timeB - timeA;
+    });
+    callback(docs);
+  }, (error) => {
+    console.error("Error in history subscription:", error);
   });
 }
 
