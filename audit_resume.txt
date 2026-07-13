@@ -1,0 +1,2 @@
+Resume with -c (or command below):
+agy --conversation=871bb81c-5f60-45c4-b7b4-1fe9c9705917

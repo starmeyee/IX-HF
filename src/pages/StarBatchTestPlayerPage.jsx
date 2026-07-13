@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { getTestById, submitTestAttempt, getUserTestAttemptsForTest, getTestAverageScore } from '../services/starBatchTestService';
-import { Loader2, ArrowLeft, CheckCircle, XCircle, Sparkles, Target, BarChart2, Zap, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp } from 'lucide-react';
+import { addBookmark, removeBookmark, checkIsBookmarked } from '../services/starBatchBookmarkService';
+import { Loader2, ArrowLeft, CheckCircle, XCircle, Sparkles, Target, BarChart2, Zap, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
 
 import TestAnalyticsDashboard from '../components/TestAnalyticsDashboard';
 import ReactMarkdown from 'react-markdown';
@@ -32,6 +33,9 @@ export default function StarBatchTestPlayerPage() {
 
   const [quizTime, setQuizTime] = useState(0);
   const [questionTimes, setQuestionTimes] = useState({});
+
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [bookmarking, setBookmarking] = useState(false);
 
   useEffect(() => {
     if (test && !result) {
@@ -154,6 +158,44 @@ export default function StarBatchTestPlayerPage() {
       }
       return newAnswers;
     });
+  }
+
+  useEffect(() => {
+    if (!activeQuestions[currentQuestionIndex] || !currentUser || !test) return;
+    const q = activeQuestions[currentQuestionIndex];
+    const docId = `${test.chapterId}_${q.originalIndex}`;
+    checkIsBookmarked(currentUser.id || currentUser.phone, docId).then(setIsBookmarked).catch(console.error);
+  }, [currentQuestionIndex, activeQuestions, currentUser, test]);
+
+  async function handleBookmarkCurrent() {
+    if (!test || !currentUser || bookmarking) return;
+    setBookmarking(true);
+    const userId = currentUser.id || currentUser.phone;
+    const q = activeQuestions[currentQuestionIndex];
+    const docId = `${test.chapterId}_${q.originalIndex}`;
+    
+    try {
+      if (isBookmarked) {
+        await removeBookmark(userId, docId);
+        setIsBookmarked(false);
+      } else {
+        await addBookmark(userId, {
+          chapterId: test.chapterId,
+          testId: test.id,
+          questionIndex: q.originalIndex,
+          questionText: q.text,
+          options: q.options,
+          correctOptionIndex: q.correctOptionIndex,
+          topic: q.topic || '',
+          difficulty: q.difficulty || 'Medium',
+          testTitle: test.title || ''
+        });
+        setIsBookmarked(true);
+      }
+    } catch(e) {
+      console.error(e);
+    }
+    setBookmarking(false);
   }
 
   async function handleSubmit() {
@@ -293,8 +335,18 @@ export default function StarBatchTestPlayerPage() {
         />
       ) : (
         <div style={{ animation: 'fade-in 0.3s ease' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontWeight: 600 }}>
-            <span>Question {currentQuestionIndex + 1} of {activeQuestions.length}</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontWeight: 600 }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              Question {currentQuestionIndex + 1} of {activeQuestions.length}
+              <button 
+                onClick={handleBookmarkCurrent}
+                disabled={bookmarking}
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: isBookmarked ? '#fbbf24' : 'rgba(255,255,255,0.5)', cursor: bookmarking ? 'default' : 'pointer', padding: '0.3rem', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+                title={isBookmarked ? "Remove Bookmark" : "Bookmark this question"}
+              >
+                <Bookmark size={14} fill={isBookmarked ? '#fbbf24' : 'none'} />
+              </button>
+            </span>
             <span>{Object.keys(answers).length} / {activeQuestions.length} Answered</span>
           </div>
           

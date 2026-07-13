@@ -2,9 +2,14 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getAllTests, getMacroReport, saveMacroReport, subscribeToUserHistory } from '../services/starBatchTestService';
+import { getUserBookmarks } from '../services/starBatchBookmarkService';
 import { syllabusData } from '../data/syllabusData';
-import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles, AlertCircle, Clock, Flag } from 'lucide-react';
+import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles, AlertCircle, Clock, Flag, Bookmark, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell } from 'recharts';
 
 export default function StarBatchTestModulePage() {
@@ -25,6 +30,11 @@ export default function StarBatchTestModulePage() {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [bookmarks, setBookmarks] = useState([]);
+  const [selectedBookmark, setSelectedBookmark] = useState(null);
+  const [showCorrectOpt, setShowCorrectOpt] = useState(false);
+  const [bookmarkSearchQuery, setBookmarkSearchQuery] = useState('');
+
   useEffect(() => {
     if (!currentUser) navigate('/');
     else if (!currentUser.isStarBatch || !currentUser.hasUnlockedStarBatch) navigate('/star-batch');
@@ -35,12 +45,14 @@ export default function StarBatchTestModulePage() {
         setError(null);
         try {
           const userId = currentUser.id || currentUser.phone;
-          const [fetchedTests, fetchedMacro] = await Promise.all([
+          const [fetchedTests, fetchedMacro, fetchedBookmarks] = await Promise.all([
             getAllTests(),
-            getMacroReport(userId)
+            getMacroReport(userId),
+            getUserBookmarks(userId)
           ]);
           setTests(fetchedTests);
           setMacroReport(fetchedMacro);
+          setBookmarks(fetchedBookmarks);
           
           unsubscribe = subscribeToUserHistory(userId, (newHistory) => {
             setHistory(newHistory);
@@ -98,6 +110,13 @@ export default function StarBatchTestModulePage() {
         chapterNameMap[chapter.chapterId] = chapter.chapterName;
       });
     });
+  });
+
+  const filteredBookmarks = bookmarks.filter(b => {
+    const q = bookmarkSearchQuery.toLowerCase();
+    const subName = (subjectNameMap[chapterToSubjectMap[b.chapterId]] || '').toLowerCase();
+    const chName = (chapterNameMap[b.chapterId] || '').toLowerCase();
+    return b.questionText?.toLowerCase().includes(q) || subName.includes(q) || chName.includes(q) || b.testTitle?.toLowerCase().includes(q);
   });
 
   const subjectAggregatesMap = {};
@@ -252,6 +271,13 @@ export default function StarBatchTestModulePage() {
         
         .tm-ai-title { margin: 0 0 1.5rem; color: #fbbf24; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; line-height: 1.2; font-weight: 800; }
         @media (min-width: 768px) { .tm-ai-title { font-size: 1.5rem; } }
+        
+        .custom-md table { display: block; overflow-x: auto; white-space: nowrap; max-width: 100%; border-collapse: collapse; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+        .custom-md th, .custom-md td { padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.1); }
+        .custom-md th { background: rgba(255,255,255,0.05); font-weight: 700; color: #fbbf24; }
+        .custom-md-opt p { margin: 0; padding: 0; display: inline-block; vertical-align: middle; }
+        .katex-display { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; }
+        .katex { white-space: normal; }
       `}</style>
 
       <div className="tm-header">
@@ -262,6 +288,7 @@ export default function StarBatchTestModulePage() {
       <div className="tm-tabs">
         <button className={`tm-tab ${activeTab === 'tests' ? 'active' : ''}`} onClick={() => setActiveTab('tests')}>Available Tests</button>
         <button className={`tm-tab ${activeTab === 'report' ? 'active' : ''}`} onClick={() => setActiveTab('report')}>My Report Card</button>
+        <button className={`tm-tab ${activeTab === 'bookmarks' ? 'active' : ''}`} onClick={() => setActiveTab('bookmarks')}>Bookmarks</button>
       </div>
 
       {activeTab === 'tests' && (
@@ -568,6 +595,124 @@ export default function StarBatchTestModulePage() {
           )}
         </div>
       )}
+
+      {activeTab === 'bookmarks' && (
+        <div style={{ animation: 'fade-in 0.3s ease' }}>
+          <div className="tm-search">
+            <Search size={18} color="rgba(255,255,255,0.4)" />
+            <input 
+              type="text" 
+              placeholder="Search bookmarks by subject, chapter, or text..." 
+              value={bookmarkSearchQuery} 
+              onChange={e => setBookmarkSearchQuery(e.target.value)} 
+            />
+          </div>
+
+          {filteredBookmarks.length === 0 ? (
+            <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.4)', padding: '3rem 0' }}>
+              No bookmarks found.
+            </div>
+          ) : (
+            <div className="tm-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
+              {filteredBookmarks.map(b => (
+                <div key={b.id} className="tm-card" onClick={() => { setSelectedBookmark(b); setShowCorrectOpt(false); }} style={{ cursor: 'pointer' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                      <Bookmark size={16} fill="#fbbf24" color="#fbbf24" />
+                      <span style={{ fontSize: '0.85rem', color: '#fbbf24', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        {subjectNameMap[chapterToSubjectMap[b.chapterId]] || 'Subject'}
+                      </span>
+                    </div>
+                    <h3 className="tm-card-title" style={{ fontSize: '1.05rem', marginBottom: '0.5rem' }}>
+                      {chapterNameMap[b.chapterId] || b.testTitle || b.chapterId}
+                    </h3>
+                    <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
+                         {b.questionText.split('\n')[0]}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                  <div className="tm-card-meta">
+                    <span>Q{b.questionIndex + 1}</span>
+                    <span>{b.difficulty || 'Medium'}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {selectedBookmark && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', backdropFilter: 'blur(10px)' }}>
+          <div style={{ background: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', width: '100%', maxWidth: '800px', maxHeight: '90vh', overflowY: 'auto', position: 'relative' }}>
+            <button 
+              onClick={() => setSelectedBookmark(null)} 
+              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'rgba(255,255,255,0.05)', border: 'none', color: '#fff', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}
+            >
+              <X size={20} />
+            </button>
+
+            <div style={{ padding: '2rem 1.5rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <span style={{ fontSize: '0.85rem', color: '#fbbf24', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Bookmark size={14} fill="#fbbf24" />
+                  {subjectNameMap[chapterToSubjectMap[selectedBookmark.chapterId]] || 'Subject'} • {chapterNameMap[selectedBookmark.chapterId] || selectedBookmark.testTitle} • Q{selectedBookmark.questionIndex + 1}
+                </span>
+              </div>
+
+              <div style={{ fontSize: '1.1rem', color: '#f1f5f9', lineHeight: 1.6, marginBottom: '2rem' }}>
+                <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]} className="custom-md">
+                  {selectedBookmark.questionText}
+                </ReactMarkdown>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
+                {selectedBookmark.options?.map((opt, i) => (
+                  <div key={i} style={{ 
+                    padding: '1rem', 
+                    background: (showCorrectOpt && i === selectedBookmark.correctOptionIndex) ? 'rgba(16,185,129,0.1)' : 'rgba(255,255,255,0.03)', 
+                    border: '1px solid', 
+                    borderColor: (showCorrectOpt && i === selectedBookmark.correctOptionIndex) ? 'rgba(16,185,129,0.5)' : 'rgba(255,255,255,0.06)', 
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '1rem'
+                  }}>
+                    <div style={{ 
+                      width: '28px', height: '28px', borderRadius: '50%', flexShrink: 0,
+                      background: (showCorrectOpt && i === selectedBookmark.correctOptionIndex) ? '#10b981' : 'rgba(255,255,255,0.1)',
+                      color: (showCorrectOpt && i === selectedBookmark.correctOptionIndex) ? '#fff' : 'rgba(255,255,255,0.5)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem'
+                    }}>
+                      {String.fromCharCode(65 + i)}
+                    </div>
+                    <div style={{ fontSize: '1rem', color: (showCorrectOpt && i === selectedBookmark.correctOptionIndex) ? '#10b981' : '#e2e8f0' }}>
+                      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]} className="custom-md-opt">
+                        {opt}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {!showCorrectOpt ? (
+                <button 
+                  onClick={() => setShowCorrectOpt(true)}
+                  style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '1rem', color: '#fff', fontWeight: 700, fontSize: '1rem', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  <CheckCircle size={18} /> Show Correct Option
+                </button>
+              ) : (
+                <div style={{ padding: '1rem', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: '12px', color: '#10b981', textAlign: 'center', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                  <CheckCircle size={18} /> Correct option revealed
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

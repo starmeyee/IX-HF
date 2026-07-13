@@ -109,6 +109,10 @@ export async function submitTestAttempt(attemptData) {
     weakTopics: attemptData.weakTopics || [],
     seenIndices: attemptData.seenIndices || [],
     aiReview: attemptData.aiReview || '',
+    difficultyStats: attemptData.difficultyStats || null,
+    topicStats: attemptData.topicStats || null,
+    totalTime: attemptData.totalTime || 0,
+    questionTimes: attemptData.questionTimes || {},
     createdAt: serverTimestamp()
   });
   return docRef.id;

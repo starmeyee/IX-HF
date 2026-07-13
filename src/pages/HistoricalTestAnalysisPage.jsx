@@ -75,9 +75,29 @@ export default function HistoricalTestAnalysisPage() {
   }).filter(q => q && q.text); // Filter out any undefined just in case
 
   // Map answers to the correct indexes expected by Mistake Analysis
-  // attempt.responses is a map: { [questionIndexInActiveArray]: selectedOptionIndex }
-  // TestAnalyticsDashboard expects `answers` to match the index of `activeQuestions`.
   const answers = attempt.responses || {};
+
+  // Reconstruct stats for older attempts that didn't save them
+  let difficultyStats = attempt.difficultyStats;
+  let topicStats = attempt.topicStats;
+
+  if (!difficultyStats || !topicStats) {
+    difficultyStats = { Easy: { correct: 0, total: 0 }, Medium: { correct: 0, total: 0 }, Hard: { correct: 0, total: 0 } };
+    topicStats = {};
+
+    activeQuestions.forEach((q, index) => {
+      const isCorrect = answers[index] === q.correctOptionIndex;
+      const diff = q.difficulty || 'Medium';
+      if (!difficultyStats[diff]) difficultyStats[diff] = { correct: 0, total: 0 };
+      difficultyStats[diff].total += 1;
+      if (isCorrect) difficultyStats[diff].correct += 1;
+
+      const top = q.topic || 'General';
+      if (!topicStats[top]) topicStats[top] = { correct: 0, total: 0 };
+      topicStats[top].total += 1;
+      if (isCorrect) topicStats[top].correct += 1;
+    });
+  }
 
   return (
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1rem' }}>
@@ -104,8 +124,10 @@ export default function HistoricalTestAnalysisPage() {
           score: attempt.score,
           total: attempt.total,
           aiReview: attempt.aiReview,
-          difficultyStats: attempt.difficultyStats || {},
-          topicStats: attempt.topicStats || {}
+          difficultyStats,
+          topicStats,
+          totalTime: attempt.totalTime || 0,
+          questionTimes: attempt.questionTimes || {}
         }}
         activeQuestions={activeQuestions}
         answers={answers}
