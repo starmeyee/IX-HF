@@ -51,7 +51,7 @@ export default function StarBatchTestPlayerPage() {
 
   useEffect(() => {
     if (!currentUser) navigate('/');
-    else if (!currentUser.isStarBatch || !currentUser.hasUnlockedStarBatch) navigate('/star-batch');
+    else if (currentUser.role !== 'ADMIN' && (!currentUser.isStarBatch || !currentUser.hasUnlockedStarBatch)) navigate('/star-batch');
     else fetchTest();
   }, [testId, currentUser, navigate]);
 
@@ -241,7 +241,10 @@ export default function StarBatchTestPlayerPage() {
         @media (min-width: 768px) { .tp-title { font-size: 1.5rem; } }
         
         .tp-q-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .tp-q-text { font-size: 1.1rem; color: #f1f5f9; line-height: 1.6; margin: 0 0 1.25rem; white-space: pre-wrap; }
+        .tp-q-text { font-size: 1.1rem; color: #f1f5f9; line-height: 1.6; margin: 0 0 1.25rem; white-space: pre-wrap; word-break: break-word; }
+        .custom-md table { display: block; overflow-x: auto; white-space: nowrap; max-width: 100%; border-collapse: collapse; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+        .custom-md th, .custom-md td { padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.1); }
+        .custom-md th { background: rgba(255,255,255,0.05); font-weight: 700; color: #fbbf24; }
         .tp-q-meta { font-size: 0.75rem; color: rgba(251,191,36,0.8); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; }
         
         .tp-opt { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; }

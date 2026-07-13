@@ -1592,9 +1592,9 @@ function StarBatchTab() {
       getStarBatchConfig(),
       getAllTestAttempts(),
       getAllUsers(),
-      getRecentTests(),
+      getAllTests(),
       getAllTests()
-    ]).then(([c, atts, usersList, testsList, allTests]) => {
+    ]).then(([c, atts, usersList, _, allTests]) => {
       setConfig(c);
       setNewCode(c.code);
       setAttempts(atts);
@@ -1787,13 +1787,26 @@ function StarBatchTab() {
                         {expandedBankSubjects[sub.subjectId] && (
                           <div style={{ padding: '0.5rem 1rem 0.5rem 3rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', borderBottom: '1px solid rgba(255,255,255,0.02)' }}>
                             {sub.chapters.map(ch => {
-                              const qCount = questionCountsByChapter[ch.chapterId] || 0;
+                              const testDoc = allBankTests.find(t => t.chapterId === ch.chapterId);
+                              const qCount = testDoc?.questions?.length || 0;
                               return (
-                                <div key={ch.chapterId} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                <div key={ch.chapterId} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.4rem 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
                                   <span>{ch.chapterName}</span>
-                                  <span style={{ fontWeight: 600, color: qCount > 0 ? '#10b981' : 'rgba(255,255,255,0.3)', background: qCount > 0 ? 'rgba(16, 185, 129, 0.1)' : 'transparent', padding: '0.1rem 0.5rem', borderRadius: 4 }}>
-                                    {qCount} {qCount === 1 ? 'question' : 'questions'}
-                                  </span>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    {testDoc && qCount > 0 && (
+                                      <a 
+                                        href={`/star-tests/${testDoc.id}?level=medium&count=10`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{ color: '#fbbf24', fontSize: '0.75rem', textDecoration: 'none', border: '1px solid rgba(251,191,36,0.3)', padding: '0.1rem 0.4rem', borderRadius: '4px', background: 'rgba(251,191,36,0.1)' }}
+                                      >
+                                        Sample Test
+                                      </a>
+                                    )}
+                                    <span style={{ fontWeight: 600, color: qCount > 0 ? '#10b981' : 'rgba(255,255,255,0.3)', background: qCount > 0 ? 'rgba(16, 185, 129, 0.1)' : 'transparent', padding: '0.1rem 0.5rem', borderRadius: 4 }}>
+                                      {qCount} {qCount === 1 ? 'question' : 'questions'}
+                                    </span>
+                                  </div>
                                 </div>
                               );
                             })}
