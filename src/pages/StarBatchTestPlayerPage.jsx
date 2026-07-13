@@ -22,6 +22,28 @@ export default function StarBatchTestPlayerPage() {
   const [averageScore, setAverageScore] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  const [quizTime, setQuizTime] = useState(0);
+  const [questionTimes, setQuestionTimes] = useState({});
+
+  useEffect(() => {
+    if (test && !result) {
+      const timer = setInterval(() => {
+        setQuizTime(prev => prev + 1);
+        setQuestionTimes(prev => ({
+          ...prev,
+          [currentQuestionIndex]: (prev[currentQuestionIndex] || 0) + 1
+        }));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [test, result, currentQuestionIndex]);
+
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
+
   useEffect(() => {
     if (!currentUser) navigate('/');
     else if (!currentUser.isStarBatch || !currentUser.hasUnlockedStarBatch) navigate('/star-batch');
@@ -116,7 +138,7 @@ export default function StarBatchTestPlayerPage() {
         const res = await fetch('/api/ai-test-review', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ score, total: activeQuestions.length, difficultyStats, topicStats })
+          body: JSON.stringify({ score, total: activeQuestions.length, difficultyStats, topicStats, totalTime: quizTime, questionTimes })
         });
         if (res.ok) {
           const data = await res.json();
@@ -136,10 +158,12 @@ export default function StarBatchTestPlayerPage() {
         responses: answers,
         weakTopics: [...new Set(weakTopics)],
         seenIndices,
-        aiReview
+        aiReview,
+        totalTime: quizTime,
+        questionTimes
       });
 
-      setResult({ score, total: activeQuestions.length, aiReview, difficultyStats, topicStats });
+      setResult({ score, total: activeQuestions.length, aiReview, difficultyStats, topicStats, totalTime: quizTime, questionTimes });
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
     } catch (e) {
       alert('Failed to submit test. Please try again.');
@@ -163,9 +187,10 @@ export default function StarBatchTestPlayerPage() {
     <div style={{ animation: 'fade-in 0.4s ease', paddingBottom: '6rem', maxWidth: '800px', margin: '0 auto' }}>
       <style>{`
         .tp-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-        .tp-back { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; transition: all 0.2s; }
+        .tp-back { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
         .tp-back:hover { background: rgba(255,255,255,0.1); }
-        .tp-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0; }
+        .tp-title { font-size: 1.25rem; font-weight: 800; color: #fff; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        @media (min-width: 768px) { .tp-title { font-size: 1.5rem; } }
         
         .tp-q-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
         .tp-q-text { font-size: 1.1rem; color: #f1f5f9; line-height: 1.6; margin: 0 0 1.25rem; white-space: pre-wrap; }
@@ -190,9 +215,16 @@ export default function StarBatchTestPlayerPage() {
         .tp-nav-btn.primary:hover:not(:disabled) { background: rgba(251,191,36,0.25); }
       `}</style>
 
-      <div className="tp-header">
-        <button className="tp-back" onClick={() => navigate('/star-tests')}><ArrowLeft size={20} /></button>
-        <h1 className="tp-title">{test.title}</h1>
+      <div className="tp-header" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
+          <button className="tp-back" onClick={() => navigate('/star-tests')}><ArrowLeft size={18} /></button>
+          <h1 className="tp-title" title={test.title}>{test.title}</h1>
+        </div>
+        {!result && test && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.1)', padding: '0.4rem 0.75rem', borderRadius: '20px', color: '#fff', fontWeight: 700, flexShrink: 0, fontSize: '0.9rem' }}>
+            <Clock size={14} /> {formatTime(quizTime)}
+          </div>
+        )}
       </div>
 
       {result ? (

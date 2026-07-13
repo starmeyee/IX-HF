@@ -231,6 +231,15 @@ export default function StarBatchTestModulePage() {
         
         .tm-stat-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; }
         .tm-stat-title { font-size: 1rem; font-weight: 700; color: #fff; margin: 0 0 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+        .tm-ai-card { background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(245,158,11,0.02) 100%); border: 1px solid rgba(251,191,36,0.2); border-radius: 16px; padding: 1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        @media (min-width: 768px) { .tm-ai-card { padding: 2rem; } }
+        
+        .tm-ai-loading { background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(245,158,11,0.02) 100%); border: 1px solid rgba(251,191,36,0.2); border-radius: 16px; padding: 3rem 1rem; text-align: center; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @media (min-width: 768px) { .tm-ai-loading { padding: 4rem 2rem; } }
+        
+        .tm-ai-title { margin: 0 0 1.5rem; color: #fbbf24; display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; line-height: 1.2; font-weight: 800; }
+        @media (min-width: 768px) { .tm-ai-title { font-size: 1.5rem; } }
       `}</style>
 
       <div className="tm-header">
@@ -319,18 +328,16 @@ export default function StarBatchTestModulePage() {
           </div>
 
           {isGeneratingMacro ? (
-            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
-              <BrainCircuit size={56} color="#38bdf8" style={{ margin: '0 auto 1.5rem', animation: 'bounce 2s infinite' }} />
-              <h3 style={{ margin: '0 0 0.5rem', color: '#38bdf8', fontSize: '1.4rem' }}>AI is analyzing your entire history...</h3>
-              <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem' }}>Comparing your performance against syllabus standards. Please wait 10-15 seconds.</p>
+            <div className="tm-ai-loading">
+              <BrainCircuit size={56} color="#fbbf24" style={{ margin: '0 auto 1.5rem', animation: 'bounce 2s infinite' }} />
+              <h3 style={{ margin: '0 0 0.5rem', color: '#fbbf24', fontSize: '1.4rem' }}>AI is analyzing your entire history...</h3>
+              <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', padding: '0 1rem' }}>Comparing your performance against syllabus standards. Please wait 10-15 seconds.</p>
             </div>
           ) : macroReport ? (
-            <div style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '2rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-                <h3 style={{ margin: '0', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.5rem' }}>
-                  <Sparkles size={24} /> AI Strategic Report
-                </h3>
-              </div>
+            <div className="tm-ai-card">
+              <h3 className="tm-ai-title">
+                <Sparkles size={24} color="#fbbf24" /> AI Strategic Report
+              </h3>
               
               {typeof macroReport.report === 'string' ? (
                 // Fallback for old string reports
@@ -339,45 +346,45 @@ export default function StarBatchTestModulePage() {
                 </div>
               ) : (
                 // New structured UI
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                  <div style={{ fontSize: '1.1rem', color: '#e2e8f0', lineHeight: 1.6, background: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, background: 'rgba(255,255,255,0.03)', padding: '1.25rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
                     {macroReport.report.summary}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '1.5rem' }}>
-                      <h4 style={{ margin: '0 0 1rem 0', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><CheckCircle size={18}/> Key Strengths</h4>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+                    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
+                      <h4 style={{ margin: '0 0 1rem 0', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><CheckCircle size={18}/> Key Strengths</h4>
                       <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                         {(macroReport.report.strengths || []).map((s, i) => (
-                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }}/> {s}</li>
+                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }}/> {s}</li>
                         ))}
                       </ul>
                     </div>
 
-                    <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '1.5rem' }}>
-                      <h4 style={{ margin: '0 0 1rem 0', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><AlertCircle size={18}/> Critical Weaknesses</h4>
+                    <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
+                      <h4 style={{ margin: '0 0 1rem 0', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><AlertCircle size={18}/> Critical Weaknesses</h4>
                       <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                         {(macroReport.report.weaknesses || []).map((w, i) => (
-                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.95rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><XCircle size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }}/> {w}</li>
+                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><XCircle size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }}/> {w}</li>
                         ))}
                       </ul>
                     </div>
                   </div>
 
                   {macroReport.report.focusDistribution && macroReport.report.focusDistribution.length > 0 && (
-                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.5rem' }}>
-                      <h4 style={{ margin: '0 0 1.5rem 0', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Target size={18}/> Recommended Focus Distribution</h4>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
+                      <h4 style={{ margin: '0 0 1.25rem 0', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Target size={18}/> Recommended Focus</h4>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         {macroReport.report.focusDistribution.map((f, i) => (
                           <div key={i}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '0.5rem' }}>
-                              <div>
-                                <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.95rem' }}>{f.topic}</div>
-                                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>{f.reason}</div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '1rem' }}>
+                              <div style={{ minWidth: 0, flex: 1 }}>
+                                <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.9rem', wordBreak: 'break-word', lineHeight: 1.2 }}>{f.topic}</div>
+                                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', wordBreak: 'break-word', marginTop: '0.2rem' }}>{f.reason}</div>
                               </div>
-                              <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1.1rem' }}>{f.percentage}%</div>
+                              <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1rem', flexShrink: 0 }}>{f.percentage}%</div>
                             </div>
-                            <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '8px', overflow: 'hidden' }}>
+                            <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '6px', overflow: 'hidden' }}>
                               <div style={{ width: `${f.percentage}%`, background: '#f59e0b', height: '100%', borderRadius: '4px' }}></div>
                             </div>
                           </div>
@@ -387,17 +394,17 @@ export default function StarBatchTestModulePage() {
                   )}
 
                   {macroReport.report.actionPlan && macroReport.report.actionPlan.length > 0 && (
-                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.5rem' }}>
-                      <h4 style={{ margin: '0 0 1.5rem 0', color: '#a855f7', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Flag size={18}/> 48-Hour Action Plan</h4>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
+                      <h4 style={{ margin: '0 0 1.25rem 0', color: '#a855f7', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Flag size={18}/> 48-Hour Plan</h4>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
                         {macroReport.report.actionPlan.map((action, i) => (
-                          <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '1.25rem', borderLeft: '4px solid #a855f7' }}>
+                          <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '1rem', borderLeft: '4px solid #a855f7' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase' }}>Step {i+1}</div>
-                              {action.time && <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={12}/> {action.time}</div>}
+                              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase' }}>Step {i+1}</div>
+                              {action.time && <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.3rem', flexShrink: 0 }}><Clock size={12}/> {action.time}</div>}
                             </div>
-                            <div style={{ color: '#fff', fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.4rem' }}>{action.title}</div>
-                            <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: 1.5 }}>{action.description}</div>
+                            <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem', lineHeight: 1.3 }}>{action.title}</div>
+                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.4 }}>{action.description}</div>
                           </div>
                         ))}
                       </div>
