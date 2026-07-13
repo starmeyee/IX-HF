@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getRecentTests, getMacroReport, saveMacroReport, subscribeToUserHistory } from '../services/starBatchTestService';
+import { getAllTests, getMacroReport, saveMacroReport, subscribeToUserHistory } from '../services/starBatchTestService';
 import { syllabusData } from '../data/syllabusData';
 import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, BrainCircuit, Sparkles, AlertCircle, Clock, Flag } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -36,7 +36,7 @@ export default function StarBatchTestModulePage() {
         try {
           const userId = currentUser.id || currentUser.phone;
           const [fetchedTests, fetchedMacro] = await Promise.all([
-            getRecentTests(),
+            getAllTests(),
             getMacroReport(userId)
           ]);
           setTests(fetchedTests);
