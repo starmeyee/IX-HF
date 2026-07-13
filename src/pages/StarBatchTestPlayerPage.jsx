@@ -249,6 +249,8 @@ export default function StarBatchTestPlayerPage() {
         .custom-md th, .custom-md td { padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.1); }
         .custom-md th { background: rgba(255,255,255,0.05); font-weight: 700; color: #fbbf24; }
         .custom-md-opt p { margin: 0; padding: 0; display: inline-block; vertical-align: middle; }
+        .katex-display { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; }
+        .katex { white-space: normal; }
         .tp-q-meta { font-size: 0.75rem; color: rgba(251,191,36,0.8); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; }
         
         .tp-opt { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; }
