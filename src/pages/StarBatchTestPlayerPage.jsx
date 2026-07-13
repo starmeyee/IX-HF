@@ -102,7 +102,15 @@ export default function StarBatchTestPlayerPage() {
 
   function handleOptionSelect(qIndex, optIndex) {
     if (result) return;
-    setAnswers(prev => ({ ...prev, [qIndex]: optIndex }));
+    setAnswers(prev => {
+      const newAnswers = { ...prev };
+      if (newAnswers[qIndex] === optIndex) {
+        delete newAnswers[qIndex];
+      } else {
+        newAnswers[qIndex] = optIndex;
+      }
+      return newAnswers;
+    });
   }
 
   async function handleSubmit() {
@@ -287,18 +295,13 @@ export default function StarBatchTestPlayerPage() {
               <button 
                 className="tp-submit" 
                 onClick={handleSubmit} 
-                disabled={isSubmitting || Object.keys(answers).length < activeQuestions.length}
+                disabled={isSubmitting}
                 style={{ flex: 1, marginTop: 0 }}
               >
                 {isSubmitting ? <Loader2 size={20} style={{ animation: 'spin 1s linear infinite' }} /> : 'Submit Test'}
               </button>
             )}
           </div>
-          {Object.keys(answers).length < activeQuestions.length && currentQuestionIndex === activeQuestions.length - 1 && (
-            <div style={{ textAlign: 'center', marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>
-              You must answer all {activeQuestions.length} questions before submitting.
-            </div>
-          )}
         </div>
       )}
     </div>
