@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { getTestById, submitTestAttempt, getUserTestAttemptsForTest, getTestAverageScore } from '../services/starBatchTestService';
 import { Loader2, ArrowLeft, CheckCircle, XCircle, Sparkles, Target, BarChart2, Zap, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp } from 'lucide-react';
@@ -11,6 +11,10 @@ export default function StarBatchTestPlayerPage() {
   const { testId } = useParams();
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  
+  const level = searchParams.get('level') || 'medium';
+  const count = parseInt(searchParams.get('count')) || 10;
 
   const [test, setTest] = useState(null);
   const [activeQuestions, setActiveQuestions] = useState([]);
@@ -66,9 +70,6 @@ export default function StarBatchTestPlayerPage() {
         (a.seenIndices || []).forEach(idx => seenIndices.add(idx));
       });
 
-      const allIndices = data.questions.map((_, i) => i);
-      let unseenIndices = allIndices.filter(i => !seenIndices.has(i));
-
       const shuffle = (array) => {
         let arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
@@ -78,19 +79,57 @@ export default function StarBatchTestPlayerPage() {
         return arr;
       };
 
-      unseenIndices = shuffle(unseenIndices);
-      let selectedIndices = unseenIndices.slice(0, 10);
+      const allQuestions = data.questions.map((q, idx) => ({...q, originalIndex: idx, difficulty: q.difficulty || 'Medium'}));
+      let unseen = shuffle(allQuestions.filter(q => !seenIndices.has(q.originalIndex)));
+      let seen = shuffle(allQuestions.filter(q => seenIndices.has(q.originalIndex)));
 
-      if (selectedIndices.length < 10) {
-        let seenArr = shuffle(Array.from(seenIndices));
-        const needed = 10 - selectedIndices.length;
-        selectedIndices = [...selectedIndices, ...seenArr.slice(0, needed)];
+      const multiplier = count / 10;
+      let targetE = 0, targetM = 0, targetH = 0;
+      switch(level) {
+        case 'easy': targetE = 8 * multiplier; targetM = 2 * multiplier; break;
+        case 'medium': targetM = 6 * multiplier; targetE = 2 * multiplier; targetH = 2 * multiplier; break;
+        case 'hard': targetH = 6 * multiplier; targetM = 4 * multiplier; break;
+        case 'difficult': targetH = 10 * multiplier; break;
+        default: targetM = 6 * multiplier; targetE = 2 * multiplier; targetH = 2 * multiplier;
       }
-      
-      const questionsToShow = selectedIndices.map(idx => ({
-        ...data.questions[idx],
-        originalIndex: idx
-      }));
+
+      let selected = [];
+      const addQuestions = (difficulty, amount) => {
+        let added = 0;
+        for(let i=0; i<unseen.length && added < amount; i++) {
+           if(unseen[i].difficulty === difficulty) {
+              selected.push(unseen[i]);
+              unseen.splice(i, 1); i--; added++;
+           }
+        }
+        for(let i=0; i<seen.length && added < amount; i++) {
+           if(seen[i].difficulty === difficulty) {
+              selected.push(seen[i]);
+              seen.splice(i, 1); i--; added++;
+           }
+        }
+        return added;
+      }
+
+      addQuestions('Easy', targetE);
+      addQuestions('Medium', targetM);
+      addQuestions('Hard', targetH);
+
+      // Fill remaining spots if we didn't find enough exact difficulty matches
+      let totalAdded = selected.length;
+      while(totalAdded < count) {
+         if (unseen.length > 0) {
+            selected.push(unseen.shift());
+            totalAdded++;
+         } else if (seen.length > 0) {
+            selected.push(seen.shift());
+            totalAdded++;
+         } else {
+            break;
+         }
+      }
+
+      const questionsToShow = shuffle(selected);
 
       setTest(data);
       setActiveQuestions(questionsToShow);

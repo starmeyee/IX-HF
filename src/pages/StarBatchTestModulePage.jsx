@@ -15,6 +15,8 @@ export default function StarBatchTestModulePage() {
   const [expandedSubject, setExpandedSubject] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
   const [isAIReportExpanded, setIsAIReportExpanded] = useState(false);
+  const [activeConfigTestId, setActiveConfigTestId] = useState(null);
+  const [testConfig, setTestConfig] = useState({ level: 2, count: 10 });
   const [macroReport, setMacroReport] = useState(null);
   const [isGeneratingMacro, setIsGeneratingMacro] = useState(false);
   const [tests, setTests] = useState([]);
@@ -283,17 +285,66 @@ export default function StarBatchTestModulePage() {
                         <span>{isCompleted ? 'Attempted' : 'Not Attempted'}</span>
                       </div>
                       <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', margin: '0.75rem 0 0 0', lineHeight: 1.4 }}>
-                        Generates a unique 10-question test on every attempt.
+                        Customize test difficulty and length for personalized practice.
                       </p>
                     </div>
-                    <button 
-                      className="tm-btn" 
-                      onClick={() => navigate(`/star-tests/${test.id}`)}
-                      style={isCompleted ? { background: 'rgba(255,255,255,0.1)', color: '#fff' } : {}}
-                    >
-                      <Play size={16} fill={isCompleted ? 'none' : 'currentColor'} /> 
-                      Generate New Test
-                    </button>
+                    
+                    <div style={{ marginTop: 'auto' }}>
+                      {activeConfigTestId === test.id ? (
+                        <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: '12px', padding: '1rem', marginTop: '1rem' }}>
+                          <div style={{ marginBottom: '1rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#fff', marginBottom: '0.5rem', fontWeight: 600 }}>
+                              <span style={{ color: '#3b82f6', opacity: testConfig.level === 1 ? 1 : 0.5, cursor: 'pointer' }} onClick={() => setTestConfig({...testConfig, level: 1})}>Easy</span>
+                              <span style={{ color: '#fbbf24', opacity: testConfig.level === 2 ? 1 : 0.5, cursor: 'pointer' }} onClick={() => setTestConfig({...testConfig, level: 2})}>Medium</span>
+                              <span style={{ color: '#ef4444', opacity: testConfig.level === 3 ? 1 : 0.5, cursor: 'pointer' }} onClick={() => setTestConfig({...testConfig, level: 3})}>Hard</span>
+                              <span style={{ color: '#991b1b', opacity: testConfig.level === 4 ? 1 : 0.5, cursor: 'pointer' }} onClick={() => setTestConfig({...testConfig, level: 4})}>Difficult</span>
+                            </div>
+                            <input 
+                              type="range" 
+                              min="1" max="4" 
+                              value={testConfig.level}
+                              onChange={e => setTestConfig({...testConfig, level: parseInt(e.target.value)})}
+                              style={{ width: '100%', accentColor: testConfig.level === 1 ? '#3b82f6' : testConfig.level === 2 ? '#fbbf24' : testConfig.level === 3 ? '#ef4444' : '#991b1b' }}
+                            />
+                          </div>
+                          <div style={{ marginBottom: '1rem' }}>
+                            <div style={{ fontSize: '0.8rem', color: '#fff', marginBottom: '0.5rem' }}>Total Questions:</div>
+                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                              {[10, 15, 20].map(c => (
+                                <button
+                                  key={c}
+                                  onClick={() => setTestConfig({...testConfig, count: c})}
+                                  style={{ flex: 1, background: testConfig.count === c ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', padding: '0.4rem', fontSize: '0.9rem', cursor: 'pointer' }}
+                                >
+                                  {c}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                          <button 
+                            className="tm-btn" 
+                            onClick={() => {
+                              const levelName = ['easy', 'medium', 'hard', 'difficult'][testConfig.level - 1];
+                              navigate(`/star-tests/${test.id}?level=${levelName}&count=${testConfig.count}`);
+                            }}
+                          >
+                            <Play size={16} fill="currentColor" /> Start Test
+                          </button>
+                        </div>
+                      ) : (
+                        <button 
+                          className="tm-btn" 
+                          onClick={() => {
+                            setActiveConfigTestId(test.id);
+                            setTestConfig({ level: 2, count: 10 });
+                          }}
+                          style={{ marginTop: '1rem', ...(isCompleted ? { background: 'rgba(255,255,255,0.1)', color: '#fff' } : {}) }}
+                        >
+                          <Play size={16} fill={isCompleted ? 'none' : 'currentColor'} /> 
+                          Generate New Test
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
               })}
