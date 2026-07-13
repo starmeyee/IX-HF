@@ -14,6 +14,7 @@ export default function StarBatchTestModulePage() {
   const [activeTab, setActiveTab] = useState('tests'); // 'tests' | 'report'
   const [expandedSubject, setExpandedSubject] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
+  const [isAIReportExpanded, setIsAIReportExpanded] = useState(false);
   const [macroReport, setMacroReport] = useState(null);
   const [isGeneratingMacro, setIsGeneratingMacro] = useState(false);
   const [tests, setTests] = useState([]);
@@ -335,79 +336,89 @@ export default function StarBatchTestModulePage() {
             </div>
           ) : macroReport ? (
             <div className="tm-ai-card">
-              <h3 className="tm-ai-title">
-                <Sparkles size={24} color="#fbbf24" /> AI Strategic Report
-              </h3>
+              <div 
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                onClick={() => setIsAIReportExpanded(!isAIReportExpanded)}
+              >
+                <h3 className="tm-ai-title" style={{ margin: 0 }}>
+                  <Sparkles size={24} color="#fbbf24" /> AI Strategic Report
+                </h3>
+                {isAIReportExpanded ? <ChevronUp size={24} color="#fbbf24" /> : <ChevronDown size={24} color="#fbbf24" />}
+              </div>
               
-              {typeof macroReport.report === 'string' ? (
-                // Fallback for old string reports
-                <div style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: 1.6 }} className="markdown-body custom-md">
-                  <ReactMarkdown>{macroReport.report}</ReactMarkdown>
-                </div>
-              ) : (
-                // New structured UI
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  <div style={{ fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, background: 'rgba(255,255,255,0.03)', padding: '1.25rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                    {macroReport.report.summary}
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
-                    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
-                      <h4 style={{ margin: '0 0 1rem 0', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><CheckCircle size={18}/> Key Strengths</h4>
-                      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        {(macroReport.report.strengths || []).map((s, i) => (
-                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }}/> {s}</li>
-                        ))}
-                      </ul>
+              {isAIReportExpanded && (
+                <div style={{ marginTop: '1.5rem' }}>
+                  {typeof macroReport.report === 'string' ? (
+                    // Fallback for old string reports
+                    <div style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: 1.6 }} className="markdown-body custom-md">
+                      <ReactMarkdown>{macroReport.report}</ReactMarkdown>
                     </div>
+                  ) : (
+                    // New structured UI
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                      <div style={{ fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, background: 'rgba(255,255,255,0.03)', padding: '1.25rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                        {macroReport.report.summary}
+                      </div>
 
-                    <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
-                      <h4 style={{ margin: '0 0 1rem 0', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><AlertCircle size={18}/> Critical Weaknesses</h4>
-                      <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        {(macroReport.report.weaknesses || []).map((w, i) => (
-                          <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><XCircle size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }}/> {w}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+                        <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
+                          <h4 style={{ margin: '0 0 1rem 0', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><CheckCircle size={18}/> Key Strengths</h4>
+                          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                            {(macroReport.report.strengths || []).map((s, i) => (
+                              <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><CheckCircle size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }}/> {s}</li>
+                            ))}
+                          </ul>
+                        </div>
 
-                  {macroReport.report.focusDistribution && macroReport.report.focusDistribution.length > 0 && (
-                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
-                      <h4 style={{ margin: '0 0 1.25rem 0', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Target size={18}/> Recommended Focus</h4>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        {macroReport.report.focusDistribution.map((f, i) => (
-                          <div key={i}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '1rem' }}>
-                              <div style={{ minWidth: 0, flex: 1 }}>
-                                <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.9rem', wordBreak: 'break-word', lineHeight: 1.2 }}>{f.topic}</div>
-                                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', wordBreak: 'break-word', marginTop: '0.2rem' }}>{f.reason}</div>
+                        <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '1.25rem' }}>
+                          <h4 style={{ margin: '0 0 1rem 0', color: '#ef4444', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><AlertCircle size={18}/> Critical Weaknesses</h4>
+                          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                            {(macroReport.report.weaknesses || []).map((w, i) => (
+                              <li key={i} style={{ color: '#e2e8f0', fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}><XCircle size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }}/> {w}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {macroReport.report.focusDistribution && macroReport.report.focusDistribution.length > 0 && (
+                        <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
+                          <h4 style={{ margin: '0 0 1.25rem 0', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Target size={18}/> Recommended Focus</h4>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            {macroReport.report.focusDistribution.map((f, i) => (
+                              <div key={i}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem', gap: '1rem' }}>
+                                  <div style={{ minWidth: 0, flex: 1 }}>
+                                    <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.9rem', wordBreak: 'break-word', lineHeight: 1.2 }}>{f.topic}</div>
+                                    <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', wordBreak: 'break-word', marginTop: '0.2rem' }}>{f.reason}</div>
+                                  </div>
+                                  <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1rem', flexShrink: 0 }}>{f.percentage}%</div>
+                                </div>
+                                <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '6px', overflow: 'hidden' }}>
+                                  <div style={{ width: `${f.percentage}%`, background: '#f59e0b', height: '100%', borderRadius: '4px' }}></div>
+                                </div>
                               </div>
-                              <div style={{ color: '#f59e0b', fontWeight: 700, fontSize: '1rem', flexShrink: 0 }}>{f.percentage}%</div>
-                            </div>
-                            <div style={{ width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', height: '6px', overflow: 'hidden' }}>
-                              <div style={{ width: `${f.percentage}%`, background: '#f59e0b', height: '100%', borderRadius: '4px' }}></div>
-                            </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                        </div>
+                      )}
 
-                  {macroReport.report.actionPlan && macroReport.report.actionPlan.length > 0 && (
-                    <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
-                      <h4 style={{ margin: '0 0 1.25rem 0', color: '#a855f7', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Flag size={18}/> 48-Hour Plan</h4>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                        {macroReport.report.actionPlan.map((action, i) => (
-                          <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '1rem', borderLeft: '4px solid #a855f7' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                              <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase' }}>Step {i+1}</div>
-                              {action.time && <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.3rem', flexShrink: 0 }}><Clock size={12}/> {action.time}</div>}
-                            </div>
-                            <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem', lineHeight: 1.3 }}>{action.title}</div>
-                            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.4 }}>{action.description}</div>
+                      {macroReport.report.actionPlan && macroReport.report.actionPlan.length > 0 && (
+                        <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.25rem' }}>
+                          <h4 style={{ margin: '0 0 1.25rem 0', color: '#a855f7', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.05rem' }}><Flag size={18}/> 48-Hour Plan</h4>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                            {macroReport.report.actionPlan.map((action, i) => (
+                              <div key={i} style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '8px', padding: '1rem', borderLeft: '4px solid #a855f7' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                                  <div style={{ color: '#a855f7', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase' }}>Step {i+1}</div>
+                                  {action.time && <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '0.3rem', flexShrink: 0 }}><Clock size={12}/> {action.time}</div>}
+                                </div>
+                                <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem', lineHeight: 1.3 }}>{action.title}</div>
+                                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.4 }}>{action.description}</div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
