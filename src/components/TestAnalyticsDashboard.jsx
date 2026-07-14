@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Sparkles, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp, BarChart2, Target, Zap, List, Bookmark } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { addBookmark, removeBookmark, checkIsBookmarked } from '../services/starBatchBookmarkService';
+import { reportTestQuestion } from '../services/starBatchTestService';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -14,6 +15,8 @@ export default function TestAnalyticsDashboard({ result, activeQuestions, answer
   const [showAllQuestions, setShowAllQuestions] = useState(false);
   const [bookmarkedQs, setBookmarkedQs] = useState({});
   const [bookmarkingQs, setBookmarkingQs] = useState({});
+  const [reportingQs, setReportingQs] = useState({});
+  const [reportedQs, setReportedQs] = useState({});
 
   useEffect(() => {
     if (!currentUser || !test || !activeQuestions) return;
@@ -62,6 +65,34 @@ export default function TestAnalyticsDashboard({ result, activeQuestions, answer
       console.error(err);
     } finally {
       setBookmarkingQs(prev => ({...prev, [q.originalIndex]: false}));
+    }
+  };
+
+  const handleReportQuestion = async (e, q) => {
+    e.stopPropagation();
+    if (!currentUser || !test || reportingQs[q.originalIndex] || reportedQs[q.originalIndex]) return;
+
+    if (!window.confirm("Are you sure you want to report this question for having an error?")) return;
+
+    setReportingQs(prev => ({...prev, [q.originalIndex]: true}));
+    const userId = currentUser.id || currentUser.phone;
+
+    try {
+      await reportTestQuestion({
+        chapterId: test.chapterId,
+        testId: test.id,
+        testTitle: test.title || '',
+        questionIndex: q.originalIndex,
+        questionText: q.text,
+        reportedBy: userId
+      });
+      setReportedQs(prev => ({...prev, [q.originalIndex]: true}));
+      alert("Question reported successfully. An admin will review it.");
+    } catch(err) {
+      console.error(err);
+      alert("Failed to report question. Please try again.");
+    } finally {
+      setReportingQs(prev => ({...prev, [q.originalIndex]: false}));
     }
   };
 
@@ -374,14 +405,24 @@ export default function TestAnalyticsDashboard({ result, activeQuestions, answer
                         {result.questionTimes && result.questionTimes[q.idx] !== undefined && (
                           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.2rem', marginLeft: '0.5rem' }}><Clock size={12} /> {result.questionTimes[q.idx]}s</span>
                         )}
-                        <button 
-                          onClick={(e) => handleBookmarkToggle(e, q)}
-                          disabled={bookmarkingQs[q.originalIndex]}
-                          style={{ background: 'transparent', border: 'none', color: bookmarkedQs[q.originalIndex] ? '#fbbf24' : 'rgba(255,255,255,0.3)', cursor: bookmarkingQs[q.originalIndex] ? 'default' : 'pointer', padding: '0', display: 'flex', alignItems: 'center', marginLeft: 'auto', transition: 'all 0.2s' }}
-                          title={bookmarkedQs[q.originalIndex] ? "Remove Bookmark" : "Bookmark this question"}
-                        >
-                          <Bookmark size={14} fill={bookmarkedQs[q.originalIndex] ? '#fbbf24' : 'none'} />
-                        </button>
+                        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <button 
+                            onClick={(e) => handleBookmarkToggle(e, q)}
+                            disabled={bookmarkingQs[q.originalIndex]}
+                            style={{ background: 'transparent', border: 'none', color: bookmarkedQs[q.originalIndex] ? '#fbbf24' : 'rgba(255,255,255,0.3)', cursor: bookmarkingQs[q.originalIndex] ? 'default' : 'pointer', padding: '0', display: 'flex', alignItems: 'center', transition: 'all 0.2s' }}
+                            title={bookmarkedQs[q.originalIndex] ? "Remove Bookmark" : "Bookmark this question"}
+                          >
+                            <Bookmark size={14} fill={bookmarkedQs[q.originalIndex] ? '#fbbf24' : 'none'} />
+                          </button>
+                          <button 
+                            onClick={(e) => handleReportQuestion(e, q)}
+                            disabled={reportingQs[q.originalIndex] || reportedQs[q.originalIndex]}
+                            style={{ background: 'transparent', border: 'none', color: reportedQs[q.originalIndex] ? '#ef4444' : 'rgba(255,255,255,0.3)', cursor: (reportingQs[q.originalIndex] || reportedQs[q.originalIndex]) ? 'default' : 'pointer', padding: '0', display: 'flex', alignItems: 'center', transition: 'all 0.2s' }}
+                            title={reportedQs[q.originalIndex] ? "Question Reported" : "Report Error"}
+                          >
+                            <Flag size={14} fill={reportedQs[q.originalIndex] ? '#ef4444' : 'none'} />
+                          </button>
+                        </div>
                       </div>
                       <div style={{ color: '#fff', fontSize: '0.95rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '60vw' }}>
                          <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>{(q.text || '').split('\n')[0]}</ReactMarkdown>

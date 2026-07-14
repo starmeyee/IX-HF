@@ -103,7 +103,7 @@ export default function StarBatchTestPlayerPage() {
         return arr;
       };
 
-      const allQuestions = data.questions.map((q, idx) => ({...q, originalIndex: idx, difficulty: q.difficulty || 'Medium'}));
+      const allQuestions = data.questions.map((q, idx) => ({...q, originalIndex: idx, difficulty: q.difficulty || 'Medium'})).filter(q => !q.isDeleted);
       // Prioritize completely unseen questions AND previously incorrectly answered questions
       let unseen = shuffle(allQuestions.filter(q => !seenIndices.has(q.originalIndex) || wrongIndices.has(q.originalIndex)));
       let seen = shuffle(allQuestions.filter(q => seenIndices.has(q.originalIndex) && !wrongIndices.has(q.originalIndex)));

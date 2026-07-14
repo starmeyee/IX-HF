@@ -17,7 +17,7 @@ import { getTables, setTeacherRecordTables } from '../services/recordsService';
 import { getInAppNotices, addInAppNotice, deleteInAppNotice } from '../services/inAppNoticeService';
 import UXCampaignAdmin from '../ux/admin/UXCampaignAdmin';
 import { getStarBatchConfig, setStarBatchCode, addInternalStudent, removeInternalStudent } from '../services/starBatchService';
-import { uploadTestJSON, getAllTestAttempts, getRecentTests, getAllTests, updateTestQuestions } from '../services/starBatchTestService';
+import { uploadTestJSON, getAllTestAttempts, getRecentTests, getAllTests, updateTestQuestions, getPendingReportedQuestions, resolveReportedQuestion } from '../services/starBatchTestService';
 
 // Flat list of all subjects across all sections for the syllabus toggle UI
 const ALL_SUBJECTS = syllabusData.flatMap(sec =>
@@ -43,6 +43,7 @@ const TABS = [
   { id: 'push',       label: 'Pop-up Notifications', Icon: Megaphone },
   { id: 'starbatch',  label: 'Star Batch',       Icon: Star },
   { id: 'mathfixer',  label: 'Math Fixer',       Icon: Sparkles },
+  { id: 'reportedQs', label: 'Reported Questions', Icon: Flag },
 ];
 
 const ROLE_STYLE = {
@@ -1288,6 +1289,57 @@ function MathFixerTab() {
   );
 }
 
+// ── Reported Questions Tab ──────────────────────────────────────
+function ReportedQuestionsTab() {
+  const [reports, setReports] = useState(null);
+  const [busy, setBusy] = useState(null);
+
+  useEffect(() => {
+    getPendingReportedQuestions().then(setReports).catch(() => setReports([]));
+  }, []);
+
+  async function handleAction(report, action) {
+    if (!window.confirm(`Are you sure you want to ${action} this report?`)) return;
+    setBusy(report.id);
+    try {
+      await resolveReportedQuestion(report.id, action, report.testId, report.questionIndex);
+      setReports(prev => prev.filter(r => r.id !== report.id));
+    } catch(err) {
+      alert('Failed to ' + action + ': ' + err.message);
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  if (reports === null) return <p className="as-muted">Loading...</p>;
+  if (reports.length === 0) return <p className="as-muted">No reported questions.</p>;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <h4 className="as-section-title"><Flag size={15} /> Pending Reports ({reports.length})</h4>
+      {reports.map(r => (
+        <div key={r.id} style={{ border: '1px solid var(--border)', padding: '1rem', borderRadius: 'var(--radius-md)', background: 'var(--bg-card)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+            <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{r.testTitle}</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{r.createdAt?.toDate ? r.createdAt.toDate().toLocaleString() : 'Just now'}</span>
+          </div>
+          <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>{r.questionText}</ReactMarkdown>
+          </div>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button className="auth-btn" onClick={() => handleAction(r, 'approve')} disabled={!!busy} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
+              Approve (Delete Question)
+            </button>
+            <button className="auth-btn secondary" onClick={() => handleAction(r, 'reject')} disabled={!!busy} style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
+              Reject (Keep Question)
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function AdminServicesPage() {
   const { currentUser, triggerTour, loading } = useAuth();
   const navigate = useNavigate();
@@ -1342,6 +1394,7 @@ export default function AdminServicesPage() {
         {tab === 'push'       && <PushNoticesTab />}
         {tab === 'starbatch'  && <StarBatchTab />}
         {tab === 'mathfixer'  && <MathFixerTab />}
+        {tab === 'reportedQs' && <ReportedQuestionsTab />}
       </div>
     </div>
   );
