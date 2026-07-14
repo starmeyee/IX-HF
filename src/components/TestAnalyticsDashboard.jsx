@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Sparkles, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp, BarChart2, Target, Zap, List, Bookmark } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { addBookmark, removeBookmark, checkIsBookmarked } from '../services/starBatchBookmarkService';
