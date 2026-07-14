@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
-import { getTestById, submitTestAttempt, getUserTestAttemptsForTest, getTestAverageScore } from '../services/starBatchTestService';
+import { getTestById, submitTestAttempt, getUserTestAttemptsForTest, getTestAverageScore, reportTestQuestion } from '../services/starBatchTestService';
 import { addBookmark, removeBookmark, checkIsBookmarked } from '../services/starBatchBookmarkService';
 import { Loader2, ArrowLeft, CheckCircle, XCircle, Sparkles, Target, BarChart2, Zap, AlertCircle, BookOpen, Clock, Activity, Flag, Crosshair, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
 
@@ -36,6 +36,9 @@ export default function StarBatchTestPlayerPage() {
 
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [bookmarking, setBookmarking] = useState(false);
+  
+  const [reportedStatus, setReportedStatus] = useState({});
+  const [reporting, setReporting] = useState(false);
 
   useEffect(() => {
     if (test && !result) {
@@ -217,6 +220,33 @@ export default function StarBatchTestPlayerPage() {
     setBookmarking(false);
   }
 
+  async function handleReportCurrent() {
+    if (!test || !currentUser || reporting) return;
+    const q = activeQuestions[currentQuestionIndex];
+    if (reportedStatus[q.originalIndex]) return;
+
+    if (!window.confirm("Are you sure you want to report this question as wrong or out of syllabus?")) return;
+
+    setReporting(true);
+    try {
+      await reportTestQuestion({
+        testId: test.id,
+        testTitle: test.title,
+        chapterId: test.chapterId,
+        questionIndex: q.originalIndex,
+        questionText: q.text,
+        options: q.options,
+        correctOptionIndex: q.correctOptionIndex,
+        reporterId: currentUser.id || currentUser.phone
+      });
+      setReportedStatus(prev => ({ ...prev, [q.originalIndex]: true }));
+    } catch(err) {
+      console.error(err);
+      alert('Failed to report question.');
+    }
+    setReporting(false);
+  }
+
   async function handleSubmit() {
     if (!window.confirm('Are you sure you want to submit?')) return;
     
@@ -365,6 +395,14 @@ export default function StarBatchTestPlayerPage() {
                 title={isBookmarked ? "Remove Bookmark" : "Bookmark this question"}
               >
                 <Bookmark size={14} fill={isBookmarked ? '#fbbf24' : 'none'} />
+              </button>
+              <button 
+                onClick={handleReportCurrent}
+                disabled={reporting || reportedStatus[activeQuestions[currentQuestionIndex]?.originalIndex]}
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: reportedStatus[activeQuestions[currentQuestionIndex]?.originalIndex] ? '#ef4444' : 'rgba(255,255,255,0.5)', cursor: (reporting || reportedStatus[activeQuestions[currentQuestionIndex]?.originalIndex]) ? 'default' : 'pointer', padding: '0.3rem', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+                title={reportedStatus[activeQuestions[currentQuestionIndex]?.originalIndex] ? "Question Reported" : "Report Question (Wrong/Out of Syllabus)"}
+              >
+                <Flag size={14} fill={reportedStatus[activeQuestions[currentQuestionIndex]?.originalIndex] ? '#ef4444' : 'none'} />
               </button>
             </span>
             <span>{Object.keys(answers).length} / {activeQuestions.length} Answered</span>

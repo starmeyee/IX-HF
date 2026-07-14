@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getAllTests, getMacroReport, saveMacroReport, subscribeToUserHistory } from '../services/starBatchTestService';
+import { getAllTests, getMacroReport, saveMacroReport, subscribeToUserHistory, reportTestQuestion } from '../services/starBatchTestService';
 import { getUserBookmarks } from '../services/starBatchBookmarkService';
 import { syllabusData } from '../data/syllabusData';
 import { Target, Play, TrendingUp, Search, Loader2, Star, CheckCircle, XCircle, ChevronDown, ChevronUp, BookOpen, Calendar, ArrowRight, ArrowLeft, BrainCircuit, Sparkles, AlertCircle, Clock, Flag, Bookmark, X } from 'lucide-react';
@@ -34,6 +34,9 @@ export default function StarBatchTestModulePage() {
   const [selectedBookmark, setSelectedBookmark] = useState(null);
   const [showCorrectOpt, setShowCorrectOpt] = useState(false);
   const [bookmarkSearchQuery, setBookmarkSearchQuery] = useState('');
+  
+  const [reporting, setReporting] = useState(false);
+  const [reportedStatus, setReportedStatus] = useState({});
   
   const [bookmarkView, setBookmarkView] = useState('question'); // 'question' | 'syllabus'
   const [syllabusLevel, setSyllabusLevel] = useState(1);
@@ -234,6 +237,32 @@ export default function StarBatchTestModulePage() {
     } finally {
       setIsGeneratingMacro(false);
     }
+  }
+
+  async function handleReportBookmark(b) {
+    if (!b || !currentUser || reporting) return;
+    if (reportedStatus[b.id]) return;
+
+    if (!window.confirm("Are you sure you want to report this question as wrong or out of syllabus?")) return;
+
+    setReporting(true);
+    try {
+      await reportTestQuestion({
+        testId: b.testId,
+        testTitle: b.testTitle || chapterNameMap[b.chapterId] || b.chapterId,
+        chapterId: b.chapterId,
+        questionIndex: b.questionIndex,
+        questionText: b.questionText,
+        options: b.options,
+        correctOptionIndex: b.correctOptionIndex,
+        reporterId: currentUser.id || currentUser.phone
+      });
+      setReportedStatus(prev => ({ ...prev, [b.id]: true }));
+    } catch(err) {
+      console.error(err);
+      alert('Failed to report question.');
+    }
+    setReporting(false);
   }
 
   if (loading) return (
@@ -788,11 +817,20 @@ export default function StarBatchTestModulePage() {
             </button>
 
             <div style={{ padding: '2rem 1.5rem' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <span style={{ fontSize: '0.85rem', color: '#fbbf24', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Bookmark size={14} fill="#fbbf24" />
                   {subjectNameMap[chapterToSubjectMap[selectedBookmark.chapterId]] || 'Subject'} • {chapterNameMap[selectedBookmark.chapterId] || selectedBookmark.testTitle} • Q{selectedBookmark.questionIndex + 1}
                 </span>
+                
+                <button 
+                  onClick={() => handleReportBookmark(selectedBookmark)}
+                  disabled={reporting || reportedStatus[selectedBookmark.id]}
+                  style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', color: reportedStatus[selectedBookmark.id] ? '#ef4444' : 'rgba(239, 68, 68, 0.8)', cursor: (reporting || reportedStatus[selectedBookmark.id]) ? 'default' : 'pointer', padding: '0.4rem 0.8rem', borderRadius: '6px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, transition: 'all 0.2s' }}
+                >
+                  <Flag size={14} fill={reportedStatus[selectedBookmark.id] ? '#ef4444' : 'none'} />
+                  {reportedStatus[selectedBookmark.id] ? "Reported" : "Report Error"}
+                </button>
               </div>
 
               <div style={{ fontSize: '1.1rem', color: '#f1f5f9', lineHeight: 1.6, marginBottom: '2rem' }}>
