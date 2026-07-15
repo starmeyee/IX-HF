@@ -74,7 +74,7 @@ export function AIPersonalizationProvider({ children, userData }) {
       try {
         const seenTitles = getSeenInsights(userId);
         const contextData = { ...userData, previouslyShown: seenTitles };
-        const context = buildUserContext(currentUser, contextData);
+        const context = await buildUserContext(currentUser, contextData);
         const result = await generatePersonalization(context);
 
         if (result) {

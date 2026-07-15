@@ -62,7 +62,7 @@ function toDateKey(date) {
  *
  * @returns {Object} Clean anonymized context object safe to send to AI endpoint.
  */
-export function buildUserContext(user, data) {
+export async function buildUserContext(user, data) {
   const now = new Date();
   const currentHour = now.getHours();
 
