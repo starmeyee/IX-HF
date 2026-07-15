@@ -234,7 +234,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
             <p className="auth-sub">Enter your details exactly as on your ID card</p>
             <label>Full Name (as on ID)</label>
             <input value={name} onChange={e => setName(e.target.value)}
-              placeholder="e.g. Aditya Gupta" required autoFocus />
+              placeholder="e.g. Rahul Kumar" required autoFocus />
             <label>Roll Number</label>
             <input value={rollNo} onChange={e => setRollNo(e.target.value)}
               placeholder="1 – 40" type="number" min={1} max={40} required />
