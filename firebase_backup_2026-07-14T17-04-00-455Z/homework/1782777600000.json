@@ -1,0 +1,22 @@
+{
+  "id": 1782777600000,
+  "date": "Tuesday 30 June 2026",
+  "tasks": [
+    {
+      "subject": "Physics ",
+      "description": "Solve Numerical Problems of Lenses",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Question 32 to 41 Ex 3E RS Agarwal ",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Read chapter 4 A Shady plot",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782777600000
+}

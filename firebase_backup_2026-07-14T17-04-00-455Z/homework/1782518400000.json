@@ -1,0 +1,32 @@
+{
+  "id": 1782518400000,
+  "date": "Saturday 27 June 2026",
+  "tasks": [
+    {
+      "subject": "Biology ",
+      "description": "Do the given Question ",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Do the given Question ",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Complete the Given Question ",
+      "type": "homework"
+    },
+    {
+      "subject": "Hindi ",
+      "description": "Do Q/ans of Ch 2 Sparsh",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Do the Question/Answer of Ch 3 The letter *to be checked on Monday*",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782518400000
+}

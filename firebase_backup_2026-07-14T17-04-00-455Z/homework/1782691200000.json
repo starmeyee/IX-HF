@@ -1,0 +1,27 @@
+{
+  "id": 1782691200000,
+  "date": "Monday 29 June 2026",
+  "tasks": [
+    {
+      "subject": "Hindi ",
+      "description": "Do Q/Ans of Ch मीराबाई के पद ",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics ",
+      "description": "Solve Numerical Problems",
+      "type": "homework"
+    },
+    {
+      "subject": "IT",
+      "description": "Complete CW , HW & Practical Copy ",
+      "type": "homework"
+    },
+    {
+      "subject": "Math ",
+      "description": "Do Q 21 to 32 of Ex 3E  RS Agarwal ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782691200000
+}

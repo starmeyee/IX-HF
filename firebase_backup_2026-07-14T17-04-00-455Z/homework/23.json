@@ -1,0 +1,27 @@
+{
+  "id": 23,
+  "date": "Thursday, 17 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "मुहावरों के अर्थ लिखकर वाक्य प्रयोग करें और पाठ 1 से उर्दू शब्द खोजकर लिखें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Do the given questions.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Study the theory part of Exercise 2A.",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Write a diary entry on the given topic.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776364200000
+}

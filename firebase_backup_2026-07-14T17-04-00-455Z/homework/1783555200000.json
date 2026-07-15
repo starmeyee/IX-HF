@@ -1,0 +1,27 @@
+{
+  "id": 1783555200000,
+  "date": "Thursday 9 July 2026",
+  "tasks": [
+    {
+      "subject": "IT ",
+      "description": "Complete it's copy ",
+      "type": "homework"
+    },
+    {
+      "subject": "History ",
+      "description": "Do 5 MCQ, hardwords, long question answer and  main points from taught Topics.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do all questions of Ex 6.2 and Revise for Test tommorow",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics ",
+      "description": "Must Sure to Submit Social Science Project ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783555200000
+}

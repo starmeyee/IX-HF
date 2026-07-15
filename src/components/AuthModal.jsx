@@ -195,7 +195,7 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
         {/* ── PICK ── */}
         {step === S.PICK && (
           <div className="auth-step">
-            <h2>Welcome to 10th HI</h2>
+            <h2>Welcome to IX HF</h2>
             <p className="auth-sub">Select how you want to continue</p>
             <div className="auth-pick-grid">
               <button className="auth-pick-card" onClick={() => setStep(S.PHONE)}>

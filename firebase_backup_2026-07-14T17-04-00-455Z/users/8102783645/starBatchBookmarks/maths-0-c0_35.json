@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 35,
+  "createdAt": {
+    "_seconds": 1784032625,
+    "_nanoseconds": 492000000
+  },
+  "chapterId": "maths-0-c0",
+  "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "correctOptionIndex": 2,
+  "topic": "HCF and LCM",
+  "testId": "IsVe3rDhaH843dev1Lc1",
+  "questionText": "The sum of two numbers is 1215 and their HCF is 81, then the possible pairs of such numbers are",
+  "testTitle": "Real Numbers - Complete Mastery Test"
+}

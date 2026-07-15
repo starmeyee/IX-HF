@@ -28,7 +28,7 @@ const messaging = firebase.messaging();
 // block) are delivered here so we control exactly how the notification looks.
 messaging.onBackgroundMessage((payload) => {
   const data = payload.data || {};
-  const title = data.title || '10th HI Portal';
+  const title = data.title || 'IX HF Portal';
   const options = {
     body: data.body || '',
     icon: '/favicon.svg',

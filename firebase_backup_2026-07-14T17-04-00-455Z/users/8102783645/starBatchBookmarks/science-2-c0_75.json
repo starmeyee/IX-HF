@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 75,
+  "createdAt": {
+    "_seconds": 1784045331,
+    "_nanoseconds": 749000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "Hyla, rana, draco",
+    "Whale, dolphin, turtle",
+    "Labeo, chameleon, salamander",
+    "Hippocampus, exocoetus, anabas"
+  ],
+  "correctOptionIndex": 3,
+  "topic": "Transportation",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "Single circulation, i.e., blood flows through the heart only once during one cycle of passage through the body, is exhibited by which of the following groups of organisms?",
+  "testTitle": "Life Processes - Complete Test"
+}

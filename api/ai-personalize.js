@@ -14,7 +14,7 @@
  */
 
 // ─── System Prompt (inlined so this serverless file is self-contained) ────────
-const SYSTEM_PROMPT = `You are an AI academic assistant for a 10th-grade student portal called "10th HI".
+const SYSTEM_PROMPT = `You are an AI academic assistant for a 9th-grade student portal called "IX HF".
 Your ONLY job is to analyze the student's data provided in the user message and return a single JSON object.
 
 STRICT RULES:

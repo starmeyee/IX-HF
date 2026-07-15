@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c0",
+  "subjectId": "maths-0",
+  "topicName": "Assertion and Reason",
+  "questionText": "Assertion: Every terminating decimal is a rational number. Reason: Every rational number has either a terminating or non-terminating recurring decimal expansion. State whether the assertion and reason are correct with justification.",
+  "imageUrl": null,
+  "marks": "2",
+  "source": "Other",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709421,
+    "_nanoseconds": 960000000
+  }
+}

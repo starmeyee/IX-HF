@@ -1,0 +1,60 @@
+{
+  "userId": "7903808985",
+  "testId": "J6DvegKU1FNE6LNBswHr",
+  "chapterId": "maths-0-c1",
+  "score": 7,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 2,
+    "6": 3,
+    "7": 2,
+    "8": 1
+  },
+  "weakTopics": [
+    "Cubic Polynomials",
+    "Zeroes of Cubic Polynomial",
+    "Applications of Polynomials"
+  ],
+  "seenIndices": [
+    11,
+    117,
+    135,
+    149,
+    43,
+    15,
+    138,
+    129,
+    52,
+    148
+  ],
+  "aiReview": [
+    "The student demonstrated a strong conceptual understanding of 'Relationship between Zeroes and Coefficients' and 'Zeroes of a Polynomial', with perfect scores in these areas.",
+    "There is a notable weakness in 'Cubic Polynomials' and 'Zeroes of Cubic Polynomial', suggesting a need for review of cubic polynomial concepts.",
+    "The student performed well on 'Zeroes and Coefficients', but struggled with 'Applications of Polynomials', indicating a potential gap in applying polynomial concepts to real-world problems.",
+    "The difficulty breakdown reveals that all correct answers were from 'Hard' questions, implying that the student is capable of handling challenging material but may need to work on consistency across all difficulty levels."
+  ],
+  "difficultyStats": null,
+  "topicStats": null,
+  "totalTime": 1917,
+  "questionTimes": {
+    "0": 627,
+    "1": 109,
+    "2": 80,
+    "3": 51,
+    "4": 167,
+    "5": 147,
+    "6": 150,
+    "7": 300,
+    "8": 255,
+    "9": 31
+  },
+  "createdAt": {
+    "_seconds": 1784039517,
+    "_nanoseconds": 558000000
+  }
+}

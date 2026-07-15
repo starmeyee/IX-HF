@@ -51,7 +51,7 @@ function homeworkDateKey(dateStr) {
 function WelcomeLanding({ onLogin }) {
   return (
     <div className="welcome-landing animate-fade-in fade-in-up">
-      <h1 className="text-gradient">Welcome to 10th HI</h1>
+      <h1 className="text-gradient">Welcome to IX HF</h1>
       <p>Your class portal for homework, attendance, holiday assignments, and important notices — all in one place.</p>
       <button className="auth-btn primary" onClick={onLogin} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem' }}>
         <LogIn size={18} /> Login to continue

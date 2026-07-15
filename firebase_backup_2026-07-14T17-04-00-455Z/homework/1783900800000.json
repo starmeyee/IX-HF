@@ -1,0 +1,32 @@
+{
+  "id": 1783900800000,
+  "date": "Monday 13 July 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "Do Q/ans of पाठ 3: मैथिलीशरण गुप्त – मनुष्यता",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics ",
+      "description": "Learn and Understand Defects of Eye ",
+      "type": "homework"
+    },
+    {
+      "subject": "Civics ",
+      "description": "Revise and Prepare for PT 1 ",
+      "type": "homework"
+    },
+    {
+      "subject": "Math ",
+      "description": "Solve Excercise 6.3 NCERT Examples ",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Revise and Read Dear Departed. ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783900800000
+}

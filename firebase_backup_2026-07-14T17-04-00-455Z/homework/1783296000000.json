@@ -1,0 +1,22 @@
+{
+  "id": 1783296000000,
+  "date": "Monday 6 July 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Complete and Submit copy of IT CW copy. ",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Study about Human eye",
+      "type": "homework"
+    },
+    {
+      "subject": "Math ",
+      "description": "Solve & Learn ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783296000000
+}

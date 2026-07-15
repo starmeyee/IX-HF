@@ -1,0 +1,27 @@
+{
+  "id": 17,
+  "date": "Friday, 24 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 के प्रश्न-उत्तर करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Read the chapter.",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Revise.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Exercise 2A of RS Aggarwal.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776969000000
+}

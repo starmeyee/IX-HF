@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c1",
+  "subjectId": "maths-0",
+  "topicName": "Zeros of Polynomial",
+  "questionText": "Find the zeros of the polynomial x² − 7x + 12 and verify the relationship between the zeros and its coefficients.",
+  "imageUrl": null,
+  "marks": "5",
+  "source": "NCERT",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709455,
+    "_nanoseconds": 947000000
+  }
+}

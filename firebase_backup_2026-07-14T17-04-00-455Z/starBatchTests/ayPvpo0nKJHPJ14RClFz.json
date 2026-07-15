@@ -1,0 +1,156 @@
+{
+  "chapterId": "science-2-c4",
+  "subjectId": "science-2",
+  "sectionId": "science",
+  "title": "Our Environment - Complete Mastery Test",
+  "questions": [
+    {
+      "text": "If 10,000 J solar energy falls on green plants in a terrestrial ecosystem, what percentage of solar energy will be converted into food energy?",
+      "options": [
+        "10,000 J",
+        "100 J",
+        "1000 J",
+        "It will depend on the type of the terrestrial plant."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Energy Flow in Ecosystems"
+    },
+    {
+      "text": "If a person is consuming curd/yogurt for lunch, which trophic level in a food chain should they be considered as occupying?",
+      "options": [
+        "First trophic level",
+        "Second trophic level",
+        "Third trophic level",
+        "Fourth trophic level"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Trophic Levels"
+    },
+    {
+      "text": "The decomposers are not included in the food chain. The correct reason for the same is because decomposers:",
+      "options": [
+        "Act at every trophic level of the food chain",
+        "Do not breakdown organic compounds",
+        "Convert organic material to inorganic forms",
+        "Release enzymes outside their body to convert organic material to inorganic forms"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Decomposers"
+    },
+    {
+      "text": "Matter and energy are two fundamental inputs of an ecosystem. Which of the following describes their movement?",
+      "options": [
+        "Energy is bidirectional and matter is repeatedly circulating.",
+        "Energy is repeatedly circulating and matter is unidirectional.",
+        "Energy is unidirectional and matter is repeatedly circulating.",
+        "Energy is multidirectional and matter is bidirectional."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Energy Flow in Ecosystems"
+    },
+    {
+      "text": "Which of the following limits the number of trophic levels in a food chain?",
+      "options": [
+        "Decrease in energy at higher trophic levels",
+        "Less availability of food",
+        "Polluted air",
+        "Water"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Energy Flow in Ecosystems"
+    },
+    {
+      "text": "Which trophic level is incorrectly defined?",
+      "options": [
+        "Carnivores - secondary or tertiary consumers",
+        "Decomposers - microbial heterotrophs",
+        "Herbivores - primary consumers",
+        "Omnivores - molds, yeast and mushrooms"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Trophic Levels"
+    },
+    {
+      "text": "Why do all food chains start with plants?",
+      "options": [
+        "Because plants are easily grown",
+        "Because plants are nutritious",
+        "Because plants can produce its own energy",
+        "Because plants do not require energy"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Producers"
+    },
+    {
+      "text": "Consider the following statements concerning food chains: (i) Removal of 80% tigers from an area resulted in greatly increased growth of vegetation (ii) Removal of most of the carnivores resulted in an increased population of herbivores (iii) The length of the food chains is generally limited to 3-4 trophic levels due to energy loss (iv) The length of the food chains may vary from 2 to 8 trophic levels. Which two of the above statements are correct?",
+      "options": [
+        "(i), (iv)",
+        "(i), (ii)",
+        "(ii), (iii)",
+        "(iii), (iv)"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Food Chains and Food Webs"
+    },
+    {
+      "text": "Which of the following group of organisms are not included in an ecological food chain?",
+      "options": [
+        "Carnivores",
+        "Saprophytes",
+        "Herbivores",
+        "Predators"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Food Chains and Food Webs"
+    },
+    {
+      "text": "Recycling of paper is a good practice but recycled paper should not be used as food packaging because:",
+      "options": [
+        "recycled papers take lots of space",
+        "recycled papers can't cover food properly",
+        "recycled papers can cause infection",
+        "recycled papers are costly"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Waste Management"
+    },
+    {
+      "text": "Effective segregation of wastes at the point of generation is very important. Select the appropriate statements giving the importance of waste segregation: (i) less waste goes to the landfills (ii) better for public health and the environment (iii) help in reducing the waste (iv) resulting in deterioration of a waste picker's health.",
+      "options": [
+        "both (i) and (ii)",
+        "both (i) and (iii)",
+        "both (ii) and (iii)",
+        "both (i) and (iv)"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Waste Management"
+    },
+    {
+      "text": "When recycling a plastic water bottle, what should you do with the cap?",
+      "options": [
+        "The cap goes into a garbage can and the bottle goes in a recycling bin",
+        "Screw the cap back on the bottle, then put the bottle and cap in a recycling bin",
+        "Screw the cap back on the bottle, then put the bottle and cap in the garbage can",
+        "Recycle the cap separately"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Waste Management"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783877713,
+    "_nanoseconds": 853000000
+  }
+}

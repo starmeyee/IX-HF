@@ -1,0 +1,32 @@
+{
+  "id": 10,
+  "date": "Monday, 4 May 2026",
+  "tasks": [
+    {
+      "subject": "English",
+      "description": "Do the Q/Ans of the chapter \"The Frog and the Nightingale\".",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Complete your copy with the assignment shared in the group and Practice numerical questions.",
+      "type": "homework"
+    },
+    {
+      "subject": "IT",
+      "description": "Complete your CW and HW copies for submission (Unit 1).",
+      "type": "homework"
+    },
+    {
+      "subject": "Civics",
+      "description": "Complete your Classwork copy.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Exercise 8.1 from the NCERT book.\nDo the first 10 questions of Exercise 10 from RS Aggarwal.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777833000000
+}

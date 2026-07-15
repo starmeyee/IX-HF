@@ -1,0 +1,27 @@
+{
+  "id": 18,
+  "date": "Thursday, 23 April 2026",
+  "tasks": [
+    {
+      "subject": "Chemistry",
+      "description": "Balance the given chemical equations.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Write hard words with their meanings, 5 MCQs, and a Long Question answer.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do the Weekly Test questions in your homework copy twice.",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "Do the given questions.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776882600000
+}

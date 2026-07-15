@@ -1,0 +1,46 @@
+{
+  "userId": "8521278692",
+  "testId": "2cWTY6AnbAKnJ2lRcCp9",
+  "chapterId": "sst-3-c1",
+  "score": 8,
+  "total": 10,
+  "responses": {
+    "0": 0,
+    "1": 0,
+    "2": 2,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 0,
+    "7": 1,
+    "8": 1,
+    "9": 2
+  },
+  "weakTopics": [
+    "Sectors in Terms of Ownership",
+    "Creating More Employment"
+  ],
+  "seenIndices": [
+    18,
+    3,
+    11,
+    5,
+    22,
+    27,
+    25,
+    6,
+    17,
+    28
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in 'Sectors of Economic Activities', 'Primary, Secondary and Tertiary Sectors in India', and 'Division of Sectors as Organised and Unorganised', with perfect or near-perfect scores.",
+    "A notable weakness was observed in 'Sectors in Terms of Ownership', where the student failed to answer the only question correctly, indicating a potential knowledge gap.",
+    "The student's performance on 'Hard' questions was inconsistent, with only 1 correct out of 2, suggesting that advanced application and critical thinking skills may require further development.",
+    "The topic 'Creating More Employment' presented some challenges, with the student answering only 1 out of 2 questions correctly, implying that this area may need additional review and practice.",
+    "The student's ability to handle 'Medium' difficulty questions was impressive, with 7 out of 7 correct, but the single 'Easy' question was missed, which might indicate a lapse in attention to detail or an anomaly in the test-taking process."
+  ],
+  "createdAt": {
+    "_seconds": 1783876640,
+    "_nanoseconds": 379000000
+  }
+}

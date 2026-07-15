@@ -1,0 +1,17 @@
+{
+  "id": 1783468800000,
+  "date": "Wednesday 8 July 2026",
+  "tasks": [
+    {
+      "subject": "Math",
+      "description": "Do Example Questions of Ex 6.2 NCERT ",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics ",
+      "description": "Do the Q/ans of Ch 2 ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783468800000
+}

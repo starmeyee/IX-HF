@@ -1,0 +1,37 @@
+{
+  "id": 15,
+  "date": "Tuesday, 27 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "Complete the question answers of Chapter 1",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Revise the ray diagrams of concave and convex mirrors",
+      "type": "homework"
+    },
+    {
+      "subject": "IT",
+      "description": "Complete the Check Point and assignment",
+      "type": "homework"
+    },
+    {
+      "subject": "Civics",
+      "description": "Complete the class work copy",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete Exercise 2.1 from NCERT",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Read the poem.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777228200000
+}

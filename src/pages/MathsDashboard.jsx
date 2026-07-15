@@ -73,7 +73,7 @@ function downloadCSV(students) {
 function downloadPDF(students, t1Avg, t2Avg, attendanceRatio) {
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
   doc.setFontSize(18); doc.setTextColor(139, 92, 246);
-  doc.text('Maths Weekly Test Dashboard — Class 10 HI', 14, 18);
+  doc.text('Maths Weekly Test Dashboard — IX HF', 14, 18);
   doc.setFontSize(10); doc.setTextColor(100);
   doc.text(`Generated: ${new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}  |  Students: ${students.length}  |  T1 Avg: ${t1Avg}  |  T2 Avg: ${t2Avg}  |  Attendance: ${attendanceRatio}%`, 14, 26);
   autoTable(doc, {
@@ -149,7 +149,7 @@ export default function MathsDashboard() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = 'Maths Dashboard — 10th HI';
+    document.title = 'Maths Dashboard — IX HF';
     return () => { document.title = prev; };
   }, []);
 
@@ -224,7 +224,7 @@ export default function MathsDashboard() {
         </div>
         <h1 className="md-hero-title">Maths Dashboard</h1>
         <p className="md-hero-sub">
-          Weekly Test 1 &amp; Test 2 · Class 10 HI · {STUDENTS.length} Students
+          Weekly Test 1 &amp; Test 2 · IX HF · {STUDENTS.length} Students
         </p>
         <div className="md-hero-actions">
           <button className="md-btn-primary" onClick={() => downloadPDF(STUDENTS, t1Avg, t2Avg, attendanceRatio)}>
@@ -236,7 +236,7 @@ export default function MathsDashboard() {
           <button className="md-btn-secondary" onClick={() => {
             const url = `${window.location.origin}/maths-share`;
             if (navigator.share) {
-              navigator.share({ title: 'Maths Dashboard — Class 10 HI', url });
+              navigator.share({ title: 'Maths Dashboard — IX HF', url });
             } else {
               navigator.clipboard.writeText(url);
               alert('Link copied! Share it on WhatsApp.');

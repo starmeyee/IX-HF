@@ -123,7 +123,7 @@ export async function onForegroundMessage(callback) {
   return onMessage(messaging, (payload) => {
     const data = payload.data || payload.notification || {};
     callback({
-      title: data.title || '10th HI Portal',
+      title: data.title || 'IX HF Portal',
       body: data.body || '',
       url: data.url || '/',
     });

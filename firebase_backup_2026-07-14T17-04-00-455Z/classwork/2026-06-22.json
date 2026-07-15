@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-22",
+  "weekday": "Monday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Question Practice of Ch 2 Sanchayan सपनों के-से दिन"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Topic :- Power of Lens was taught"
+    },
+    {
+      "period": "3rd",
+      "subject": "IT",
+      "note": "Lab Practical"
+    },
+    {
+      "period": "4th",
+      "subject": "Civics",
+      "note": "Explanation of Decentralisation System"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Absent"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 3 The Letter Reading"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782125058146
+}

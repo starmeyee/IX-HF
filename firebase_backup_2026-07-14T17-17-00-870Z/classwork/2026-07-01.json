@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-01",
+  "weekday": "Wednesday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Chapter 12: तताँरा-वामीरो कथा (लीलाधर मंडलोई) Reading and Explanation"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Numericals Practice Of Lens"
+    },
+    {
+      "period": "3rd",
+      "subject": "Sports",
+      "note": "Games"
+    },
+    {
+      "period": "4th",
+      "subject": "History",
+      "note": "Teacher Absent"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Ex 3E Question Practice"
+    },
+    {
+      "period": "6th",
+      "subject": "Economics",
+      "note": "Ch 2 sectors of Indian economy \n- organised and unorganised sector explanation."
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782918978463
+}

@@ -44,7 +44,7 @@ export default function handler() {
       }, '📊  Analytics Report'),
       h('div', { style: { display: 'flex', alignItems: 'center', gap: '10px', fontSize: 26, fontWeight: 700, color: '#fafafa' } },
         h('div', { style: { width: 36, height: 36, borderRadius: 9, background: `linear-gradient(135deg, ${accent}, ${pink})`, display: 'flex' } }),
-        h('div', { style: { display: 'flex' } }, '10th HI Portal'),
+        h('div', { style: { display: 'flex' } }, 'IX HF Portal'),
       ),
     ),
 
@@ -59,7 +59,7 @@ export default function handler() {
 
     // Subtitle
     h('div', { style: { fontSize: 32, color: '#a1a1aa', marginBottom: 44, display: 'flex' } },
-      'Weekly Test 1 & Test 2 · Class 10 HI · 40 Students'
+      'Weekly Test 1 & Test 2 · IX HF · 40 Students'
     ),
 
     // Stats row

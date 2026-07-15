@@ -1,0 +1,50 @@
+{
+  "createdAt": {
+    "_seconds": 1784020186,
+    "_nanoseconds": 639000000
+  },
+  "report": {
+    "actionPlan": [
+      {
+        "title": "Chemistry Fundamentals Review",
+        "description": "Spend time reviewing and practicing problems related to Double Displacement Reactions, Reactivity Series, and Oxidation and Reduction to strengthen understanding of these weak areas",
+        "time": "2 hours"
+      },
+      {
+        "title": "Economics Quick Revision",
+        "description": "Quickly review Economics notes and past tests to reinforce current knowledge and identify any potential gaps",
+        "time": "1 hour"
+      },
+      {
+        "title": "Practice Mixed Subject Test",
+        "description": "Take a mixed-subject practice test to apply learned material and assess improvement in weak areas",
+        "time": "1.5 hours"
+      }
+    ],
+    "summary": "The student demonstrates a strong overall performance, but Chemistry is a subject that requires immediate attention to address persistent weak topics. Economics is currently the subject carrying the score, indicating a potential area of strength to build upon.",
+    "strengths": [
+      "Economics understanding is robust",
+      "Overall test-taking strategy is effective"
+    ],
+    "weaknesses": [
+      "Chemistry fundamentals need reinforcement",
+      "Specific topics in Chemistry are consistently weak"
+    ],
+    "focusDistribution": [
+      {
+        "topic": "Chemistry Fundamentals",
+        "percentage": 70,
+        "reason": "To address persistent weak topics"
+      },
+      {
+        "topic": "Economics Revision",
+        "percentage": 30,
+        "reason": "To maintain and potentially improve current high performance"
+      }
+    ]
+  },
+  "updatedAt": {
+    "_seconds": 1784020186,
+    "_nanoseconds": 639000000
+  }
+}

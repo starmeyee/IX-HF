@@ -1,0 +1,24 @@
+{
+  "testId": "J6DvegKU1FNE6LNBswHr",
+  "testTitle": "Polynomials - Complete Mastery Test",
+  "chapterId": "maths-0-c1",
+  "questionIndex": 109,
+  "questionText": "If zeroes of the polynomial $x^2+4x+2a$ are $\\alpha$ and $\\frac{2}{\\alpha}$, what is the value of $a$?",
+  "options": [
+    "$1$",
+    "$2$",
+    "$-1$",
+    "$0$"
+  ],
+  "correctOptionIndex": 0,
+  "reporterId": "8102783645",
+  "createdAt": {
+    "_seconds": 1784043758,
+    "_nanoseconds": 837000000
+  },
+  "resolvedAt": {
+    "_seconds": 1784045147,
+    "_nanoseconds": 10000000
+  },
+  "status": "reject"
+}

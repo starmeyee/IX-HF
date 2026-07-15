@@ -1,0 +1,32 @@
+{
+  "id": 11,
+  "date": "Saturday, 2 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "'पदबंध' के प्रकारों को अच्छे से पढ़ें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Do the given questions on Redox Reactions.",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Learn about the different types of soil.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Exercise 8.1 (Trigonometry) from the NCERT book.",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Read the chapter \"The Frog and the Nightingale\".",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777660200000
+}

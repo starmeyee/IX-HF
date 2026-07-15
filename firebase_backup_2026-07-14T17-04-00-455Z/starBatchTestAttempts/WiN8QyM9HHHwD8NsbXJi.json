@@ -1,0 +1,45 @@
+{
+  "userId": "6206413700",
+  "testId": "lxNBM4u6AtGf6JZGSJLv",
+  "chapterId": "sst-3-c0",
+  "score": 9,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 2,
+    "9": 1
+  },
+  "weakTopics": [
+    "Public Facilities"
+  ],
+  "seenIndices": [
+    23,
+    15,
+    14,
+    16,
+    10,
+    3,
+    11,
+    1,
+    24,
+    29
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in most topics, with perfect or near-perfect scores in Income and Other Criteria, Sustainability of Development, Human Development Report, and Different Developmental Goals.",
+    "A notable weakness was observed in Public Facilities, where the student failed to answer the only question correctly, suggesting a potential knowledge gap in this area.",
+    "The student's performance on Hard questions was relatively strong, with 3 out of 4 correct, indicating a good ability to apply advanced concepts, but with some room for improvement.",
+    "The difficulty breakdown suggests that the student is comfortable with Easy and Medium questions, but may need to focus on refining their skills to tackle the most challenging questions with greater consistency.",
+    "The topic breakdown reveals a potential inconsistency in the student's knowledge, as they performed well in Income and Other Criteria but only answered 1 out of 1 question correctly in Income and Other Goals, which may indicate a need for more nuanced understanding of these related topics."
+  ],
+  "createdAt": {
+    "_seconds": 1783876248,
+    "_nanoseconds": 830000000
+  }
+}

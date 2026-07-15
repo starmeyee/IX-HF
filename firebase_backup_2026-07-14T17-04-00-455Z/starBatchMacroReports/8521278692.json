@@ -1,0 +1,50 @@
+{
+  "createdAt": {
+    "_seconds": 1783951421,
+    "_nanoseconds": 101000000
+  },
+  "report": {
+    "actionPlan": [
+      {
+        "title": "Chemistry Fundamentals Review",
+        "description": "Spend dedicated time reviewing and practicing problems related to oxidation and reduction, chemical equations, and types of chemical reactions to solidify understanding",
+        "time": "2 hours"
+      },
+      {
+        "title": "Economics Quick Revision",
+        "description": "Briefly review Economics notes and practice a few questions to ensure concepts are fresh and to identify any potential gaps",
+        "time": "1 hour"
+      },
+      {
+        "title": "Mixed Subject Practice Test",
+        "description": "Take a practice test that includes both Chemistry and Economics questions to assess understanding and application of concepts in a timed environment",
+        "time": "1.5 hours"
+      }
+    ],
+    "summary": "The student is demonstrating a strong foundation in Economics, but Chemistry is presenting challenges that are impacting overall performance, with specific weak areas in chemical reactions and equations. Focused revision in these areas can significantly boost overall accuracy.",
+    "strengths": [
+      "Economics understanding is a notable strength",
+      "Ability to achieve high accuracy in certain subjects"
+    ],
+    "weaknesses": [
+      "Chemistry fundamentals, particularly in oxidation and reduction",
+      "Inconsistent performance across different Chemistry topics"
+    ],
+    "focusDistribution": [
+      {
+        "topic": "Chemistry Fundamentals",
+        "percentage": 70,
+        "reason": "To address persistent weak areas in chemical reactions and equations"
+      },
+      {
+        "topic": "Economics Revision",
+        "percentage": 30,
+        "reason": "To reinforce and potentially increase accuracy in the subject"
+      }
+    ]
+  },
+  "updatedAt": {
+    "_seconds": 1783951421,
+    "_nanoseconds": 101000000
+  }
+}

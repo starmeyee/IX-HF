@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-27",
+  "weekday": "Saturday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Ch 2 मीरा के पद Revision"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Studied about Basic and Acidic Salts , Ch 2 Continued"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Revision of Ch 1"
+    },
+    {
+      "period": "4th",
+      "subject": "Geography",
+      "note": "Conservation of Forest ~ Ch 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Teacher Absent"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 3 The Letter Q/ans Explanation"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782577043138
+}

@@ -1,0 +1,60 @@
+{
+  "userId": "7903808985",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "chapterId": "science-2-c0",
+  "score": 9,
+  "total": 10,
+  "responses": {
+    "0": 3,
+    "1": 3,
+    "2": 3,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 2,
+    "7": 0,
+    "8": 3,
+    "9": 0
+  },
+  "weakTopics": [
+    "Nutrition in Human Beings"
+  ],
+  "seenIndices": [
+    53,
+    34,
+    30,
+    6,
+    37,
+    91,
+    90,
+    5,
+    76,
+    31
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in various topics, particularly in Heterotrophic Nutrition where all questions were answered correctly.",
+    "A notable pattern is the student's perfect score in Easy questions, suggesting a solid foundation in basic concepts.",
+    "The student's performance in Medium difficulty questions was relatively weaker, with only 1 out of 2 questions answered correctly, indicating potential room for improvement in moderately challenging concepts.",
+    "The data shows that the student performed well across different topics, including Excretion, Respiration, and Life Processes, with no topic standing out as a particular weakness.",
+    "The absence of Hard questions in the test makes it difficult to assess the student's ability to handle complex or advanced concepts."
+  ],
+  "difficultyStats": null,
+  "topicStats": null,
+  "totalTime": 156,
+  "questionTimes": {
+    "0": 4,
+    "1": 17,
+    "2": 43,
+    "3": 20,
+    "4": 8,
+    "5": 8,
+    "6": 16,
+    "7": 32,
+    "8": 4,
+    "9": 4
+  },
+  "createdAt": {
+    "_seconds": 1784048157,
+    "_nanoseconds": 853000000
+  }
+}

@@ -1,0 +1,1284 @@
+{
+  "chapterId": "science-1-c0",
+  "subjectId": "science-1",
+  "sectionId": "science",
+  "createdAt": {
+    "_seconds": 1783876402,
+    "_nanoseconds": 822000000
+  },
+  "questions": [
+    {
+      "options": [
+        "CH4 + 2O2 → CO2 + 2H2O + heat + light",
+        "C6H12O6 + 6O2 → 6CO2 + 6H2O + energy",
+        "C2H5Cl + aq. KOH → C2H5OH + KCl",
+        "2AgBr → 2Ag + Br2"
+      ],
+      "topic": "Chemical Reactions",
+      "correctOptionIndex": 1,
+      "text": "Which of the following represents a respiration reaction?",
+      "difficulty": "Medium"
+    },
+    {
+      "difficulty": "Easy",
+      "text": "The gas which is flushed in the chips packets by the chips manufacturers to prevent their oxidation is:",
+      "correctOptionIndex": 2,
+      "topic": "Rancidity and Oxidation",
+      "options": [
+        "O2",
+        "H2",
+        "N2",
+        "Cl2"
+      ]
+    },
+    {
+      "topic": "Types of Chemical Reactions",
+      "options": [
+        "a(i), b(iv), c(ii), d(iii)",
+        "a(iv), b(i), c(iii), d(ii)",
+        "a(i), b(ii), c(iii), d(iv)",
+        "a(iv), b(iii), c(ii), d(i)"
+      ],
+      "difficulty": "Medium",
+      "text": "Match the following: a. Photochemical decomposition, b. Thermal decomposition, c. Displacement, d. Electrolytic decomposition WITH (i) 2H2O2 → 2H2O + O2, (ii) CuSO4 + Fe → FeSO4 + Cu, (iii) 2H2O → 2H2 + O2, (iv) 2FeSO4 → Fe2O3 + SO2 + SO3. Select the correct option:",
+      "correctOptionIndex": 0
+    },
+    {
+      "difficulty": "Medium",
+      "text": "The chemical formula and colour of the precipitate formed on mixing silver nitrate solution with sodium chloride solution is:",
+      "correctOptionIndex": 3,
+      "topic": "Precipitation Reactions",
+      "options": [
+        "Ag2O and grey",
+        "Ag2O and white",
+        "AgCl and yellow",
+        "AgCl and white"
+      ]
+    },
+    {
+      "correctOptionIndex": 3,
+      "text": "Consider the following reactions: A(s) + BSO4(aq) → ASO4(aq) + B(s); B(s) + DSO4(aq) → BSO4(aq) + D(s); CSO4(aq) + D(s) → DSO4(aq) + C(s); ESO4(aq) + A(s) → No reaction. Choose the correct order of reactivity of A, B, C, D and E.",
+      "difficulty": "Hard",
+      "options": [
+        "C > D > B > A > E",
+        "A > B > C > D > E",
+        "C < D < B < E < A",
+        "C < D < B < A < E"
+      ],
+      "topic": "Reactivity Series"
+    },
+    {
+      "difficulty": "Medium",
+      "text": "Calcium oxide can be reduced to calcium, by heating with sodium metal. Which compound would act as an oxidizing agent in the above process?",
+      "correctOptionIndex": 3,
+      "topic": "Oxidation and Reduction",
+      "options": [
+        "Sodium",
+        "Sodium oxide",
+        "Calcium",
+        "Calcium oxide"
+      ]
+    },
+    {
+      "options": [
+        "displacement reaction",
+        "combination reaction",
+        "redox reaction",
+        "decomposition reaction"
+      ],
+      "topic": "Types of Chemical Reactions",
+      "correctOptionIndex": 2,
+      "text": "The chemical reaction between MnO2 and HCl is an example of:",
+      "difficulty": "Easy"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "Identify the correct statement from the following for the reaction between MnO2 and HCl:",
+      "options": [
+        "MnO2 is getting reduced whereas HCl is getting oxidized",
+        "MnO2 is getting oxidized whereas HCl is getting reduced",
+        "MnO2 and HCl both are getting reduced",
+        "MnO2 and HCl both are getting oxidized"
+      ],
+      "topic": "Oxidation and Reduction"
+    },
+    {
+      "difficulty": "Hard",
+      "text": "What will happen if we take dry HCl gas instead of aqueous solution of HCl in its reaction with MnO2?",
+      "correctOptionIndex": 1,
+      "topic": "Properties of Acids",
+      "options": [
+        "Reaction will occur faster",
+        "Reaction will not occur",
+        "Reaction rate will be slow",
+        "Reaction rate will remain the same"
+      ]
+    },
+    {
+      "options": [
+        "Boiling of water to give water vapour",
+        "Melting of ice to give water",
+        "Dissolution of salt in water",
+        "Combustion of Liquefied Petroleum Gas (LPG)"
+      ],
+      "topic": "Physical and Chemical Changes",
+      "correctOptionIndex": 3,
+      "text": "Which of the following is not a physical change?",
+      "difficulty": "Easy"
+    },
+    {
+      "options": [
+        "(i) and (iv)",
+        "(ii) and (iii)",
+        "(i) and (iii)",
+        "(iii) and (iv)"
+      ],
+      "topic": "Types of Chemical Reactions",
+      "correctOptionIndex": 2,
+      "text": "The following reaction is an example of a: 4NH3(g) + 5O2(g) -> 4NO(g) + 6H2O(g). (i) displacement reaction (ii) combination reaction (iii) redox reaction (iv) neutralisation reaction.",
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Oxidation and Reduction",
+      "options": [
+        "(i), (ii) and (iii)",
+        "(iii) and (iv)",
+        "(i), (ii) and (iv)",
+        "(ii) and (iv)"
+      ],
+      "difficulty": "Hard",
+      "text": "Which of the following statements about the given reaction are correct? 3Fe(s) + 4H2O(g) -> Fe3O4(s) + 4H2(g). (i) Iron metal is getting oxidised (ii) Water is getting reduced (iii) Water is acting as reducing agent (iv) Water is acting as oxidising agent",
+      "correctOptionIndex": 2
+    },
+    {
+      "correctOptionIndex": 0,
+      "text": "Which of the following are exothermic processes? (i) Reaction of water with quick lime (ii) Dilution of an acid (iii) Evaporation of water (iv) Sublimation of camphor (crystals)",
+      "difficulty": "Medium",
+      "options": [
+        "(i) and (ii)",
+        "(ii) and (iii)",
+        "(i) and (iv)",
+        "(iii) and (iv)"
+      ],
+      "topic": "Exothermic and Endothermic Reactions"
+    },
+    {
+      "difficulty": "Hard",
+      "text": "Three beakers labelled as A, B and C each containing 25 mL of water were taken. A small amount of NaOH, anhydrous CuSO4 and NaCl were added to the beakers A, B and C respectively. It was observed that there was an increase in the temperature of the solutions contained in beakers A and B, whereas in case of beaker C, the temperature of the solution falls. Which one of the following statement(s) is (are) correct? (i) In beakers A and B, exothermic process has occurred. (ii) In beakers A and B, endothermic process has occurred. (iii) In beaker C exothermic process has occurred. (iv) In beaker C endothermic process has occurred.",
+      "correctOptionIndex": 2,
+      "topic": "Exothermic and Endothermic Reactions",
+      "options": [
+        "(i) only",
+        "(ii) only",
+        "(i) and (iv)",
+        "(ii) and (iii)"
+      ]
+    },
+    {
+      "correctOptionIndex": 0,
+      "text": "A dilute ferrous sulphate solution was gradually added to the beaker containing acidified permanganate solution. The light purple colour of the solution fades and finally disappears. Which of the following is the correct explanation for the observation?",
+      "difficulty": "Hard",
+      "options": [
+        "KMnO4 is an oxidising agent, it oxidises FeSO4",
+        "FeSO4 acts as an oxidising agent and oxidises KMnO4",
+        "The colour disappears due to dilution; no reaction is involved",
+        "KMnO4 is an unstable compound and decomposes in presence of FeSO4 to a colourless compound."
+      ],
+      "topic": "Oxidation and Reduction"
+    },
+    {
+      "topic": "Types of Chemical Reactions",
+      "options": [
+        "(i) and (iv)",
+        "(ii) only",
+        "(i) and (ii)",
+        "(iii) and (iv)"
+      ],
+      "text": "Which among the following is (are) double displacement reaction(s)? (i) Pb + CuCl2 -> PbCl2 + Cu (ii) Na2SO4 + BaCl2 -> BaSO4 + 2NaCl (iii) C + O2 -> CO2 (iv) CH4 + 2O2 -> CO2 + 2H2O",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "Exposure of silver chloride to sunlight for a long duration turns grey due to: (i) the formation of silver by decomposition of silver chloride (ii) sublimation of silver chloride (iii) decomposition of chlorine gas from silver chloride (iv) oxidation of silver chloride",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "topic": "Types of Chemical Reactions",
+      "options": [
+        "(i) only",
+        "(i) and (iii)",
+        "(ii) and (iii)",
+        "(iv) only"
+      ]
+    },
+    {
+      "options": [
+        "(i) and (ii)",
+        "(ii) and (iii)",
+        "(i) and (iv)",
+        "(iii) and (iv)"
+      ],
+      "topic": "Acids, Bases and Salts",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "Solid calcium oxide reacts vigorously with water to form calcium hydroxide accompanied by liberation of heat. This process is called slaking of lime. Calcium hydroxide dissolves in water to form its solution called lime water. Which among the following is (are) true about slaking of lime and the solution formed? (i) It is an endothermic reaction (ii) It is an exothermic reaction (iii) The pH of the resulting solution will be more than seven (iv) The pH of the resulting solution will be less than seven"
+    },
+    {
+      "correctOptionIndex": 3,
+      "text": "Barium chloride on reacting with ammonium sulphate forms barium sulphate and ammonium chloride. Which of the following correctly represents the type of the reaction involved? (i) Displacement reaction (ii) Precipitation reaction (iii) Combination reaction (iv) Double displacement reaction",
+      "difficulty": "Hard",
+      "options": [
+        "(i) only",
+        "(ii) only",
+        "(iv) only",
+        "(ii) and (iv)"
+      ],
+      "topic": "Types of Chemical Reactions"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "text": "Electrolysis of water is a decomposition reaction. The mole ratio of hydrogen and oxygen gases liberated during electrolysis of water is:",
+      "options": [
+        "1:1",
+        "2:1",
+        "4:1",
+        "1:2"
+      ],
+      "topic": "Decomposition Reactions"
+    },
+    {
+      "text": "In the double displacement reaction between aqueous potassium iodide and aqueous lead nitrate, a yellow precipitate of lead iodide is formed. While performing the activity if lead nitrate is not available, which of the following can be used in place of lead nitrate?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "topic": "Double Displacement Reactions",
+      "options": [
+        "Lead sulphate (insoluble)",
+        "Lead acetate",
+        "Ammonium nitrate",
+        "Potassium sulphate"
+      ]
+    },
+    {
+      "topic": "Rancidity",
+      "options": [
+        "Carbon dioxide or oxygen",
+        "Nitrogen or oxygen",
+        "Carbon dioxide or helium",
+        "Helium or nitrogen"
+      ],
+      "difficulty": "Medium",
+      "text": "Which of the following gases can be used for storage of fresh sample of an oil for a long time?",
+      "correctOptionIndex": 3
+    },
+    {
+      "options": [
+        "It is a decomposition reaction and endothermic in nature",
+        "It is a combination reaction",
+        "It is a decomposition reaction and accompanied by release of heat",
+        "It is a photochemical decomposition reaction and exothermic in nature"
+      ],
+      "topic": "Decomposition Reactions",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "The following reaction is used for the preparation of oxygen gas in the laboratory: 2KClO3(s) (Heat/Catalyst) -> 2KCl(s) + 3O2(g). Which of the following statement(s) is (are) correct about the reaction?"
+    },
+    {
+      "correctOptionIndex": 3,
+      "text": "Which one of the following processes involve chemical reactions?",
+      "difficulty": "Easy",
+      "options": [
+        "Storing of oxygen gas under pressure in a gas cylinder",
+        "Liquefaction of air",
+        "Keeping petrol in a china dish in the open",
+        "Heating copper wire in presence of air at high temperature"
+      ],
+      "topic": "Chemical Reactions"
+    },
+    {
+      "topic": "Chemical Equations",
+      "options": [
+        "2H2(l) + O2(l) -> 2H2O(g)",
+        "2H2(g) + O2(l) -> 2H2O(l)",
+        "2H2(g) + O2(g) -> 2H2O(l)",
+        "2H2(g) + O2(g) -> 2H2O(g)"
+      ],
+      "text": "In which of the following chemical equations, the abbreviations represent the correct states of the reactants and products involved at reaction temperature?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 3
+    },
+    {
+      "options": [
+        "(i) and (iii)",
+        "(iii) and (iv)",
+        "(ii) and (iv)",
+        "(ii) and (iii)"
+      ],
+      "topic": "Combination Reactions",
+      "correctOptionIndex": 3,
+      "text": "Which of the following are combination reactions? (i) 2KClO3 (Heat) -> 2KCl + 3O2 (ii) MgO + H2O -> Mg(OH)2 (iii) 4Al + 3O2 -> 2Al2O3 (iv) Zn + FeSO4 -> ZnSO4 + Fe",
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Daily Life Examples of Chemical Changes",
+      "options": [
+        "Reversible physical change since the reddish coating can be washed off with water.",
+        "Chemical change because the identity and properties of the initial substance have changed.",
+        "Physical change since the iron pan retains its shape and mass.",
+        "Reversible physical change because iron can be melted and reshaped."
+      ],
+      "text": "An iron pan left exposed to a humid atmosphere for a long time gets coated with a reddish-brown substance. This change is classified as a:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1
+    },
+    {
+      "options": [
+        "Change in shape, change in volume, change in weight, and change in state.",
+        "Change in state, change in colour, evolution of a gas, and change in temperature.",
+        "Formation of a solution, dissolution of solute, evaporation, and condensation.",
+        "Increase in density, decrease in solubility, filtration, and crystallization."
+      ],
+      "topic": "Indicators of Chemical Reactions",
+      "correctOptionIndex": 1,
+      "text": "Which of the following combinations of observations would definitively indicate that a chemical reaction has taken place?",
+      "difficulty": "Easy"
+    },
+    {
+      "difficulty": "Medium",
+      "text": "Why is a magnesium ribbon rubbed with sandpaper before burning it in air (Activity 1.1)?",
+      "correctOptionIndex": 1,
+      "topic": "Activity 1.1 (Burning Magnesium Ribbon)",
+      "options": [
+        "To make the ribbon thinner so that it burns faster with less heat.",
+        "To remove the protective basic oxide/carbonate layer from its surface so it can react easily with oxygen.",
+        "To coat the magnesium ribbon with silica particles that act as a catalyst.",
+        "To prevent the ribbon from burning with an extremely dazzling white flame."
+      ]
+    },
+    {
+      "options": [
+        "Yellow powder of magnesium nitride.",
+        "Brown powder of magnesium carbonate.",
+        "White powder of magnesium oxide.",
+        "Grey powder of elemental magnesium."
+      ],
+      "topic": "Activity 1.1 (Burning Magnesium Ribbon)",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "During the burning of a magnesium ribbon in air, a student collects the resulting ash in a watch-glass. What is the chemical nature and colour of this ash?"
+    },
+    {
+      "options": [
+        "The evolution of a brown gas and a decrease in the flask's temperature.",
+        "The formation of a blue precipitate and no change in temperature.",
+        "The evolution of hydrogen gas bubbles and a rise in the temperature of the flask.",
+        "The evolution of carbon dioxide gas and a drop in temperature."
+      ],
+      "topic": "Activity 1.3 (Reaction of Zinc with Acids)",
+      "correctOptionIndex": 2,
+      "text": "In Activity 1.3, when dilute sulphuric acid is added to zinc granules in a conical flask, which of the following is observed?",
+      "difficulty": "Easy"
+    },
+    {
+      "difficulty": "Medium",
+      "text": "A student touches the bottom of the flask after adding dilute hydrochloric acid to zinc granules. The flask feels warm. This reaction is:",
+      "correctOptionIndex": 1,
+      "topic": "Activity 1.3 (Reaction of Zinc with Acids)",
+      "options": [
+        "Endothermic because heat is absorbed from the surroundings.",
+        "Exothermic because heat is released during the reaction.",
+        "Endothermic because the temperature of the reactants decreases.",
+        "Photolytic because light energy is utilized."
+      ]
+    },
+    {
+      "options": [
+        "A white precipitate of lead chloride is formed.",
+        "A yellow precipitate of lead iodide is formed.",
+        "A blue precipitate of potassium nitrate is formed.",
+        "No precipitate is formed, but the solution turns green."
+      ],
+      "topic": "Activity 1.2 (Reaction of Lead Nitrate and Potassium Iodide)",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "text": "In Activity 1.2, when lead nitrate solution is mixed with potassium iodide solution in a test tube, what is the correct observation?"
+    },
+    {
+      "difficulty": "Easy",
+      "text": "In a chemical equation, the arrowhead points towards the:",
+      "correctOptionIndex": 1,
+      "topic": "Chemical Equations",
+      "options": [
+        "Reactants, showing the starting materials.",
+        "Products, showing the direction of the reaction.",
+        "Catalyst, showing the substance that accelerates the reaction.",
+        "LHS, representing the reactants with a plus sign (+) between them."
+      ]
+    },
+    {
+      "correctOptionIndex": 1,
+      "text": "Which fundamental law states that the total mass of elements in the products must equal the total mass of elements in the reactants?",
+      "difficulty": "Easy",
+      "options": [
+        "Law of Constant Proportions.",
+        "Law of Conservation of Mass.",
+        "Law of Multiple Proportions.",
+        "Law of Reciprocal Proportions."
+      ],
+      "topic": "Balanced Chemical Equations"
+    },
+    {
+      "topic": "Balanced Chemical Equations",
+      "options": [
+        "Because the state symbols are not written.",
+        "Because the number of oxygen atoms is not the same on both sides.",
+        "Because magnesium oxide is a gas and magnesium is a solid.",
+        "Because the mass of reactants is less than the products."
+      ],
+      "difficulty": "Medium",
+      "text": "In the skeletal equation Mg + O2 -> MgO, why is the equation considered unbalanced?",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "What is the coefficient of H2O when the chemical equation Fe + H2O -> Fe3O4 + H2 is balanced?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "topic": "Balancing Equations",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "options": [
+        "Water is used in its liquid form.",
+        "Water is present as an aqueous solution.",
+        "Water is used in the form of steam.",
+        "Water is acting as a solid ice catalyst."
+      ],
+      "topic": "Writing Symbols of Physical States",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "In the balanced equation 3Fe(s) + 4H2O(g) -> Fe3O4(s) + 4H2(g) the physical state symbol '(g)' with H2O indicates that:"
+    },
+    {
+      "options": [
+        "Pure liquid.",
+        "Gas under high pressure.",
+        "Solution in water.",
+        "Wet solid powder."
+      ],
+      "topic": "Writing Symbols of Physical States",
+      "correctOptionIndex": 2,
+      "text": "The state symbol '(aq)' is written in a chemical equation when a reactant or product is present as a:",
+      "difficulty": "Easy"
+    },
+    {
+      "correctOptionIndex": 1,
+      "text": "In the equation CO(g) + 2H2(g) -> CH3OH(l) written with '340 atm' above the arrow, what does '340 atm' indicate?",
+      "difficulty": "Medium",
+      "options": [
+        "The temperature at which the reaction occurs.",
+        "The pressure required for the reaction to take place.",
+        "The concentration of the carbon monoxide reactant.",
+        "The rate of the chemical reaction."
+      ],
+      "topic": "Reaction Conditions"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "text": "Which of the following is the correct balanced equation representing photosynthesis as given in the textbook?",
+      "options": [
+        "6CO2(g) + 6H2O(l) -> C6H12O6(s) + 6O2(g)",
+        "6CO2(aq) + 12H2O(l) -> C6H12O6(aq) + 6O2(aq) + 6H2O(l) [under Sunlight/Chlorophyll]",
+        "CO2(aq) + 2H2O(l) -> CH3OH(l) + O2(g)",
+        "6CO2(s) + 12H2O(g) -> C6H12O6(aq) + 6O2(g)"
+      ],
+      "topic": "Photosynthesis"
+    },
+    {
+      "topic": "Balancing Equations",
+      "options": [
+        "1, 1, 1, 2",
+        "2, 1, 1, 2",
+        "2, 2, 1, 2",
+        "1, 2, 2, 1"
+      ],
+      "difficulty": "Hard",
+      "text": "Consider the unbalanced equation: a HNO3 + b Ca(OH)2 -> c Ca(NO3)2 + d H2O. The values of coefficients a, b, c, and d are respectively:",
+      "correctOptionIndex": 1
+    },
+    {
+      "difficulty": "Hard",
+      "text": "For the reaction x NaOH + y H2SO4 -> z Na2SO4 + w H2O, what are the correct balancing coefficients (x, y, z, w)?",
+      "correctOptionIndex": 0,
+      "topic": "Balancing Equations",
+      "options": [
+        "2, 1, 1, 2",
+        "1, 1, 1, 1",
+        "2, 2, 1, 2",
+        "1, 2, 1, 2"
+      ]
+    },
+    {
+      "options": [
+        "Decomposition reaction.",
+        "Combination reaction.",
+        "Displacement reaction.",
+        "Double displacement reaction."
+      ],
+      "topic": "Combination Reactions",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "text": "A reaction in which a single product is formed from two or more reactants is called a:"
+    },
+    {
+      "difficulty": "Medium",
+      "text": "When water is slowly added to calcium oxide (quick lime) in a beaker (Activity 1.4), which of the following is observed?",
+      "correctOptionIndex": 1,
+      "topic": "Combination Reactions (Activity 1.4)",
+      "options": [
+        "It reacts slowly, forming a blue solution with no change in temperature.",
+        "It reacts vigorously to produce slaked lime and releases a large amount of heat.",
+        "It decomposes into calcium metal and oxygen gas with a crackling sound.",
+        "It dissolves quietly to form a clear solution without any physical change."
+      ]
+    },
+    {
+      "topic": "Exothermic Reactions",
+      "options": [
+        "Endothermic reactions.",
+        "Exothermic reactions.",
+        "Photolytic reactions.",
+        "Thermal reactions."
+      ],
+      "text": "Reactions in which heat is released along with the formation of products are called:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1
+    },
+    {
+      "difficulty": "Hard",
+      "text": "Calcium hydroxide reacts slowly with carbon dioxide in the air to form a thin shiny layer on the walls. What is the chemical formula of this layer, and how many days does it take to form?",
+      "correctOptionIndex": 1,
+      "topic": "Whitewashing",
+      "options": [
+        "CaO, 5-6 days.",
+        "CaCO3, 2-3 days.",
+        "Ca(HCO3)2, 1 day.",
+        "Ca(OH)2, 3-4 days."
+      ]
+    },
+    {
+      "topic": "Exothermic Reactions",
+      "options": [
+        "1 and 2 only.",
+        "2 and 3 only.",
+        "1, 2, and 3 only.",
+        "1, 2, 3, and 4."
+      ],
+      "text": "Which of the following processes are classified as exothermic reactions? 1. Burning of natural gas 2. Respiration in living organisms 3. Decomposition of vegetable matter into compost 4. Photosynthesis",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "Respiration",
+      "options": [
+        "Because oxygen is taken in and carbon dioxide is expelled, cooling the lungs.",
+        "Because glucose combines with oxygen in body cells to release energy.",
+        "Because digestion absorbs heat from the stomach to break down food.",
+        "Because carbohydrates are synthesized using light energy."
+      ],
+      "text": "Why is respiration considered an exothermic process?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "What is the product of the burning of natural gas (methane) as described in the chapter?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "topic": "Combustion",
+      "options": [
+        "CO2(g) + H2O(g)",
+        "CO(g) + H2(g)",
+        "C(s) + H2O(l)",
+        "CO2(g) + H2(g)"
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "text": "Which of the following is a simple combination reaction involving two elements?",
+      "correctOptionIndex": 2,
+      "topic": "Combination Reactions",
+      "options": [
+        "CH4(g) + 2O2(g) -> CO2(g) + 2H2O(g)",
+        "CaO(s) + H2O(l) -> Ca(OH)2(aq)",
+        "C(s) + O2(g) -> CO2(g)",
+        "Ca(OH)2(aq) + CO2(g) -> CaCO3(s) + H2O(l)"
+      ]
+    },
+    {
+      "text": "A reaction in which a single reactant breaks down to give simpler products is called a:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "topic": "Decomposition Reactions",
+      "options": [
+        "Combination reaction.",
+        "Displacement reaction.",
+        "Decomposition reaction.",
+        "Precipitation reaction."
+      ]
+    },
+    {
+      "text": "What are the observations when green ferrous sulphate crystals are heated in a dry boiling tube (Activity 1.5)?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "topic": "Thermal Decomposition (Activity 1.5)",
+      "options": [
+        "The crystals turn blue and release sweet-smelling oxygen gas.",
+        "The green colour changes, and a characteristic odour of burning sulphur is observed.",
+        "The crystals melt into a clear liquid and do not undergo any chemical change.",
+        "White fumes are evolved, and a grey metallic copper residue remains."
+      ]
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "text": "What is the correct chemical equation representing the thermal decomposition of ferrous sulphate?",
+      "options": [
+        "FeSO4(s) -> Fe(s) + SO2(g) + O2(g)",
+        "2FeSO4(s) -> Fe2O3(s) + SO2(g) + SO3(g)",
+        "FeSO4.7H2O(s) -> FeSO4(s) + 7H2O(g)",
+        "3FeSO4(s) -> Fe3O4(s) + 3SO2(g)"
+      ],
+      "topic": "Thermal Decomposition (Activity 1.5)"
+    },
+    {
+      "text": "Decomposition of limestone (CaCO3) upon heating produces quick lime (CaO), which has a major industrial use in:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "topic": "Quick Lime",
+      "options": [
+        "Manufacture of black-and-white photography film.",
+        "Manufacture of cement.",
+        "Purification of water.",
+        "Electroplating of iron rails."
+      ]
+    },
+    {
+      "correctOptionIndex": 1,
+      "text": "In Activity 1.6, heating lead nitrate powder in a boiling tube leads to the emission of brown fumes. These brown fumes are of:",
+      "difficulty": "Hard",
+      "options": [
+        "Oxygen gas (O2).",
+        "Nitrogen dioxide (NO2).",
+        "Lead oxide (PbO).",
+        "Nitric acid (HNO3)."
+      ],
+      "topic": "Thermal Decomposition (Activity 1.6)"
+    },
+    {
+      "text": "What is the balanced chemical equation representing the thermal decomposition of lead nitrate?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "topic": "Thermal Decomposition (Activity 1.6)",
+      "options": [
+        "Pb(NO3)2(s) -> Pb(s) + 2NO2(g) + O2(g)",
+        "2Pb(NO3)2(s) -> 2PbO(s) + 4NO2(g) + O2(g)",
+        "Pb(NO3)2(s) -> PbO2(s) + N2(g) + 3O2(g)",
+        "2Pb(NO3)2(s) -> 2Pb(s) + 4NO(g) + 3O2(g)"
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "text": "During the electrolysis of water (Activity 1.7), why is the volume of gas collected in one of the test tubes double the amount collected in the other?",
+      "correctOptionIndex": 1,
+      "topic": "Electrolysis of Water (Activity 1.7)",
+      "options": [
+        "Because oxygen gas is twice as dense as hydrogen gas.",
+        "Because water (H2O) consists of two parts of hydrogen and one part of oxygen.",
+        "Because sulphuric acid decomposes to yield extra oxygen gas.",
+        "Because nitrogen gas is also liberated alongside hydrogen."
+      ]
+    },
+    {
+      "topic": "Electrolysis of Water (Activity 1.7)",
+      "options": [
+        "Hydrogen and Oxygen.",
+        "Oxygen and Hydrogen.",
+        "Nitrogen and Hydrogen.",
+        "Chlorine and Oxygen."
+      ],
+      "text": "In the electrolysis of water, the gases collected at the anode (positive electrode) and cathode (negative electrode) respectively are:",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1
+    },
+    {
+      "difficulty": "Medium",
+      "text": "White silver chloride turns grey in sunlight because it decomposes into silver and chlorine. This is an example of:",
+      "correctOptionIndex": 1,
+      "topic": "Photolytic Decomposition (Activity 1.8)",
+      "options": [
+        "Thermal decomposition.",
+        "Photolytic decomposition.",
+        "Electrolytic decomposition.",
+        "Displacement reaction."
+      ]
+    },
+    {
+      "topic": "Photolytic Decomposition",
+      "options": [
+        "NaCl and KCl.",
+        "AgCl and AgBr.",
+        "CaCO3 and CaSO4.",
+        "Pb(NO3)2 and CuSO4."
+      ],
+      "text": "Which of the following pairs of compounds decompose by light and are used in black and white photography?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "text": "Reactions in which energy is absorbed in the form of heat, light, or electricity to break down the reactants are called:",
+      "options": [
+        "Exothermic reactions.",
+        "Endothermic reactions.",
+        "Displacement reactions.",
+        "Combination reactions."
+      ],
+      "topic": "Endothermic Reactions"
+    },
+    {
+      "topic": "Displacement Reactions (Activity 1.9)",
+      "options": [
+        "The iron nails become greyish and the blue colour of the solution becomes darker blue.",
+        "The iron nails become brownish and the blue colour of the copper sulphate solution fades.",
+        "The iron nails dissolve completely and the solution turns bright red.",
+        "No change occurs in the colour of either the nails or the solution."
+      ],
+      "text": "In Activity 1.9, when iron nails are dipped in blue copper sulphate solution, what changes are observed after 20 minutes?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "Why does iron displace copper from copper sulphate solution in the reaction Fe(s) + CuSO4(aq) -> FeSO4(aq) + Cu(s)?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "topic": "Displacement Reactions",
+      "options": [
+        "Because copper is more reactive than iron.",
+        "Because iron is more reactive than copper.",
+        "Because iron has a higher melting point than copper.",
+        "Because copper is a solid and iron is an aqueous ion."
+      ]
+    },
+    {
+      "options": [
+        "No reaction takes place because lead is less reactive than copper.",
+        "Double displacement reaction occurs, forming lead oxide and copper gas.",
+        "Displacement reaction occurs; lead displaces copper to form lead chloride and copper precipitate.",
+        "Combination reaction occurs, forming a single PbCuCl2 compound."
+      ],
+      "topic": "Displacement Reactions",
+      "correctOptionIndex": 2,
+      "text": "When lead metal (Pb) is placed in a solution of copper chloride (CuCl2), what is the correct observation and reaction?",
+      "difficulty": "Hard"
+    },
+    {
+      "text": "Zinc and lead are more reactive than copper, so they can displace copper from its compounds. Which of the following reactions is NOT possible?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "topic": "Displacement Reactions",
+      "options": [
+        "Zn(s) + CuSO4(aq) -> ZnSO4(aq) + Cu(s)",
+        "Pb(s) + CuCl2(aq) -> PbCl2(aq) + Cu(s)",
+        "Cu(s) + ZnSO4(aq) -> CuSO4(aq) + Zn(s)",
+        "Fe(s) + CuSO4(aq) -> FeSO4(aq) + Cu(s)"
+      ]
+    },
+    {
+      "options": [
+        "The evolution of a pungent chlorine gas.",
+        "The formation of a white precipitate of barium sulphate.",
+        "The solution turning green with no precipitate.",
+        "A vigorous exothermic reaction producing bubbles of oxygen."
+      ],
+      "topic": "Double Displacement (Activity 1.10)",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "In Activity 1.10, mixing sodium sulphate solution with barium chloride solution results in:"
+    },
+    {
+      "text": "Any reaction that produces an insoluble substance (precipitate) in water is known as a:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "topic": "Precipitation Reactions",
+      "options": [
+        "Combination reaction.",
+        "Thermal decomposition reaction.",
+        "Precipitation reaction.",
+        "Redox reaction."
+      ]
+    },
+    {
+      "options": [
+        "A single element displaces another element from its compound.",
+        "Two or more compounds combine to form a single complex product.",
+        "There is an exchange of ions between the reactants to form new compounds.",
+        "A complex molecule breaks down into simpler elements in the presence of sunlight."
+      ],
+      "topic": "Double Displacement Reactions",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "What occurs during a double displacement reaction?"
+    },
+    {
+      "options": [
+        "Na+ and Cl-",
+        "Ba2+ and Cl-",
+        "Ba2+ and SO4(2-)",
+        "Na+ and SO4(2-)"
+      ],
+      "topic": "Double Displacement Reactions",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "text": "In the double displacement reaction: Na2SO4(aq) + BaCl2(aq) -> BaSO4(s) + 2NaCl(aq), which ionic species combine to form the white precipitate?"
+    },
+    {
+      "correctOptionIndex": 1,
+      "text": "A student mixes solutions of lead(II) nitrate and potassium iodide (Activity 1.2). What are the correct products of this reaction, and what is its reaction type?",
+      "difficulty": "Hard",
+      "options": [
+        "Lead iodide (white precipitate) and potassium nitrate; Displacement reaction.",
+        "Lead iodide (yellow precipitate) and potassium nitrate; Double displacement reaction.",
+        "Lead oxide (brown fumes) and potassium iodide; Thermal decomposition.",
+        "Potassium nitrate (yellow precipitate) and lead metal; Redox reaction."
+      ],
+      "topic": "Double Displacement Reactions"
+    },
+    {
+      "text": "When copper powder is heated in a china dish (Activity 1.11), its surface becomes coated with a black substance. This black substance is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "topic": "Oxidation and Reduction (Activity 1.11)",
+      "options": [
+        "Copper carbonate (CuCO3).",
+        "Copper oxide (CuO).",
+        "Copper chloride (CuCl2).",
+        "Copper hydroxide (Cu(OH)2)."
+      ]
+    },
+    {
+      "topic": "Redox Reactions",
+      "options": [
+        "2Cu + O2 -> 2CuO",
+        "CuO + H2 -> Cu + H2O [under Heat]",
+        "Cu + H2O -> CuO + H2",
+        "CuO + CO -> Cu + CO2"
+      ],
+      "text": "If hydrogen gas is passed over heated copper oxide (CuO), the black coating on the surface turns brown because of which reaction?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "text": "In the redox reaction: MnO2 + 4HCl -> MnCl2 + 2H2O + Cl2 identify the substance that is oxidised and the substance that is reduced:",
+      "options": [
+        "MnO2 is oxidised; HCl is reduced.",
+        "HCl is oxidised to Cl2; MnO2 is reduced to MnCl2.",
+        "MnCl2 is oxidised; H2O is reduced.",
+        "Cl2 is oxidised; H2O is reduced."
+      ],
+      "topic": "Redox Reactions"
+    },
+    {
+      "topic": "Corrosion",
+      "options": [
+        "Reddish-brown on silver; black on copper.",
+        "Black on silver; green on copper.",
+        "Green on silver; black on copper.",
+        "Yellow on silver; blue on copper."
+      ],
+      "text": "Corrosion occurs when a metal is attacked by moisture and acids. What is the colour of the corrosion coatings formed on silver and copper respectively?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "options": [
+        "To make the bag look bigger and protect chips from physical damage.",
+        "To increase the temperature inside the bag to keep chips warm.",
+        "To prevent the oxidation of fats and oils in the chips (rancidity).",
+        "To make the chips taste sweeter by adding nitrogen flavour."
+      ],
+      "topic": "Rancidity",
+      "correctOptionIndex": 2,
+      "text": "Chips manufacturers usually flush bags of chips with nitrogen gas. What is the scientific reason for doing this?",
+      "difficulty": "Medium"
+    },
+    {
+      "text": "A student performs four experiments (P, Q, R, and S) to investigate physical and chemical changes of matter. The experimental parameters and observations are summarized in the table below:\n\n| Exp | Reactants/Conditions | Gas Evolved | Temp Change | Final State vs Initial State |\n|---|---|---|---|---|\n| P | Granular Zinc + dilute H2SO4 | Yes (bubbles) | Rises significantly | Zinc dissolves; solution colorless |\n| Q | Grapes left at room temp in closed jar | Yes (slow pressure build) | Negligible | Smell changes; alcohol detected |\n| R | Pure liquid water boiled at 100°C | Yes (vigorous steam) | No (held constant) | Liquid changes to gas (reversible) |\n| S | Iron nail left in highly humid chamber | No | None detected | Reddish-brown crust forms |\n\nWhich of the experiments represents a strictly **physical change**, and which chemical reactions are correctly classified as **exothermic**?",
+      "options": [
+        "Exp R is a physical change; Exp P and Exp Q are exothermic reactions.",
+        "Exp R and S are physical changes; only Exp P is an exothermic reaction.",
+        "Exp R is a physical change; Exp P and Exp S are exothermic reactions.",
+        "All experiments represent chemical reactions; Exp P is the only exothermic one."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Indicators of Chemical Reactions"
+    },
+    {
+      "text": "Consider the skeletal equation for the industrial reaction of iron with steam to produce iron(II, III) oxide: a Fe(s) + b H2O(g) -> c FexOy(s) + d H2(g)\n\nA student attempts to balance this equation by setting up linear mathematical equations based on the Law of Conservation of Mass. Which of the following represents the correct values of the stoichiometric coefficients (a, b, c, d) and chemical subscripts (x, y) as per the fully balanced equation?",
+      "options": [
+        "a=1, b=4, c=1, d=4, x=3, y=4",
+        "a=3, b=4, c=1, d=4, x=3, y=4",
+        "a=3, b=4, c=1, d=4, x=2, y=3",
+        "a=2, b=3, c=1, d=3, x=2, y=3"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Balanced Chemical Equations & Mass Conservation"
+    },
+    {
+      "text": "A student writes down the complete chemical equation for the biochemical synthesis of glucose in green plants as follows:\n6 CO2 [w] + 12 H2O [x] -> C6H12O6 [y] + 6 O2 [z] + 6 H2O(l)\n\nThe reaction is carried out under specific natural conditions represented above and below the arrow. Identify the correct physical state symbols [w], [x], [y], [z] and the essential catalyst/condition required for this biological reaction to proceed:",
+      "options": [
+        "[w]=(aq), [x]=(l), [y]=(aq), [z]=(aq); Chlorophyll and Sunlight are required.",
+        "[w]=(g), [x]=(g), [y]=(s), [z]=(g); Only Chlorophyll is required.",
+        "[w]=(aq), [x]=(aq), [y]=(s), [z]=(aq); Only Sunlight is required.",
+        "[w]=(g), [x]=(l), [y]=(aq), [z]=(g); Mitochondria enzymes are required."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Writing Symbols of Physical States"
+    },
+    {
+      "text": "In Activity 1.4, a student adds a slow, controlled stream of water to a beaker containing solid calcium oxide (quick lime). A vigorous reaction is observed accompanied by a loud hissing sound, and the beaker becomes extremely hot. The student then filters the solution and tests the filtrate. Which of the following statements correctly analyzes this chemical process from a thermodynamic, chemical, and analytical perspective?\n\nI. It is an endothermic combination reaction because bonds are being broken in water.\nII. It is an exothermic combination reaction because a single product, calcium hydroxide, is formed and a large amount of thermal energy is released.\nIII. The filtrate will turn phenolphthalein solution from colorless to pink.\nIV. The chemical formula of the white residue left after reacting with atmospheric CO2 is Ca(HCO3)2",
+      "options": [
+        "I and III only",
+        "II and III only",
+        "II, III, and IV only",
+        "I, III, and IV only"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Combination Reactions"
+    },
+    {
+      "text": "A chemical sequence representing the process of wall whitewashing and subsequent aging is mapped below:\nCompound X (solid) + H2O(l) -> Compound Y (aqueous solution) + Heat\nCompound Y(aq) + Gas Z(g) -> Compound W (white solid) + H2O(l)\n\nIdentify Compounds X, Y, Z, and W, and choose the correct option representing their names and formulas:",
+      "options": [
+        "X = Calcium carbonate (CaCO3), Y = Calcium oxide (CaO), Z = Oxygen (O2), W = Slaked lime",
+        "X = Calcium oxide (CaO), Y = Calcium hydroxide (Ca(OH)2), Z = Carbon dioxide (CO2), W = Marble (CaCO3)",
+        "X = Calcium hydroxide (Ca(OH)2), Y = Calcium oxide (CaO), Z = Carbon dioxide (CO2), W = Limestone",
+        "X = Calcium oxide (CaO), Y = Calcium hydroxide (Ca(OH)2), Z = Carbon monoxide (CO), W = CaCO3"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Combination Reactions"
+    },
+    {
+      "text": "During Activity 1.5, a student heats about 2 g of green ferrous sulphate crystals in a dry boiling tube. The student records several distinct physical and chemical observations over time. Which of the following correctly describes the order of chemical changes and the properties of the evolved gases?\n\nI. The green crystals turn white/dirty brown first because they lose 7 molecules of water of crystallization (FeSO4·7H2O -> FeSO4 + 7H2O).\nII. Upon further heating, solid anhydrous FeSO4 decomposes into a solid reddish-brown ferric oxide (Fe2O3) and gaseous sulphur oxides (SO2 and SO3).\nIII. Both evolved gases (SO2 and SO3) are basic in nature and will turn moist red litmus paper blue.\nIV. Only SO2 is gaseous, while SO3 is a solid precipitate formed inside the tube.",
+      "options": [
+        "I and II only",
+        "II and III only",
+        "I, II, and IV only",
+        "I, II, III, and IV"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Thermal Decomposition"
+    },
+    {
+      "text": "A student heats 2 g of lead nitrate powder, Pb(NO3)2, in a boiling tube over a spirit lamp (Activity 1.6). She observes a crackling sound, the emission of dense brown fumes, and a solid residue that is brown when hot but turns yellow upon cooling. What is the chemical composition of the brown fumes and the yellow residue respectively, and what type of reaction has occurred?",
+      "options": [
+        "Brown fumes = Nitrogen dioxide (NO2), Yellow residue = Lead oxide (PbO); Thermal Decomposition.",
+        "Brown fumes = Nitrogen oxide (NO), Yellow residue = Lead peroxide (PbO2); Photolytic Decomposition.",
+        "Brown fumes = Oxygen (O2), Yellow residue = Lead hydroxide (Pb(OH)2); Thermal combination.",
+        "Brown fumes = Nitrogen dioxide (NO2), Yellow residue = Lead metal (Pb); Displacement reaction."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Thermal Decomposition"
+    },
+    {
+      "text": "An electrolysis experiment of water (Activity 1.7) is carried out using carbon electrodes connected to a 6-volt battery, with dilute sulphuric acid added to pure water. Two test tubes are inverted over the electrodes. If a total volume of 15 cm³ of gas is collected at the anode, which of the following statements is mathematically and chemically correct?\n\nI. The gas collected at the cathode is hydrogen gas with a volume of 30 cm³.\nII. Oxygen gas is evolved at the anode, and its chemical test involves extinguishing a glowing splinter.\nIII. Dilute sulphuric acid undergoes chemical decomposition at the electrodes to release hydrogen.\nIV. The reaction represents an electrolytic decomposition where electrical energy is absorbed.",
+      "options": [
+        "I and II only",
+        "I and IV only",
+        "II and III only",
+        "I, II, and IV only"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "Two watch glasses, one containing white silver chloride (AgCl) and the other containing pale yellow silver bromide (AgBr), are placed in direct sunlight. Over time, both powders turn grey. Which of the following statements provides the correct chemical explanation for this observation and its industrial application?",
+      "options": [
+        "The grey color is due to the formation of elemental silver metal; these light-sensitive decomposition reactions are utilized in black and white photography.",
+        "The grey color is due to the oxidation of silver by atmospheric oxygen; these reactions are used in the paint manufacturing industry.",
+        "Silver chloride decomposes into liquid silver and chlorine gas; this reaction is used to refine pure silver from ores.",
+        "The reaction is highly exothermic and is used in solar thermal energy storage systems."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Photolytic Decomposition"
+    },
+    {
+      "text": "A student sets up three test tubes as described in the table below to analyze displacement reactions:\n\n| Test Tube | Solution in Tube | Metal Strip Dipped | Observations after 20 Minutes |\n|---|---|---|---|\n| Tube 1 | Copper Sulphate (blue) | Iron Nail | Nail becomes brownish; blue solution fades to light green |\n| Tube 2 | Iron Sulphate (light green) | Copper Wire | No change in solution color; copper remains shiny red |\n| Tube 3 | Copper Sulphate (blue) | Zinc Strip | Zinc strip dissolves; white deposit; blue color disappears |\n\nBased strictly on these results and NCERT principles, which of the following is the correct deduction regarding the relative chemical reactivities of Iron (Fe), Copper (Cu), and Zinc (Zn)?",
+      "options": [
+        "Fe > Zn > Cu because Iron displaced Copper but did not react with Zinc.",
+        "Zn > Fe > Cu because Zinc displaced Copper from its solution, and Iron also displaced Copper, but Copper could not displace Iron.",
+        "Cu > Fe > Zn because Copper does not react with light green iron sulphate.",
+        "Zn > Cu > Fe because Zinc and Copper both react with iron sulphate under standard conditions."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Displacement Reactions & Activity Series"
+    },
+    {
+      "text": "When 3 mL of sodium sulphate solution (Na2SO4) is mixed with 3 mL of barium chloride solution (BaCl2), a double displacement reaction takes place. The chemical equation is: Na2SO4(aq) + BaCl2(aq) -> BaSO4(s) + 2NaCl(aq). Which of the following correctly describes the chemical nature of the products, the ions involved in precipitate formation, and the 'spectator ions' (ions that remain dissolved in solution)?",
+      "options": [
+        "Precipitate: Sodium chloride (NaCl) formed by Na+ and Cl-; Spectator ions: Ba2+ and SO42-.",
+        "Precipitate: Barium sulphate (BaSO4) formed by Ba2+ and SO42-; Spectator ions: Na+ and Cl-.",
+        "Precipitate: Barium sodium (BaNa) formed by Ba2+ and Na+; Spectator ions: SO42- and Cl-.",
+        "Both products are completely soluble, and no precipitation occurs under these conditions."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Double Displacement Reactions"
+    },
+    {
+      "text": "In Activity 1.2, potassium iodide solution (KI) is added to a test tube containing lead nitrate solution, Pb(NO3)2. A chemical reaction occurs, yielding a bright colored precipitate. What is the color and chemical formula of the precipitate formed, and what is the balanced ionic equation for this reaction?",
+      "options": [
+        "Yellow precipitate, PbI2; Ionic equation: Pb2+(aq) + 2I-(aq) -> PbI2(s)",
+        "White precipitate, KNO3; Ionic equation: K+(aq) + NO3-(aq) -> KNO3(s)",
+        "Yellow precipitate, PbI2; Ionic equation: Pb2+(aq) + I-(aq) -> PbI2(s)",
+        "Orange precipitate, Pb(NO3)2; Ionic equation: Pb2+(aq) + 2NO3-(aq) -> Pb(NO3)2(s)"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Precipitation Reactions"
+    },
+    {
+      "text": "Consider the following redox reaction featured in NCERT Equation 1.32: MnO2(s) + 4 HCl(aq) -> MnCl2(aq) + 2 H2O(l) + Cl2(g). A student analyzes the changes in oxidation states and electron transfers during this reaction. Which of the following statements correctly identifies the substance oxidized, the substance reduced, the oxidizing agent, and the reducing agent?",
+      "options": [
+        "Oxidized: MnO2, Reduced: HCl, Oxidizing Agent: HCl, Reducing Agent: MnO2",
+        "Oxidized: HCl, Reduced: MnO2, Oxidizing Agent: MnO2, Reducing Agent: HCl",
+        "Oxidized: Cl2, Reduced: MnCl2, Oxidizing Agent: MnO2, Reducing Agent: H2O",
+        "Oxidized: H2O, Reduced: Cl2, Oxidizing Agent: HCl, Reducing Agent: MnO2"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Redox Reactions"
+    },
+    {
+      "text": "A student heats copper powder in a china dish to form black copper(II) oxide (Equation 1.28). Subsequently, hydrogen gas is passed over this heated material, turning the black coating brown again (Equation 1.29): CuO(s) + H2(g) -> Cu(s) + H2O(g). The teacher asks the class to explain this reaction in terms of the electronic theory of oxidation and reduction (loss/gain of electrons). Which of the following options represents the correct electronic interpretation of this redox process?",
+      "options": [
+        "CuO is oxidized because copper atoms gain electrons, and H2 is reduced because hydrogen atoms lose electrons.",
+        "Cu2+ ions in CuO gain 2 electrons to form neutral Cu atoms (reduction), while H2 molecules lose electrons to form H+ ions in H2O (oxidation).",
+        "Oxygen atoms act as the reducing agent by transferring electrons from copper to hydrogen.",
+        "It is not an electronic redox reaction because no transfer of ions or electrons occurs in the solid state."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Redox Reactions"
+    },
+    {
+      "text": "A research chemist sets up a high-temperature reaction chamber to react iron filings with superheated steam according to the balanced equation: 3 Fe(s) + 4 H2O(g) -> Fe3O4(s) + 4 H2(g). The chemist feeds exactly 1.5 moles of pure iron filings and 2.5 moles of steam into the closed chamber. Which reactant acts as the limiting reactant, and what is the maximum number of moles of hydrogen gas (H2) that can be produced?",
+      "options": [
+        "Limiting reactant = Fe; Maximum H2 produced = 2.0 moles",
+        "Limiting reactant = H2O; Maximum H2 produced = 2.5 moles",
+        "Limiting reactant = Fe; Maximum H2 produced = 1.5 moles",
+        "Limiting reactant = Fe; Maximum H2 produced = 2.5 moles"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Quantitative Chemical Calculations"
+    },
+    {
+      "text": "Directions: In the following question, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct option:\n\n**Assertion (A)**: Before burning in air, a magnesium ribbon must be thoroughly cleaned by rubbing its surface with sandpaper.\n**Reason (R)**: Magnesium metal undergoes slow reaction with moist air at room temperature to form a stable protective layer of basic magnesium carbonate on its surface which prevents further oxidation.",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A).",
+        "Both Assertion (A) and Reason (R) are true but Reason (R) is NOT the correct explanation of Assertion (A).",
+        "Assertion (A) is true but Reason (R) is false.",
+        "Assertion (A) is false but Reason (R) is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Properties of Magnesium"
+    },
+    {
+      "text": "Directions: In the following question, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct option:\n\n**Assertion (A)**: In the balanced chemical equation for the reaction of iron with water, the state symbol of water is explicitly written as (g), i.e., 3Fe(s) + 4H2O(g) -> Fe3O4(s) + 4H2(g).\n**Reason (R)**: Iron metal is moderately reactive and does not react with cold water or hot liquid water; it reacts only when heated in the presence of steam.",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A).",
+        "Both Assertion (A) and Reason (R) are true but Reason (R) is NOT the correct explanation of Assertion (A).",
+        "Assertion (A) is true but Reason (R) is false.",
+        "Assertion (A) is false but Reason (R) is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Reaction of Metals with Water"
+    },
+    {
+      "text": "Directions: In the following question, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct option:\n\n**Assertion (A)**: Respiration is scientifically classified as an exothermic chemical process.\n**Reason (R)**: During respiration, the glucose obtained from digestion combines with oxygen inside the cells of our body, releasing energy to sustain life functions.",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A).",
+        "Both Assertion (A) and Reason (R) are true but Reason (R) is NOT the correct explanation of Assertion (A).",
+        "Assertion (A) is true but Reason (R) is false.",
+        "Assertion (A) is false but Reason (R) is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Exothermic and Endothermic Reactions"
+    },
+    {
+      "text": "Directions: In the following question, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct option:\n\n**Assertion (A)**: Silver chloride is always stored in dark-coloured, amber bottles in chemical laboratories.\n**Reason (R)**: When exposed to sunlight, silver chloride undergoes photolytic decomposition, splitting into grey silver metal and chlorine gas.",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A).",
+        "Both Assertion (A) and Reason (R) are true but Reason (R) is NOT the correct explanation of Assertion (A).",
+        "Assertion (A) is true but Reason (R) is false.",
+        "Assertion (A) is false but Reason (R) is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Photolytic Decomposition"
+    },
+    {
+      "text": "Directions: In the following question, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct option:\n\n**Assertion (A)**: Food manufacturers flush snack bags containing potato chips with nitrogen gas instead of normal air.\n**Reason (R)**: Nitrogen is a powerful chemical antioxidant that actively reacts with and neutralizes the double bonds of fats and oils to keep them stable.",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of Assertion (A).",
+        "Both Assertion (A) and Reason (R) are true but Reason (R) is NOT the correct explanation of Assertion (A).",
+        "Assertion (A) is true but Reason (R) is false.",
+        "Assertion (A) is false but Reason (R) is true."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Rancidity"
+    },
+    {
+      "text": "**CASE STUDY - ELECTROLYSIS OF WATER (ACTIVITY 1.7)**\nA student group sets up an apparatus for the electrolysis of water as detailed in Activity 1.7. They drill two holes at the base of a plastic mug, fit rubber stoppers, and insert carbon electrodes. They connect these electrodes to a 6-volt battery. The mug is filled with distilled water such that the electrodes are fully immersed, and a few drops of dilute sulphuric acid are added. Two test tubes filled with water are inverted over the electrodes. Current is switched on, and observations are recorded after 15 minutes.\n\nDuring the electrolysis of water, gas bubbles form at both electrodes and displace water in the inverted test tubes. What is the correct chemical identity of the gases collected at the positive electrode (anode) and the negative electrode (cathode) respectively?",
+      "options": [
+        "Anode: Hydrogen gas; Cathode: Oxygen gas",
+        "Anode: Oxygen gas; Cathode: Hydrogen gas",
+        "Anode: Chlorine gas; Cathode: Oxygen gas",
+        "Anode: Hydrogen gas; Cathode: Nitrogen gas"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "**CASE STUDY - ELECTROLYSIS OF WATER (ACTIVITY 1.7)**\nA student group sets up an apparatus for the electrolysis of water as detailed in Activity 1.7. They drill two holes at the base of a plastic mug, fit rubber stoppers, and insert carbon electrodes. They connect these electrodes to a 6-volt battery. The mug is filled with distilled water such that the electrodes are fully immersed, and a few drops of dilute sulphuric acid are added. Two test tubes filled with water are inverted over the electrodes. Current is switched on, and observations are recorded after 15 minutes.\n\nThe students observe that the volume of gas collected in one of the test tubes is exactly double the amount collected in the other. If 12 mL of gas is collected in the cathode tube, what is the volume and identity of the gas collected in the anode tube?",
+      "options": [
+        "6 mL of Oxygen gas",
+        "24 mL of Oxygen gas",
+        "6 mL of Hydrogen gas",
+        "12 mL of Sulphur dioxide gas"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "**CASE STUDY - ELECTROLYSIS OF WATER (ACTIVITY 1.7)**\nA student group sets up an apparatus for the electrolysis of water as detailed in Activity 1.7. They drill two holes at the base of a plastic mug, fit rubber stoppers, and insert carbon electrodes. They connect these electrodes to a 6-volt battery. The mug is filled with distilled water such that the electrodes are fully immersed, and a few drops of dilute sulphuric acid are added. Two test tubes filled with water are inverted over the electrodes. Current is switched on, and observations are recorded after 15 minutes.\n\nThe student tries to run the experiment using highly purified distilled water without adding any sulphuric acid, but observes that no reaction takes place. What is the scientific explanation for why dilute sulphuric acid must be added to the distilled water in this experiment?",
+      "options": [
+        "Dilute acid acts as a thermal catalyst to increase the temperature of the mug.",
+        "Pure distilled water is a poor conductor of electricity because it does not contain free ions; the acid provides ions (H+ and SO42-) to conduct current.",
+        "Acid chemically decomposes the carbon electrodes to release carbon dioxide.",
+        "Acid reacts with distilled water to release hydrogen gas directly through a displacement reaction."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "**CASE STUDY - ELECTROLYSIS OF WATER (ACTIVITY 1.7)**\nA student group sets up an apparatus for the electrolysis of water as detailed in Activity 1.7. They drill two holes at the base of a plastic mug, fit rubber stoppers, and insert carbon electrodes. They connect these electrodes to a 6-volt battery. The mug is filled with distilled water such that the electrodes are fully immersed, and a few drops of dilute sulphuric acid are added. Two test tubes filled with water are inverted over the electrodes. Current is switched on, and observations are recorded after 15 minutes.\n\nTo identify the gases, the teacher carefully tests them by bringing a burning candle close to the mouth of each test tube. Which of the following represents the correct observations for these tests?",
+      "options": [
+        "Gas at cathode burns with a loud 'pop' sound; Gas at anode makes the candle burn more brightly.",
+        "Gas at anode burns with a loud 'pop' sound; Gas at cathode extinguishes the candle immediately.",
+        "Gas at cathode turns lime water milky; Gas at anode has a highly suffocating smell.",
+        "Both gases explode with a dazzling white flame upon contact with light."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "**CASE STUDY - ELECTROLYSIS OF WATER (ACTIVITY 1.7)**\nA student group sets up an apparatus for the electrolysis of water as detailed in Activity 1.7. They drill two holes at the base of a plastic mug, fit rubber stoppers, and insert carbon electrodes. They connect these electrodes to a 6-volt battery. The mug is filled with distilled water such that the electrodes are fully immersed, and a few drops of dilute sulphuric acid are added. Two test tubes filled with water are inverted over the electrodes. Current is switched on, and observations are recorded after 15 minutes.\n\nThe overall chemical reaction occurring in this experiment is written as: 2H2O(l) -> 2H2(g) + O2(g). Under which categories does this chemical reaction fall?",
+      "options": [
+        "Electrolytic Decomposition & Endothermic Reaction",
+        "Thermal Decomposition & Exothermic Reaction",
+        "Photolytic Decomposition & Endothermic Reaction",
+        "Double Displacement & Exothermic Reaction"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Electrolysis of Water"
+    },
+    {
+      "text": "**CASE STUDY - METAL DISPLACEMENT & REACTIVITY SERIES (ACTIVITY 1.9)**\nA student performs several metal displacement reactions in a high school lab. She sets up four test tubes, each containing 10 mL of a specific metal salt solution, and immerses polished metal strips of equal size into them. She notes the initial observations and records the changes in physical state, deposition, and solution colors after 30 minutes.\n\nIn Test Tube A, an iron nail is immersed in 10 mL of blue copper sulphate (CuSO4) solution. What are the exact physical and chemical changes observed in this tube after 30 minutes, and what compound is formed in solution?",
+      "options": [
+        "The iron nail turns brownish-red due to a copper coating, and the blue solution fades to light green due to the formation of iron sulphate (FeSO4).",
+        "The blue solution turns completely colorless, and a yellow precipitate of iron hydroxide settles at the bottom.",
+        "No chemical reaction occurs; the iron nail remains shiny silver and the solution remains dark blue.",
+        "The iron nail dissolves completely, and dense blue gas fumes are evolved from the tube."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Displacement Reactions"
+    },
+    {
+      "text": "**CASE STUDY - METAL DISPLACEMENT & REACTIVITY SERIES (ACTIVITY 1.9)**\nA student performs several metal displacement reactions in a high school lab. She sets up four test tubes, each containing 10 mL of a specific metal salt solution, and immerses polished metal strips of equal size into them. She notes the initial observations and records the changes in physical state, deposition, and solution colors after 30 minutes.\n\nIn Test Tube B, a clean copper wire is immersed in 10 mL of a light green iron sulphate (FeSO4) solution. Which of the following represents the correct observations and chemical deduction for Test Tube B?",
+      "options": [
+        "The light green solution turns dark blue; Copper is more reactive than Iron.",
+        "No chemical reaction occurs, and the solution remains light green; Copper is less reactive than Iron.",
+        "A brown precipitate of copper oxide is formed on the tube walls.",
+        "Iron metal is displaced and deposits as a black powder on the copper wire."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Displacement Reactions"
+    },
+    {
+      "text": "**CASE STUDY - METAL DISPLACEMENT & REACTIVITY SERIES (ACTIVITY 1.9)**\nA student performs several metal displacement reactions in a high school lab. She sets up four test tubes, each containing 10 mL of a specific metal salt solution, and immerses polished metal strips of equal size into them. She notes the initial observations and records the changes in physical state, deposition, and solution colors after 30 minutes.\n\nIn Test Tube C, a lead strip is immersed in a blue-green solution of copper chloride (CuCl2). What chemical reaction occurs in this tube, and how do lead and zinc compare in their reactivities towards copper?",
+      "options": [
+        "Pb(s) + CuCl2(aq) -> PbCl2(aq) + Cu(s); both lead and zinc are more reactive than copper and can displace it.",
+        "Pb(s) + CuCl2(aq) -> Pb(s) + Cu(l) + Cl2(g); lead is less reactive than copper.",
+        "No reaction occurs because lead is highly unreactive due to a coating of lead oxide.",
+        "Zinc can displace copper, but lead cannot because lead is situated below copper in the reactivity series."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Displacement Reactions"
+    },
+    {
+      "text": "**CASE STUDY - METAL DISPLACEMENT & REACTIVITY SERIES (ACTIVITY 1.9)**\nA student performs several metal displacement reactions in a high school lab. She sets up four test tubes, each containing 10 mL of a specific metal salt solution, and immerses polished metal strips of equal size into them. She notes the initial observations and records the changes in physical state, deposition, and solution colors after 30 minutes.\n\nThe displacement reaction between Zinc (Zn) and Copper Sulphate (CuSO4) is written as: Zn(s) + CuSO4(aq) -> ZnSO4(aq) + Cu(s). Which of the following statements correctly analyzes this displacement reaction as a redox process?",
+      "options": [
+        "Zn is oxidized (Zn -> Zn2+ + 2e-) and acts as the reducing agent; Cu2+ ions are reduced (Cu2+ + 2e- -> Cu) and act as the oxidizing agent.",
+        "Zn is reduced and acts as the oxidizing agent; Cu2+ ions are oxidized and act as the reducing agent.",
+        "Sulphate ions (SO42-) are oxidized because they are transferred from copper to zinc.",
+        "It is a displacement reaction but not a redox reaction because no oxygen is gained or lost by the substances."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Redox Nature of Displacement"
+    },
+    {
+      "text": "**CASE STUDY - METAL DISPLACEMENT & REACTIVITY SERIES (ACTIVITY 1.9)**\nA student performs several metal displacement reactions in a high school lab. She sets up four test tubes, each containing 10 mL of a specific metal salt solution, and immerses polished metal strips of equal size into them. She notes the initial observations and records the changes in physical state, deposition, and solution colors after 30 minutes.\n\nBy synthesizing the results of all displacement reactions described in Chapter 1 (Iron vs. Copper, Zinc vs. Copper, and Lead vs. Copper), and using basic periodic trends: Which of the following lists these four metals in the correct **descending** order of their chemical reactivity?",
+      "options": [
+        "Zinc (Zn) > Iron (Fe) > Lead (Pb) > Copper (Cu)",
+        "Copper (Cu) > Lead (Pb) > Iron (Fe) > Zinc (Zn)",
+        "Iron (Fe) > Zinc (Zn) > Lead (Pb) > Copper (Cu)",
+        "Zinc (Zn) > Lead (Pb) > Iron (Fe) > Copper (Cu)"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Metal Reactivity Hierarchy"
+    }
+  ],
+  "title": "Chemical Reactions & Equations - Level 3 (Super-Hard) Competency MCQs"
+}

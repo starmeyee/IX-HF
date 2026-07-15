@@ -1,0 +1,35 @@
+{
+  "name": "Test Account",
+  "phone": "9999999999",
+  "rollNo": 0,
+  "createdAt": 1782468192649,
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: Resources and Development",
+      "at": 1782468898375,
+      "balance": 8
+    }
+  ],
+  "purchasedChapters": [
+    "sst-1-c0"
+  ],
+  "checkedTopics": [],
+  "passwordHash": "8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e",
+  "completedHolidayHomework_v2": [],
+  "attendance_absentDays": [],
+  "completedHomework": [],
+  "onboardingCompleted": false,
+  "whatsNewSeen_v1": true,
+  "email": "utkarshcoding169@gmail.com",
+  "emailVerified": true,
+  "activeRole": "MONITOR",
+  "seenBannerVersion": 1783409509400,
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ]
+}

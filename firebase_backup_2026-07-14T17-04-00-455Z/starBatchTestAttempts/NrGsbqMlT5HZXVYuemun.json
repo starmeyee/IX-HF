@@ -1,0 +1,43 @@
+{
+  "userId": "8102783645",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 9,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+  },
+  "weakTopics": [
+    "Balancing Equations"
+  ],
+  "seenIndices": [
+    58,
+    42,
+    64,
+    53,
+    73,
+    41,
+    70,
+    48,
+    56,
+    72
+  ],
+  "aiReview": [
+    "The student demonstrated a strong understanding of various chemistry topics, including Redox Reactions, Displacement Reactions, and Thermal Decomposition, with perfect or near-perfect scores.",
+    "The student's performance was consistent across most hard questions, suggesting a solid grasp of advanced concepts, but may have struggled with a specific aspect of Balancing Equations, given the lower score in that topic.",
+    "The data indicates that the student's mistakes were not due to a lack of understanding of easy or medium concepts, as there were no easy or medium questions, but rather a potential lapse in a specific hard question, possibly due to carelessness or a minor knowledge gap."
+  ],
+  "createdAt": {
+    "_seconds": 1783956926,
+    "_nanoseconds": 830000000
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-29",
+  "weekday": "Monday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Question Explanation of Ch मीराबाई के पद"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Lens Numericals Practice"
+    },
+    {
+      "period": "3rd",
+      "subject": "IT",
+      "note": "Session 2 Unit 1 Part B Templates"
+    },
+    {
+      "period": "4th",
+      "subject": "Civics",
+      "note": "Ch 3 Introduction"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Ex 3E RS Agarwal"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 4 Explanation Literature"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782739616075
+}

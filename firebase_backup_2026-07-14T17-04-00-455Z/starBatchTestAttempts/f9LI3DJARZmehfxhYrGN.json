@@ -1,0 +1,46 @@
+{
+  "userId": "8102783645",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 7,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 3,
+    "2": 3,
+    "3": 2,
+    "4": 2,
+    "5": 1,
+    "6": 3,
+    "7": 1,
+    "8": 3,
+    "9": 3
+  },
+  "weakTopics": [
+    "Oxidation and Reduction",
+    "Types of Chemical Reactions"
+  ],
+  "seenIndices": [
+    0,
+    23,
+    3,
+    13,
+    6,
+    14,
+    9,
+    8,
+    15,
+    2
+  ],
+  "aiReview": [
+    "The student demonstrated a strong conceptual understanding of basic topics such as Chemical Reactions, Precipitation Reactions, and Properties of Acids, with perfect or near-perfect scores.",
+    "There is a notable drop in performance in the 'Types of Chemical Reactions' topic, suggesting a need for review or additional practice in this area.",
+    "The student's ability to handle difficulty levels is inconsistent, with perfect scores in Easy questions but variable performance in Medium and Hard questions, indicating potential issues with question-reading skills or time management.",
+    "Oxidation and Reduction appears to be a weak point, with no correct answers, implying a significant knowledge gap or misunderstanding of key concepts in this topic.",
+    "The student's performance across different difficulty levels shows they are capable of handling Hard questions, having answered 2 out of 3 correctly, which suggests that their overall understanding is not strictly limited by question difficulty."
+  ],
+  "createdAt": {
+    "_seconds": 1783938815,
+    "_nanoseconds": 348000000
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "userId": "6206413700",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 9,
+  "total": 10,
+  "responses": {
+    "0": 2,
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 2,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 0
+  },
+  "weakTopics": [
+    "Oxidation and Reduction"
+  ],
+  "seenIndices": [
+    65,
+    31,
+    51,
+    7,
+    68,
+    34,
+    63,
+    57,
+    71,
+    11
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in Easy and Medium difficulty questions, with 100% accuracy across these categories.",
+    "A drop in accuracy is observed in Hard questions, suggesting that advanced application and complex problem-solving need further development.",
+    "The student showed consistent performance across various topics, with the only area of concern being Oxidation and Reduction, where they got only 1 out of 2 questions correct, indicating a potential weakness in this specific concept."
+  ],
+  "createdAt": {
+    "_seconds": 1783957697,
+    "_nanoseconds": 260000000
+  }
+}

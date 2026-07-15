@@ -1,0 +1,55 @@
+{
+  "createdAt": {
+    "_seconds": 1784044127,
+    "_nanoseconds": 65000000
+  },
+  "report": {
+    "actionPlan": [
+      {
+        "title": "Mathematics Fundamentals Review",
+        "description": "Spend 2 hours reviewing HCF and LCM concepts, practicing with past tests and exercises, and seeking help for Word Problems",
+        "time": "2 hours"
+      },
+      {
+        "title": "Quick Geography and Chemistry Revision",
+        "description": " Allocate 1.5 hours to quickly revise Geography notes and practice Double Displacement Reactions in Chemistry",
+        "time": "1.5 hours"
+      },
+      {
+        "title": "Economics and Biology Consolidation",
+        "description": "Use 30 minutes to review Economics and Biology notes, reinforcing understanding and identifying any gaps",
+        "time": "30 minutes"
+      }
+    ],
+    "summary": "The student's overall performance indicates a strong foundation in certain subjects, but there are areas that require immediate attention to improve accuracy and consistency. Chemistry and Economics are notable strengths, while Mathematics and Geography need significant improvement.",
+    "strengths": [
+      "Consistently high performance in Economics",
+      "Strong understanding of Chemistry concepts"
+    ],
+    "weaknesses": [
+      "Struggles with Mathematics, particularly in HCF and LCM, and Word Problems",
+      "Poor performance in Geography and Double Displacement Reactions in Chemistry"
+    ],
+    "focusDistribution": [
+      {
+        "topic": "Mathematics (HCF and LCM, Word Problems)",
+        "percentage": 50,
+        "reason": "Fundamental re-learning required to address persistent weaknesses"
+      },
+      {
+        "topic": "Geography and Chemistry (Double Displacement Reactions)",
+        "percentage": 30,
+        "reason": "Quick revision and practice to improve overall subject performance"
+      },
+      {
+        "topic": "Economics and Biology",
+        "percentage": 20,
+        "reason": "Consolidation and reinforcement of existing knowledge to maintain high standards"
+      }
+    ]
+  },
+  "updatedAt": {
+    "_seconds": 1784044127,
+    "_nanoseconds": 65000000
+  }
+}

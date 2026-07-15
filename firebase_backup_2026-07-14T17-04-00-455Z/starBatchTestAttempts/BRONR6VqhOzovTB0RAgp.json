@@ -1,0 +1,48 @@
+{
+  "userId": "8102783645",
+  "testId": "IsVe3rDhaH843dev1Lc1",
+  "chapterId": "maths-0-c0",
+  "score": 0,
+  "total": 10,
+  "responses": {
+    "0": 0,
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 3,
+    "8": 2,
+    "9": 2
+  },
+  "weakTopics": [
+    "Irrational Numbers",
+    "Prime Factorisation",
+    "HCF and LCM",
+    "Properties of Integers"
+  ],
+  "seenIndices": [
+    26,
+    22,
+    25,
+    2,
+    17,
+    27,
+    16,
+    15,
+    20,
+    0
+  ],
+  "aiReview": [
+    "The student struggled across all difficulty levels, suggesting a need for foundational review.",
+    "HCF and LCM appears to be a significant area of weakness, comprising the majority of the questions attempted.",
+    "The student's performance was uniformly poor across different topics, indicating a possible lack of conceptual understanding or test-taking strategy.",
+    "There is no evidence of a differential performance based on question difficulty, as the student answered none correctly across Easy, Medium, and Hard questions.",
+    "The data does not suggest guessing behavior, as the student did not answer any questions correctly, implying a possible lack of familiarity with the material."
+  ],
+  "createdAt": {
+    "_seconds": 1783850076,
+    "_nanoseconds": 398000000
+  }
+}

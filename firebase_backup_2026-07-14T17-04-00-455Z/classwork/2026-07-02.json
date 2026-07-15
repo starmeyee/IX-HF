@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-02",
+  "weekday": "Thursday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "IT",
+      "note": "Lab"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Explained Basic and Acidic Salt Ch 2"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Circulatory System Explained Ch 1"
+    },
+    {
+      "period": "4th",
+      "subject": "History",
+      "note": "Ch 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Graphical Method of Solving Explained  Ch 3"
+    },
+    {
+      "period": "6th",
+      "subject": "Economics",
+      "note": "Private and Public Sector Explained Ch 2"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1783004183453
+}

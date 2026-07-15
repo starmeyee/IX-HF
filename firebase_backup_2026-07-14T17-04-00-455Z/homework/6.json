@@ -1,0 +1,27 @@
+{
+  "id": 6,
+  "date": "Friday, 8 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 'हरिहर काका' पढ़ें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Complete Exercise Q/Ans and Intext Q/Ans Ch 1.\nExplain every activity of Chapter 1 (Chemical Reactions and Equations).\n⚠️ NOTE: Students who were present on Thursday (07/05/26) must do this homework TWICE!",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Do the given questions.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do the test questions in your homework copy.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778178600000
+}

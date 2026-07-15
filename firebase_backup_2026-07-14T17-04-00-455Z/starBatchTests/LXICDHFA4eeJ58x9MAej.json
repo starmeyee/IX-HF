@@ -1,0 +1,24 @@
+{
+  "chapterId": "maths-0-c11",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "title": "Surface Areas and Volumes",
+  "questions": [
+    {
+      "text": "If the area of the base of a right circular cone is 51 cm^2 and it's volume is 85 cm^3 then the height of the cone is given as",
+      "options": [
+        "5/6 cm",
+        "5/3 cm",
+        "5/2 cm",
+        "5 cm"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Volume of a Cone"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783954772,
+    "_nanoseconds": 20000000
+  }
+}

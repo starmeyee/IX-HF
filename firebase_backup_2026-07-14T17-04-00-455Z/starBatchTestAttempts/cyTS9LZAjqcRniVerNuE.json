@@ -1,0 +1,45 @@
+{
+  "userId": "8102783645",
+  "testId": "lxNBM4u6AtGf6JZGSJLv",
+  "chapterId": "sst-3-c0",
+  "score": 8,
+  "total": 10,
+  "responses": {
+    "0": 2,
+    "1": 2,
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 2,
+    "6": 1,
+    "7": 2,
+    "8": 1,
+    "9": 1
+  },
+  "weakTopics": [
+    "Different Developmental Goals",
+    "Public Facilities"
+  ],
+  "seenIndices": [
+    3,
+    19,
+    11,
+    23,
+    22,
+    7,
+    4,
+    29,
+    9,
+    12
+  ],
+  "aiReview": [
+    "The student demonstrated consistent performance across 'Easy' and 'Medium' difficulty levels, but showed slight vulnerability in the 'Hard' category, suggesting a need to refine advanced application skills.",
+    "A perfect score was achieved in 'Income and Other Criteria' and 'Sustainability of Development', indicating a strong conceptual understanding in these areas.",
+    "The student struggled with 'Public Facilities' and 'Different Developmental Goals', managing only 1 correct answer out of 3 total questions, which may indicate a knowledge gap or weakness in these topics.",
+    "The student's performance was balanced across 'Human Development Report', 'Income and Other Criteria', and 'Sustainability of Development', with 2 correct answers out of 2 in each, demonstrating a solid grasp of these subjects."
+  ],
+  "createdAt": {
+    "_seconds": 1783962560,
+    "_nanoseconds": 177000000
+  }
+}

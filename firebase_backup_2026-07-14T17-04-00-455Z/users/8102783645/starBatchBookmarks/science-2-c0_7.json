@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 7,
+  "createdAt": {
+    "_seconds": 1784047062,
+    "_nanoseconds": 259000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "Both will turn blue-black because starch is present in both.",
+    "Tube A will turn blue-black, Tube B will not, as boiling activates enzymes.",
+    "Tube A will remain the colour of iodine, Tube B will turn blue-black, because boiling denatures salivary amylase.",
+    "Neither will change colour as saliva neutralizes iodine."
+  ],
+  "correctOptionIndex": 2,
+  "topic": "Nutrition in Human Beings",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "Consider two test tubes: Tube A contains starch solution + saliva. Tube B contains starch solution + boiled saliva. After 30 minutes, dilute iodine is added to both. What will be the colour change, and why?",
+  "testTitle": "Life Processes - Complete Test"
+}

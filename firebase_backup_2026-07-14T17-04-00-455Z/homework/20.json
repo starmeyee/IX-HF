@@ -1,0 +1,22 @@
+{
+  "id": 20,
+  "date": "Tuesday, 21 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "आर्य समाज के 10 नियम याद करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete all exercises of Ch 1 RS Aggarwal.",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Complete the Q/Ans of Chapter 1 and submit your copy.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776709800000
+}

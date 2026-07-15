@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c0",
+  "subjectId": "maths-0",
+  "topicName": "Higher Order Thinking",
+  "questionText": "Show that the square of any odd positive integer can be expressed in the form 8m + 1, where m is an integer.",
+  "imageUrl": null,
+  "marks": "5",
+  "source": "Previous Year",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709421,
+    "_nanoseconds": 960000000
+  }
+}

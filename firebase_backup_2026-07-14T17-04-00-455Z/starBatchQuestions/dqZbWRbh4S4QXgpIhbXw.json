@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c1",
+  "subjectId": "maths-0",
+  "topicName": "Division Algorithm",
+  "questionText": "Using the Division Algorithm, divide 2x³ + 3x² − 5x + 6 by x + 2.",
+  "imageUrl": null,
+  "marks": "5",
+  "source": "NCERT",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709455,
+    "_nanoseconds": 947000000
+  }
+}

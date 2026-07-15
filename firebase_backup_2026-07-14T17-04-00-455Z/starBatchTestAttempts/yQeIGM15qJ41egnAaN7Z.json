@@ -1,0 +1,46 @@
+{
+  "userId": "6206413700",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 8,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 0,
+    "2": 2,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 2,
+    "7": 2,
+    "8": 1,
+    "9": 0
+  },
+  "weakTopics": [
+    "Double Displacement Reactions",
+    "Reactivity Series"
+  ],
+  "seenIndices": [
+    15,
+    20,
+    10,
+    55,
+    12,
+    56,
+    64,
+    4,
+    40,
+    22
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in certain topics such as Types of Chemical Reactions and Thermal Decomposition, where they answered all questions correctly.",
+    "There's a noticeable weakness in Double Displacement Reactions and Reactivity Series, where the student failed to answer any questions correctly, indicating a need for review in these areas.",
+    "The student's performance on Hard questions was inconsistent, with 4 correct out of 6, suggesting that while they have some ability to handle challenging questions, there's room for improvement in advanced application and critical thinking.",
+    "The student's accuracy was consistent across Medium difficulty questions, but the data does not provide enough information to determine if this is due to the questions being too easy or the student being well-prepared for this level of difficulty.",
+    "Certain topics like Exothermic and Endothermic Reactions, Displacement Reactions, Photosynthesis, and Decomposition Reactions were adequately handled with the student answering the single question from each topic correctly, indicating at least a basic understanding of these concepts."
+  ],
+  "createdAt": {
+    "_seconds": 1783958245,
+    "_nanoseconds": 514000000
+  }
+}

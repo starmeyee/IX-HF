@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 97,
+  "createdAt": {
+    "_seconds": 1784047131,
+    "_nanoseconds": 490000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "Useful substances like glucose and amino acids are selectively absorbed from the collecting duct.",
+    "Blood is filtered under high pressure in the glomerulus, squeezing water and dissolved impurities into the Bowman's capsule.",
+    "Urine is transported from the kidney to the urinary bladder through the ureter.",
+    "Large proteins and red blood cells are pushed into the renal tubule to be excreted."
+  ],
+  "correctOptionIndex": 1,
+  "topic": "Excretion in Humans",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "Which of the following correctly describes the process of **ultrafiltration** in the nephron?",
+  "testTitle": "Life Processes - Complete Test"
+}

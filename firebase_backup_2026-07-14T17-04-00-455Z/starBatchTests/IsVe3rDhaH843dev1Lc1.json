@@ -1,0 +1,1968 @@
+{
+  "chapterId": "maths-0-c0",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "createdAt": {
+    "_seconds": 1783848693,
+    "_nanoseconds": 770000000
+  },
+  "questions": [
+    {
+      "topic": "HCF and LCM",
+      "text": "The product of the HCF and LCM of the smallest prime number and the smallest composite number is:",
+      "difficulty": "Medium",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "topic": "HCF and LCM",
+      "options": [
+        "1650",
+        "1600",
+        "1500",
+        "165"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "text": "If the HCF of 2520 and 6600 is 40 and their LCM is 252 × k, what is the value of k?"
+    },
+    {
+      "options": [
+        "36",
+        "45",
+        "81",
+        "108"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "text": "The HCF of two numbers is 27 and their LCM is 162. If one of the numbers is 54, what is the other number?",
+      "topic": "HCF and LCM"
+    },
+    {
+      "options": [
+        "13",
+        "65",
+        "875",
+        "1750"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "text": "What is the largest number which divides 70 and 125, leaving remainders 5 and 8 respectively?",
+      "topic": "HCF and LCM"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "xy",
+        "xy²",
+        "x³y³",
+        "x²y²"
+      ],
+      "text": "If two positive integers a and b are written as a = x³y² and b = xy³ (where x and y are prime numbers), then their HCF is:",
+      "topic": "Prime Factorisation"
+    },
+    {
+      "text": "For the same two positive integers a = x³y² and b = xy³, what is their LCM?",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "x³y³",
+        "xy²",
+        "x³y²",
+        "x²y²"
+      ],
+      "topic": "Prime Factorisation"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "What is the least number that is divisible by all natural numbers from 1 to 10 (both inclusive)?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "options": [
+        "10",
+        "100",
+        "504",
+        "2520"
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "options": [
+        "n is any even number",
+        "n is any odd number",
+        "n is a multiple of 5",
+        "No natural number n"
+      ],
+      "correctOptionIndex": 3,
+      "text": "For which of the following cases does the number 4ⁿ end with the digit 0?",
+      "topic": "Properties of Integers"
+    },
+    {
+      "options": [
+        "Even numbers",
+        "Odd numbers",
+        "Co-prime numbers",
+        "Not co-prime"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "If p and q are two distinct co-prime numbers, then p² and q² are always:",
+      "topic": "Properties of Integers"
+    },
+    {
+      "topic": "Irrational Numbers",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "It is always rational",
+        "It is always irrational",
+        "It is sometimes rational",
+        "It is equal to zero"
+      ],
+      "text": "Which of the following is true regarding the product of a non-zero rational number and an irrational number?"
+    },
+    {
+      "text": "If a = 2³ × 3, b = 2 × 3 × 5, c = 3ⁿ × 5 and LCM(a, b, c) = 2³ × 3² × 5, then what is the value of n?",
+      "difficulty": "Hard",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Prime Factorisation"
+    },
+    {
+      "text": "What is the sum of the exponents of the prime factors in the prime factorisation of 196?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "topic": "Prime Factorisation"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "An army contingent of 616 members is to march behind an army band of 32 members in a parade. The two groups are to march in the same number of columns. What is the maximum number of columns?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "8",
+        "16",
+        "32",
+        "64"
+      ]
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "Two alarm clocks ring at regular intervals of 50 seconds and 48 seconds. If they first beep together at 12 noon, at what time will they beep together again?",
+      "options": [
+        "12:10 PM",
+        "12:12 PM",
+        "12:20 PM",
+        "12:24 PM"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard"
+    },
+    {
+      "text": "In proving that (5 - √3) is an irrational number by contradiction, our initial incorrect assumption is:",
+      "options": [
+        "√3 is rational",
+        "5 is rational",
+        "(5 - √3) is an integer",
+        "(5 - √3) is rational"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "topic": "Irrational Numbers"
+    },
+    {
+      "text": "According to Theorem 1.2, if p is a prime number and p divides a², then which of the following is absolutely true for a positive integer a?",
+      "options": [
+        "a divides p",
+        "p divides a",
+        "p² divides a",
+        "a is a prime number"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "topic": "Properties of Integers"
+    },
+    {
+      "text": "There is a circular path around a sports field. Sonia takes 18 minutes to drive one round, while Ravi takes 12 minutes. If they start at the same time and point, going in the same direction, after how many minutes will they meet again?",
+      "options": [
+        "12 minutes",
+        "18 minutes",
+        "24 minutes",
+        "36 minutes"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "What is the LCM of the smallest prime number and the smallest odd composite number?",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "9",
+        "18",
+        "27",
+        "36"
+      ]
+    },
+    {
+      "topic": "Prime Factorisation",
+      "options": [
+        "A prime number",
+        "A composite number",
+        "An irrational number",
+        "A fractional number"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "The expression (3 × 5 × 7) + 7 is an example of:"
+    },
+    {
+      "topic": "Properties of Integers",
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "options": [
+        "0",
+        "2",
+        "6",
+        "Both 0 and 2"
+      ],
+      "text": "If n is any natural number, which digit does the number 6ⁿ never end with?"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "Find the largest positive integer that will divide 320 and 457, leaving remainders 5 and 7 respectively.",
+      "difficulty": "Hard",
+      "options": [
+        "30",
+        "45",
+        "60",
+        "90"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "Equal to p × q × r",
+        "Always greater than p × q × r",
+        "Not generally equal to p × q × r",
+        "Equal to HCF(p, q) × LCM(q, r)"
+      ],
+      "text": "For any three positive integers p, q, and r, HCF(p, q, r) × LCM(p, q, r) is:",
+      "topic": "HCF and LCM"
+    },
+    {
+      "correctOptionIndex": 2,
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": "Medium",
+      "text": "How many distinct prime factors are there in the prime factorization of 5005?",
+      "topic": "Prime Factorisation"
+    },
+    {
+      "text": "If the HCF of 96 and 404 is 4, what is their LCM?",
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "options": [
+        "9696",
+        "9496",
+        "9896",
+        "9096"
+      ],
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "Properties of Integers",
+      "text": "Two positive integers a and b have least prime factors 3 and 5 respectively. What will be the least prime factor of (a + b)?",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "8"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0
+    },
+    {
+      "text": "If the HCF of 65 and 117 is expressible in the form 65m - 117, then what is the value of m?",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "topic": "HCF and LCM"
+    },
+    {
+      "text": "Which of the following is NOT an irrational number?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "3√2",
+        "5 - √3",
+        "√4",
+        "√2 / √3"
+      ],
+      "topic": "Irrational Numbers"
+    },
+    {
+      "topic": "Irrational Numbers",
+      "text": "Given that √2 is irrational, what can we logically deduce about 3 + 2√2?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "It is rational because 3 and 2 are integers.",
+        "It is irrational because it's a sum of a rational and an irrational.",
+        "It is an integer.",
+        "It is undefined."
+      ]
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "A sweets seller has 420 kaju barfis and 130 badam barfis. He wants to stack them such that each stack has the same number, and they take up the least area of the tray. What is the maximum number of barfis that can be placed in each stack?",
+      "difficulty": "Medium",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "40"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "topic": "Prime Factorisation",
+      "options": [
+        "2³ × 3² × 5 × 7 × 13",
+        "2² × 3³ × 5 × 7 × 13",
+        "2³ × 3² × 5² × 7 × 13",
+        "2³ × 3² × 5 × 11 × 13"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "Which of the following numbers can be expressed as a product of prime powers: 32760?"
+    },
+    {
+      "topic": "Real Numbers",
+      "text": "Which of the following can not be a unit digit of 2^n where n is a natural number?",
+      "correctOptionIndex": 2,
+      "options": [
+        "2",
+        "8",
+        "0",
+        "4"
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "options": [
+        "7:1",
+        "13:1",
+        "1:7",
+        "1:13"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "text": "If the HCF of two numbers a and 91 is 13, where a is a prime number, then the ratio of LCM and HCF of two numbers is:",
+      "topic": "Real Numbers"
+    },
+    {
+      "options": [
+        "99952",
+        "99722",
+        "99982",
+        "99752"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "text": "The greatest five digit number, when divided by 8, 9 and 10 leaves the remainder 2, is:",
+      "topic": "Real Numbers"
+    },
+    {
+      "topic": "Real Numbers",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "11"
+      ],
+      "text": "For any positive integer n, n^3 - n is divisible by:"
+    },
+    {
+      "options": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "text": "If a = 2^2 \\times 3^x, b = 2^2 \\times 3 \\times 5, c = 2^2 \\times 3 \\times 7 and LCM (a,b,c) = 3780 then x is equal to",
+      "topic": "Fundamental Theorem of Arithmetic"
+    },
+    {
+      "topic": "HCF and LCM",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "text": "The sum of two numbers is 1215 and their HCF is 81, then the possible pairs of such numbers are"
+    },
+    {
+      "text": "If prime factorization of 7560 is expressible as $2^{3}\\times3^{p}\\times q\\times7$ then the values of p and q are respectively",
+      "options": [
+        "2, 3",
+        "5, 3",
+        "3, 5",
+        "5, 2"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "topic": "Prime Factorization"
+    },
+    {
+      "text": "The HCF of two numbers 65 and 104 is 13. If LCM of 65 and 104 is $40x$, then the value of $x$ is:",
+      "options": [
+        "5",
+        "13",
+        "40",
+        "8"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "If the HCF of 567 and 693 is expressible in the form $567x + 693 \\times (-4)$ find x.",
+      "difficulty": "Medium",
+      "options": [
+        "4",
+        "2",
+        "5",
+        "3"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "Properties of Prime Numbers",
+      "options": [
+        "only k",
+        "only k and 7k",
+        "only k, 7k and $k^3$",
+        "All $k/2$, k, 7k and $k^3$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "Let p be a prime number and k be a positive integer. If p divides $k^2$, then which of these is DEFINITELY divisible by p?"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "options": [
+        "575",
+        "450",
+        "750",
+        "625"
+      ],
+      "text": "The greatest number which when divides 1251, 9377 and 15628 leaves remainder 1, 2 and 3 respectively is",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "Prime Factorization",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "text": "The sum of exponents of prime factors in the prime factorisation of 196 is"
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "258",
+        "231",
+        "462",
+        "924"
+      ],
+      "difficulty": "Easy",
+      "text": "The LCM of three numbers 28, 44, 132 is:",
+      "topic": "HCF and LCM"
+    },
+    {
+      "text": "If the product of two co-prime numbers is 553, then their HCF is:",
+      "options": [
+        "1",
+        "553",
+        "7",
+        "79"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "text": "I. The LCM of $x$ and 18 is 36. II. The HCF of $x$ and 18 is 2. What is the number $x$?",
+      "topic": "HCF and LCM"
+    },
+    {
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "Shweta wants to organise a party. She has 336 guavas and 54 oranges at home and decided to distribute them equally among all. What is the maximum number of guests she can invite?",
+      "topic": "Word Problems"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "text": "Can $6^n$ end with the digit 0 for any natural number 'n'?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "Yes, for n=5",
+        "Yes, for even n",
+        "No, because its prime factorization does not contain 5",
+        "Yes, for n=10"
+      ]
+    },
+    {
+      "topic": "Word Problems",
+      "difficulty": "Hard",
+      "options": [
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "correctOptionIndex": 2,
+      "text": "In a teachers' workshop, the number of teachers teaching French, Hindi and English are 48, 80 and 144 respectively. Find the minimum number of rooms required if in each room the same number of teachers are seated and all of them are of the same subject."
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "Let $P = 2 \\times 4 \\times 6 \\times ... \\times 20$ and $Q = 1 \\times 3 \\times 5 \\times ... \\times 19$. What is the HCF of P and Q?",
+      "difficulty": "Hard",
+      "options": [
+        "$3^4 \\times 5^2 \\times 7$",
+        "$2^{10} \\times 3^4$",
+        "$3^2 \\times 5 \\times 7$",
+        "1"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "topic": "HCF and LCM",
+      "difficulty": "Medium",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctOptionIndex": 1,
+      "text": "If $a = 2^3 \\times 3$, $b = 2 \\times 3 \\times 5$, $c = 3^n \\times 5$ and $\\text{LCM}(a, b, c) = 2^3 \\times 3^2 \\times 5$, then $n$ is equal to:"
+    },
+    {
+      "text": "The HCF of two natural numbers is 3 and their LCM is 60. The difference of two numbers is 24. Find the numbers.",
+      "correctOptionIndex": 1,
+      "options": [
+        "12 and 36",
+        "6 and 30",
+        "3 and 27",
+        "15 and 39"
+      ],
+      "difficulty": "Medium",
+      "topic": "HCF and LCM"
+    },
+    {
+      "options": [
+        "15 packets; 3 pencils or 7 pens per packet",
+        "5 packets; 9 pencils or 21 pens per packet",
+        "15 packets; 7 pencils or 3 pens per packet",
+        "45 packets; 1 pencil or 2 pens per packet"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "Vicky went to a stationery shop to buy 45 pencils and 105 pens as return gifts for his birthday party. He asked the shopkeeper to pack them in such a way that each packet contains the same number of pencils or pens, with no remainder. What is the greatest number of such packets that can be made for each type, and how many pencils/pens will be in each packet?",
+      "topic": "Word Problems"
+    },
+    {
+      "text": "A forester wants to plant 66 apple trees, 88 banana trees and 110 mango trees in equal rows (in terms of number of trees). Also, he wants to make distinct rows of the trees (only one type of tree in one row). Find the minimum number of rows required.",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "10",
+        "12",
+        "22",
+        "24"
+      ],
+      "topic": "Word Problems"
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "only (ii)",
+        "only (i) and (ii)",
+        "all (i), (ii) and (iii)",
+        "cannot be determined without knowing n"
+      ],
+      "difficulty": "Medium",
+      "text": "If $\\\\sqrt{n}$ is a natural number such that $n>1$, which of these can DEFINITELY be expressed as a product of primes?\n* (i) $\\\\sqrt{n}$\n* (ii) $n$\n* (iii) $\\frac{\\\\sqrt{n}}{2}$",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "topic": "Word Problems",
+      "text": "In a formula racing competition, the time taken by two racing cars A and B to complete 1 round of the track is 30 minutes and p minutes respectively. If the cars meet again at the starting point for the first time after 90 minutes and the $\\text{HCF}(30, p) = 15$, then the value of p is:",
+      "correctOptionIndex": 0,
+      "options": [
+        "45 minutes",
+        "60 minutes",
+        "75 minutes",
+        "180 minutes"
+      ],
+      "difficulty": "Hard"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "9987",
+        "9462",
+        "9998",
+        "9963"
+      ],
+      "text": "Find the greatest 4 digits number which leaves remainder 12 when divided by 105, 175 and 70.",
+      "topic": "HCF and LCM"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "options": [
+        "10500",
+        "11562",
+        "10512",
+        "11550"
+      ],
+      "text": "Find the smallest 5 digits number which leaves remainder 12 when divided by 105, 175 and 70.",
+      "topic": "HCF and LCM"
+    },
+    {
+      "text": "Find the least number of square tiles required to cover the floor of 630m long and 531 m broad.",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "9",
+        "4130",
+        "81",
+        "2360"
+      ],
+      "topic": "Word Problems"
+    },
+    {
+      "text": "Let a and b be two positive integers such that $a = p^3q^4$ and $b = p^2q^3$, where p and q are prime numbers. If $\\text{HCF}(a,b) = p^mq^n$ and $\\text{LCM}(a,b) = p^rq^s$, then $(m+n)(r+s) =$",
+      "correctOptionIndex": 2,
+      "options": [
+        "15",
+        "30",
+        "35",
+        "72"
+      ],
+      "difficulty": "Medium",
+      "topic": "HCF and LCM"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "$xy$",
+        "$xy^2$",
+        "$x^3y^3$",
+        "$x^2y^2$"
+      ],
+      "correctOptionIndex": 1,
+      "text": "If two positive integers a and b are written as $a = x^3y^2$ and $b = xy^3$, where x, y are prime numbers, then the result obtained by dividing the product of the positive integers by the $\\text{LCM}(a, b)$ is:",
+      "topic": "HCF and LCM"
+    },
+    {
+      "options": [
+        "3, 4 and 8",
+        "4, 3 and 6",
+        "4, 3 and 7",
+        "7, 4 and 3"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "text": "A class of 20 boys and 15 girls is divided into n groups so that each group has x boys and y girls. Values of x, y and n respectively are:",
+      "topic": "Word Problems"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "only (ii) and (iv)",
+        "only (i), (ii) and (iii)",
+        "only (i), (iii) and (iv)",
+        "all (i), (ii), (iii) and (iv)"
+      ],
+      "correctOptionIndex": 0,
+      "text": "Product of two co-prime numbers is 117. Their LCM should be:\n* (i) 1\n* (ii) 117\n* (iii) equal to their HCF\n* (iv) lies between 115 to 120",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "only (i) and (iii)",
+        "only (i), (ii) and (iii)",
+        "only (i), (iii) and (iv)",
+        "all (i), (ii), (iii) and (iv)"
+      ],
+      "difficulty": "Medium",
+      "text": "Which of the following statements is / are correct?\n* (i) There are infinitely many positive primes.\n* (ii) Let 'a' be a positive integer and p be a prime number such that $a^2$ is divisible by p, then a is divisible by p.\n* (iii) Every positive integer different from 1 can be expressed as a product of non-negative power of 2 and an odd number.\n* (iv) If 'p' is a positive prime, then $\\\\sqrt{p}$ is an irrational number.",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "difficulty": "Hard",
+      "options": [
+        "only (ii) and (iii)",
+        "only (i), (ii) and (iii)",
+        "only (i), (iii) and (iv)",
+        "all (i), (ii), (iii) and (iv)"
+      ],
+      "correctOptionIndex": 2,
+      "text": "The HCF of k and 93 is 31, where k is a natural number. Which of these can be true for some values of k?\n* (i) k is a multiple of 31\n* (ii) k is a multiple of 93\n* (iii) k is an even number\n* (iv) k is an odd number"
+    },
+    {
+      "text": "Suraj was teaching counting from 1 to 10 to his sister who is a kindergarten student. Suddenly a question came to his mind-Are there any numbers that are divisible by all the numbers from 1 to 10 (both inclusive)? The least number Suraj can have, is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "options": [
+        "10",
+        "100",
+        "504",
+        "2520"
+      ],
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "Prime Factorization",
+      "text": "While coming from the school, Virat noticed that the particulate matter $PM_{2.5}$ levels were exceptionally high as he had difficulty in breathing. On reaching home, he checked the reports and found that city's Air Quality Index was 196, which was \\\"poor\\\" by WHO standards. The sum of exponents of prime factors in the prime factorisation of Air Quality Index value is:",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy"
+    },
+    {
+      "text": "Prime factorisation of three numbers A, B and C is given below: $A = (2^r \\times 3^p \\times 5^q)$, $B = (2^p \\times 3^r \\times 5^p)$, $C = (2^p \\times 3^q \\times 5^p)$ such that $p < q < r$ and p, q, and r are natural numbers. The largest number that divides A, B and C without leaving a remainder is 30. The smallest number that leaves a remainder of 2 when divided by each of A, B and C is 5402. Find A, B and C.",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "A=600, B=270, C=180",
+        "A=300, B=540, C=180",
+        "A=150, B=270, C=90",
+        "A=600, B=540, C=90"
+      ],
+      "topic": "HCF and LCM"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "3 packs of crayons and 4 packs of pencils",
+        "4 packs of crayons and 3 packs of pencils",
+        "6 packs of crayons and 8 packs of pencils",
+        "8 packs of crayons and 6 packs of pencils"
+      ],
+      "correctOptionIndex": 0,
+      "text": "Shweta went to a stationery shop, during a sale, colour pencils were being sold in the pack of 24 each and crayons in the pack of 32 each. If she wants full packs of both and the same number of pencils and crayons, how many packets of each would she need to buy?",
+      "topic": "Word Problems"
+    },
+    {
+      "text": "A, B, and C starts cycling around a circular path in the same direction at same time. Circumference of the path is 1980m. If the speed of A is 330 m/min, speed of B is 198 m/min and C is 220 m/min and they start from the same point, then after what time interval they will be together at the starting point?",
+      "difficulty": "Hard",
+      "options": [
+        "60 min",
+        "90 min",
+        "120 min",
+        "180 min"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Word Problems"
+    },
+    {
+      "options": [
+        "L = P",
+        "L = 21P",
+        "L = 7P",
+        "L = Q"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "P is the LCM of 2, 4, 6, 8, 10; Q is the LCM of 1, 3, 5, 7, 9 and L is the LCM of P and Q. Then, find the relation between L and P.",
+      "topic": "HCF and LCM"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "$2 - \\\\sqrt{5}$",
+        "$-2 - \\\\sqrt{5}$",
+        "$\\\\sqrt{5} - 2$",
+        "$-2 + \\\\sqrt{5}$"
+      ],
+      "text": "On the two real numbers $a = 2 + \\\\sqrt{5}$ and $b = 3 - \\\\sqrt{7}$, what is the additive inverse of $a$?",
+      "topic": "Rational and Irrational Numbers"
+    },
+    {
+      "text": "Meera was asked to prove that $(3 + \\\\sqrt{5})$ is an irrational number. Shown below are the steps of her proof:\n\n* **Step 1**: Let $(3 + \\\\sqrt{5})$ be a rational number. Then it can be written as $p/q$ where p and q are co-primes.\n* **Step 2**: Hence, $\\\\sqrt{5} = (\\frac{p}{q} - 3)$\n* **Step 3**: Since p and q are integers, $(\\frac{p}{q} - 3)$ is also integer.\n* **Step 4**: Since $(\\frac{p}{q} - 3)$ is an integer and every integer is a rational number, it implies that $\\\\sqrt{5}$ is a rational number.\n* **Step 5**: But this contradicts the fact that $\\\\sqrt{5}$ is an irrational number. Hence $(3 + \\\\sqrt{5})$ is an irrational number.\n\nShe made an error in one step due to which her subsequent steps were incorrect too. In which step did she make that error?",
+      "options": [
+        "Step 1",
+        "Step 2",
+        "Step 3",
+        "Step 4"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Rational and Irrational Numbers"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "72 min; 4 rounds for Rahul and 3 rounds for Sameer",
+        "36 min; 2 rounds for Rahul and 1.5 rounds for Sameer",
+        "144 min; 8 rounds for Rahul and 6 rounds for Sameer",
+        "48 min; 3 rounds for Rahul and 2 rounds for Sameer"
+      ],
+      "text": "Rahul and Sameer cycle around a circular track. Rahul completes one round in 18 minutes and Sameer in 24 minutes. If they both start together at the same point and go in the same direction, after how much time will they meet at the starting point again, and how many rounds would each have completed by then?",
+      "topic": "Word Problems"
+    },
+    {
+      "topic": "Word Problems",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "60 seconds; 30 times",
+        "120 seconds; 15 times",
+        "60 seconds; 31 times",
+        "30 seconds; 60 times"
+      ],
+      "text": "In a marriage function, three types of LED light arrangements are set to flicker at different intervals: yellow lights every 3 seconds, red lights every 4 seconds, and green lights every 5 seconds. If all three lights flicker together at a certain time, determine how long it will take for them to flicker together again, and calculate how many times they will flicker simultaneously over a period of 30 minutes."
+    },
+    {
+      "topic": "Word Problems",
+      "text": "A conference is being attended by 60 Army participants, 84 Navy participants, and 108 Air Force participants. The organizers want to accommodate them in rooms such that each room contains the same number of participants, and all participants in a single room belong to the same department. Find the minimum number of rooms required to accommodate all the participants according to these rules.",
+      "options": [
+        "15 rooms",
+        "21 rooms",
+        "25 rooms",
+        "30 rooms"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Word Problems",
+      "text": "Bhargav has 455 erasers and 210 pencils that he wants to distribute into several gift groups. He intends for each group to have the exact same combination of erasers and pencils, leaving no items leftover. Calculate the greatest number of groups Bhargav can create.",
+      "options": [
+        "15 groups",
+        "25 groups",
+        "35 groups",
+        "45 groups"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Word Problems",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "text": "**Directions:** A statement of assertion (A) is followed by a statement of reason (R).\n\nShilpi wants to organise a party. She has 36 kiwis and 60 oranges at home and decided to distribute them equally among all. She decides to add 42 apples also.\n**Assertion (A):** The maximum number of guests that Shilpi can invite is 6.\n**Reason (R):** Maximum number of guests Shilpi can invite = LCM (36, 60, 42)."
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "**Directions:** A statement of assertion (A) is followed by a statement of reason (R).\n\n**Assertion (A):** Product of HCF and LCM of THREE numbers is equal to the product of those numbers.\n**Reason (R):** Product of HCF and LCM of TWO numbers is equal to the product of those numbers.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 2,
+      "text": "**Directions:** A statement of assertion (A) is followed by a statement of reason (R).\n\nRadha has 30 English books and 54 Mathematics books. She wants to stack them in such a way that each stack has the same number of books on a single subject.\n**Assertion (A):** The total minimum number of stacks possible in this arrangement is 14.\n**Reason (R):** The number of stacks of English is 9, and the number of stacks of Mathematics is 5.",
+      "topic": "Word Problems"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "**Directions:** A statement of assertion (A) is followed by a statement of reason (R).\n\n**Assertion (A):** The HCF of two numbers is 6 and their product is 18144, then their LCM is 3024.\n**Reason (R):** HCF $\\times$ LCM = Product of two given numbers.",
+      "correctOptionIndex": 0,
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "text": "**Directions:** A statement of assertion (A) is followed by a statement of reason (R).\n\n**Assertion (A):** $\\\\sqrt{2}$ is an irrational number.\n**Reason (R):** If m is a natural number which is not a perfect square, then $\\\\sqrt{m}$ is irrational.",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "topic": "Rational and Irrational Numbers"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "options": [
+        "A-iv, B-ii, C-i, D-iii",
+        "A-i, B-iv, C-iii, D-ii",
+        "A-ii, B-iv, C-i, D-iii",
+        "A-ii, B-iv, C-iii, D-i"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "Match the Column I with Column II and choose the correct option\n\n| Column-I | Column-II |\n| :--- | :--- |\n| (A) The HCF of the smallest number of two digits and the largest multiple of 5 which is less than 40 is | (i) 5 |\n| (B) HCF of $x^3y^4z^2$ and $x^2y^3z^5$, where x, y and z are distinct prime numbers is | (ii) 4 |\n| (C) The total number of factors of a prime number is | (iii) 2 |\n| (D) The sum of exponents of prime factors in the prime factorisation of 196 is | (iv) $x^2y^3z$ |"
+    },
+    {
+      "options": [
+        "A-iv, B-ii, C-i, D-iii",
+        "A-i, B-iv, C-iii, D-ii",
+        "A-ii, B-iv, C-i, D-iii",
+        "A-ii, B-iii, C-i, D-iv"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "text": "Match the Column I with Column II and choose the correct option\n\n| Column-I | Column-II |\n| :--- | :--- |\n| (A) The HCF of 12, 21 and 15 is | (i) $3^2 \\times 5^2$ |\n| (B) HCF of 112 and 198 is | (ii) 3 |\n| (C) 225 can be expressed as | (iii) 2 |\n| (D) 196 can be expressed as | (iv) $2^2 \\times 7^2$ |",
+      "topic": "Prime Factorization"
+    },
+    {
+      "text": "The LCM of the fractions $\\frac{5}{6}$, $\\frac{15}{24}$ and $\\frac{25}{8}$ is:",
+      "correctOptionIndex": 3,
+      "options": [
+        "$\\frac{5}{48}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{75}{48}$",
+        "$\\frac{75}{8}$"
+      ],
+      "difficulty": "Hard",
+      "topic": "HCF and LCM"
+    },
+    {
+      "text": "The HCF of $\\frac{2}{5}$, $\\frac{6}{25}$ and $\\frac{8}{35}$ is:",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{24}{5}$",
+        "$\\frac{2}{175}$",
+        "$\\frac{24}{175}$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "HCF and LCM",
+      "options": [
+        "$\\frac{4}{105}$",
+        "$\\frac{192}{7}$",
+        "$\\frac{3}{105}$",
+        "$\\frac{5}{109}$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "text": "The HCF of the fractions $\\frac{8}{21}$, $\\frac{12}{35}$ and $\\frac{32}{7}$ is:"
+    },
+    {
+      "text": "Raman is hosting the new year party for his friends. He wants to purchase some eatables like patties and buns for making burgers, some towels and some shining papers and glitter papers for decorating his house. He finds that the only towel size available is $16\\text{m} \\times 20\\text{m}$. Find the prime factorisation of the numerical value of the area of the towel.",
+      "options": [
+        "$2^5 \\times 5$",
+        "$2^6 \\times 5$",
+        "$2^4 \\times 5^2$",
+        "$2^7 \\times 5$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Prime Factorization"
+    },
+    {
+      "topic": "Word Problems",
+      "text": "Raman finds that patties come in a pack of 6, and buns in a pack of 8. Assuming one patty is required for one bun, what is the smallest number of packs of each, Raman must buy so that no patty or bun is left out?",
+      "difficulty": "Medium",
+      "options": [
+        "Patties = 3, Buns = 4",
+        "Patties = 4, Buns = 3",
+        "Patties = 6, Buns = 8",
+        "Patties = 8, Buns = 6"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "difficulty": "Hard",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "25"
+      ],
+      "correctOptionIndex": 2,
+      "text": "Raman has a towel of size $16\\text{m} \\times 20\\text{m}$. If square towels have to be cut from the piece of the towel, then find the minimum number of square towels that can be cut so that there is no wastage.",
+      "topic": "Word Problems"
+    },
+    {
+      "topic": "Word Problems",
+      "text": "For the screening of an informational documentary, three schools were selected by the district administration.\n\n| Name of the school | No. of students |\n| :--- | :--- |\n| C.A.V. Public School | 78 |\n| Bal Vidya Bhawan | 117 |\n| Bombay Public School | 130 |\n\nDuring the screening, multiple rooms are used simultaneously, and each room can accommodate an equal number of students. All students in a particular room belong to the same school. Find the maximum number of students that can be seated in one room.",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "topic": "Word Problems",
+      "correctOptionIndex": 1,
+      "options": [
+        "20 rooms",
+        "25 rooms",
+        "30 rooms",
+        "35 rooms"
+      ],
+      "difficulty": "Hard",
+      "text": "For the screening of an informational documentary, three schools were selected:\n\n| Name of the school | No. of students |\n| :--- | :--- |\n| C.A.V. Public School | 78 |\n| Bal Vidya Bhawan | 117 |\n| Bombay Public School | 130 |\n\nDuring the screening, multiple rooms are used simultaneously, and each room can accommodate an equal number of students. All students in a particular room belong to the same school. What is the minimum number of rooms required?"
+    },
+    {
+      "topic": "Word Problems",
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "1170 chocolates",
+        "585 chocolates",
+        "2340 chocolates",
+        "390 chocolates"
+      ],
+      "text": "For the screening of an informational documentary, three schools were selected:\n\n| Name of the school | No. of students |\n| :--- | :--- |\n| C.A.V. Public School | 78 |\n| Bal Vidya Bhawan | 117 |\n| Bombay Public School | 130 |\n\nAs a token of appreciation, the district administration has provided an equal number of chocolates to each school. When distributing these chocolates, each school distributes chocolates equally among its students, ensuring fairness and consistency. What is the minimum number of chocolates provided to each school?"
+    },
+    {
+      "text": "HCF of $14$ and $7$ is:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "options": [
+        "7",
+        "14",
+        "1",
+        "2"
+      ],
+      "topic": "HCF and LCM"
+    },
+    {
+      "options": [
+        "Rational number",
+        "Irrational number",
+        "Integer",
+        "Whole number"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "text": "For any prime number $p$, $\\sqrt{p}$ is a/an:",
+      "topic": "Irrational Numbers"
+    },
+    {
+      "text": "$3+\\sqrt{5}$ is a/an:",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Rational number",
+        "Irrational number",
+        "Integer",
+        "Natural number"
+      ],
+      "topic": "Irrational Numbers"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "Equal",
+        "Co-prime",
+        "Prime",
+        "Composite"
+      ],
+      "text": "If the LCM and HCF of two numbers are equal, then the numbers must be:",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "topic": "HCF and LCM",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "Sum",
+        "Difference",
+        "Product",
+        "Quotient"
+      ],
+      "text": "Product of two numbers is equal to the ________ of their HCF and LCM."
+    },
+    {
+      "topic": "Properties of Numbers",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Composite",
+        "Co-prime",
+        "Twin prime",
+        "Even"
+      ],
+      "text": "If HCF of $2$ numbers is $1$, then the numbers are called:"
+    },
+    {
+      "topic": "Prime Factorization",
+      "correctOptionIndex": 0,
+      "options": [
+        "$2^4 \\times 3 \\times 5$",
+        "$2^3 \\times 3^2 \\times 5$",
+        "$2^4 \\times 3^2 \\times 5$",
+        "$2^2 \\times 3 \\times 5^2$"
+      ],
+      "difficulty": "Easy",
+      "text": "Express $240$ as a product of its prime factors."
+    },
+    {
+      "correctOptionIndex": 0,
+      "options": [
+        "$17^2$",
+        "$13^2$",
+        "$19^2$",
+        "$23^2$"
+      ],
+      "difficulty": "Easy",
+      "text": "Express $289$ as a product of its prime factors.",
+      "topic": "Prime Factorization"
+    },
+    {
+      "topic": "Prime Factorization",
+      "correctOptionIndex": 0,
+      "options": [
+        "$2 \\times 5 \\times 7 \\times 11 \\times 13$",
+        "$2 \\times 3 \\times 5 \\times 7 \\times 13$",
+        "$2 \\times 5 \\times 7 \\times 17$",
+        "$3 \\times 5 \\times 7 \\times 11 \\times 13$"
+      ],
+      "difficulty": "Medium",
+      "text": "What is the prime factorization of $10010$?"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Rational",
+        "Irrational",
+        "Integer",
+        "Whole number"
+      ],
+      "text": "What type of number is $6-\\sqrt{5}$?",
+      "topic": "Irrational Numbers"
+    },
+    {
+      "topic": "HCF and LCM",
+      "options": [
+        "LCM = $525$, HCF = $3$",
+        "LCM = $105$, HCF = $7$",
+        "LCM = $315$, HCF = $3$",
+        "LCM = $525$, HCF = $5$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "Find the LCM and HCF of $21$, $105$, and $75$."
+    },
+    {
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "Yes, for all $n$",
+        "Yes, for even $n$",
+        "No, it never ends with $5$",
+        "Yes, for odd $n$"
+      ],
+      "text": "Can $20^n$ end with the digit $5$ for any natural number $n$?",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "options": [
+        "Yes",
+        "No, because it lacks $5$ as a prime factor",
+        "No, because it lacks $2$ as a prime factor",
+        "Yes, for $n > 5$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "text": "Can $12^n$ end with the digit $0$ for any natural number $n$?"
+    },
+    {
+      "topic": "HCF and LCM",
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "$194400$",
+        "$180000$",
+        "$126000$",
+        "$90000$"
+      ],
+      "text": "The sum of HCF and LCM of two numbers is $1260$. If their LCM is $900$ more than their HCF, then find the product of two numbers."
+    },
+    {
+      "topic": "Word Problems on HCF/LCM",
+      "text": "A bookseller purchased $527$ books out of which $153$ books are of Social Science and the remaining books of Science. Each book has same size. Social Science and Science books are to be packed in separate bundles and each bundle must contain same number of books. Find the least number of bundles.",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "17",
+        "31",
+        "22",
+        "9"
+      ]
+    },
+    {
+      "topic": "Word Problems on HCF/LCM",
+      "options": [
+        "120 hrs",
+        "240 hrs",
+        "480 hrs",
+        "960 hrs"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "text": "A circular field has a circumference of $480$ km. Three cyclists Abhishek, Varun and Gautam start together and can cycle at speeds of $10$ km/hr, $12$ km/hr and $15$ km/hr respectively, round the circular field. After how many hours will they meet again at the starting point?"
+    },
+    {
+      "topic": "HCF and LCM",
+      "options": [
+        "22338",
+        "11169",
+        "7446",
+        "None of these"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "text": "HCF of $306$ and $657$ is $9$, then their LCM is:"
+    },
+    {
+      "topic": "HCF and LCM",
+      "text": "HCF of the integers $3528, 2100, 792$ is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "16",
+        "12",
+        "36",
+        "24"
+      ]
+    },
+    {
+      "topic": "HCF and LCM",
+      "options": [
+        "753800",
+        "396900",
+        "1190700",
+        "793800"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "text": "LCM of the integers $2205, 2520, 8100$ is:"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "207",
+        "414",
+        "107",
+        "205"
+      ],
+      "text": "The HCF of two numbers is $23$ and their LCM is $1449$. If one of the numbers is $161$, then other number is:",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "options": [
+        "Yes",
+        "No",
+        "Yes, only if one of the two numbers is a multiple of $16$",
+        "With the given data, we cannot find the answer"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "text": "Can $16$ and $142$ be the HCF and LCM respectively of two numbers?"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "text": "Which of the following statements is correct?",
+      "options": [
+        "Perfect square numbers have odd number of factors",
+        "LCM of two numbers is always greater than the larger of them",
+        "HCF is not a factor of LCM",
+        "Each composite number has at most two factors"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0
+    },
+    {
+      "text": "A circular field has circumference of $360$ km. Two cyclist Peter and John start together and can cycle at speeds of $12$ km/h and $15$ km/h, respectively, around the circular field. The time taken by them to meet again at the starting point is:",
+      "difficulty": "Medium",
+      "options": [
+        "180 hrs",
+        "120 hrs",
+        "150 hrs",
+        "130 hrs"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Word Problems on HCF/LCM"
+    },
+    {
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "text": "If $n$ is a natural number, then $6^n - 5^n$ always ends with digit:",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "text": "$(58)^n$ can end with all of the following digits except:",
+      "correctOptionIndex": 2,
+      "options": [
+        "4",
+        "6",
+        "3",
+        "2"
+      ],
+      "difficulty": "Medium",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "topic": "Prime Numbers",
+      "correctOptionIndex": 0,
+      "options": [
+        "Composite number",
+        "Perfect square number",
+        "Perfect cube number",
+        "Prime number"
+      ],
+      "difficulty": "Hard",
+      "text": "If $P_1, P_2, P_3, ... P_n$ are distinct odd prime numbers, then $(P_1P_2P_3...P_n)+1$ is always a:"
+    },
+    {
+      "topic": "Fundamental Theorem of Arithmetic",
+      "text": "**Assertion (A):** Let $N$ be a natural number such that $N = P_1^{a_1}P_2^{a_2}...$ where $P_i$ are primes. This factorization is unique.\n**Reason (R):** Every composite number can be factorised as product of primes and this factorisation is unique except for the order in which the prime factor occurs.",
+      "correctOptionIndex": 0,
+      "options": [
+        "Both Assertion & Reason are true and the reason is the correct explanation of the assertion",
+        "Both Assertion & Reason are true but the reason is not the correct explanation of the assertion",
+        "Assertion is true statement but Reason is false",
+        "Both Assertion and Reason are false statements"
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Prime Factorization",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "Both Assertion & Reason are true and the reason is the correct explanation of the assertion",
+        "Both Assertion & Reason are true but the reason is not the correct explanation of the assertion",
+        "Assertion is true statement but Reason is false",
+        "Both Assertion and Reason are false statements"
+      ],
+      "text": "**Assertion (A):** If $720 = 2^x \\times 3^y \\times 5^z$ then $x+y+z=7$.\n**Reason (R):** $360 = 2^4 \\times 3^2 \\times 5^1$."
+    },
+    {
+      "options": [
+        "1",
+        "5",
+        "9",
+        "3"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "text": "Find the unit digit of $(1253)^{1469} - (1258)^{1471}$",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "180",
+        "150",
+        "200",
+        "240"
+      ],
+      "text": "For $n = 1451520$, find the total number of divisors.",
+      "topic": "Prime Factorization"
+    },
+    {
+      "text": "If LCM $(a,b)=450$, LCM $(b,c)=450$, LCM $(c,a)=150$, LCM $(a,b,c)=450$ and HCF $(a,b,c)=15$, then the product of $a$, $b$ and $c$ is:",
+      "options": [
+        "202500",
+        "1012500",
+        "625000",
+        "187500"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "topic": "HCF and LCM"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "124",
+        "120",
+        "112",
+        "132"
+      ],
+      "text": "The sum of all the factors of $56$ is:",
+      "topic": "Prime Factorization"
+    },
+    {
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "options": [
+        "4",
+        "0",
+        "3",
+        "1"
+      ],
+      "text": "If $x$ is a natural number which when divided by $5$, leaves remainder $3$, then the remainder when $x^2-5x+2$ is divided by $5$ is:",
+      "topic": "Euclid's Division Lemma"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "$4 \\times 5 \\times 8 \\times 3 \\times 2$",
+        "$6 \\times 7 \\times 8$",
+        "$5 \\times 8 \\times 3 \\times 2$",
+        "$5 \\times 6 \\times 7 \\times 8 \\times 9$"
+      ],
+      "correctOptionIndex": 0,
+      "text": "$N$ is a natural number such that $N = 2^3 \\times 3^4 \\times 5^7 \\times 7^2 \\times 11$. Total number of factors of $N$ is:",
+      "topic": "Prime Factorization"
+    },
+    {
+      "text": "Let $P = 2^3 \\cdot 3^3 \\cdot 4^4 \\cdot 5^5 \\cdot 8^2 \\cdot 10^3$, then the total number of divisors will be:",
+      "options": [
+        "723",
+        "480",
+        "576",
+        "756"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Prime Factorization"
+    },
+    {
+      "text": "The prime factorisation of $q$ has $2$ and $3$ only and the HCF $(q, 72)$ is $12$. The number of value(s) $q$ can take is:",
+      "correctOptionIndex": 0,
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "difficulty": "Hard",
+      "topic": "HCF and LCM"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "text": "If $2^{33}$ is divided by $17$, then the remainder is:",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "15",
+        "2",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "correctOptionIndex": 2,
+      "options": [
+        "0",
+        "4",
+        "5",
+        "6"
+      ],
+      "difficulty": "Hard",
+      "text": "The unit digit of the number $1^{33}+2^{33}+3^{33}+4^{33}+...+89^{33}$ is:",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "Terminating decimal expansion",
+        "Non-terminating decimal expansion",
+        "Non-terminating and non-repeating decimal expansion",
+        "Terminating and repeating decimal expansion"
+      ],
+      "correctOptionIndex": 0,
+      "text": "The real number $\\frac{2^2 \\times 3^2 \\times 7^2}{2^5 \\times 5^3 \\times 3^2 \\times 7}$ will have a:",
+      "topic": "Rational Numbers"
+    },
+    {
+      "topic": "Properties of Numbers",
+      "options": [
+        "$2k+1$",
+        "$k$",
+        "$2k$",
+        "$3k^2$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "text": "If $p$ is a prime number and $p$ divides $k^2$, then $p$ does not necessarily divide:"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "2160",
+        "4320",
+        "1080",
+        "432"
+      ],
+      "text": "The LCM of $30$, $72$ and $432$ is:",
+      "topic": "HCF and LCM"
+    },
+    {
+      "text": "All decimal numbers are:",
+      "options": [
+        "Rational numbers",
+        "Irrational numbers",
+        "Real numbers",
+        "Integers"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Number System"
+    },
+    {
+      "text": "Given $P^n=(b\\times5)^n$. For $P^n$ to end with the digit zero, $b$ is a/an ________ for natural number $n$.",
+      "options": [
+        "Any natural number",
+        "Even number",
+        "Odd number",
+        "None of these"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Fundamental Theorem of Arithmetic"
+    },
+    {
+      "text": "If $a$ and $b$ ($a>b$) are two odd prime numbers then $a^2-b^2$ is:",
+      "options": [
+        "Composite number",
+        "Even prime number",
+        "Odd prime number",
+        "Co-Prime number"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Properties of Prime Numbers"
+    },
+    {
+      "text": "$5\\times11\\times13+7$ is a:",
+      "options": [
+        "Prime number",
+        "Composite number",
+        "Odd number",
+        "None of these"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Composite Numbers"
+    },
+    {
+      "text": "Which of these numbers always ends with the digit 6, where $n$ is a natural number?",
+      "options": [
+        "$4^n$",
+        "$2^n$",
+        "$6^n$",
+        "$8^n$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Properties of Numbers"
+    },
+    {
+      "text": "If $n=2^3\\times3^4\\times5^4\\times7$, then the number of consecutive zeros in $n$, where $n$ is a natural number, is:",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "7"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Fundamental Theorem of Arithmetic"
+    },
+    {
+      "text": "Find the number of zeroes at the end in the product of $15\\times20\\times25\\times30\\times35$:",
+      "options": [
+        "12",
+        "3",
+        "40",
+        "56"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Trailing Zeros"
+    },
+    {
+      "text": "Find the maximum value of $n$ such that: $77\\times42\\times37\\times57\\times30\\times90\\times70\\times2400\\times2402\\times243\\times343$ is perfectly divisible by $21^n$.",
+      "options": [
+        "9",
+        "11",
+        "10",
+        "6"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Divisibility and Prime Factorization"
+    },
+    {
+      "text": "Find the smallest square number that is divisible by each of the numbers 4, 9 and 10.",
+      "options": [
+        "600",
+        "3600",
+        "900",
+        "8100"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "LCM and Perfect Squares"
+    },
+    {
+      "text": "The fundamental theorem of arithmetic is applicable to:",
+      "options": [
+        "Composite numbers",
+        "Prime numbers",
+        "Fractions",
+        "Irrational numbers"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Fundamental Theorem of Arithmetic"
+    },
+    {
+      "text": "Which of the following number is irrational number?",
+      "options": [
+        "$3.131131113...$",
+        "$4.463636363636...$",
+        "$2.35$",
+        "Both (B) and (C)"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Irrational Numbers"
+    },
+    {
+      "text": "The LCM of two numbers is 1200. Which of the following cannot be their HCF?",
+      "options": [
+        "600",
+        "500",
+        "400",
+        "200"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "HCF and LCM relation"
+    },
+    {
+      "text": "The least number that is divisible by all the numbers from 1 to 10 (both inclusive) is:",
+      "options": [
+        "10",
+        "100",
+        "504",
+        "2520"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "LCM"
+    },
+    {
+      "text": "What is the smallest number that, when divided by 35, 56 and 91 leaves remainder of 7 in each case?",
+      "options": [
+        "3640",
+        "3633",
+        "3647",
+        "None of these"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "LCM and Remainders"
+    },
+    {
+      "text": "Three pieces of timber 42 m, 49 m and 63 m long have to be divided into planks of the same length. What is the greatest possible length of each plank?",
+      "options": [
+        "7m",
+        "14m",
+        "42m",
+        "63m"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "HCF Applications"
+    },
+    {
+      "text": "Find the least number of square tiles that can be paved on the floor whose length is 120 m and breadth is 84 m:",
+      "options": [
+        "40",
+        "50",
+        "60",
+        "70"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "HCF Applications"
+    },
+    {
+      "text": "The numbers 11284 and 7655, when divided by a certain three digit number leave the same remainder. Find that three digit number.",
+      "options": [
+        "179",
+        "191",
+        "201",
+        "Can't be determined"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "HCF and Remainders"
+    },
+    {
+      "text": "The greatest number of 6 digits exactly divisible by 15, 24 and 36 is:",
+      "options": [
+        "999924",
+        "999639",
+        "999999",
+        "999720"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "LCM"
+    },
+    {
+      "text": "Two tankers contain 850 litres and 680 litres of petrol respectively. Find the maximum capacity of a container which can measure the petrol of either tanker in an exact number of times.",
+      "options": [
+        "171 litres",
+        "170 litres",
+        "340 litres",
+        "85 litres"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "HCF Applications"
+    },
+    {
+      "text": "The LCM of two numbers is 72 times their HCF. The sum of the LCM and HCF is 584. If one of the numbers is 72 then what is the other number:",
+      "options": [
+        "78",
+        "64",
+        "48",
+        "88"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "HCF and LCM Relation"
+    },
+    {
+      "text": "What is the least number which when divided by 8, 12 and 16 leaves 3 as the remainder in each case, but when divided by 7 leaves no remainder?",
+      "options": [
+        "147",
+        "145",
+        "197",
+        "None of these"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "LCM and Remainders"
+    },
+    {
+      "text": "If $x$ divides $y$ (written as $x|y$) and $y$ divides $z$ (written as $y|z$) and $x, y, z$ are integers then:",
+      "options": [
+        "$x|z$",
+        "$z|y$",
+        "$z|x$",
+        "None of these"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Divisibility Rules"
+    },
+    {
+      "text": "If $x$ and $y$ are rational numbers such that $\\sqrt{xy}$ is irrational, then $\\sqrt{x}+\\sqrt{y}$ is:",
+      "options": [
+        "Rational",
+        "Irrational",
+        "Non-real number",
+        "None of these"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Rational and Irrational Numbers"
+    },
+    {
+      "text": "The total number divisors of 10500 except 1 and itself is:",
+      "options": [
+        "48",
+        "50",
+        "46",
+        "56"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Number of Divisors"
+    },
+    {
+      "text": "The sum of the factors of 19600 is:",
+      "options": [
+        "54777",
+        "33667",
+        "5428",
+        "None of these"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Sum of Divisors"
+    },
+    {
+      "text": "The product of divisors of 7056 is:",
+      "options": [
+        "$(84)^{48}$",
+        "$(84)^{44}$",
+        "$(84)^{45}$",
+        "None of these"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Product of Divisors"
+    },
+    {
+      "text": "The number of even factors (or divisors) of 24 is:",
+      "options": [
+        "6",
+        "4",
+        "8",
+        "None of these"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Number of Divisors"
+    },
+    {
+      "text": "The last digit of the number obtained by multiplying the numbers $81\\times82\\times83\\times84\\times85\\times86\\times87\\times88\\times89$ will be:",
+      "options": [
+        "0",
+        "9",
+        "7",
+        "2"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Unit Digit Concept"
+    },
+    {
+      "text": "What will be the remainder obtained when $(9^6+1)$ is divided by 8?",
+      "options": [
+        "0",
+        "3",
+        "7",
+        "2"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Remainder Theorem in Numbers"
+    },
+    {
+      "text": "Find the ratio between the LCM and HCF of 5, 15 and 20.",
+      "options": [
+        "8:1",
+        "14:3",
+        "12:2",
+        "12:1"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "HCF and LCM Relation"
+    }
+  ],
+  "title": "Real Numbers - Comprehensive Test"
+}

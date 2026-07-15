@@ -1,0 +1,22 @@
+{
+  "id": 1782345600000,
+  "date": "Thursday 25 June 2026",
+  "tasks": [
+    {
+      "subject": "Biology ",
+      "description": "Draw Diagram of Heart",
+      "type": "homework"
+    },
+    {
+      "subject": "History ",
+      "description": "Do 5 MCQ, Hard words, main points and long question answer from today's topic ",
+      "type": "homework"
+    },
+    {
+      "subject": "Maths",
+      "description": "Do EX 3E Rs Agarwal ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782345600000
+}

@@ -1,0 +1,27 @@
+{
+  "id": 1781740800000,
+  "date": "Thursday 18 June 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Complete the Classwork and Submit HHW.",
+      "type": "homework"
+    },
+    {
+      "subject": "History ",
+      "description": "Do 5 MCQ, 5 Hardwords, Main points and 1 Long Question Answer from the Today's Taught Topics",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics ",
+      "description": "DO THE given question ",
+      "type": "homework"
+    },
+    {
+      "subject": "Maths",
+      "description": "Do EX 3B RS Agarwal Q11 to 24. ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1781740800000
+}

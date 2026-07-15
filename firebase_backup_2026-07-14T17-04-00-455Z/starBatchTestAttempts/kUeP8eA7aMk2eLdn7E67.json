@@ -1,0 +1,47 @@
+{
+  "userId": "8521278692",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 7,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 3,
+    "2": 0,
+    "3": 3,
+    "4": 3,
+    "5": 0,
+    "6": 2,
+    "7": 0,
+    "8": 1,
+    "9": 1
+  },
+  "weakTopics": [
+    "Precipitation Reactions",
+    "Exothermic and Endothermic Reactions",
+    "Chemical Equations"
+  ],
+  "seenIndices": [
+    0,
+    23,
+    3,
+    13,
+    18,
+    16,
+    24,
+    14,
+    17,
+    20
+  ],
+  "aiReview": [
+    "The student demonstrated a strong conceptual understanding in Chemical Reactions and Types of Chemical Reactions, with a 100% accuracy rate in these topics.",
+    "A notable weakness was observed in Exothermic and Endothermic Reactions, Precipitation Reactions, and Chemical Equations, where the student scored 0 out of 1 in each, indicating a need for improvement in these specific areas.",
+    "The student's performance on Medium difficulty questions was inconsistent, with 3 correct out of 5, suggesting a potential for careless mistakes or gaps in understanding at this level of difficulty.",
+    "Despite struggling with certain topics, the student showed resilience and understanding in other areas like Oxidation and Reduction, Acids, Bases and Salts, and Double Displacement Reactions, where they achieved a perfect score.",
+    "The student's ability to solve Hard questions was relatively strong, with 3 correct out of 4, which may indicate a capacity for advanced application and critical thinking."
+  ],
+  "createdAt": {
+    "_seconds": 1783951691,
+    "_nanoseconds": 51000000
+  }
+}

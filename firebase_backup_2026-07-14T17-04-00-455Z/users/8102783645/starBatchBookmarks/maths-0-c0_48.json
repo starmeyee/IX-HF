@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 48,
+  "createdAt": {
+    "_seconds": 1784032648,
+    "_nanoseconds": 29000000
+  },
+  "chapterId": "maths-0-c0",
+  "options": [
+    "$3^4 \\times 5^2 \\times 7$",
+    "$2^{10} \\times 3^4$",
+    "$3^2 \\times 5 \\times 7$",
+    "1"
+  ],
+  "correctOptionIndex": 0,
+  "topic": "HCF and LCM",
+  "testId": "IsVe3rDhaH843dev1Lc1",
+  "questionText": "Let $P = 2 \\times 4 \\times 6 \\times ... \\times 20$ and $Q = 1 \\times 3 \\times 5 \\times ... \\times 19$. What is the HCF of P and Q?",
+  "testTitle": "Real Numbers - Complete Mastery Test"
+}

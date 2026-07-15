@@ -1,0 +1,35 @@
+{
+  "title": "History Copy Completion",
+  "description": "Ch 1 Correction Only",
+  "sensitive": false,
+  "columns": [
+    {
+      "id": "col_1783054363486_0",
+      "label": "Excercise Q/Ans",
+      "type": "check"
+    },
+    {
+      "id": "col_1783054363486_1",
+      "label": "Extra Q/Ans",
+      "type": "check"
+    },
+    {
+      "id": "col_1783054363486_2",
+      "label": "Regular Homework",
+      "type": "check"
+    },
+    {
+      "id": "col_1783054363486_3",
+      "label": "Holiday Homework",
+      "type": "check"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783054363,
+    "_nanoseconds": 673000000
+  },
+  "updatedAt": {
+    "_seconds": 1783057661,
+    "_nanoseconds": 560000000
+  }
+}

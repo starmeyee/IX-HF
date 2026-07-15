@@ -1,0 +1,16 @@
+{
+  "rollNo": 35,
+  "createdAt": 1781709257229,
+  "completedHolidayHomework_v2": [
+    "17-file-0",
+    "17-file-1"
+  ],
+  "name": "pratyaksh",
+  "passwordHash": "7a8384d247a58ef30eb3bf6b009fdd7d07d3e3d69e54f6b0ea603d86eabd96b2",
+  "phone": "7004827260",
+  "attendance_absentDays": [
+    "2026-06-20"
+  ],
+  "mergedInto": "7004827265",
+  "mergedAt": 1782209914002
+}

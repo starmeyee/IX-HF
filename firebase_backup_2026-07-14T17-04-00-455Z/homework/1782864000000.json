@@ -1,0 +1,27 @@
+{
+  "id": 1782864000000,
+  "date": "Wednesday 1 July 2026",
+  "tasks": [
+    {
+      "subject": "Hindi ",
+      "description": "शब्दार्थ याद करे",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics ",
+      "description": "Practice Numericals ",
+      "type": "homework"
+    },
+    {
+      "subject": "Maths",
+      "description": "Do EX 3E Of RS Agarwal ",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics ",
+      "description": "Do Given Question answers.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782864000000
+}

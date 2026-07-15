@@ -1,0 +1,116 @@
+{
+  "topics": {
+    "it-1-c0": [
+      {
+        "topicId": "it-1-c0-xmqp3cp2x",
+        "topicName": "Drawing Object"
+      },
+      {
+        "topicName": "Drawing Objects",
+        "topicId": "it-1-c0-xmqqho8x0"
+      },
+      {
+        "topicId": "it-1-c0-xmqqhobyn",
+        "topicName": "Images"
+      }
+    ],
+    "sst-3-c1": [
+      {
+        "topicId": "sst-3-c1-xmqs1cy5w",
+        "topicName": "Disguised Unemployment"
+      }
+    ],
+    "english-3-c2": [
+      {
+        "topicId": "english-3-c2-xmqwkjvtu",
+        "topicName": "Reading"
+      },
+      {
+        "topicName": "Chapter Explanation",
+        "topicId": "english-3-c2-xmqwkk54w"
+      },
+      {
+        "topicId": "english-3-c2-xmqwkkcqe",
+        "topicName": "Q/ans Explanation"
+      }
+    ],
+    "sst-2-c2": [
+      {
+        "topicName": "Introduction",
+        "topicId": "sst-2-c2-xmqqhms94"
+      },
+      {
+        "topicId": "sst-2-c2-xmqz95tti",
+        "topicName": "Division of Gender Labour"
+      }
+    ],
+    "science-0-c0": [
+      {
+        "topicId": "science-0-c0-xmqz97dca",
+        "topicName": "Lens Numericals Practice"
+      },
+      {
+        "topicId": "science-0-c0-xmqz97jlx",
+        "topicName": "Mirror Numerical Practice"
+      },
+      {
+        "topicId": "science-0-c0-xmqz97oxm",
+        "topicName": "Power of Lens Numericals"
+      },
+      {
+        "topicId": "science-0-c0-xmqz97yv1",
+        "topicName": "Practical Of Lens"
+      }
+    ],
+    "hindi-0-c2": [
+      {
+        "topicId": "hindi-0-c2-xmr0iu6n6",
+        "topicName": "Introduction"
+      }
+    ],
+    "science-1-c1": [
+      {
+        "topicName": "Acid and Basic Radical",
+        "topicId": "science-1-c1-xmqwkik3m"
+      },
+      {
+        "topicId": "science-1-c1-xmr3mqn1s",
+        "topicName": "Acid & Basic Salt"
+      }
+    ],
+    "maths-0-c5": [
+      {
+        "topicName": "Mid point theorem",
+        "topicId": "maths-0-c5-xmrawimdf"
+      },
+      {
+        "topicId": "maths-0-c5-xmrawiqml",
+        "topicName": "Thales Theorem"
+      }
+    ],
+    "english-3-c3": [
+      {
+        "topicId": "english-3-c3-xmqz96m4t",
+        "topicName": "Introduction"
+      },
+      {
+        "topicId": "english-3-c3-xmr0iuva4",
+        "topicName": "Reading"
+      },
+      {
+        "topicId": "english-3-c3-xmrawjict",
+        "topicName": "Q/Ans"
+      }
+    ],
+    "science-0-c1": [
+      {
+        "topicId": "science-0-c1-xmrkn7p7u",
+        "topicName": "Persistence of Vision"
+      },
+      {
+        "topicId": "science-0-c1-xmrkn7y2b",
+        "topicName": "Power of Accomodation"
+      }
+    ]
+  }
+}

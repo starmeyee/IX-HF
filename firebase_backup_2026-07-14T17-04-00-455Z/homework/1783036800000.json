@@ -1,0 +1,32 @@
+{
+  "id": 1783036800000,
+  "date": "Friday 3 July 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "बच्चा हुआ भाग पढ़ें और प्रश्न-उत्तर (Q&A) पूरे करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Revise the classwork and practice to draw the diagram of the heart.",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography ",
+      "description": "Read the chapter water resources.",
+      "type": "homework"
+    },
+    {
+      "subject": "Maths:",
+      "description": "Complete the homework notebook for correction.",
+      "type": "homework"
+    },
+    {
+      "subject": "English:",
+      "description": "Read the chapter \"A Shady Plot.\"",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783036800000
+}

@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c1",
+  "subjectId": "maths-0",
+  "topicName": "Degree of a Polynomial",
+  "questionText": "Define a polynomial. Find the degree of the polynomial 7x³ − 5x² + 9x − 4.",
+  "imageUrl": null,
+  "marks": "2",
+  "source": "NCERT",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709455,
+    "_nanoseconds": 947000000
+  }
+}

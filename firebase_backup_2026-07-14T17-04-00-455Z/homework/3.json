@@ -1,0 +1,17 @@
+{
+  "id": 3,
+  "date": "Monday, 12 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "शब्दार्थ याद करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Practice determiners and complete it in the workbook.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778524200000
+}

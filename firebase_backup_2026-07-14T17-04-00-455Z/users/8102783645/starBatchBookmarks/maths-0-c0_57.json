@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 57,
+  "createdAt": {
+    "_seconds": 1784032653,
+    "_nanoseconds": 958000000
+  },
+  "chapterId": "maths-0-c0",
+  "options": [
+    "9",
+    "4130",
+    "81",
+    "2360"
+  ],
+  "correctOptionIndex": 1,
+  "topic": "Word Problems",
+  "testId": "IsVe3rDhaH843dev1Lc1",
+  "questionText": "Find the least number of square tiles required to cover the floor of 630m long and 531 m broad.",
+  "testTitle": "Real Numbers - Complete Mastery Test"
+}

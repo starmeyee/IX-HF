@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-03",
+  "weekday": "Friday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "पाठ 'तताँरा-वामीरो कथा' का वाचन एवं व्याख्या।"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Class Test."
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Explanation of Double Circulation."
+    },
+    {
+      "period": "4th",
+      "subject": "Geography",
+      "note": "Explanation of the chapter \"Water Resources.\""
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Basic explanation of Geometry."
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Reading and explanation of the chapter \"A Shady Plot.\""
+    }
+  ],
+  "updatedBy": "Pratyaksh",
+  "updatedAt": 1783089468605
+}

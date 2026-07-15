@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-25",
+  "weekday": "Thursday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "IT",
+      "note": "Session 2, Unit 1 Part B"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Ph Explained"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Human Heart Explained"
+    },
+    {
+      "period": "4th",
+      "subject": "History",
+      "note": "CH 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Ex 3E Question Practice"
+    },
+    {
+      "period": "6th",
+      "subject": "Economics",
+      "note": "Ch 2 Continued"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782441804975
+}

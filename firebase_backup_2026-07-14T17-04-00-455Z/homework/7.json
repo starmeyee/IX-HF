@@ -1,0 +1,37 @@
+{
+  "id": 7,
+  "date": "Thursday, 7 May 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "CW: Part-B, Unit-1, Session-1 (Practical on class projector).\nHW: Do the checkpoints and assignments.",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "CW: Chapter 1 completed with all activities explanation and Rancidity.\nHW: Do the Intext & Exercise Questions with activities explanation in your notebook (For submission tomorrow!).",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "CW: Nutrition topic completed and Respiration started.\nHW: Read the topic carefully.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "CW: Write notes on the given topics.\nHW: Complete your classwork notebook.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "CW: Trigonometry continued.\nHW: ⚠️ Prepare for the Maths test tomorrow (Chapter: Polynomials).",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "CW: Notebook checking and Class test.\nHW: Complete the notebook and make sure to submit it next week.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778092200000
+}

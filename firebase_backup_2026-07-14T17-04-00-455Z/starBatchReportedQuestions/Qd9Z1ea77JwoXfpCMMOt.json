@@ -1,0 +1,24 @@
+{
+  "testId": "J6DvegKU1FNE6LNBswHr",
+  "testTitle": "Polynomials - Complete Mastery Test",
+  "chapterId": "maths-0-c1",
+  "questionIndex": 55,
+  "questionText": "Let $p(x)$ be a cubic polynomial such that the coefficient of $x^{3}$ is $1$, $p(1)=1$, $p(2)=2$ and $p(3)=3$, then the value of $p(4)$ is:",
+  "options": [
+    "$4$",
+    "$10$",
+    "$6$",
+    "$7$"
+  ],
+  "correctOptionIndex": 1,
+  "reporterId": "8102783645",
+  "createdAt": {
+    "_seconds": 1784043775,
+    "_nanoseconds": 79000000
+  },
+  "resolvedAt": {
+    "_seconds": 1784045142,
+    "_nanoseconds": 462000000
+  },
+  "status": "make_super_difficult"
+}

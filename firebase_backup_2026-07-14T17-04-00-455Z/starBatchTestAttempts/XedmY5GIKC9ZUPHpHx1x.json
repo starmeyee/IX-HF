@@ -1,0 +1,47 @@
+{
+  "userId": "8521278692",
+  "testId": "YzIxYFsMJxzxPJcLDPo3",
+  "chapterId": "science-1-c0",
+  "score": 7,
+  "total": 10,
+  "responses": {
+    "0": 0,
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 3,
+    "5": 0,
+    "6": 1,
+    "7": 2,
+    "8": 1,
+    "9": 3
+  },
+  "weakTopics": [
+    "Chemical Equations",
+    "Types of Chemical Reactions",
+    "Oxidation and Reduction"
+  ],
+  "seenIndices": [
+    22,
+    25,
+    24,
+    21,
+    2,
+    7,
+    17,
+    1,
+    14,
+    9
+  ],
+  "aiReview": [
+    "The student demonstrated a strong foundation in basic concepts, as evidenced by a perfect score in Easy questions and a high accuracy rate in Medium questions.",
+    "A notable weakness was observed in the 'Chemical Equations' and 'Types of Chemical Reactions' topics, suggesting a need for review of these fundamental concepts.",
+    "The student's performance on 'Oxidation and Reduction' was inconsistent, with only one correct answer out of two, indicating a potential area for improvement in this specific topic.",
+    "Despite struggling with some individual topics, the student showed a good understanding of related concepts, such as 'Rancidity and Oxidation', which may indicate a ability to apply knowledge in context.",
+    "The lack of attempts or incorrect answers in the 'Hard' difficulty category, particularly with only one question attempted, suggests a potential gap in advanced application or a tendency to avoid challenging questions."
+  ],
+  "createdAt": {
+    "_seconds": 1783951250,
+    "_nanoseconds": 487000000
+  }
+}

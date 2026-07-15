@@ -1,0 +1,37 @@
+{
+  "id": 24,
+  "date": "Thursday, 16 April 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Teacher Absent",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Revise",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Draw Digestive System Diagram",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Write Hardwords with meaning, 5 MCQs, 5 Short Questions, and a Long Question",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete RS Agarwal 1D",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "Do the given Questions",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776277800000
+}

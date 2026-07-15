@@ -37,7 +37,7 @@ const ShareCard = forwardRef(function ShareCard({ date, tasks = [] }, ref) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
         <div>
           <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8b5cf6', margin: '0 0 4px' }}>
-            10th HI · Homework
+            IX HF · Homework
           </p>
           <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: '#f8fafc', letterSpacing: '-0.02em' }}>
             {date}
@@ -91,7 +91,7 @@ const ShareCard = forwardRef(function ShareCard({ date, tasks = [] }, ref) {
         textAlign: 'right',
         letterSpacing: '0.03em',
       }}>
-        10th HI Portal · xhiportal.vercel.app
+        IX HF Portal · xhiportal.vercel.app
       </p>
     </div>
   );

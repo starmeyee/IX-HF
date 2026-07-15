@@ -1,0 +1,84 @@
+{
+  "chapterId": "science-2-c5",
+  "subjectId": "science-2",
+  "sectionId": "science",
+  "title": "Sustainable Management of Natural Resources - Case Studies",
+  "questions": [
+    {
+      "text": "Which one of the following is NOT correct for biogas?",
+      "options": [
+        "its carbon neutral",
+        "its non-renewable",
+        "it depends on micro-organisms",
+        "yields rich manure"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Biogas Production"
+    },
+    {
+      "text": "Which of the following best indicates the steps of anaerobic digestion?",
+      "options": [
+        "Waste water feed -> generator -> biogas",
+        "Waste water feed -> digester -> biogas -> biogas storage -> generator",
+        "Generator -> waste water feed -> digester -> biogas -> biogas storage",
+        "Waste water feed -> biogas -> digester -> biogas storage -> generator"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Biogas Production"
+    },
+    {
+      "text": "Biogas is a better fuel than animal dung cake because: (i) Biogas has lower calorific value (ii) Animal dung cake has higher calorific value (iii) Biogas has high heating capacity (iv) Biogas burns without smoke.",
+      "options": [
+        "(i) only",
+        "(ii) only",
+        "(iii) and (iv)",
+        "(i) and (ii)"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Fuel Efficiency"
+    },
+    {
+      "text": "Biogas is formed in the:",
+      "options": [
+        "presence of air only",
+        "presence of water only",
+        "presence of air and absence of water",
+        "presence of water and absence of air"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Biogas Production"
+    },
+    {
+      "text": "Biogas is a mixture of the following gases:",
+      "options": [
+        "Ethane, Carbon monoxide, Nitrogen and Butane",
+        "Methane, Hydrogen, Carbon dioxide and Nitrogen",
+        "Butane, Carbon monoxide, Propane and Hydrogen",
+        "Carbon monoxide, Sulphur dioxide and Hydrogen"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Biogas Composition"
+    },
+    {
+      "text": "Raw material used in a bio gas plant is:",
+      "options": [
+        "Animal dung",
+        "Crop residue",
+        "Food waste",
+        "All of the above"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Biogas Production"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783877714,
+    "_nanoseconds": 54000000
+  }
+}

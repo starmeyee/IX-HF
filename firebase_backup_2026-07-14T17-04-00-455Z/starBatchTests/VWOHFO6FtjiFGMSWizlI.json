@@ -1,0 +1,24 @@
+{
+  "chapterId": "maths-0-c13",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "title": "Probability",
+  "questions": [
+    {
+      "text": "A pair of dice is tossed. The probability of not getting the sum eight is",
+      "options": [
+        "5/36",
+        "31/36",
+        "5/18",
+        "5/9"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Classical Probability"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783954771,
+    "_nanoseconds": 819000000
+  }
+}

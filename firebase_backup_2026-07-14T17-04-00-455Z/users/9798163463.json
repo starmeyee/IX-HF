@@ -1,0 +1,26 @@
+{
+  "name": "Aditya Prakash",
+  "phone": "9798163463",
+  "rollNo": 29,
+  "createdAt": 1784036305110,
+  "passwordHash": "265719f4e7ee032fe4a0c5ed5735a0530545e4f35c8648155dc5450330327e2a",
+  "seenInAppNotices": [
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "ux_marks-banner-v1": true,
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: Human Eye and Colourful World",
+      "at": 1784036652685,
+      "balance": 8
+    }
+  ],
+  "purchasedChapters": [
+    "science-0-c1"
+  ],
+  "hasUnlockedStarBatch": true,
+  "isStarBatch": true
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-20",
+  "weekday": "Saturday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Ch 2 Sanchayan Reading सपनों के-से दिन"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Topic :- PH was taught"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Sir Absent"
+    },
+    {
+      "period": "4th",
+      "subject": "Geography",
+      "note": "Ch 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Question practice from ex 3b Rs Agarwal"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "READING CH 3 Literature"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1781967204819
+}

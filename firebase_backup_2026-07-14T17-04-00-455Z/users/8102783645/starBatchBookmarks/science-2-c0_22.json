@@ -1,0 +1,20 @@
+{
+  "difficulty": "Easy",
+  "questionIndex": 22,
+  "createdAt": {
+    "_seconds": 1784045586,
+    "_nanoseconds": 723000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "Store urine until it is ready to be excreted.",
+    "Collect the initial filtrate filtered from the blood capillaries (glomerulus).",
+    "Reabsorb all the glucose and amino acids from the urine.",
+    "Add urea into the clean blood returning to the heart."
+  ],
+  "correctOptionIndex": 1,
+  "topic": "Excretion in Human Beings",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "The primary function of the Bowman's capsule in the human excretory system is to:",
+  "testTitle": "Life Processes - Complete Test"
+}

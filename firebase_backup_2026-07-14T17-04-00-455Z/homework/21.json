@@ -1,0 +1,27 @@
+{
+  "id": 21,
+  "date": "Monday, 20 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 'बड़े भाई साहब' के प्रश्न-उत्तर पूरे करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Civics",
+      "description": "Must bring your Civics copy!",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete all exercises of Chapter 1 (RS Aggarwal).",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Do the Q/Ans of Chapter 1 (Questions 4 to 10).",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776623400000
+}

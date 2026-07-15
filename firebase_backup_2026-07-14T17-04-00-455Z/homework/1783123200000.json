@@ -1,0 +1,27 @@
+{
+  "id": 1783123200000,
+  "date": "Saturday 4 July 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "Prepare For the Podcast Activities in class",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Revise all the Experiment",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Learn Thales Theorem",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Read Ch 4 The shady Plot",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783123200000
+}

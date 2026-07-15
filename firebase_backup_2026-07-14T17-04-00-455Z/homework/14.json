@@ -1,0 +1,27 @@
+{
+  "id": 14,
+  "date": "Tuesday, 28 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ – साखी के प्रश्न-उत्तर अपनी कॉपी में पूरे करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Civics",
+      "description": "Complete your copy for Ch 1 Power Sharing.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Polynomials Exercises 2.1 and 2.2 from NCERT in your homework copy.",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Do the Literature Q/Ans of Mrs Packletide's Tiger.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777314600000
+}

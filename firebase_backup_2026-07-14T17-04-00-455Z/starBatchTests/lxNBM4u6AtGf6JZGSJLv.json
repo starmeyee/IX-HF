@@ -1,0 +1,372 @@
+{
+  "chapterId": "sst-3-c0",
+  "subjectId": "sst-3",
+  "sectionId": "sst",
+  "title": "Development - Complete Mastery Test",
+  "questions": [
+    {
+      "text": "Assertion (A): Industrialists may want more dams to get more electricity, but this may submerge the land and disrupt the lives of people who are displaced.\nReason (R): Different persons can have different developmental goals, and what may be development for one may even be destructive for the other.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Different Developmental Goals"
+    },
+    {
+      "text": "Suppose you get a job offer in a far-off place with a high salary but no job security and no time for your family. Another job offers lower pay but regular employment and a better working atmosphere. If you choose the latter, which of the following developmental aspects are you prioritizing?",
+      "options": [
+        "Only material goods.",
+        "Higher per capita income for national development.",
+        "Non-material goals like security, freedom, and family time.",
+        "Purchasing Power Parity."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Income and Other Goals"
+    },
+    {
+      "text": "Why is total income NOT considered a useful measure for comparing the development of different countries?",
+      "options": [
+        "It is impossible to calculate the total income of a large country.",
+        "It does not account for the non-material goods produced.",
+        "Countries have different populations, so it does not tell us what an average person is likely to earn.",
+        "It includes the income of non-residents."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "National Development"
+    },
+    {
+      "text": "Consider two countries, Country X and Country Y, each with 5 citizens. In Country X, the monthly incomes are Rs 9500, 10500, 9800, 10000, and 10200. In Country Y, the incomes are Rs 500, 500, 500, 500, and 48000. Which of the following statements is logically correct?",
+      "options": [
+        "Both countries are equally developed because their total incomes are the same.",
+        "Country Y is more developed because its maximum income (48000) is the highest.",
+        "Country X is preferred because it has a more equitable distribution of income.",
+        "Averages hide the fact that Country X has extreme poverty."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Income and Other Criteria"
+    },
+    {
+      "text": "According to the World Development Reports (2017) brought out by the World Bank, India was classified in which of the following categories?",
+      "options": [
+        "Rich countries",
+        "Low middle-income countries",
+        "High-income countries",
+        "Underdeveloped low-income countries"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "National Development"
+    },
+    {
+      "text": "State A has a Per Capita Income of Rs 1,62,034 and an Infant Mortality Rate (IMR) of 33. State B has a Per Capita Income of Rs 1,40,190 and an IMR of 10. What can be analytically concluded from this data?",
+      "options": [
+        "State A is more developed in every aspect because income is the sole criterion of development.",
+        "State B has better public health facilities despite having a lower average income than State A.",
+        "Higher per capita income automatically guarantees a lower Infant Mortality Rate.",
+        "State A has a higher Net Attendance Ratio than State B."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Income and Other Criteria"
+    },
+    {
+      "text": "If the Net Attendance Ratio for the secondary stage (age 14 and 15 years) in a state is 43, what does this indicate about the educational reality in that state?",
+      "options": [
+        "43% of the total population of the state attends school.",
+        "43 out of 100 children in the 14-15 age group are attending school, meaning more than half are missing from elementary class.",
+        "43% of children above the age of 7 are literate.",
+        "The gross enrolment ratio has reached its maximum potential."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Income and Other Criteria"
+    },
+    {
+      "text": "Which of the following is the BEST example demonstrating that 'money in your pocket cannot buy all the goods and services that you may need to live well'?",
+      "options": [
+        "Purchasing a luxury car.",
+        "Getting admission to a private international school.",
+        "Ensuring a pollution-free environment and protection from infectious diseases.",
+        "Buying imported organic food."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "Assertion (A): Kerala has a low Infant Mortality Rate.\nReason (R): It has adequate provision of basic health and educational facilities.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "A 14-year-old girl has a calculated Body Mass Index (BMI) of 15.2. According to the text, how would a nutrition scientist classify her health status?",
+      "options": [
+        "Overweight",
+        "Normal",
+        "Undernourished",
+        "Obese"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "The Human Development Report published by the UNDP compares countries based on which of the following sets of criteria?",
+      "options": [
+        "Per capita income, level of industrialization, and stock of foreign exchange.",
+        "Educational levels of the people, health status, and per capita income.",
+        "Total national income, defense budget, and crude oil reserves.",
+        "Net attendance ratio, groundwater reserves, and poverty rate."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Human Development Report"
+    },
+    {
+      "text": "Based on the 2017 data, which neighboring country of India was ahead of it in Gross National Income per capita, Life Expectancy at birth, and Mean Years of Schooling?",
+      "options": [
+        "Pakistan",
+        "Bangladesh",
+        "Sri Lanka",
+        "Nepal"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Human Development Report"
+    },
+    {
+      "text": "In the context of calculating HDI, why is Per Capita Income calculated in US dollars for all countries?",
+      "options": [
+        "Because the US dollar is the only currency recognized by the United Nations.",
+        "So that it can be easily compared, ensuring every dollar buys the same amount of goods and services in any country.",
+        "Because the World Bank is located in the United States.",
+        "To inflate the income of developing nations artificially."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Human Development Report"
+    },
+    {
+      "text": "Read the following statements regarding groundwater in India:\nI. It is an example of a non-renewable resource.\nII. Nearly one-third of the country is overusing their groundwater reserves.\nIII. Overuse is particularly found in agriculturally prosperous regions like Punjab and Western U.P.\nWhich of the statements above is/are correct?",
+      "options": [
+        "I and II only",
+        "II and III only",
+        "I and III only",
+        "I, II, and III"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Sustainability of Development"
+    },
+    {
+      "text": "Crude oil is considered a non-renewable resource because:",
+      "options": [
+        "It is replenished by nature at a faster rate than it is consumed.",
+        "It is used only by developed nations like the USA.",
+        "We have a fixed stock on earth which cannot be replenished, and it will get exhausted after years of use.",
+        "Its extraction does not cause environmental degradation."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Sustainability of Development"
+    },
+    {
+      "text": "In Tamil Nadu, 90 percent of the people living in rural areas use a ration shop, whereas in West Bengal only 35 percent of rural people do so. What is the most likely developmental outcome of this situation?",
+      "options": [
+        "West Bengal will have a higher per capita income.",
+        "The health and nutritional status of rural people in Tamil Nadu is likely to be better due to a well-functioning Public Distribution System (PDS).",
+        "Tamil Nadu will experience faster depletion of groundwater.",
+        "West Bengal will have a higher Infant Mortality Rate simply due to higher income."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "'The Earth has enough resources to meet the needs of all but not enough to satisfy the greed of even one person.' This statement highlights the critical importance of:",
+      "options": [
+        "Maximizing per capita income.",
+        "Exploiting crude oil reserves aggressively.",
+        "Sustainability of development.",
+        "Increasing the Body Mass Index of the population."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Sustainability of Development"
+    },
+    {
+      "text": "Which of the following formulas correctly represents the calculation for Body Mass Index (BMI)?",
+      "options": [
+        "Weight in kg / Height in cm",
+        "Weight in kg / (Height in meters)²",
+        "Height in meters / (Weight in kg)²",
+        "(Weight in kg × Height in meters) / 100"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "A boy from a rich urban family has the developmental goal of studying abroad. His sister expects the same freedom and opportunity, and that he shares in household work. If the brother dislikes this, it is an example of:",
+      "options": [
+        "Averages hiding disparities.",
+        "National development.",
+        "Conflicting developmental goals.",
+        "Sustainable development."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Different Developmental Goals"
+    },
+    {
+      "text": "Assertion (A): Over time, new sources of non-renewable resources like crude oil may be discovered, adding to the stock.\nReason (R): Because new sources are discovered, non-renewable resources will never get exhausted.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Sustainability of Development"
+    },
+    {
+      "text": "In a rural area, women want to engage in paid work to increase their dignity in the household and society. However, they can only do so if there is a safe and secure environment. This scenario proves that:",
+      "options": [
+        "Developmental goals are only about better income.",
+        "Women do not prioritize security over income.",
+        "Developmental goals are a mix of better income and other important things in life like respect and security.",
+        "Paid work decreases women's dignity."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Income and Other Goals"
+    },
+    {
+      "text": "If a country wants to improve its ranking in the Human Development Index (HDI), which of the following areas should it focus the least on as a direct metric of HDI?",
+      "options": [
+        "Increasing Per Capita Income.",
+        "Improving Life Expectancy at birth.",
+        "Building up a large military arsenal.",
+        "Increasing the Mean Years of Schooling."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Human Development Report"
+    },
+    {
+      "text": "'Consequences of environmental degradation do not respect national or state boundaries.' What does this statement imply about sustainable development?",
+      "options": [
+        "Environmental degradation is a localized issue affecting only the country responsible.",
+        "Our future is linked together, and sustainability is a global issue requiring collective action.",
+        "State boundaries can block the effects of pollution if heavily guarded.",
+        "Only developed countries need to worry about the environment."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Sustainability of Development"
+    },
+    {
+      "text": "Literacy Rate measures the proportion of literate population in which age group?",
+      "options": [
+        "14 and 15 years",
+        "7-and-above age group",
+        "15-49 years",
+        "10-14 years"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Income and Other Criteria"
+    },
+    {
+      "text": "A multinational company dumped toxic waste in Abidjan, Ivory Coast, causing severe health issues for the locals. In this context, the developmental goal of the multinational company (maximizing profit) resulted in:",
+      "options": [
+        "National development for Ivory Coast.",
+        "A mutually beneficial scenario for both the company and the locals.",
+        "Destruction and loss of life for the local people, showing conflicting goals.",
+        "An increase in the Human Development Index of Ivory Coast."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Different Developmental Goals"
+    },
+    {
+      "text": "According to the text, why is the collective provision of goods and services often considered the best and cheapest way?",
+      "options": [
+        "Because private companies cannot manufacture goods.",
+        "Because individual provision (like personal security or individual schools) is highly expensive and impractical for the majority.",
+        "Because the government has unlimited money.",
+        "Because it lowers the per capita income of the nation."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Public Facilities"
+    },
+    {
+      "text": "Table 1.6 shows that countries like Nepal and Bangladesh have a lower per capita income than India. However, they perform better than India in which of the following indicators?",
+      "options": [
+        "Mean years of schooling",
+        "Life Expectancy at birth",
+        "HDI Rank in the world",
+        "Gross National Income (GNI)"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Human Development Report"
+    },
+    {
+      "text": "Assume a country’s average income is rising steadily over a decade. Does this conclusively mean that all sections of the economy have become better off?",
+      "options": [
+        "Yes, because a rising average guarantees that poverty is eliminated.",
+        "Yes, because average income is the most accurate reflection of the poorest citizen's wealth.",
+        "No, because the average income hides disparities; the rich might be getting richer while the poor remain poor.",
+        "No, because average income does not include the income of farmers."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Income and Other Criteria"
+    },
+    {
+      "text": "The World Bank uses per capita income to classify countries into rich and low-income categories. What is the major limitation of using ONLY this criterion?",
+      "options": [
+        "It ignores the size of the country's population.",
+        "It does not account for the distribution of income or quality of life indicators like health and education.",
+        "It requires complex conversions into US dollars.",
+        "It gives too much weight to the Infant Mortality Rate."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "National Development"
+    },
+    {
+      "text": "Read the following statements and choose the correct option:\nStatement I: A prosperous farmer from Punjab and a landless rural laborer will have the exact same developmental goals.\nStatement II: The prosperous farmer wants cheap labor, while the laborer wants better wages, illustrating conflicting goals.",
+      "options": [
+        "Statement I is correct, Statement II is incorrect.",
+        "Statement I is incorrect, Statement II is correct.",
+        "Both statements are correct.",
+        "Both statements are incorrect."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Different Developmental Goals"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783875277,
+    "_nanoseconds": 38000000
+  }
+}

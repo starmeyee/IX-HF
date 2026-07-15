@@ -1,0 +1,17 @@
+{
+  "chapterId": "maths-0-c1",
+  "subjectId": "maths-0",
+  "topicName": "Competency Based Question",
+  "questionText": "The profit of a company is represented by the polynomial P(x) = x² − 9x + 20. Find the values of x for which the profit becomes zero and interpret the result.",
+  "imageUrl": null,
+  "marks": "5",
+  "source": "Other",
+  "authorName": "Utkarsh Kumar",
+  "authorRoll": 23,
+  "bookmarkedBy": [],
+  "reports": [],
+  "createdAt": {
+    "_seconds": 1783709455,
+    "_nanoseconds": 947000000
+  }
+}

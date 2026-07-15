@@ -1,0 +1,1236 @@
+{
+  "chapterId": "science-2-c0",
+  "subjectId": "science-2",
+  "sectionId": "science",
+  "createdAt": {
+    "_seconds": 1783825714,
+    "_nanoseconds": 340000000
+  },
+  "title": "Life Processes - Complete Test",
+  "questions": [
+    {
+      "topic": "Nutrition in Plants",
+      "text": "A student performs the starch test on a leaf but forgets to boil it in alcohol before applying the iodine solution. What will be the most likely observation and the reason behind it?",
+      "options": [
+        "The leaf will turn blue-black because iodine directly reacts with chloroplasts.",
+        "The leaf will become transparent, masking any colour change.",
+        "The leaf will remain green, making it impossible to observe the blue-black colour change clearly.",
+        "The iodine solution will wash away the starch, leaving the leaf colourless."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Nutrition in Plants",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "Transpiration, due to high humidity inside the bell jar.",
+        "Photosynthesis, due to the absorption of carbon dioxide by potassium hydroxide.",
+        "Respiration, due to the lack of oxygen inside the bell jar.",
+        "Absorption, due to the lack of soil moisture."
+      ],
+      "text": "During a lab experiment, a student places a potted plant under a bell jar with potassium hydroxide. After a few hours, a leaf is tested for starch and shows a negative result. Which life process was directly inhibited to cause this result?"
+    },
+    {
+      "text": "The stomatal pores of a desert plant are typically closed during the daytime. How do these plants manage to perform photosynthesis without taking in CO2 during the day?",
+      "correctOptionIndex": 2,
+      "options": [
+        "They use the CO2 released during aerobic respiration in the daytime.",
+        "They absorb CO2 through their roots from the soil.",
+        "They take up CO2 at night and prepare an intermediate compound, which is acted upon by light energy during the day.",
+        "They perform photosynthesis without CO2, using only water and sunlight."
+      ],
+      "difficulty": "Hard",
+      "topic": "Nutrition in Plants"
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "Pancreas",
+        "Gall Bladder",
+        "Stomach",
+        "Large Intestine"
+      ],
+      "difficulty": "Medium",
+      "text": "A person is advised by their doctor to significantly reduce their intake of fats and oils after a certain surgical procedure. Which of the following organs was most likely removed or bypassed?",
+      "topic": "Nutrition in Human Beings"
+    },
+    {
+      "topic": "Nutrition in Human Beings",
+      "correctOptionIndex": 1,
+      "options": [
+        "Proteins will not be digested because pepsin becomes inactive.",
+        "The stomach wall will be corroded and damaged by the action of hydrochloric acid.",
+        "Food will pass into the small intestine too quickly.",
+        "Starch will remain undigested as salivary amylase is denatured."
+      ],
+      "difficulty": "Easy",
+      "text": "If the inner lining of the stomach loses its ability to secrete mucus, which of the following is the most immediate and direct consequence?"
+    },
+    {
+      "text": "Lions have a significantly shorter small intestine compared to cows. What is the evolutionary and physiological justification for this difference?",
+      "difficulty": "Medium",
+      "options": [
+        "Lions need to absorb nutrients rapidly to maintain high running speeds.",
+        "Meat is much easier to digest than the cellulose present in grass.",
+        "Cows drink more water, which requires a longer intestine for absorption.",
+        "Lions lack the enzyme lipase, requiring a shorter transit time for food."
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Nutrition in Human Beings"
+    },
+    {
+      "topic": "Heterotrophic Nutrition",
+      "options": [
+        "The undigested food is expelled directly from the vacuole.",
+        "The food is converted into ATP inside the vacuole.",
+        "Complex substances are broken down into simpler ones that diffuse into the cytoplasm.",
+        "The food vacuole merges with the nucleus to provide energy."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "text": "Amoeba takes in food using temporary finger-like extensions. What happens immediately after the food particle is engulfed to form a food vacuole?"
+    },
+    {
+      "text": "Consider two test tubes: Tube A contains starch solution + saliva. Tube B contains starch solution + boiled saliva. After 30 minutes, dilute iodine is added to both. What will be the colour change, and why?",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "Both will turn blue-black because starch is present in both.",
+        "Tube A will turn blue-black, Tube B will not, as boiling activates enzymes.",
+        "Tube A will remain the colour of iodine, Tube B will turn blue-black, because boiling denatures salivary amylase.",
+        "Neither will change colour as saliva neutralizes iodine."
+      ],
+      "topic": "Nutrition in Human Beings"
+    },
+    {
+      "text": "Two athletes run a 100m sprint. Athlete X experiences severe muscle cramps, while Athlete Y does not. At the cellular level, what is accumulating in Athlete X's muscles, and under what condition?",
+      "correctOptionIndex": 2,
+      "options": [
+        "Ethanol, due to the absence of oxygen.",
+        "Carbon dioxide, due to excess aerobic respiration.",
+        "Lactic acid, due to a lack of oxygen.",
+        "Pyruvate, due to the presence of abundant oxygen."
+      ],
+      "difficulty": "Medium",
+      "topic": "Respiration"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "Atmospheric air does not contain any carbon dioxide.",
+        "Exhaled air contains a higher concentration of carbon dioxide than atmospheric air.",
+        "Lime water reacts faster with warm air from the lungs than cold atmospheric air.",
+        "Moisture in exhaled air causes the lime water to turn milky, not CO2."
+      ],
+      "correctOptionIndex": 1,
+      "text": "A student blows air through a glass tube into a test tube containing freshly prepared lime water. The lime water turns milky in a few seconds. If the student used a syringe to pump atmospheric air into another tube of lime water, it takes much longer to turn milky. What does this prove?",
+      "topic": "Respiration"
+    },
+    {
+      "text": "In the human respiratory system, the trachea does not collapse even when there is not much air in it. This is primarily supported by:",
+      "options": [
+        "The constant high pressure of exhaled air.",
+        "The thick muscular walls of the windpipe.",
+        "The presence of rings of cartilage.",
+        "The vacuum created by the diaphragm."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Respiration",
+      "correctOptionIndex": 1,
+      "options": [
+        "Water is denser than air, requiring more physical effort to pump through gills.",
+        "The amount of dissolved oxygen in water is fairly low compared to oxygen in the air.",
+        "Fishes require more ATP to maintain their body temperature in cold water.",
+        "Aquatic plants release excess carbon dioxide that must be expelled quickly."
+      ],
+      "difficulty": "Medium",
+      "text": "Aquatic organisms like fish have a breathing rate much faster than terrestrial organisms. Which environmental factor best explains this adaptation?"
+    },
+    {
+      "topic": "Respiration in Plants",
+      "text": "During the day, which gas is a major waste product released by a well-watered plant exposed to bright sunlight?",
+      "correctOptionIndex": 2,
+      "options": [
+        "Carbon dioxide, because respiration is faster than photosynthesis.",
+        "Water vapour only, due to heavy transpiration.",
+        "Oxygen, as it is a by-product of photosynthesis occurring at a faster rate than respiration.",
+        "Nitrogen, derived from soil nitrates."
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "The blood would become too alkaline due to trapped oxygen.",
+        "The rate of digestion would increase to compensate for energy loss.",
+        "The efficiency of gas exchange would drop, leading to less oxygen delivery to tissues.",
+        "The heart would pump deoxygenated blood to the body cells."
+      ],
+      "text": "If the alveolar surface area in a human lung was drastically reduced due to a disease like emphysema, what would be the most immediate effect on the body?",
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Transportation in Human Beings",
+      "text": "Why is it biologically advantageous for mammals and birds to have a four-chambered heart with complete separation of oxygenated and deoxygenated blood?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "It prevents blood from flowing backward into the atria.",
+        "It allows for a highly efficient supply of oxygen needed to maintain a constant body temperature.",
+        "It reduces the blood pressure in the capillaries, preventing them from bursting.",
+        "It allows them to breathe underwater for short periods."
+      ]
+    },
+    {
+      "text": "A patient's blood report shows a severe deficiency of platelets. What is the most critical risk this patient faces?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "Inability to fight off bacterial infections.",
+        "Inefficient transport of oxygen leading to severe fatigue.",
+        "Excessive blood loss in the event of an injury due to lack of clotting.",
+        "Accumulation of nitrogenous wastes in the plasma."
+      ],
+      "topic": "Transportation in Human Beings"
+    },
+    {
+      "options": [
+        "150 mm Hg is the pressure during ventricular relaxation (diastole).",
+        "90 mm Hg is the pressure during ventricular contraction (systole).",
+        "150 mm Hg is the systolic pressure, indicating hypertension compared to the normal 120 mm Hg.",
+        "90 mm Hg indicates the pressure in the veins, while 150 indicates pressure in the arteries."
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "text": "A doctor measures a patient's blood pressure using a sphygmomanometer and records it as '150/90'. Which of the following statements correctly interprets these numbers?",
+      "topic": "Transportation in Human Beings"
+    },
+    {
+      "topic": "Transportation in Plants",
+      "correctOptionIndex": 1,
+      "options": [
+        "Active transport of water molecules using ATP.",
+        "Suction created by the evaporation of water from leaves (transpiration pull).",
+        "Capillary action in the phloem tubes.",
+        "The weight of the leaves pulling the branches downward."
+      ],
+      "difficulty": "Medium",
+      "text": "In plants, water is pushed upward over small distances by root pressure. However, for a 50-meter-tall tree, root pressure is insufficient. What is the primary driving force for the upward movement of water during the day?"
+    },
+    {
+      "topic": "Transportation in Plants",
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "options": [
+        "Phloem transport is driven purely by physical forces like evaporation, while xylem uses biological pumps.",
+        "Phloem transports water in a unidirectional manner, whereas xylem transports food bidirectionally.",
+        "Phloem utilizes energy from ATP to increase osmotic pressure for translocation, while xylem transport is largely a passive pull.",
+        "Phloem only operates at night, whereas xylem operates exclusively during the day."
+      ],
+      "text": "How does the mode of transport in the phloem differ fundamentally from that in the xylem?"
+    },
+    {
+      "topic": "Transportation in Human Beings",
+      "text": "A person has a structural defect where the valves in their veins do not close properly. What will be the most likely physical symptom of this defect?",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "High blood pressure in the arteries of the brain.",
+        "Pooling of blood in the lower legs due to gravity pulling blood backward.",
+        "Oxygen-rich blood mixing with carbon dioxide-rich blood in the heart.",
+        "Rapid clotting of blood inside the blood vessels."
+      ]
+    },
+    {
+      "text": "Why is carbon dioxide predominantly transported in the dissolved form in our blood plasma, rather than being bound to a respiratory pigment like oxygen?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "Because haemoglobin actively rejects carbon dioxide molecules.",
+        "Because carbon dioxide is much more soluble in water than oxygen.",
+        "Because carbon dioxide is toxic to red blood cells.",
+        "Because the lymph system solely handles carbon dioxide transport."
+      ],
+      "topic": "Transportation in Human Beings"
+    },
+    {
+      "text": "Trace the correct pathway of an oxygen molecule travelling from the atmosphere to a human red blood cell.",
+      "options": [
+        "Nostrils -> Larynx -> Pharynx -> Trachea -> Bronchioles -> Bronchi -> Alveoli",
+        "Nostrils -> Pharynx -> Larynx -> Trachea -> Bronchi -> Bronchioles -> Alveoli",
+        "Nostrils -> Trachea -> Pharynx -> Larynx -> Bronchi -> Alveoli -> Bronchioles",
+        "Nostrils -> Pharynx -> Trachea -> Larynx -> Bronchioles -> Bronchi -> Alveoli"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Excretion in Human Beings",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Store urine until it is ready to be excreted.",
+        "Collect the initial filtrate filtered from the blood capillaries (glomerulus).",
+        "Reabsorb all the glucose and amino acids from the urine.",
+        "Add urea into the clean blood returning to the heart."
+      ],
+      "text": "The primary function of the Bowman's capsule in the human excretory system is to:"
+    },
+    {
+      "topic": "Excretion in Human Beings",
+      "text": "A patient undergoing hemodialysis (artificial kidney) relies on dialysing fluid. How does the composition of fresh dialysing fluid differ from the patient's blood?",
+      "options": [
+        "It contains a higher concentration of urea to draw wastes out via active transport.",
+        "It has a completely different osmotic pressure than blood to force filtration.",
+        "It has the same osmotic pressure as blood, but is devoid of nitrogenous wastes.",
+        "It contains no glucose or salts, ensuring everything leaves the blood."
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2
+    },
+    {
+      "text": "In a healthy human adult, the kidneys generate about 180 L of initial filtrate daily. However, only 1-2 L of urine is excreted. What biological mechanism is responsible for this massive difference?",
+      "correctOptionIndex": 2,
+      "options": [
+        "The ureters absorb 99% of the liquid before it reaches the bladder.",
+        "Sweat glands excrete the remaining 178 L through the skin.",
+        "Selective re-absorption of water and useful substances in the kidney tubules.",
+        "The Bowman's capsule evaporates the excess water into the abdominal cavity."
+      ],
+      "difficulty": "Medium",
+      "topic": "Excretion in Human Beings"
+    },
+    {
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "Storing waste products in cellular vacuoles of leaves that eventually fall off.",
+        "Excreting excess water via transpiration.",
+        "Storing nitrogenous wastes as urea in their root nodules.",
+        "Storing waste as resins and gums in old, non-functional xylem."
+      ],
+      "text": "Unlike animals, plants do not have a specialized excretory system with complex organs like kidneys. Which of the following is NOT a method by which plants get rid of waste products?",
+      "topic": "Excretion in Plants"
+    },
+    {
+      "text": "Which statement best compares the function of alveoli in the lungs and nephrons in the kidneys?",
+      "difficulty": "Hard",
+      "options": [
+        "Both act as structural supports; alveoli for ribs, nephrons for the spine.",
+        "Both are functional units maximizing surface area for exchange: alveoli for gases, nephrons for filtering blood.",
+        "Both use active transport to move oxygen into the blood.",
+        "Alveoli filter liquid wastes from inhaled air, while nephrons filter gaseous wastes from blood."
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Life Processes (General)"
+    },
+    {
+      "text": "During double circulation in humans, blood passes through the heart twice. Which sequence accurately describes the flow of deoxygenated blood?",
+      "difficulty": "Medium",
+      "options": [
+        "Lungs -> Pulmonary Vein -> Left Atrium -> Left Ventricle -> Body",
+        "Body -> Vena Cava -> Right Atrium -> Right Ventricle -> Pulmonary Artery -> Lungs",
+        "Body -> Vena Cava -> Left Atrium -> Left Ventricle -> Pulmonary Artery -> Lungs",
+        "Lungs -> Pulmonary Artery -> Right Atrium -> Right Ventricle -> Body"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Transportation in Human Beings"
+    },
+    {
+      "topic": "Heterotrophic Nutrition",
+      "text": "If you observe a single-celled organism like Paramoecium under a microscope, you will notice cilia covering its surface. What role do these structures play in the organism's life processes?",
+      "options": [
+        "They excrete nitrogenous wastes into the surrounding water by diffusion.",
+        "They transport oxygen directly into the food vacuole.",
+        "They move food particles to a specific spot on the cell for ingestion.",
+        "They perform photosynthesis by capturing sunlight in the water."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Transportation in Human Beings",
+      "text": "Tissue fluid (lymph) is formed when some plasma, proteins, and blood cells escape through capillary pores into intercellular spaces. How does this fluid return to the main circulatory system?",
+      "options": [
+        "It evaporates through the skin and is re-inhaled through the lungs.",
+        "It drains into lymphatic capillaries, forms larger lymph vessels, and finally opens into larger veins.",
+        "It flows directly back into the arteries through active transport pumps.",
+        "It is filtered by the kidneys and excreted as urine, never returning to the blood."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Respiration",
+      "text": "The number of ATP molecules required to produce 488 kJ of energy is (Assuming 1 ATP yields ~30.5 kJ):",
+      "options": [
+        "8",
+        "19",
+        "64",
+        "16"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Life Processes",
+      "text": "Respiratory organ of fish is:",
+      "difficulty": "Easy",
+      "options": [
+        "Gill",
+        "Skin",
+        "Lung",
+        "Nose"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "text": "Raw material required for photosynthesis obtained from soil:",
+      "options": [
+        "Carbon-dioxide through roots",
+        "Water through leaf (stomata)",
+        "Water through root hairs",
+        "Minerals through underground stem"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Nutrition in Plants"
+    },
+    {
+      "topic": "Nutrition in Human Beings",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "Stomach",
+        "Small intestine",
+        "Pancreas",
+        "Liver"
+      ],
+      "text": "It is the site of complete digestion of food. It contains small finger-like projections called villi. Identify the digestive organ whose features are given above and select the correct option."
+    },
+    {
+      "topic": "Nutrition in Human Beings",
+      "options": [
+        "Buccal cavity",
+        "Oesophagus",
+        "Stomach",
+        "Small intestine"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "text": "Emulsification of fats occur in:"
+    },
+    {
+      "topic": "Autotrophic Nutrition",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "They synthesise carbohydrates from carbon dioxide and water in the presence of sunlight and chlorophyll",
+        "They store carbohydrates in the form of starch",
+        "They convert carbon dioxide and water into carbohydrates in the absence of sunlight",
+        "They constitute the first trophic level in food chains"
+      ],
+      "text": "Which of the following statements about the autotrophs is incorrect?"
+    },
+    {
+      "options": [
+        "Mushroom, green plants, Amoeba",
+        "Yeast, mushroom, bread mould",
+        "Paramecium, Amoeba, Cuscuta",
+        "Cuscuta, lice, tapeworm"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "In which of the following groups of organisms, food material is broken down outside the body and absorbed?",
+      "topic": "Heterotrophic Nutrition"
+    },
+    {
+      "topic": "Heterotrophic Nutrition",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "options": [
+        "Heterotrophs do not synthesise their own food",
+        "Heterotrophs utilise solar energy for photosynthesis",
+        "Heterotrophs synthesise their own food",
+        "Heterotrophs are capable of converting carbon dioxide and water into carbohydrates"
+      ],
+      "text": "Select the correct statement"
+    },
+    {
+      "topic": "Human Digestive System",
+      "difficulty": "Medium",
+      "options": [
+        "Mouth → stomach → small intestine → oesophagus → large intestine",
+        "Mouth → oesophagus → stomach → large intestine → small intestine",
+        "Mouth → stomach → oesophagus → small intestine → large intestine",
+        "Mouth → oesophagus → stomach → small intestine → large intestine"
+      ],
+      "correctOptionIndex": 3,
+      "text": "Which is the correct sequence of parts in human alimentary canal?"
+    },
+    {
+      "topic": "Human Digestive System",
+      "difficulty": "Medium",
+      "options": [
+        "Proteins breaking down into amino acids",
+        "Starch breaking down into sugars",
+        "Fats breaking down into fatty acids and glycerol",
+        "Absorption of vitamins"
+      ],
+      "correctOptionIndex": 1,
+      "text": "If salivary amylase is lacking in the saliva, which of the following events in the mouth cavity will be affected?"
+    },
+    {
+      "topic": "Human Digestive System",
+      "text": "The inner lining of stomach is protected by one of the following from hydrochloric acid. Choose the correct one",
+      "difficulty": "Easy",
+      "options": [
+        "Pepsin",
+        "Mucus",
+        "Salivary amylase",
+        "Bile"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "Stomach",
+        "Small intestine",
+        "Large intestine",
+        "Oesophagus"
+      ],
+      "text": "Which part of alimentary canal receives bile from the liver?",
+      "topic": "Human Digestive System"
+    },
+    {
+      "topic": "Nutrition in Plants",
+      "text": "A few drops of iodine solution were added to rice water. The solution turned blue-black in colour. This indicates that rice water contains",
+      "correctOptionIndex": 3,
+      "options": [
+        "complex proteins",
+        "simple proteins",
+        "fats",
+        "starch"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Human Digestive System",
+      "text": "In which part of the alimentary canal food is finally digested?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "options": [
+        "Stomach",
+        "Mouth cavity",
+        "Large intestine",
+        "Small intestine"
+      ]
+    },
+    {
+      "topic": "Human Digestive System",
+      "options": [
+        "trypsin digests proteins and lipase carbohydrates",
+        "trypsin digests emulsified fats and lipase proteins",
+        "trypsin and lipase digest fats",
+        "trypsin digests proteins and lipase emulsified fats"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "text": "Choose the function of the pancreatic juice from the following"
+    },
+    {
+      "topic": "Respiration",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "oxygen",
+        "carbon dioxide",
+        "nitrogen",
+        "water vapour"
+      ],
+      "text": "When air is blown from mouth into a test-tube containing lime water, the lime water turned milky due to the presence of"
+    },
+    {
+      "text": "The correct sequence of anaerobic reactions in yeast is",
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "options": [
+        "Glucose (cytoplasm) -> Pyruvate (mitochondria) -> Ethanol + Carbon dioxide",
+        "Glucose (cytoplasm) -> Pyruvate (cytoplasm) -> Lactic acid",
+        "Glucose (cytoplasm) -> Pyruvate (mitochondria) -> Lactic acid",
+        "Glucose (cytoplasm) -> Pyruvate (cytoplasm) -> Ethanol + Carbon dioxide"
+      ],
+      "topic": "Respiration"
+    },
+    {
+      "difficulty": "Hard",
+      "options": [
+        "Glucose (mitochondria) -> Pyruvate (cytoplasm) -> CO2 + H2O + Energy",
+        "Glucose (cytoplasm) -> Pyruvate (mitochondria) -> CO2 + H2O + Energy",
+        "Glucose (cytoplasm) -> Pyruvate + Energy (mitochondria) -> CO2 + H2O",
+        "Glucose (cytoplasm) -> Pyruvate + Energy (mitochondria) -> CO2 + H2O + Energy"
+      ],
+      "correctOptionIndex": 3,
+      "text": "Which of the following is most appropriate for aerobic respiration?",
+      "topic": "Respiration"
+    },
+    {
+      "options": [
+        "(i) and (iv)",
+        "(ii) and (iii)",
+        "(i) and (iii)",
+        "(ii) and (iv)"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "text": "Which of the following statement(s) is (are) true about respiration? (i) During inhalation, ribs move inward and diaphragm is raised. (ii) In the alveoli, exchange of gases takes place. (iii) Haemoglobin has greater affinity for carbon dioxide than oxygen. (iv) Alveoli increase surface area for exchange of gases.",
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Respiration",
+      "text": "Which is the correct sequence of air passage during inhalation?",
+      "options": [
+        "Nostrils → larynx → pharynx → trachea → lungs",
+        "Nasal passage → trachea → pharynx → larynx → alveoli",
+        "larynx → nostrils → pharynx → lungs",
+        "Nostrils → pharynx → larynx → trachea → alveoli"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 3
+    },
+    {
+      "text": "During respiration exchange of gases take place in",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "trachea and larynx",
+        "alveoli of lungs",
+        "alveoli and throat",
+        "throat and larynx"
+      ],
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Transportation in Humans",
+      "text": "Which of the following statement (s) is (are) true about heart? (i) Left atrium receives oxygenated blood from different parts of body while right atrium receives deoxygenated blood from lungs. (ii) Left ventricle pumps oxygenated blood to different body parts while right ventricle pumps deoxygenated blood to lungs. (iii) Left atrium transfers oxygenated blood to right ventricle which sends it to different body parts. (iv) Right atrium receives deoxygenated blood from different parts of the body while left ventricle pumps oxygenated blood to different parts of the body.",
+      "options": [
+        "(i)",
+        "(ii)",
+        "(ii) and (iv)",
+        "(i) and (iii)"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2
+    },
+    {
+      "text": "What prevents backflow of blood inside the heart during contraction?",
+      "options": [
+        "Valves in heart",
+        "Thick muscular walls of ventricles",
+        "Thin walls of atria",
+        "All of the above"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "topic": "Transportation in Humans"
+    },
+    {
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "options": [
+        "ureter",
+        "urethra",
+        "neurons",
+        "nephrons"
+      ],
+      "text": "The filtration units of kidneys are called",
+      "topic": "Excretion"
+    },
+    {
+      "correctOptionIndex": 0,
+      "options": [
+        "water",
+        "chlorophyll",
+        "carbon dioxide",
+        "glucose"
+      ],
+      "difficulty": "Medium",
+      "text": "Oxygen liberated during photosynthesis comes from",
+      "topic": "Photosynthesis"
+    },
+    {
+      "options": [
+        "carbon dioxide",
+        "water",
+        "heamoglobin",
+        "oxygen"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "The blood leaving the tissues becomes richer in",
+      "topic": "Respiration"
+    },
+    {
+      "options": [
+        "Organisms grow with time",
+        "Organisms must repair and maintain their structure",
+        "Movement of molecules does not take place among cells",
+        "Energy is essential for life processes"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "text": "Which of the following is an incorrect statement?",
+      "topic": "Life Processes Basics"
+    },
+    {
+      "topic": "Nutrition in Plants",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "glycogen",
+        "protein",
+        "starch",
+        "fatty acid"
+      ],
+      "text": "The internal (cellular) energy reserve in autotrophs is"
+    },
+    {
+      "topic": "Photosynthesis",
+      "text": "Which of the following equations is the summary of photosynthesis?",
+      "options": [
+        "6CO2 + 12H2O → C6H12O6 + 6O2 + 6H2O",
+        "6CO2 + H2O + Sunlight → C6H12O6 + O2 + 6H2O",
+        "6CO2 + 12H2O + Chlorophyll + Sunlight → C6H12O6 + 6O2 + 6H2O",
+        "6CO2 + 12H2O + Chlorophyll + Sunlight → C6H12O6 + 6CO2 + 6H2O"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "Photosynthesis",
+      "options": [
+        "Absorption of light energy by chlorophyll",
+        "Reduction of carbon dioxide to carbohydrates",
+        "Oxidation of carbon to carbon dioxide",
+        "Conversion of light energy to chemical energy"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "text": "Choose the event that does not occur in photosynthesis"
+    },
+    {
+      "topic": "Photosynthesis",
+      "text": "The opening and closing of the stomatal pore depends upon",
+      "correctOptionIndex": 2,
+      "options": [
+        "oxygen",
+        "temperature",
+        "water in guard cells",
+        "concentration of CO2 in stomata"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Nutrition in Plants",
+      "text": "Choose the forms in which most plants absorb nitrogen. (i) Proteins (ii) Nitrates and Nitrites (iii) Urea (iv) Atmospheric nitrogen",
+      "options": [
+        "(i) and (ii)",
+        "(ii) and (iii)",
+        "(iii) and (iv)",
+        "(i) and (iv)"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "topic": "Human Digestive System",
+      "text": "Which is the first enzyme to mix with food in the digestive tract?",
+      "correctOptionIndex": 2,
+      "options": [
+        "Pepsin",
+        "Cellulase",
+        "Amylase",
+        "Trypsin"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "text": "Which of the following statement(s) is (are) correct? (i) Pyruvate can be converted into ethanol and carbon dioxide by yeast. (ii) Fermentation takes place in aerobic bacteria. (iii) Fermentation takes place in mitochondria. (iv) Fermentation is a form of anaerobic respiration.",
+      "difficulty": "Medium",
+      "options": [
+        "(i) and (iii)",
+        "(ii) and (iv)",
+        "(i) and (iv)",
+        "(ii) and (iii)"
+      ],
+      "correctOptionIndex": 2,
+      "topic": "Respiration"
+    },
+    {
+      "topic": "Respiration",
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "options": [
+        "conversion of pyruvate to ethanol",
+        "conversion of pyruvate to glucose",
+        "non conversion of glucose to pyruvate",
+        "conversion of pyruvate to lactic acid"
+      ],
+      "text": "Lack of oxygen in muscles often leads to cramps among cricketers. This results due to"
+    },
+    {
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "kidney → ureter → urethra → urinary bladder",
+        "kidney → urinary bladder → urethra → ureter",
+        "kidney → ureters → urinary bladder → urethra",
+        "urinary bladder → kidney → ureter → urethra"
+      ],
+      "text": "Choose the correct path of urine in our body",
+      "topic": "Excretion"
+    },
+    {
+      "topic": "Respiration",
+      "text": "During deficiency of oxygen in tissues of human beings, pyruvic acid is converted into lactic acid in the",
+      "options": [
+        "cytoplasm",
+        "chloroplast",
+        "mitochondria",
+        "golgi body"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "It helps in filtering dust particles from air",
+        "It increases the rate of exchange of gases between air and blood",
+        "It prevents the lungs from collapsing during breathing",
+        "It helps in producing oxygen inside the lungs"
+      ],
+      "difficulty": "Medium",
+      "text": "The alveoli in human lungs are surrounded by a network of blood capillaries. What is the main advantage of this arrangement?",
+      "topic": "Respiration in Humans"
+    },
+    {
+      "text": "How is food transported from the phloem to the tissues according to plants' needs?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "options": [
+        "Food is transported along with the water in the plant's body",
+        "Food is transported in only one direction, like water in the plant body through the xylem",
+        "Food is transported from a region with a low concentration to a higher concentration",
+        "Food is transported from the region where it is produced to other parts of the plants"
+      ],
+      "topic": "Transportation in Plants"
+    },
+    {
+      "topic": "Nutrition in Humans",
+      "difficulty": "Easy",
+      "options": [
+        "Mouth $\\rightarrow$ stomach $\\rightarrow$ small intestine $\\rightarrow$ large intestine $\\rightarrow$ oesophagus",
+        "Mouth $\\rightarrow$ oesophagus $\\rightarrow$ stomach $\\rightarrow$ small intestine $\\rightarrow$ large intestine",
+        "Mouth $\\rightarrow$ stomach $\\rightarrow$ oesophagus $\\rightarrow$ small intestine $\\rightarrow$ large intestine",
+        "Mouth $\\rightarrow$ oesophagus $\\rightarrow$ stomach $\\rightarrow$ large intestine $\\rightarrow$ small intestine"
+      ],
+      "correctOptionIndex": 1,
+      "text": "Which of the following is the correct sequence of body parts in the human alimentary canal?"
+    },
+    {
+      "topic": "Transportation in Humans",
+      "text": "Which of the following correctly explains why arteries have thick elastic walls?",
+      "options": [
+        "To store blood for long periods",
+        "To withstand high pressure of blood pumped by the heart",
+        "To allow exchange of gases",
+        "To prevent clotting of blood"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium"
+    },
+    {
+      "text": "A plant gets rid of excess water through transpiration. What is the method used by plants to get rid of solid waste products?",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "Shortening of stem",
+        "Dropping down fruits",
+        "Shedding of yellow leaves",
+        "Expansion of roots into the soil"
+      ],
+      "topic": "Excretion in Plants"
+    },
+    {
+      "topic": "Respiration",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "i) and ii) only",
+        "ii) and iii) only",
+        "i), ii) and iii) only",
+        "i), iii) and iv) only"
+      ],
+      "text": "Which of the following are observed during anaerobic respiration in human muscle cells?\n- i) Absence of oxygen\n- ii) Release of energy\n- iii) Formation of lactic acid\n- iv) Formation of water"
+    },
+    {
+      "topic": "Nutrition",
+      "options": [
+        "Fats",
+        "Complex proteins",
+        "Starch",
+        "Simple proteins"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "text": "When a few drops of iodine solution are added to rice water, the solution turns blue-black in colour. This indicates that rice water contains:"
+    },
+    {
+      "topic": "Nutrition",
+      "text": "In which of the following groups of organisms are food materials broken down outside the body and absorbed?",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "Mushroom, green plants, amoeba",
+        "Yeast, mushroom, bread mould",
+        "Paramecium, amoeba, cuscuta",
+        "Cuscuta, lice, tapeworm"
+      ]
+    },
+    {
+      "text": "Single circulation, i.e., blood flows through the heart only once during one cycle of passage through the body, is exhibited by which of the following groups of organisms?",
+      "options": [
+        "Hyla, rana, draco",
+        "Whale, dolphin, turtle",
+        "Labeo, chameleon, salamander",
+        "Hippocampus, exocoetus, anabas"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Super Difficult",
+      "topic": "Transportation"
+    },
+    {
+      "topic": "Respiration in Plants",
+      "options": [
+        "Lenticels",
+        "Vacuoles",
+        "Xylem",
+        "Stomata"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "text": "Name the pores in a leaf through which respiratory exchange of gases takes place."
+    },
+    {
+      "topic": "Respiration in Plants",
+      "text": "**Assertion (A):** In plants there is no need of specialised respiratory organs.\n\n**Reason (R):** Plants do not have great demands of gaseous exchange.",
+      "correctOptionIndex": 0,
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Digestion in Humans",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "text": "**Assertion (A):** Carbohydrate digestion mainly takes place in the small intestine.\n\n**Reason (R):** Pancreatic juice contains the enzyme lactase."
+    },
+    {
+      "text": "**Assertion (A):** The movement of water and dissolved salts in xylem is always upwards.\n\n**Reason (R):** The upward movement of water is due to low pressure created by transpiration.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Transportation in Plants"
+    },
+    {
+      "text": "**Assertion (A):** The Bowman's capsule and the tubule together make a nephron.\n\n**Reason (R):** The function of the tubule is to allow the selective reabsorption of substances like glucose, amino acids, urea, salts and water into the blood capillaries.",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "topic": "Excretion in Humans"
+    },
+    {
+      "topic": "Respiration in Humans",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "text": "**Assertion (A):** In human beings, the respiratory pigment is haemoglobin.\n\n**Reason (R):** It is a type of protein which has a high affinity for carbon dioxide."
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 3,
+      "text": "**Assertion (A):** The purpose of making urine is to filter out undigested food from the intestine.\n\n**Reason (R):** Kidneys filter the waste and produce urine.",
+      "topic": "Excretion in Humans"
+    },
+    {
+      "topic": "Life Processes Basic",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "Multicellular organisms have simpler body designs than single-celled organisms.",
+        "In multicellular organisms, not all cells are in direct contact with the surrounding environment, making diffusion too slow.",
+        "Single-celled organisms require much more energy than multicellular organisms.",
+        "Diffusion only works for solid materials, not gases, which multicellular organisms need."
+      ],
+      "text": "In a single-celled organism, diffusion is sufficient to meet all the requirements of food, gas exchange and waste removal, but it is not the case in multicellular organisms. What is the primary reason for this difference?"
+    },
+    {
+      "text": "How can haemodialysis save and prolong the life of uremic patients?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "By replacing the damaged kidneys with an artificial mechanical organ permanently.",
+        "By removing toxic nitrogenous wastes like urea and excess salts from the blood to maintain chemical balance.",
+        "By increasing the production of red blood cells in the bone marrow.",
+        "By restoring the natural filtration capacity of the nephrons in the kidneys."
+      ],
+      "topic": "Excretion in Humans"
+    },
+    {
+      "text": "Which of the following correctly pairs a blood vessel with its key characteristic?",
+      "difficulty": "Easy",
+      "options": [
+        "**Arteries**: Thin-walled and have valves to prevent backflow.",
+        "**Veins**: Thick elastic walls and carry blood away from the heart.",
+        "**Capillaries**: Extremely thin walls that allow for the exchange of substances between blood and tissues.",
+        "**Arteries**: Carry only deoxygenated blood under low pressure."
+      ],
+      "correctOptionIndex": 2,
+      "topic": "Transportation in Humans"
+    },
+    {
+      "text": "How is stored carbohydrate (starch) made available to other parts of a plant when needed for growth?",
+      "correctOptionIndex": 1,
+      "options": [
+        "It is transported as starch directly through the xylem tissue.",
+        "It is converted into soluble sugars and transported through the phloem tissue.",
+        "It diffuses through the stomata and travels through the air to other plant parts.",
+        "It is broken down into water and $CO_2$ and absorbed by the roots."
+      ],
+      "difficulty": "Medium",
+      "topic": "Transportation in Plants"
+    },
+    {
+      "topic": "Transportation in Humans",
+      "options": [
+        "**First Circulation:** Right ventricle $\\rightarrow$ Lungs $\\rightarrow$ Left atrium<br>**Second Circulation:** Left ventricle $\\rightarrow$ Body $\\rightarrow$ Right atrium",
+        "**First Circulation:** Right atrium $\\rightarrow$ Lungs $\\rightarrow$ Left ventricle<br>**Second Circulation:** Left atrium $\\rightarrow$ Body $\\rightarrow$ Right ventricle",
+        "**First Circulation:** Left ventricle $\\rightarrow$ Lungs $\\rightarrow$ Right atrium<br>**Second Circulation:** Right ventricle $\\rightarrow$ Body $\\rightarrow$ Left atrium",
+        "**First Circulation:** Lungs $\\rightarrow$ Right atrium $\\rightarrow$ Body<br>**Second Circulation:** Body $\\rightarrow$ Left ventricle $\\rightarrow$ Lungs"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "text": "Human beings exhibit 'double circulation'. Which of the following describes the correct route of double circulation in human beings?"
+    },
+    {
+      "text": "Why is the upward movement of water in plants reduced when kept in a highly humid environment despite having sufficient soil water?",
+      "correctOptionIndex": 1,
+      "options": [
+        "High humidity causes the stomata to permanently close, stopping all water absorption.",
+        "The surrounding air already has a high water vapour concentration, which severely reduces the transpiration pull.",
+        "The plant absorbs moisture directly from the humid air instead of using its roots.",
+        "The xylem tissue gets blocked by excess water pressure from the roots."
+      ],
+      "difficulty": "Hard",
+      "topic": "Transportation in Plants"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "The roots can no longer absorb water and minerals from the soil.",
+        "Food prepared in the leaves cannot reach the growing regions like roots, buds, and stem tips.",
+        "The leaves cannot release the oxygen produced during photosynthesis.",
+        "The plant is unable to transport carbon dioxide to the chloroplasts."
+      ],
+      "correctOptionIndex": 1,
+      "text": "A plant kept in sunlight stops showing growth after its phloem is removed, even though photosynthesis continues. What is the most likely reason for this?",
+      "topic": "Transportation in Plants"
+    },
+    {
+      "text": "During intense exercise, a person's breathing rate increases but oxygen supply still becomes insufficient. What happens in the muscle cells during this time?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "Anaerobic respiration occurs, producing ethanol and carbon dioxide.",
+        "Aerobic respiration increases drastically, leading to the accumulation of water.",
+        "Anaerobic respiration occurs, breaking down glucose into lactic acid which may cause cramps.",
+        "Cellular respiration completely stops until oxygen levels return to normal."
+      ],
+      "topic": "Respiration in Humans"
+    },
+    {
+      "text": "If the kidneys fail to filter blood but the heart continues pumping normally, what is the direct life-threatening consequence?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "Oxygen will no longer reach the body's tissues.",
+        "Digested food will not be absorbed in the small intestine.",
+        "Toxic nitrogenous wastes like urea, excess salts, and water will accumulate in the blood.",
+        "The body will lose its ability to produce white blood cells."
+      ],
+      "topic": "Excretion in Humans"
+    },
+    {
+      "topic": "Nutrition in Humans",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "Ingestion, as they are not eating enough food.",
+        "Egestion, as they cannot remove solid waste.",
+        "Absorption and assimilation, as nutrients are not efficiently entering the blood or being utilized by cells.",
+        "Mastication, as the food is not being properly chewed in the mouth."
+      ],
+      "text": "A person has normal digestion but still feels weak and loses weight continuously. Which step of nutrition is most likely impaired?"
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "Humans require a lower amount of oxygen overall.",
+        "Human body cells are too far from the surface, making diffusion too slow to meet high energy demands.",
+        "Diffusion in humans only works for removing carbon dioxide, not for absorbing oxygen.",
+        "Humans lack specialised respiratory structures like stomata."
+      ],
+      "difficulty": "Medium",
+      "text": "Why is simple diffusion insufficient to carry oxygen throughout the human body, unlike in single-celled organisms?",
+      "topic": "Respiration in Humans"
+    },
+    {
+      "text": "During the process of digestion in the human body, heat is released. What is the scientific term for such reactions?",
+      "difficulty": "Easy",
+      "options": [
+        "Endothermic reactions",
+        "Exothermic reactions",
+        "Photochemical reactions",
+        "Displacement reactions"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Nutrition in Humans"
+    },
+    {
+      "topic": "Photosynthesis",
+      "text": "Some plants, such as pineapples, take in $CO_2$ during the night and store it as a complex carbon compound in their vacuoles. This mechanism is primarily an adaptation to:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "Increase the rate of oxygen release in highly humid environments.",
+        "Conserve water by keeping stomata closed during the dry, hot day.",
+        "Maximize the absorption of sunlight in low-light conditions.",
+        "Prevent the accumulation of toxic organic acids in the leaves."
+      ]
+    },
+    {
+      "text": "Why does a plant kept in a closed room with poor air circulation show weak growth even when watered regularly and kept in sunlight?",
+      "options": [
+        "The lack of wind prevents the transport of water through the xylem.",
+        "The limited supply of carbon dioxide in the room reduces the rate of photosynthesis.",
+        "The high humidity in the room causes the plant to lose too much water.",
+        "The stomata permanently close in the absence of fresh air."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Photosynthesis"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "Useful substances like glucose and amino acids are selectively absorbed from the collecting duct.",
+        "Blood is filtered under high pressure in the glomerulus, squeezing water and dissolved impurities into the Bowman's capsule.",
+        "Urine is transported from the kidney to the urinary bladder through the ureter.",
+        "Large proteins and red blood cells are pushed into the renal tubule to be excreted."
+      ],
+      "text": "Which of the following correctly describes the process of **ultrafiltration** in the nephron?",
+      "topic": "Excretion in Humans"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "By secreting bile juice which neutralizes the acid.",
+        "By producing a thick layer of mucus.",
+        "By rapidly absorbing the acid into the bloodstream.",
+        "By breaking down the acid using the enzyme pepsin."
+      ],
+      "text": "The human stomach produces hydrochloric acid (HCl) which can sometimes cause 'acidity'. How does the stomach normally protect its inner lining from the harmful effects of this acid?",
+      "topic": "Nutrition in Humans"
+    },
+    {
+      "topic": "Nutrition in Humans",
+      "text": "What is the primary consequence of a malfunctioning **pyloric sphincter** (located at the junction of the stomach and small intestine)?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "Loss of control over the defecation process.",
+        "Improper movement and regulation of partially digested food from the stomach into the small intestine.",
+        "Inability to swallow food properly from the mouth into the oesophagus.",
+        "Failure to absorb water and salts in the large intestine."
+      ]
+    },
+    {
+      "topic": "Excretion in Humans",
+      "text": "How is the function of an artificial kidney (dialysis machine) primarily DIFFERENT from a natural nephron?",
+      "options": [
+        "Dialysis removes urea, whereas a natural nephron only removes excess water.",
+        "Dialysis maintains salt balance, whereas a natural nephron does not.",
+        "Dialysis involves filtration through a semi-permeable membrane, but it lacks the process of selective reabsorption.",
+        "Dialysis requires high pressure from the heart, whereas a natural nephron operates under low pressure."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Respiration in Humans",
+      "text": "Why do multicellular animals, unlike single-celled organisms, require respiratory pigments like haemoglobin?",
+      "correctOptionIndex": 2,
+      "options": [
+        "To provide a red color to the blood for protection against predators.",
+        "To physically break down glucose molecules during aerobic respiration.",
+        "Because simple diffusion is too slow and insufficient to transport oxygen efficiently to all body cells.",
+        "To filter out toxic gases like carbon monoxide from the lungs."
+      ],
+      "difficulty": "Medium"
+    }
+  ]
+}

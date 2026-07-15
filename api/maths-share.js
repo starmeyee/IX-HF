@@ -17,8 +17,8 @@ export default function handler(req, res) {
 
   const appUrl  = `${origin}/maths`;
   const imgUrl  = `${origin}/api/maths-og-image`;
-  const title   = 'Maths Dashboard — Class 10 HI';
-  const desc    = 'Weekly Maths Test 1 & Test 2 results for Class 10 HI. Check scores, rankings, attendance, and detailed analytics.';
+  const title   = 'Maths Dashboard — IX HF';
+  const desc    = 'Weekly Maths Test 1 & Test 2 results for IX HF. Check scores, rankings, attendance, and detailed analytics.';
 
   const html = `<!doctype html>
 <html lang="en">
@@ -28,7 +28,7 @@ export default function handler(req, res) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="10th HI Portal" />
+<meta property="og:site_name" content="IX HF Portal" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(desc)}" />
 <meta property="og:url" content="${esc(appUrl)}" />

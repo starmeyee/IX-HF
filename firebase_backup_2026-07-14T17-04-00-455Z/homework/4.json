@@ -1,0 +1,22 @@
+{
+  "id": 4,
+  "date": "Sunday, 11 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 पढ़ें और वाक्य बनाएँ।",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Explain the rules and laws of refraction.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete till question number 11 of Chapter 11 (RS Aggarwal).",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778437800000
+}

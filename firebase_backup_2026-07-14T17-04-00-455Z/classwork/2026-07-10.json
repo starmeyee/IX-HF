@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-10",
+  "weekday": "Friday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Practice of Podcast"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Ch 2 Acid and Bases Making of Caustic Soda and it's uses"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Heart Ch 1 Countinued"
+    },
+    {
+      "period": "4th",
+      "subject": "Geography",
+      "note": "Rain water harvesting Explained"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Revision of Thales Theorem"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 4 A Shady Plot Reading & Explanation"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1783682849436
+}

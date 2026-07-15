@@ -1,0 +1,32 @@
+{
+  "id": 8,
+  "date": "Wednesday, 6 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 पढ़ें और असाइनमेंट पूरा करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Practice reflection numericals.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Do the given work.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do Exercise 10 of RS Aggarwal.",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "Do the Q/Ans of Chapter 1 and prepare for the test.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778005800000
+}

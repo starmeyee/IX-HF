@@ -1,0 +1,45 @@
+{
+  "userId": "8102783645",
+  "testId": "IsVe3rDhaH843dev1Lc1",
+  "chapterId": "maths-0-c0",
+  "score": 7,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 2,
+    "8": 2,
+    "9": 1
+  },
+  "weakTopics": [
+    "HCF and LCM",
+    "Word Problems"
+  ],
+  "seenIndices": [
+    90,
+    35,
+    47,
+    48,
+    66,
+    54,
+    57,
+    63,
+    56,
+    55
+  ],
+  "aiReview": [
+    "The student demonstrated a strong understanding of Word Problems and HCF and LCM, with a high correct-to-total ratio in these topics.",
+    "Properties of Numbers was a topic of strength, with the student answering the only question in this category correctly.",
+    "The student's performance was skewed towards Hard questions, suggesting a potential lack of exposure or practice with easier questions.",
+    "The student's ability to solve Hard questions correctly, with 7 out of 10 correct, indicates a good grasp of advanced concepts.",
+    "There is a notable absence of correct answers in the Easy and Medium difficulty categories, implying that the student may not have been adequately tested on foundational concepts."
+  ],
+  "createdAt": {
+    "_seconds": 1783966795,
+    "_nanoseconds": 625000000
+  }
+}

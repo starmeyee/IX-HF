@@ -1,0 +1,37 @@
+{
+  "userId": "8102783645",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "chapterId": "science-2-c0",
+  "score": 10,
+  "total": 10,
+  "responses": {
+    "0": 1,
+    "1": 2,
+    "2": 1,
+    "3": 1,
+    "4": 2,
+    "5": 2,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1
+  },
+  "weakTopics": [],
+  "seenIndices": [
+    27,
+    8,
+    9,
+    11,
+    23,
+    16,
+    3,
+    26,
+    20,
+    17
+  ],
+  "aiReview": "Based on their score of 10 out of 10, it is clear that they have demonstrated a high level of mastery over the material, but to maintain this level of performance, they should revisit and thoroughly review topics such as Financial Statements Analysis, where any gaps in their understanding can quickly be exploited to yield incorrect answers. Given their perfect score, it is also essential that they remain vigilant and avoid making silly mistakes in areas like Accounting Ratios, which, although considered 'Easy' questions, can still be detrimental to their overall performance. To solidify their knowledge, they should focus on refining their problem-solving skills and practicing with a mix of easy and challenging questions to develop a more comprehensive understanding of the subject matter. By consistently maintaining their high level of performance, they will be well-prepared for more demanding assessments.",
+  "createdAt": {
+    "_seconds": 1783843051,
+    "_nanoseconds": 383000000
+  }
+}

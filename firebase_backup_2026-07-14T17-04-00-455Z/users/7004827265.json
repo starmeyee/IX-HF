@@ -1,0 +1,67 @@
+{
+  "name": "Pratyaksh",
+  "phone": "7004827265",
+  "rollNo": 35,
+  "createdAt": 1781460244966,
+  "passwordHash": null,
+  "checkedTopics": [],
+  "completedHolidayHomework_v2": [
+    "1-file-0",
+    "1-file-1",
+    "2",
+    "7",
+    "10",
+    "13",
+    "17-file-0",
+    "17-file-1",
+    "18-file-0",
+    "18-file-1",
+    "20"
+  ],
+  "onboardingCompleted": false,
+  "whatsNewSeen_v1": false,
+  "broadcastKey": null,
+  "alternatePhone": "7004827260",
+  "mergedAt": 1782209913895,
+  "mergeBannerSeen": false,
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: Acids, Bases and Salts",
+      "at": 1783011424363,
+      "balance": 8
+    }
+  ],
+  "purchasedChapters": [
+    "science-1-c1"
+  ],
+  "completedHomework": [],
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "attendance_absentDays": [
+    "2026-04-16",
+    "2026-04-17",
+    "2026-04-18",
+    "2026-04-20",
+    "2026-04-21",
+    "2026-04-24",
+    "2026-04-25",
+    "2026-04-27",
+    "2026-04-28",
+    "2026-04-29",
+    "2026-04-30",
+    "2026-06-19",
+    "2026-06-20",
+    "2026-06-27",
+    "2026-07-02",
+    "2026-07-08",
+    "2026-07-09",
+    "2026-07-10",
+    "2026-07-11"
+  ]
+}

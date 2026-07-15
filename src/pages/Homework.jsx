@@ -155,7 +155,7 @@ export default function Homework() {
     if (!match) return;
 
     // Set OG-style page title for link preview
-    document.title = `Homework – ${match.date} | 10th HI Portal`;
+    document.title = `Homework – ${match.date} | IX HF Portal`;
 
     // Scroll to the card
     const ref = dayRefs.current[match.id];
@@ -173,7 +173,7 @@ export default function Homework() {
     const match = classworkList.find((cw) => cw.date === dateParam);
     if (!match) return;
 
-    document.title = `Classwork – ${match.weekday} | 10th HI Portal`;
+    document.title = `Classwork – ${match.weekday} | IX HF Portal`;
     const ref = cwRefs.current[match.id];
     if (ref) setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
 

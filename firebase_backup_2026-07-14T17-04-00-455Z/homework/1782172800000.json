@@ -1,0 +1,27 @@
+{
+  "id": 1782172800000,
+  "date": "Tuesday 23 June 2026",
+  "tasks": [
+    {
+      "subject": "Hindi ",
+      "description": "Read Sprarsh Chapter 2: Pad (पद) – Meera\n\nAlso Write Q/ans from the chapter ",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics ",
+      "description": "Practice Lens Numericals ",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do all the examples of Ex 3d Rs Agarwal ",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Read chapter 3 The Letter ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782172800000
+}

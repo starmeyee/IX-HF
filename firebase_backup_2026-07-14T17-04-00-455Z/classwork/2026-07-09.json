@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-09",
+  "weekday": "Thursday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "IT",
+      "note": "Ch 2 , Session 5 Part B"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Ch 1 Revision"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Heart Structure explanation Ch 1 Countinued"
+    },
+    {
+      "period": "4th",
+      "subject": "History",
+      "note": "Ch 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Ex 6.2 Practice"
+    },
+    {
+      "period": "6th",
+      "subject": "Economics",
+      "note": "Ch 3 Explanation"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1783683058835
+}

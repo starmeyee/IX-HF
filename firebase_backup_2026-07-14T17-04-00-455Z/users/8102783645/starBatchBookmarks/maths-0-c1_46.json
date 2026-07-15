@@ -1,0 +1,20 @@
+{
+  "difficulty": "Hard",
+  "questionIndex": 46,
+  "createdAt": {
+    "_seconds": 1784038497,
+    "_nanoseconds": 615000000
+  },
+  "chapterId": "maths-0-c1",
+  "options": [
+    "$6$",
+    "$8$",
+    "$-6$",
+    "$11$"
+  ],
+  "correctOptionIndex": 0,
+  "topic": "Zeroes of a Polynomial",
+  "testId": "J6DvegKU1FNE6LNBswHr",
+  "questionText": "$\\alpha, \\beta, \\gamma$ are the zeroes of cubic polynomial $x^{3}-6x^{2}+p(x-1)+5$. If $\\alpha, \\beta, \\gamma$ are in A.P., then find the product of all the zeroes.",
+  "testTitle": "Polynomials - Complete Mastery Test"
+}

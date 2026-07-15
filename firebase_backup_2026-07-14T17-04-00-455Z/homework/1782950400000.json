@@ -1,0 +1,27 @@
+{
+  "id": 1782950400000,
+  "date": "Thursday 2 July 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Learn All the Keyboard Shortcuts of Libre Office ",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry ",
+      "description": "Revise the today's taught Topics ",
+      "type": "homework"
+    },
+    {
+      "subject": "History ",
+      "description": "Do 5 MCQ , Main points, Hardwords and Long Question answer ",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do EX 3A RS Agarwal ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782950400000
+}

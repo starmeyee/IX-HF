@@ -1,0 +1,22 @@
+{
+  "id": 1782259200000,
+  "date": "Wednesday 24 June 2026",
+  "tasks": [
+    {
+      "subject": "Hindi ",
+      "description": "स्पर्श' (भाग-2) के अध्याय 2 में कवयित्री मीराबाई द्वारा रचित 'पद'याद करे।",
+      "type": "homework"
+    },
+    {
+      "subject": "History ",
+      "description": "Write down five Hard words, 5 MCQ, Main points and a long question answer from today's topic.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math ",
+      "description": "Do EX 3E Rs Agarwal ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1782259200000
+}

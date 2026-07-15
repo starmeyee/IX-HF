@@ -58,10 +58,10 @@ export default async function handler(req, res) {
   const validDate = DATE_RE.test(date);
 
   // Defaults (used on error / not-found — always a valid preview).
-  let title = '10th HI Portal';
+  let title = 'IX HF Portal';
   let description = type === 'classwork'
-    ? 'Classwork for Class 10th HI — see what was done in each period.'
-    : 'Daily homework for Class 10th HI — check tasks and track completion.';
+    ? 'Classwork for IX HF — see what was done in each period.'
+    : 'Daily homework for IX HF — check tasks and track completion.';
   let lines = [];
   let appPath = type === 'classwork' ? `/homework?tab=classwork` : `/homework`;
 
@@ -117,10 +117,10 @@ export default async function handler(req, res) {
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>${esc(title)} | 10th HI Portal</title>
+<title>${esc(title)} | IX HF Portal</title>
 <meta name="description" content="${esc(description)}" />
 <meta property="og:type" content="article" />
-<meta property="og:site_name" content="10th HI Portal" />
+<meta property="og:site_name" content="IX HF Portal" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:image" content="${esc(imgUrl)}" />
@@ -141,7 +141,7 @@ export default async function handler(req, res) {
 </head>
 <body>
   <div>
-    <p>Opening 10th HI Portal…</p>
+    <p>Opening IX HF Portal…</p>
     <p><a href="${esc(appUrl)}">Tap here if you are not redirected</a></p>
   </div>
 </body>

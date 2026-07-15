@@ -1,0 +1,158 @@
+{
+  "period": "1st & 2nd Period",
+  "dateTo": "2026-07-22",
+  "dateFrom": "2026-07-20",
+  "testName": "Periodic Test 1",
+  "visible": true,
+  "description": "Objective Test - ONLY MCQ - On OMR",
+  "sections": [
+    {
+      "subsections": [
+        {
+          "chapters": [
+            "Chapter 1: Real Numbers",
+            "Chapter 2: Polynomials"
+          ],
+          "name": ""
+        }
+      ],
+      "date": "2026-07-20",
+      "id": "sec_1783087559372",
+      "status": "accurate",
+      "name": "Math",
+      "totalMarks": 20
+    },
+    {
+      "totalMarks": 20,
+      "status": "accurate",
+      "name": "Science",
+      "subsections": [
+        {
+          "chapters": [
+            "Chapter 1: Chemical Reaction & Equation"
+          ],
+          "name": "Chemistry"
+        },
+        {
+          "chapters": [
+            "Chapter 5: Life Process"
+          ],
+          "name": "Biology"
+        },
+        {
+          "chapters": [
+            "Chapter 9: Light – Reflection and Refraction"
+          ],
+          "name": "Physics"
+        }
+      ],
+      "id": "sec_1783087718372",
+      "date": "2026-07-21"
+    },
+    {
+      "totalMarks": 20,
+      "status": "accurate",
+      "name": "Hindi",
+      "subsections": [
+        {
+          "name": "व्यावहारिक व्याकरण",
+          "chapters": [
+            "पदबंध (Phrases)"
+          ]
+        },
+        {
+          "name": "स्पर्श पद्य खंड (Poetry)",
+          "chapters": [
+            "साखी (Kabir)",
+            "मीरा के पद"
+          ]
+        },
+        {
+          "name": "स्पर्श गद्य खंड (Prose)",
+          "chapters": [
+            "बड़े भाई साहब",
+            "डायरी का एक पन्ना"
+          ]
+        }
+      ],
+      "id": "sec_1783087815187",
+      "date": "2026-07-21"
+    },
+    {
+      "subsections": [
+        {
+          "chapters": [
+            "Chapter 1: The Rise of Nationalism in Europe"
+          ],
+          "name": "History"
+        },
+        {
+          "chapters": [
+            "Chapter 2: Forest & Wildlife"
+          ],
+          "name": "Geography "
+        },
+        {
+          "chapters": [
+            "Chapter 1: Development"
+          ],
+          "name": "Economics"
+        },
+        {
+          "chapters": [
+            "Chapter 1: Power Sharing"
+          ],
+          "name": "Political Science"
+        }
+      ],
+      "id": "sec_1783088044660",
+      "date": "2026-07-22",
+      "status": "accurate",
+      "name": "Social Science",
+      "totalMarks": 20
+    },
+    {
+      "subsections": [
+        {
+          "chapters": [
+            "Chapter 1: Two Gentlemen of Verona (Prose)",
+            "Chapter 2: The Frog and the Nightingale (Poem)"
+          ],
+          "name": "LITERATURE READER "
+        },
+        {
+          "chapters": [
+            "Determiners"
+          ],
+          "name": "Grammar"
+        }
+      ],
+      "id": "sec_1783088148385",
+      "date": "2026-07-22",
+      "status": "accurate",
+      "name": "English",
+      "totalMarks": 20
+    },
+    {
+      "totalMarks": 20,
+      "name": "IT",
+      "status": "accurate",
+      "date": "2026-07-20",
+      "id": "sec_1783120650235",
+      "subsections": [
+        {
+          "name": "Part A: Employability Skills",
+          "chapters": [
+            "Unit 1: Communication Skills-II"
+          ]
+        },
+        {
+          "chapters": [
+            "Unit 1: Digital Documentation (Advanced)"
+          ],
+          "name": "Part B: Subject-Specific Skills"
+        }
+      ]
+    }
+  ]
+}

@@ -69,9 +69,9 @@ export default function InstallPromptWrapper() {
           <X size={18} />
         </button>
         <div className="install-icon">
-          <img src="/favicon.svg" alt="10th HI" width={48} height={48} style={{ borderRadius: 12 }} />
+          <img src="/favicon.svg" alt="IX HF" width={48} height={48} style={{ borderRadius: 12 }} />
         </div>
-        <h3 className="install-title">Add 10th HI to your Home Screen</h3>
+        <h3 className="install-title">Add IX HF to your Home Screen</h3>
         <p className="install-sub">Access homework, attendance, and notices instantly — no browser needed.</p>
 
         {os === 'ios' ? (

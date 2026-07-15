@@ -743,7 +743,7 @@ export default function NotesPage() {
                 type="text" 
                 value={aiSearchQuery}
                 onChange={e => setAiSearchQuery(e.target.value)}
-                placeholder="What notes do you need? e.g. 'Class 10 Light'" 
+                placeholder="What notes do you need? e.g. 'IX HF Science'" 
                 style={{ width: '100%', padding: '0.8rem 1rem 0.8rem 2.8rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: '0.9rem', outline: 'none' }}
               />
             </div>

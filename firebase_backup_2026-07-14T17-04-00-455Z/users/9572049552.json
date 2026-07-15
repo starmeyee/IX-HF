@@ -1,0 +1,49 @@
+{
+  "name": "Anushka Kumari",
+  "phone": "9572049552",
+  "rollNo": 31,
+  "createdAt": 1783010352026,
+  "passwordHash": "dec58ab7d7f9fb6bd366cea633274ef3632f8eaa823bf811c14bed255d60e339",
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV"
+  ],
+  "ux_notes-tour-v1_snooze": 1784131378154,
+  "ux_pwa-install-v1": true,
+  "purchasedChapters": [
+    "science-1-c1",
+    "hh-16",
+    "maths-0-c5"
+  ],
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "earn",
+      "amount": 4,
+      "reason": "Notes approved: Notes",
+      "at": 1783683812625,
+      "balance": 8
+    },
+    {
+      "balance": 4,
+      "type": "spend",
+      "at": 1783608359619,
+      "amount": 2,
+      "reason": "Unlocked chapter: Triangles"
+    },
+    {
+      "amount": 2,
+      "at": 1783524461206,
+      "reason": "Unlocked HH answer: Template for SST Project",
+      "type": "spend",
+      "balance": 6
+    },
+    {
+      "at": 1783010441612,
+      "amount": 2,
+      "reason": "Unlocked chapter: Acids, Bases and Salts",
+      "type": "spend",
+      "balance": 8
+    }
+  ]
+}

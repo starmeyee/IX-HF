@@ -1,0 +1,27 @@
+{
+  "name": "Mohit kumar",
+  "phone": "7870503833",
+  "rollNo": 16,
+  "createdAt": 1782228999345,
+  "passwordHash": "e790e34762893789ee50ceb24b28d36bab64f4dc703d787ee3c11f35e8120ba1",
+  "ux_notes-tour-v1_snooze": 1784539004520,
+  "seenInAppNotices": [
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: The Rise of Nationalism in Europe",
+      "at": 1783934229844,
+      "balance": 8
+    }
+  ],
+  "purchasedChapters": [
+    "sst-0-c0"
+  ],
+  "completedHomework": [
+    "1782259200000_0"
+  ]
+}

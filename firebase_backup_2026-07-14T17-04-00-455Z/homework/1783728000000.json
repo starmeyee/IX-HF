@@ -1,0 +1,32 @@
+{
+  "id": 1783728000000,
+  "date": "Saturday 11 July 2026",
+  "tasks": [
+    {
+      "subject": "Hindi ",
+      "description": "Learn शब्दार्थ पाठ 3: मैथिलीशरण गुप्त – मनुष्यता",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry ",
+      "description": "Revise ",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography ",
+      "description": "Do Question and Practice Ch 3 Map work",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Learn Thales Theorem, Mid Point Theorem and converse of them , Also Proof of Thales and Midpoint Theorem.\n",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Prepare for Periodic Test ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783728000000
+}

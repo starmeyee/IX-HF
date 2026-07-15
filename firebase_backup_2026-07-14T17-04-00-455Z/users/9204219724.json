@@ -1,0 +1,11 @@
+{
+  "name": "Sahil",
+  "phone": "9204219724",
+  "rollNo": 26,
+  "createdAt": 1782778888994,
+  "passwordHash": "4190d10c9085a34321fdc6cc0415dbab07ac91760dbd8a0227302b59160409b5",
+  "completedHomework": [
+    "1782691200000_3"
+  ],
+  "attendance_absentDays": []
+}

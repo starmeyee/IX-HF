@@ -1,0 +1,34 @@
+{
+  "name": "Ayush",
+  "phone": "9508796976",
+  "rollNo": 12,
+  "createdAt": 1781607353249,
+  "passwordHash": "b0b9b1adac90262e0a3c3a620303609600734868d252a023a5c56267e2b46172",
+  "checkedTopics": [],
+  "completedHomework": [],
+  "seenInAppNotices": [
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "ux_notes-tour-v1_snooze": 1784557565127,
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: Life Processes",
+      "at": 1783952778048,
+      "balance": 8
+    }
+  ],
+  "purchasedChapters": [
+    "science-2-c0"
+  ],
+  "attendance_absentDays": [
+    "2026-06-15",
+    "2026-06-18",
+    "2026-06-19",
+    "2026-06-25",
+    "2026-06-27",
+    "2026-07-11"
+  ]
+}

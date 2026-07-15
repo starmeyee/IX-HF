@@ -1,0 +1,840 @@
+{
+  "chapterId": "maths-0-c2",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "createdAt": {
+    "_seconds": 1783876403,
+    "_nanoseconds": 837000000
+  },
+  "questions": [
+    {
+      "topic": "Pair of Linear Equations in Two Variables",
+      "correctOptionIndex": 3,
+      "options": [
+        "7:8",
+        "11:10",
+        "9:10",
+        "10:9"
+      ],
+      "difficulty": "Hard",
+      "text": "Four years ago, the ratio of ages of Monu and Sheena was 8:7 and four years hence, the sum of their ages will be 46 years. The ratio of their present ages is equal to:"
+    },
+    {
+      "text": "The solution of the system of simultaneous linear equations 10x + 3y = 75 and 6x - 5y = 11 is:",
+      "correctOptionIndex": 1,
+      "options": [
+        "x = 5, y = 6",
+        "x = 6, y = 5",
+        "x = 5, y = 5",
+        "x = 3, y = 5"
+      ],
+      "difficulty": "Medium",
+      "topic": "Pair of Linear Equations in Two Variables"
+    },
+    {
+      "topic": "Pair of Linear Equations in Two Variables",
+      "text": "If (2p-3, p) is a solution of the equation 3x - 5y = 6, then the value of p is:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "12",
+        "15",
+        "18",
+        "21"
+      ]
+    },
+    {
+      "topic": "Solutions of Linear Equations",
+      "options": [
+        "one solution",
+        "two solutions",
+        "infinitely many solutions",
+        "no solution"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "text": "The pair of equations 5x - 15y = 8 and 3x - 9y = 24/5 has"
+    },
+    {
+      "topic": "Word Problems",
+      "difficulty": "Hard",
+      "options": [
+        "25",
+        "72",
+        "63",
+        "36"
+      ],
+      "correctOptionIndex": 3,
+      "text": "The sum of the digits of a two-digit number is 9. If 27 is added to it, the digits of the number get reversed. The number is"
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "intersecting at exactly one point.",
+        "intersecting at exactly two points.",
+        "coincident.",
+        "parallel."
+      ],
+      "difficulty": "Easy",
+      "text": "Graphically, the pair of equations 6x - 3y + 10 = 0, 2x - y + 9 = 0 represents two lines which are",
+      "topic": "Graphical Method"
+    },
+    {
+      "topic": "Algebraic Conditions for Solutions",
+      "options": [
+        "a unique solution",
+        "exactly two solutions",
+        "infinitely many solutions",
+        "no solution"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "text": "The pair of equations x + 2y + 5 = 0 and -3x - 6y + 1 = 0 have"
+    },
+    {
+      "topic": "Graphical Method",
+      "text": "If a pair of linear equations is consistent, then the lines will be",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "parallel",
+        "always coincident",
+        "intersecting or coincident",
+        "always intersecting"
+      ]
+    },
+    {
+      "text": "The pair of equations y = 0 and y = -7 has",
+      "options": [
+        "one solution",
+        "two solutions",
+        "infinitely many solutions",
+        "no solution"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "topic": "Solutions of Linear Equations"
+    },
+    {
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "options": [
+        "parallel",
+        "intersecting at (b, a)",
+        "coincident",
+        "intersecting at (a, b)"
+      ],
+      "text": "The pair of equations x = a and y = b graphically represents lines which are",
+      "topic": "Graphical Method"
+    },
+    {
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "1/2",
+        "-1/2",
+        "2",
+        "-2"
+      ],
+      "text": "For what value of k, do the equations 3x - y + 8 = 0 and 6x - ky = -16 represent coincident lines?",
+      "topic": "Algebraic Conditions for Solutions"
+    },
+    {
+      "topic": "Algebraic Conditions for Solutions",
+      "text": "If the lines given by 3x + 2ky = 2 and 2x + 5y + 1 = 0 are parallel, then the value of k is",
+      "options": [
+        "-5/4",
+        "2/5",
+        "15/4",
+        "3/2"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "3",
+        "-3",
+        "-12",
+        "no value"
+      ],
+      "difficulty": "Hard",
+      "text": "The value of c for which the pair of equations cx - y = 2 and 6x - 2y = 3 will have infinitely many solutions is",
+      "topic": "Algebraic Conditions for Solutions"
+    },
+    {
+      "text": "One equation of a pair of dependent linear equations is -5x + 7y = 2. The second equation can be",
+      "options": [
+        "10x + 14y + 4 = 0",
+        "-10x - 14y + 4 = 0",
+        "-10x + 14y + 4 = 0",
+        "10x - 14y = -4"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Algebraic Conditions for Solutions"
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "x + y = -1 and 2x - 3y = -5",
+        "2x + 5y = -11 and 4x + 10y = -22",
+        "2x - y = 1 and 3x + 2y = 0",
+        "x - 4y - 14 = 0 and 5x - y - 13 = 0"
+      ],
+      "difficulty": "Hard",
+      "text": "A pair of linear equations which has a unique solution x = 2, y = -3 is",
+      "topic": "Solutions of Linear Equations"
+    },
+    {
+      "topic": "Algebraic Solutions",
+      "text": "If x = a, y = b is the solution of the equations x - y = 2 and x + y = 4, then the values of a and b are, respectively",
+      "correctOptionIndex": 2,
+      "options": [
+        "3 and 5",
+        "5 and 3",
+        "3 and 1",
+        "-1 and -3"
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Word Problems",
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "options": [
+        "35 and 15",
+        "35 and 20",
+        "15 and 35",
+        "25 and 25"
+      ],
+      "text": "Aruna has only Re 1 and Rs 2 coins with her. If the total number of coins that she has is 50 and the amount of money with her is Rs 75, then the number of Re 1 and Rs 2 coins are, respectively"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "options": [
+        "4 and 24",
+        "5 and 30",
+        "6 and 36",
+        "3 and 24"
+      ],
+      "text": "The father's age is six times his son's age. Four years hence, the age of the father will be four times his son's age. The present ages, in years, of the son and the father are, respectively",
+      "topic": "Word Problems"
+    },
+    {
+      "options": [
+        "15/4",
+        "≠ 15/4",
+        "any rational number",
+        "any rational number having 4 as denominator"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "If the lines given by 3x + 2ky = 2 and 2x + 5y + 1 = 0 are not parallel, then k has to be",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "The value of $a$ for which $x=-2$ and $y=1$ is the solution of the equation $3ax+5ay=2$ is:",
+      "options": [
+        "-1",
+        "-2",
+        "1",
+        "2"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Solutions of Equations"
+    },
+    {
+      "text": "If a pair of linear equations is consistent then their graph lines will be:",
+      "options": [
+        "Parallel",
+        "Always coincident",
+        "Always intersecting",
+        "Intersecting or coincident"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "If a pair of linear equations is inconsistent then their graph lines will be:",
+      "options": [
+        "Parallel",
+        "Always coincident",
+        "Always intersecting",
+        "Intersecting or coincident"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "The graphs of the equations $6x-2y+9=0$ and $3x-y+12=0$ are two lines which are:",
+      "options": [
+        "Coincident",
+        "Parallel",
+        "Intersecting exactly at one point",
+        "Perpendicular to each other"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "The pair of equations $2x+3y=5$ and $4x+6y=10$ has:",
+      "options": [
+        "A unique solution",
+        "Exactly two solutions",
+        "Infinitely many solutions",
+        "No solution"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "The pair of equations $x+2y+5=0$ and $-3x-6y+1=0$ has:",
+      "options": [
+        "A unique solution",
+        "Exactly two solutions",
+        "Infinitely many solutions",
+        "No solution"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "For what value of $k$ do the equations $kx-2y=3$ and $3x+y=5$ represent two lines intersecting at a unique point?",
+      "options": [
+        "$k=3$",
+        "$k=-3$",
+        "$k=6$",
+        "All real values except -6"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "If the lines given by $3x+2ky=2$ and $2x+5y+1=0$ are parallel then the value of $k$ is:",
+      "options": [
+        "$\\frac{-5}{4}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{15}{4}$",
+        "$\\frac{4}{15}$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "The system $x+2y=3$ and $5x+ky+7=0$ has no solution, when $k=$:",
+      "options": [
+        "10",
+        "$k \\neq 10$",
+        "$-\\frac{7}{3}$",
+        "-21"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "The system $x-2y=3$ and $3x+ky=1$ has a unique solution only when:",
+      "options": [
+        "$k=-6$",
+        "$k \\neq -6$",
+        "$k=0$",
+        "$k \\neq 0$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "Assertion: Homogeneous system of linear equations is always consistent.\nReason: $x=0, y=0$ is always a solution of the homogeneous system of equations with unknowns $x$ and $y$.",
+      "options": [
+        "Both Assertion and Reason are correct and Reason is the correct explanation of Assertion.",
+        "Both Assertion and Reason are true, but Reason is not the correct explanation of Assertion.",
+        "Assertion is true and Reason is false.",
+        "Both Assertion and Reason are false."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Nature of Solutions"
+    },
+    {
+      "text": "The pair of equations $x=-a$ and $y=b$ graphically represents lines which are:",
+      "options": [
+        "Parallel",
+        "Intersecting at $(b,-a)$",
+        "Coincident",
+        "Intersecting at $(-a,b)$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Graphical Solutions"
+    },
+    {
+      "text": "The pair of linear equations $13x+ky=k$ and $39x+6y=k+4$ has infinitely many solutions if $k$ is:",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "6"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "A pair of linear equations which has a unique solution $x=2, y=-3$ is:",
+      "options": [
+        "$x+y=-1, 2x-3y=-5$",
+        "$2x+5y=-11, 4x+10y=-22$",
+        "$2x-y=1, 3x+2y=0$",
+        "$x-4y-14=0, 5x-y+13=0$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Solutions of Equations"
+    },
+    {
+      "text": "If $2x-3y=7$ and $(a+b)x-(a+b-3)y=4a+b$ have infinite solutions. Then $(a, b)$ will be:",
+      "options": [
+        "$(-5,-1)$",
+        "$(-5,1)$",
+        "$(5, 1)$",
+        "$(5,-1)$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "The pair of linear equations $3x+7y=k, 12x+2ky=4k+1$ do not have any solution if $k=$:",
+      "options": [
+        "7",
+        "14",
+        "21",
+        "28"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "For what value of $k$, do the equations $3(k-1)x+4y=24$ and $15x+20y=8(k+13)$ have infinite solutions?",
+      "options": [
+        "1",
+        "4",
+        "3",
+        "2"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "In the system of equations $2x+py=21$ and $px+2y=15$ has unique solution, then which of the following could be the value of $p$?\n(a) 2\n(b) -2\n(c) 0\n(d) 3",
+      "options": [
+        "Both (a) and (b)",
+        "Both (c) and (d)",
+        "(a), (b) and (c)",
+        "All of (a), (b), (c) and (d)"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "If the system of equations $2x+3y=3$ and $-4x+qy=\\frac{p}{2}$ is inconsistent, which of the following cannot be the value of $p$?",
+      "options": [
+        "-24",
+        "-18",
+        "-12",
+        "-36"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "The pair of linear equation $2x+ky-3=0$, $6x+\\frac{2}{3}y+7=0$ has a unique solution if:",
+      "options": [
+        "$k=\\frac{2}{9}$",
+        "$k \\neq \\frac{2}{3}$",
+        "$k=\\frac{2}{3}$",
+        "$k \\neq \\frac{2}{9}$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Conditions for Solvability"
+    },
+    {
+      "text": "If $2x+3y=12$ and $3x-2y=5$ then:",
+      "options": [
+        "$x=2, y=3$",
+        "$x=2, y=-3$",
+        "$x=3, y=2$",
+        "$x=3, y=-2$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $x-y=2$ and $\\frac{2}{x+y}=\\frac{1}{5}$ then:",
+      "options": [
+        "$x=4, y=2$",
+        "$x=5, y=3$",
+        "$x=6, y=4$",
+        "$x=7, y=5$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $\\frac{2x}{3}-\\frac{y}{2}+\\frac{1}{6}=0$ and $\\frac{x}{2}+\\frac{2y}{3}=3$ then:",
+      "options": [
+        "$x=2, y=3$",
+        "$x=-2, y=3$",
+        "$x=2, y=-3$",
+        "$x=-2, y=-3$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $\\frac{1}{x}+\\frac{2}{y}=\\frac{4}{xy}$ and $\\frac{3}{y}-\\frac{1}{x}=\\frac{11}{xy}$ then:",
+      "options": [
+        "$x=2, y=3$",
+        "$x=-2, y=3$",
+        "$x=\\frac{-1}{2}, y=3$",
+        "$x=3, y=-2$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Equations reducible to linear pair"
+    },
+    {
+      "text": "If $\\frac{2x+y+2}{5}=\\frac{3x-y+1}{3}=\\frac{3x+2y+1}{6}$ then:",
+      "options": [
+        "$x=1, y=1$",
+        "$x=-1, y=-1$",
+        "$x=1, y=2$",
+        "$x=2, y=1$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $bx+ay=a^2+b^2$ and $ax-by=0$ then the value of $(x-y)$ is:",
+      "options": [
+        "$a-b$",
+        "$b-a$",
+        "$a^2-b^2$",
+        "$a^2+b^2$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $173x+197y=149$ and $197x+173y=221$ then find $(x,y)$.",
+      "options": [
+        "(3,-2)",
+        "(2, 1)",
+        "(1,-2)",
+        "(2,-1)"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If an ordered pair satisfying the equations $2x-3y=18$ and $4x-y=16$ also satisfies the equation $5x-py-23=0$, then find the value of $p$:",
+      "options": [
+        "1",
+        "2",
+        "-1",
+        "-2"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $2x+3y=0$ and $4x-3y=0$, then $x+y$ equals:",
+      "options": [
+        "0",
+        "-1",
+        "1",
+        "2"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "If $2x+y=2x-y=\\sqrt{8}$ then the value of $y$ is:",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{2}$",
+        "0",
+        "None of these"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Algebraic Solutions"
+    },
+    {
+      "text": "The sum of the digits of a two-digit number is 15. The number obtained by interchanging the digits exceeds the given number by 9. The number is:",
+      "options": [
+        "96",
+        "69",
+        "87",
+        "78"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Digits"
+    },
+    {
+      "text": "In a given fraction, if 1 is subtracted from the numerator and 2 is added to the denominator, it becomes $\\frac{1}{2}$. If 7 is subtracted from the numerator and 2 is subtracted from the denominator, it becomes $\\frac{1}{3}$. The fraction is:",
+      "options": [
+        "$\\frac{13}{24}$",
+        "$\\frac{15}{26}$",
+        "$\\frac{16}{27}$",
+        "$\\frac{16}{21}$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Fractions"
+    },
+    {
+      "text": "In a cyclic quadrilateral $ABCD$, it is being given that $\\angle A=(x+y+10)^\\circ$, $\\angle B=(y+20)^\\circ$, $\\angle C=(x+y-30)^\\circ$ and $\\angle D=(x+y)^\\circ$. Then, $\\angle B-\\angle C=$",
+      "options": [
+        "$10^\\circ$",
+        "$20^\\circ$",
+        "$-10^\\circ$",
+        "$-20^\\circ$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Word Problems - Geometry"
+    },
+    {
+      "text": "In a $\\Delta ABC$, $\\angle C=3\\angle B=2(\\angle A+\\angle B)$, then $\\angle B=$?",
+      "options": [
+        "$20^\\circ$",
+        "$40^\\circ$",
+        "$60^\\circ$",
+        "$80^\\circ$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Geometry"
+    },
+    {
+      "text": "The sum of the present ages of Ram and his mother is 89 years. After 11 years, mother's age will be twice Ram's age, then present age of Ram is:",
+      "options": [
+        "96",
+        "24",
+        "87",
+        "26"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Ages"
+    },
+    {
+      "text": "5 years hence, the age of a man shall be 3 times the age of his son while 5 years earlier the age of the man was 7 times the age of his son. The present age of the man is:",
+      "options": [
+        "45 years",
+        "50 years",
+        "47 years",
+        "40 years"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Ages"
+    },
+    {
+      "text": "The perimeter of a rectangle is 44 cm. Its length exceeds twice its breadth by 4 cm, then area of the rectangle is:",
+      "options": [
+        "$80cm^2$",
+        "$96cm^2$",
+        "$117cm^2$",
+        "$102cm^2$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Geometry"
+    },
+    {
+      "text": "Mukesh has some goats and hens in his shed. Upon counting, Mukesh found that the total number of legs is 112 and the total number of heads is 40. Find the number of hens in his shed.",
+      "options": [
+        "18",
+        "20",
+        "22",
+        "24"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Miscellaneous"
+    },
+    {
+      "text": "A mother said to her son, \"the sum of our present ages is twice my age 12 years ago and nine years hence, the sum of our ages will be thrice my age 14 years ago\". What is her son's present age? (in years)",
+      "options": [
+        "8",
+        "12",
+        "15",
+        "10"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Word Problems - Ages"
+    },
+    {
+      "text": "Swathi starts her job with certain monthly salary and earns a fixed increment every year. If her salary was Rs 22500 per month after 6 years of service and Rs 30000 per month after 11 years of service. Find her salary after 8 years of service (in Rs).",
+      "options": [
+        "24000",
+        "25500",
+        "26000",
+        "24500"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Word Problems - Commercial"
+    },
+    {
+      "text": "The solution $(x, y, z)$ of the equation: $\\frac{xy}{y-x}=110$, $\\frac{yz}{z-y}=132$ and $\\frac{zx}{z+x}=\\frac{60}{11}$ is:",
+      "options": [
+        "(12, 11, 10)",
+        "(10, 11, 12)",
+        "(11, 10, 12)",
+        "(12, 10, 11)"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "Which one of the following conditions must $p, q$ and $r$ satisfy so that the following system of linear simultaneous equations has at least one solution, such that $p+q+r \\neq 0$? $x+2y-3z=p ; 2x+6y-11z=q ; x-2y+7z=r$",
+      "options": [
+        "$5p-2q-r=0$",
+        "$5p+2q+r=0$",
+        "$5p+2q-r=0$",
+        "$5p-2q+r=0$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "The length of the sides of a triangle are $3x+2y$, $4x+\\frac{4}{3}y$ and $3(x+1)+\\frac{3}{2}(y-1)$. If the triangle is equilateral, then its side is:",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "16"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "If $\\frac{ax}{b}-\\frac{by}{a}=a+b$ and $ax-by=2ab$. The value of $x-y$ is:",
+      "options": [
+        "$a+b$",
+        "$a-b$",
+        "$b-a$",
+        "$2ab$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "If three times the larger of the two numbers is divided by the smaller one, we get 4 as quotient and 3 as the remainder. Also if seven times the smaller number is divided by the larger one, we get 5 as quotient and 1 as remainder. Find the numbers.",
+      "options": [
+        "25, 16",
+        "28, 17",
+        "28, 18",
+        "25, 18"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "If $3^{2x-y}=3^{x+y}=\\sqrt{27}$ then what will be the value of $3^{x-y}$?",
+      "options": [
+        "$\\frac{1}{\\sqrt{27}}$",
+        "3",
+        "$\\frac{1}{\\sqrt{3}}$",
+        "$\\sqrt{3}$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "A boat takes 7 hours to travel 30km upstream and 28km downstream. It takes 5 hours to travel 21 km upstream and to return back. Find the speed of the boat in still water.",
+      "options": [
+        "10km/hr",
+        "20km/hr",
+        "14km/hr",
+        "6km/hr"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Word Problems - Speed & Distance"
+    },
+    {
+      "text": "On solving $\\frac{25}{x+y}-\\frac{3}{x-y}=1$ and $\\frac{40}{x+y}+\\frac{2}{x-y}=5$, we get:",
+      "options": [
+        "$x=8, y=6$",
+        "$x=4, y=6$",
+        "$x=6, y=4$",
+        "None of these"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "If $3|x|+5|y|=8$ and $7|x|-3|y|=48$, then find the value of $x+y$.",
+      "options": [
+        "5",
+        "4",
+        "-4",
+        "The value does not exist"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Competitive Level"
+    },
+    {
+      "text": "After covering a distance of 30 km with a uniform speed there is some defect in a train engine and therefore, its speed is reduced to $\\frac{4}{5}$ of its original speed. Consequently, the train reaches its destination late by 45 minutes. Had it happened after covering 18 kilometers more, the train would have reached 9 minutes earlier. Find the speed of the train and the distance of journey.",
+      "options": [
+        "Speed = 40 km/hr, Distance = 160 km",
+        "Speed = 20 km/hr, Distance = 100 km",
+        "Speed = 30 km/hr, Distance = 120 km",
+        "Speed = 35 km/hr, Distance = 140 km"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Word Problems - Speed & Distance"
+    }
+  ],
+  "title": "Pair of Linear Equations in Two Variables - Comprehensive Test"
+}

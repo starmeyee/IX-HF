@@ -1,0 +1,48 @@
+{
+  "chapterId": "science-1-c3",
+  "subjectId": "science-1",
+  "sectionId": "science",
+  "title": "Carbon and Its Compounds - Case Studies",
+  "questions": [
+    {
+      "text": "Identify the types of chemical reaction occurring during the combustion of fuel:",
+      "options": [
+        "Oxidation & Endothermic reaction",
+        "Decomposition & Exothermic reaction",
+        "Oxidation & Exothermic reaction",
+        "Combination & Endothermic reaction"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Combustion Reactions"
+    },
+    {
+      "text": "A student while walking on the road observed that a cloud of black smoke belched out from the exhaust stack of moving trucks. Choose the correct reason for the production of black smoke:",
+      "options": [
+        "Limited supply of air leads to incomplete combustion of fuel.",
+        "Rich supply of air leads to complete combustion of fuel.",
+        "Rich supply of air leads to a combination reaction.",
+        "Limited supply of air leads to complete combustion of fuel."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Combustion Reactions"
+    },
+    {
+      "text": "Although nitrogen is the most abundant gas in the atmosphere, it does not take part in combustion. Identify the correct reason for this statement.",
+      "options": [
+        "Nitrogen is a reactive gas",
+        "Nitrogen is an inert gas",
+        "Nitrogen is an explosive gas",
+        "Only hydrocarbons can take part in combustion"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Properties of Gases"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783877713,
+    "_nanoseconds": 639000000
+  }
+}

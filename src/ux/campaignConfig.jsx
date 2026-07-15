@@ -345,7 +345,7 @@ const CAMPAIGNS = [
     content: {
       variant: 'install',
       icon: Download,
-      title: 'Add 10th HI to your Home Screen',
+      title: 'Add IX HF to your Home Screen',
       body: 'Access homework, attendance, and notices instantly — no browser needed.',
     },
   },

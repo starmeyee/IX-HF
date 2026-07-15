@@ -1,0 +1,20 @@
+{
+  "difficulty": "Medium",
+  "questionIndex": 49,
+  "createdAt": {
+    "_seconds": 1784045619,
+    "_nanoseconds": 174000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "Nostrils → larynx → pharynx → trachea → lungs",
+    "Nasal passage → trachea → pharynx → larynx → alveoli",
+    "larynx → nostrils → pharynx → lungs",
+    "Nostrils → pharynx → larynx → trachea → alveoli"
+  ],
+  "correctOptionIndex": 3,
+  "topic": "Respiration",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "Which is the correct sequence of air passage during inhalation?",
+  "testTitle": "Life Processes - Complete Test"
+}

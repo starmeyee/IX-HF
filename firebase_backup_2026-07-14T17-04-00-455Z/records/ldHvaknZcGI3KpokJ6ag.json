@@ -1,0 +1,25 @@
+{
+  "title": "Physics Holiday Homework submission",
+  "description": "",
+  "sensitive": false,
+  "createdAt": {
+    "_seconds": 1782744138,
+    "_nanoseconds": 77000000
+  },
+  "columns": [
+    {
+      "id": "col_1782744137971_0",
+      "label": "Assignment",
+      "type": "check"
+    },
+    {
+      "id": "col_1782744137971_1",
+      "label": "Project",
+      "type": "check"
+    }
+  ],
+  "updatedAt": {
+    "_seconds": 1783057749,
+    "_nanoseconds": 883000000
+  }
+}

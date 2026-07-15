@@ -1,0 +1,32 @@
+{
+  "id": 9,
+  "date": "Tuesday, 5 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "'संचयन' का पाठ 1 'हरिहर काका' पढ़ें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Practice numerical questions.",
+      "type": "homework"
+    },
+    {
+      "subject": "IT",
+      "description": "Complete your copy.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Do questions 11 to 20 from Exercise 10 (Trigonometry) in RS Aggarwal.",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Study determiners.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777919400000
+}

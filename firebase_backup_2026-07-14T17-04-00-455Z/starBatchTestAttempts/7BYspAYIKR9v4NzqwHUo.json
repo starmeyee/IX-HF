@@ -1,0 +1,77 @@
+{
+  "userId": "7903808985",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "chapterId": "science-2-c0",
+  "score": 12,
+  "total": 15,
+  "responses": {
+    "0": 0,
+    "1": 0,
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 1,
+    "6": 1,
+    "7": 2,
+    "8": 1,
+    "9": 1,
+    "10": 0,
+    "11": 3,
+    "12": 2,
+    "13": 1,
+    "14": 2
+  },
+  "weakTopics": [
+    "Excretion in Humans",
+    "Digestion in Humans",
+    "Nutrition in Plants"
+  ],
+  "seenIndices": [
+    77,
+    84,
+    92,
+    0,
+    42,
+    78,
+    98,
+    71,
+    69,
+    17,
+    66,
+    61,
+    59,
+    83,
+    100
+  ],
+  "aiReview": [
+    "The student demonstrated strong conceptual understanding in Nutrition in Humans, answering all 3 questions correctly.",
+    "A notable weakness was observed in Digestion in Humans, where the student failed to answer the only question in this topic.",
+    "The student's performance on Hard questions was relatively weaker, with only 2 out of 3 questions answered correctly, suggesting room for improvement in advanced application.",
+    "The student showed consistency in answering questions from topics like Respiration in Plants, Excretion in Plants, Transportation in Plants, Respiration, and Life Processes Basic, getting each of these single-question topics correct.",
+    "In topics with multiple questions, such as Nutrition in Plants and Excretion in Humans, the student showed some vulnerability, missing 1 question in each, indicating potential for improvement in these areas."
+  ],
+  "difficultyStats": null,
+  "topicStats": null,
+  "totalTime": 282,
+  "questionTimes": {
+    "0": 20,
+    "1": 21,
+    "2": 17,
+    "3": 31,
+    "4": 9,
+    "5": 27,
+    "6": 13,
+    "7": 13,
+    "8": 8,
+    "9": 12,
+    "10": 21,
+    "11": 51,
+    "12": 7,
+    "13": 9,
+    "14": 23
+  },
+  "createdAt": {
+    "_seconds": 1784047894,
+    "_nanoseconds": 680000000
+  }
+}

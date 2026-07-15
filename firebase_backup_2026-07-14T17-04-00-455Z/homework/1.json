@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "date": "Wednesday, 14 May 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Draw the style toolbar and drawing toolbar.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Complete the holiday homework.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete the holiday homework.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778697000000
+}

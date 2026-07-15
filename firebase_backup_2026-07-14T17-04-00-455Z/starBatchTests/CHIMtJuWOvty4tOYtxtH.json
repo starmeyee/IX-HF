@@ -1,0 +1,24 @@
+{
+  "chapterId": "maths-0-c6",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "title": "Coordinate Geometry",
+  "questions": [
+    {
+      "text": "The shortest distance (in units) of the point (2,3) from y-axis is",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "1"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Distance Formula"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783954770,
+    "_nanoseconds": 734000000
+  }
+}

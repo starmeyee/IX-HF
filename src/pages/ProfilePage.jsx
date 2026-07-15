@@ -152,7 +152,7 @@ export default function ProfilePage() {
         <p className="profile-roll">
           {isTeacher
             ? `${currentUser.subject} · ${currentUser.period}`
-            : currentUser.rollNo === 0 ? 'Outsider Account' : `Class 10th HI · Roll No. ${currentUser.rollNo}`}
+            : currentUser.rollNo === 0 ? 'Outsider Account' : `IX HF · Roll No. ${currentUser.rollNo}`}
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem', marginBottom: '1.5rem' }}>

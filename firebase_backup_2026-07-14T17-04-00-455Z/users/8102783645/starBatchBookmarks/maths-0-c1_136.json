@@ -1,0 +1,20 @@
+{
+  "difficulty": "Medium",
+  "questionIndex": 136,
+  "createdAt": {
+    "_seconds": 1784038368,
+    "_nanoseconds": 471000000
+  },
+  "chapterId": "maths-0-c1",
+  "options": [
+    "Both A and R are true and R is the correct explanation of A",
+    "Both A and R are true but R is not the correct explanation of A",
+    "A is true but R is false",
+    "A is false but R is true"
+  ],
+  "correctOptionIndex": 0,
+  "topic": "Nature of Roots",
+  "testId": "J6DvegKU1FNE6LNBswHr",
+  "questionText": "**Assertion (A):** If $(2-\\sqrt{3})$ is one of the zero of the quadratic polynomial, then the other zero will be $(2+\\sqrt{3})$.\n**Reason (R):** Irrational zeroes (roots) always occur in pairs.",
+  "testTitle": "Polynomials - Complete Mastery Test"
+}

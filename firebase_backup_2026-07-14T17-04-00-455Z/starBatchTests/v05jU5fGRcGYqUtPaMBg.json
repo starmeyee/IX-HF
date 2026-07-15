@@ -1,0 +1,372 @@
+{
+  "chapterId": "sst-1-c1",
+  "subjectId": "sst-1",
+  "sectionId": "sst",
+  "title": "Forest and Wildlife Resources - Analytical and Competency Based Test",
+  "questions": [
+    {
+      "text": "Humans and living organisms form a complex ecological web. Logically, why are forests considered the foundational element of this system?",
+      "options": [
+        "They are the largest habitats on Earth.",
+        "They are primary producers on which all other living beings depend.",
+        "They absorb all the carbon dioxide produced by human activities.",
+        "They house apex predators which control all other populations."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Ecological System"
+    },
+    {
+      "text": "The implementation of the Indian Wildlife (Protection) Act in 1972 indicated a shift in environmental policy. What was the primary thrust of this programme regarding endangered species?",
+      "options": [
+        "Relocating all endangered species to secure biological parks.",
+        "Banning hunting, providing legal protection to habitats, and restricting wildlife trade.",
+        "Encouraging local communities to domesticate wild animals.",
+        "Focusing purely on the protection of plant species rather than animals."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "The central government initiated projects to protect gravely threatened species. Logically, why would three different types of crocodiles (freshwater, saltwater, and Gharial) be explicitly specified in these protections?",
+      "options": [
+        "To highlight that biodiversity conservation focuses on specific genetic and ecological diversities rather than generalized groups.",
+        "Because they are the only reptiles found in Indian rivers.",
+        "To simplify the legal jargon in the Wildlife Protection Act.",
+        "Because only saltwater crocodiles were facing threats from the trade."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "By comparing the tiger population at the turn of the century (55,000) to the 1973 figures (1,827), what can be analytically deduced about the environmental landscape prior to Project Tiger?",
+      "options": [
+        "The decline was a natural evolutionary cycle uninfluenced by human activity.",
+        "Unregulated threats like poaching, habitat shrinkage, and prey depletion pushed the species to the verge of extinction.",
+        "The prey base species expanded too rapidly, creating an ecological imbalance.",
+        "Traditional medicines had completely replaced the need for tiger products."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Project Tiger"
+    },
+    {
+      "text": "Project Tiger is often viewed not just as an effort to save an endangered species. What is its broader ecological objective?",
+      "options": [
+        "To maximize international funding for Indian forests.",
+        "To serve as a means of preserving biotypes of sizeable magnitude.",
+        "To control the overpopulation of herbivores in reserve forests.",
+        "To transition tribal populations out of forested areas."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Project Tiger"
+    },
+    {
+      "text": "A researcher is visiting a Tiger Reserve located in Uttarakhand. Which of the following reserves are they visiting?",
+      "options": [
+        "Sariska Wildlife Sanctuary",
+        "Bandhavgarh National Park",
+        "Corbett National Park",
+        "Manas Tiger Reserve"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Project Tiger"
+    },
+    {
+      "text": "The notifications under the Wildlife Act in 1980 and 1986 marked a significant evolution in conservation planning. What was the nature of this evolution?",
+      "options": [
+        "The focus shifted entirely from fauna to flora.",
+        "Insects like butterflies, moths, beetles, and a dragonfly were added to protected lists, showing a focus on broader biodiversity rather than just mega-fauna.",
+        "Marine life was exclusively prioritized over terrestrial animals.",
+        "Conservation planning was handed over entirely to private organizations."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "If a state government wishes to maximize the area where conservation of both forest and wildlife is strictly prioritized over any other usage, which category of forest should they primarily expand?",
+      "options": [
+        "Protected Forests",
+        "Reserved Forests",
+        "Unclassed Forests",
+        "Community Forests"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "A forest patch is legally designated as a 'permanent forest estate'. Based on the classifications provided, what can be logically deduced about this forest's management purpose?",
+      "options": [
+        "It is maintained strictly for wildlife breeding without any human entry.",
+        "It is maintained for producing timber and other forest produce, and for protective reasons.",
+        "It belongs to private individuals and is unregulated by the government.",
+        "It is designated solely for ecological farming by local villagers."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "Analyzing the forest distribution data, why do states like Gujarat and the North-eastern states have a very high percentage of 'unclassed forests'?",
+      "options": [
+        "Because these regions lack valuable timber species.",
+        "Because a large portion of forests in these areas is managed by local communities rather than exclusively by the government.",
+        "Because they have not yet passed any wildlife protection laws.",
+        "Because the central government has abandoned conservation efforts there."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "Which state's forest management strategy has resulted in the largest area under permanent forests, constituting 75 percent of its total forest area?",
+      "options": [
+        "Madhya Pradesh",
+        "Jammu and Kashmir",
+        "Andhra Pradesh",
+        "Kerala"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "The declaration of Bhairodev Dakav 'Sonchuri' by the inhabitants of five villages in Alwar is a prime example of what conservation dynamic?",
+      "options": [
+        "Villagers relying entirely on government regulations to stop hunting.",
+        "Local communities establishing their own rules to protect wildlife against outside encroachments, explicitly rejecting government involvement.",
+        "The failure of local institutions to manage large tracts of land.",
+        "Corporate partnerships in local afforestation programs."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "In assessing the impact of citizens' groups like the Beej Bachao Andolan and Navdanya, what analytical conclusion can be drawn about modern agriculture?",
+      "options": [
+        "Synthetic chemicals are absolutely necessary for economically viable crop production.",
+        "Adequate levels of diversified crop production without synthetic chemicals are both possible and economically viable.",
+        "Ecological farming results in unviable yields that cannot support local communities.",
+        "Traditional crop varieties are obsolete and should be entirely replaced."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "How does the Joint Forest Management (JFM) programme create a symbiotic relationship between local communities and the forest department?",
+      "options": [
+        "By transferring absolute ownership of the land to the villagers in exchange for taxes.",
+        "By allowing local institutions to undertake protection activities on degraded forest land in return for intermediary benefits like non-timber forest produces.",
+        "By employing villagers as government officials to patrol pristine national parks.",
+        "By allowing commercial timber logging companies to operate alongside village councils."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "The concept of 'Sacred Groves' relies on what foundational premise for its success in preserving virgin forests?",
+      "options": [
+        "Strict penalties imposed by the Indian judicial system.",
+        "Age-old tribal beliefs that all creations of nature have to be protected, leading to a complete ban on interference by local people.",
+        "Funding from international environmental organizations.",
+        "The high commercial value of the timber found within them."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "Assertion (A): Sacred qualities are often ascribed to plants and animals in Indian society. Reason (R): The Mundas and Santhal worship the tamarind and mango trees during weddings. Evaluate the statements based on the text.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A (they worship mahua and kadamba).",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "The villagers in Sariska Tiger Reserve successfully combated mining activities. What was their primary legal instrument in this struggle?",
+      "options": [
+        "The Joint Forest Management Resolution of 1988",
+        "The Forest Rights Act",
+        "The Wildlife Protection Act",
+        "The National Biodiversity Act"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "According to the passage, conservation preserves the genetic diversity of plants and animals. Why is this genetic diversity specifically crucial for fisheries?",
+      "options": [
+        "It prevents the introduction of invasive species into rivers.",
+        "Fisheries are heavily dependent on the maintenance of aquatic biodiversity for better growth and breeding of species.",
+        "It allows fisheries to transition to terrestrial farming methods.",
+        "It solely protects the Gharial population in the Girwa River."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "In 1991, plants were added to the list of protected species for the first time. How many plant species were initially protected?",
+      "options": [
+        "Six species",
+        "Ten species",
+        "Several hundred species",
+        "One hundred species"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "Which of the following states is NOT listed among those having a bulk of their forest area under 'protected forests'?",
+      "options": [
+        "Bihar",
+        "Punjab",
+        "West Bengal",
+        "Odisha"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "Assertion (A): The tiger population became highly vulnerable to illegal trading and poaching. Reason (R): India and Nepal provide habitat to about two-thirds of the surviving tiger population in the world. Which of the following is true?",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Project Tiger"
+    },
+    {
+      "text": "What is the ultimate lesson derived from the dynamics of both environmental destruction and reconstruction in India?",
+      "options": [
+        "Urbanization must be completely halted to save forests.",
+        "Local communities everywhere have to be involved in some kind of natural resource management.",
+        "Only central government laws can effectively preserve biodiversity.",
+        "Foreign investment is required to manage degraded forest lands."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "If a developmental activity is proposed in a forested region, what criteria must it meet to be acceptable according to the text's concluding thoughts?",
+      "options": [
+        "It must be heavily industrialized and export-driven.",
+        "It must be exclusively managed by the forest department.",
+        "It must be people-centric, environment-friendly, and economically rewarding.",
+        "It must prioritize wildlife conservation over any human livelihood."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "The Chipko movement in the Himalayas is celebrated not just for resisting deforestation, but for proving what ecological concept?",
+      "options": [
+        "That community afforestation with indigenous species can be enormously successful.",
+        "That commercial pine plantations yield the highest economic returns.",
+        "That joint forest management is ineffective in mountainous terrain.",
+        "That the government must own all unclassed forests."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "In and around Bishnoi villages in Rajasthan, what prevents the harm of local wildlife like herds of blackbuck and peacocks?",
+      "options": [
+        "Heavy police presence and government fencing.",
+        "The animals' aggressive nature toward outsiders.",
+        "The animals are seen as an integral part of the community due to traditional conservation methods.",
+        "The lack of poachers in the desert region."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "State A has categorized 33% of its forests to protect them from further depletion. State B has categorized 51% of its forests as the most valuable for conservation. What types of forests do State A and State B primarily possess, respectively?",
+      "options": [
+        "State A: Unclassed Forests; State B: Protected Forests",
+        "State A: Protected Forests; State B: Reserved Forests",
+        "State A: Reserved Forests; State B: Unclassed Forests",
+        "State A: Permanent Estates; State B: Protected Forests"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    },
+    {
+      "text": "Which state is known for passing the first resolution for Joint Forest Management (JFM) and in what year?",
+      "options": [
+        "Rajasthan in 1972",
+        "Madhya Pradesh in 1973",
+        "Odisha in 1988",
+        "Uttarakhand in 1991"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Community and Conservation"
+    },
+    {
+      "text": "According to the excerpt provided regarding Gharials, their population has hit its lowest point since which decade?",
+      "options": [
+        "1960s",
+        "1970s",
+        "1980s",
+        "1990s"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "Why is the reliance on traditional crop varieties cited as a reason for conserving forest and wildlife resources?",
+      "options": [
+        "Because traditional crops are the only food source for the Indian elephant.",
+        "Because it highlights the importance of preserving the genetic diversity of plants for better growth and breeding.",
+        "Because it reduces the need for protected forest lands.",
+        "Because traditional crops grow faster in reserved forests."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Conservation of Forest and Wildlife"
+    },
+    {
+      "text": "Based on the text, what distinguishes 'Unclassed Forests' from 'Reserved' and 'Protected' forests?",
+      "options": [
+        "They are the only forests where hunting is legally permitted by the state.",
+        "They encompass other forests and wastelands belonging to both the government and private individuals or communities.",
+        "They are regarded as the most valuable for the conservation of wildlife.",
+        "They are completely devoid of any flora and fauna."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Types and Distribution of Forest and Wildlife Resources"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783825404,
+    "_nanoseconds": 388000000
+  }
+}

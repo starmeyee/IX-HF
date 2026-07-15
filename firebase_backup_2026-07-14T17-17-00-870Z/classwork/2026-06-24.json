@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-24",
+  "weekday": "Wednesday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "अध्याय 2 'मीरा के पद' पुनरावृत्ति"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Games"
+    },
+    {
+      "period": "3rd",
+      "subject": "Sports",
+      "note": "Games"
+    },
+    {
+      "period": "4th",
+      "subject": "History",
+      "note": "Chapter 2 Nationalism in India Section 1.3 and 2.1"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Question explanation of exercise 3E RS Agarwal"
+    },
+    {
+      "period": "6th",
+      "subject": "Economics",
+      "note": "Chapter 2 continued sectors of Indian economy"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782303159717
+}

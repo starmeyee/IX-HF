@@ -1,0 +1,22 @@
+{
+  "id": 1783641600000,
+  "date": "Friday 10 July 2026",
+  "tasks": [
+    {
+      "subject": "Math",
+      "description": "Do EX 6.2 and Practice Q1 to Q5 for Broad Test\n\n\nRemember the Thales and it's converse Theorem also. ",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology ",
+      "description": "Learn the Heart Diagram Explained In Class",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Read Chapter 4 A Shady Plot and write summary of the chapter.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1783641600000
+}

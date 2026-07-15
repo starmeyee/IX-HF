@@ -1,0 +1,180 @@
+{
+  "chapterId": "maths-0-c5",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "title": "Triangles - Complete Mastery Test",
+  "questions": [
+    {
+      "text": "The lengths of the diagonals of a rhombus are 16 cm and 12 cm. Then, the length of the side of the rhombus is",
+      "options": [
+        "9 cm",
+        "10 cm",
+        "8 cm",
+        "20 cm"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Pythagoras Theorem"
+    },
+    {
+      "text": "If ΔABC ~ ΔEDF and ΔABC is not similar to ΔDEF, then which of the following is not true?",
+      "options": [
+        "BC.EF = AC.FD",
+        "AB.EF = AC.DE",
+        "BC.DE = AB.EF",
+        "BC.DE = AB.FD"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Criteria for Similarity of Triangles"
+    },
+    {
+      "text": "If in two triangles ABC and PQR, AB/QR = BC/PR = CA/PQ, then",
+      "options": [
+        "ΔPQR ~ ΔCAB",
+        "ΔPQR ~ ΔABC",
+        "ΔCBA ~ ΔPQR",
+        "ΔBCA ~ ΔPQR"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Similarity of Triangles"
+    },
+    {
+      "text": "If in two triangles DEF and PQR, ∠D = ∠Q and ∠R = ∠E then which of the following is not true?",
+      "options": [
+        "EF/PR = DF/PQ",
+        "DE/PQ = EF/RP",
+        "DE/QR = DF/PQ",
+        "EF/RP = DE/QR"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Criteria for Similarity of Triangles"
+    },
+    {
+      "text": "In triangles ABC and DEF, ∠B = ∠E, ∠F = ∠C and AB = 3 DE. Then, the two triangles are",
+      "options": [
+        "congruent but not similar",
+        "similar but not congruent",
+        "neither congruent nor similar",
+        "congruent as well as similar"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Criteria for Similarity of Triangles"
+    },
+    {
+      "text": "It is given that ΔABC ~ ΔPQR, with BC/QR = 1/3. Then, ar(PRQ)/ar(BCA) is",
+      "options": [
+        "9",
+        "3",
+        "1/3",
+        "1/9"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Areas of Similar Triangles"
+    },
+    {
+      "text": "It is given that ΔABC ~ ΔDFE, ∠A = 30°, ∠C = 50°, AC = 8 cm, AB = 5 cm, and DF = 7.5 cm. Then, the following is true:",
+      "options": [
+        "DE = 12 cm, ∠F = 50°",
+        "DE = 12 cm, ∠F = 100°",
+        "EF = 12 cm, ∠D = 100°",
+        "EF = 12 cm, ∠D = 30°"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Similarity of Triangles"
+    },
+    {
+      "text": "If in triangles ABC and DEF, AB/DE = BC/FD, then they will be similar, when",
+      "options": [
+        "∠B = ∠E",
+        "∠A = ∠D",
+        "∠B = ∠D",
+        "∠A = ∠F"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Criteria for Similarity of Triangles"
+    },
+    {
+      "text": "If ΔABC ~ ΔQRP, ar(ABC)/ar(PQR) = 9/4, AB = 18 cm and BC = 15 cm, then PR is equal to",
+      "options": [
+        "10 cm",
+        "12 cm",
+        "20/3 cm",
+        "8 cm"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Areas of Similar Triangles"
+    },
+    {
+      "text": "If S is a point on side PQ of a ΔPQR such that PS = QS = RS, then",
+      "options": [
+        "PR.QR = RS²",
+        "QS² + RS² = QR²",
+        "PR² + QR² = PQ²",
+        "PS² + RS² = PR²"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Pythagoras Theorem"
+    },
+    {
+      "text": "A 1.5 m tall person stands at a distance of 3 m from a lamp post and casts a shadow of 4.5 m on the ground. To find the height of the lamp post, which of the following similarity criteria is most directly applied, and what is the height of the lamp post?",
+      "options": [
+        "AA Similarity; 2.5 m",
+        "SAS Similarity; 2.5 m",
+        "AA Similarity; 3.0 m",
+        "SSS Similarity; 3.0 m"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Similarity of Triangles"
+    },
+    {
+      "text": "In a right-angled triangle ABC, right angled at B, a point D is chosen on hypotenuse AC such that BD is perpendicular to AC. If AD = 4 cm and CD = 9 cm, what is the area of triangle ABC?",
+      "options": [
+        "39 sq cm",
+        "78 sq cm",
+        "13 sq cm",
+        "36 sq cm"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Pythagoras Theorem"
+    },
+    {
+      "text": "Consider the following statements regarding similar triangles:\nI. All congruent triangles are similar.\nII. All isosceles triangles are similar.\nIII. The ratio of the perimeters of two similar triangles is equal to the ratio of their corresponding sides.\nIV. The ratio of the areas of two similar triangles is equal to the ratio of their corresponding medians.\nWhich of the statements are universally correct?",
+      "options": [
+        "I and III only",
+        "I, III, and IV only",
+        "II and III only",
+        "I and IV only"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Similarity of Triangles"
+    },
+    {
+      "text": "In ΔPQR, a line parallel to QR intersects PQ at M and PR at N. If the area of ΔPMN is equal to the area of the trapezium MNRQ, what is the ratio PM : MQ?",
+      "options": [
+        "1 : 1",
+        "1 : √2",
+        "1 : (√2 - 1)",
+        "2 : 1"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Areas of Similar Triangles"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783879284,
+    "_nanoseconds": 39000000
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "difficulty": "Medium",
+  "questionIndex": 86,
+  "createdAt": {
+    "_seconds": 1784045521,
+    "_nanoseconds": 89000000
+  },
+  "chapterId": "science-2-c0",
+  "options": [
+    "It is transported as starch directly through the xylem tissue.",
+    "It is converted into soluble sugars and transported through the phloem tissue.",
+    "It diffuses through the stomata and travels through the air to other plant parts.",
+    "It is broken down into water and $CO_2$ and absorbed by the roots."
+  ],
+  "correctOptionIndex": 1,
+  "topic": "Transportation in Plants",
+  "testId": "FYp7vqDPqFqBqsOawawv",
+  "questionText": "How is stored carbohydrate (starch) made available to other parts of a plant when needed for growth?",
+  "testTitle": "Life Processes - Complete Test"
+}

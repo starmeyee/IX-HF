@@ -1,0 +1,372 @@
+{
+  "chapterId": "sst-3-c1",
+  "subjectId": "sst-3",
+  "sectionId": "sst",
+  "title": "Sectors of the Indian Economy - Complete Mastery Test",
+  "questions": [
+    {
+      "text": "Assertion (A): While calculating Gross Domestic Product (GDP), the value of intermediate goods is not added separately.\nReason (R): The value of final goods already includes the value of all intermediate goods used in their production.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Comparing the Three Sectors"
+    },
+    {
+      "text": "A farmer sells cotton to a spinning mill for Rs 5,000. The mill spins it into yarn and sells it to a textile company for Rs 7,000. The textile company makes shirts and sells them to consumers in the market for Rs 12,000. What is the total value added to the GDP from this entire chain of activities?",
+      "options": [
+        "Rs 24,000",
+        "Rs 12,000",
+        "Rs 7,000",
+        "Rs 5,000"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Comparing the Three Sectors"
+    },
+    {
+      "text": "In a village, a family of 7 works on a 2-hectare agricultural plot. Even if 3 members of the family move to the city to work in a factory, the total agricultural production of the plot remains exactly the same. What economic phenomenon does this highlight?",
+      "options": [
+        "Structural unemployment",
+        "Open unemployment",
+        "Disguised unemployment",
+        "Seasonal unemployment"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Employment in Sectors"
+    },
+    {
+      "text": "Consider the following occupations: (I) Fisherman, (II) Courier, (III) Potter, (IV) Astronaut. Which of the following correctly classifies them into their respective sectors?",
+      "options": [
+        "I-Primary, II-Tertiary, III-Secondary, IV-Tertiary",
+        "I-Primary, II-Secondary, III-Secondary, IV-Tertiary",
+        "I-Secondary, II-Tertiary, III-Primary, IV-Secondary",
+        "I-Primary, II-Tertiary, III-Primary, IV-Tertiary"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "Over the forty years between 1973-74 and 2013-14, the tertiary sector emerged as the largest producing sector in India, replacing the primary sector. Which of the following is NOT a reason for this shift?",
+      "options": [
+        "The government taking responsibility for basic services like hospitals and police stations.",
+        "The development of agriculture and industry leading to a demand for services like transport.",
+        "A complete decline and halt in agricultural production.",
+        "Rising income levels leading to demands for eating out, tourism, and private hospitals."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "Assertion (A): In India, a similar shift out of the primary sector has NOT taken place in the case of employment as it has for GDP.\nReason (R): Not enough jobs were created in the secondary and tertiary sectors to absorb the agricultural workforce.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "Suppose a multinational retail chain opens a massive supermarket. They hire workers on a daily wage basis, do not provide any appointment letters, and workers are not paid if they fall sick. This retail chain operates in the:",
+      "options": [
+        "Public sector but unorganised sector",
+        "Private sector and unorganised sector",
+        "Private sector and organised sector",
+        "Public sector and organised sector"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    },
+    {
+      "text": "According to a study conducted by the erstwhile Planning Commission (NITI Aayog), how many jobs can be created in the education sector alone if all children in the 5-29 age group were to attend educational institutions?",
+      "options": [
+        "10 lakh jobs",
+        "20 lakh jobs",
+        "35 lakh jobs",
+        "50 lakh jobs"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Creating More Employment"
+    },
+    {
+      "text": "The Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) 2005 guarantees 100 days of employment in a year. If the government fails to provide this employment, what is the legal obligation of the government?",
+      "options": [
+        "It must provide 200 days of work the next year.",
+        "It must provide unemployment allowances to the people.",
+        "It will offer them land instead of wages.",
+        "It will transfer them to urban industrial areas."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Creating More Employment"
+    },
+    {
+      "text": "Why are certain enterprises like Tata Iron and Steel Company Limited (TISCO) and Reliance Industries Limited (RIL) classified under the private sector?",
+      "options": [
+        "Because they provide basic services like railways and postal networks.",
+        "Because they operate strictly in the unorganised sector.",
+        "Because the ownership of assets and delivery of services is in the hands of private individuals or companies.",
+        "Because they do not aim to earn any profit."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Sectors in Terms of Ownership"
+    },
+    {
+      "text": "Which of the following activities best demonstrates the dependence of the secondary sector on the primary sector?",
+      "options": [
+        "Farmers buying tractors and pesticides.",
+        "A sugar mill shutting down because farmers refuse to sell sugarcane to it.",
+        "Transporters going on strike, causing a scarcity of vegetables in urban areas.",
+        "People borrowing money from banks to start a trade."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "When we classify economic activities into Primary, Secondary, and Tertiary, what is the core criterion used?",
+      "options": [
+        "Ownership of the enterprise.",
+        "Conditions of employment.",
+        "The nature of the economic activity (how the good/service is produced).",
+        "The total number of workers employed."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "In the history of developed countries, what was the general pattern of sectoral shift regarding production and employment?",
+      "options": [
+        "Tertiary -> Secondary -> Primary",
+        "Primary -> Secondary -> Tertiary",
+        "Secondary -> Tertiary -> Primary",
+        "Tertiary -> Primary -> Secondary"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Comparing the Three Sectors"
+    },
+    {
+      "text": "A daily wage labourer working as a plumber stands at the city square every morning hoping to find work. Some days he gets work, other days he returns home empty-handed. His situation is a classic example of:",
+      "options": [
+        "Seasonal unemployment in the organised sector.",
+        "Over-employment in the public sector.",
+        "Underemployment in the service (tertiary) sector.",
+        "Disguised unemployment in the primary sector."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "Statement I: The unorganised sector is characterized by small and scattered units largely outside government control.\nStatement II: It is common to find many organised sector enterprises operating in the unorganised sector to evade taxes and labor laws.",
+      "options": [
+        "Statement I is correct but Statement II is incorrect.",
+        "Statement I is incorrect but Statement II is correct.",
+        "Both Statement I and Statement II are correct.",
+        "Both Statement I and Statement II are incorrect."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    },
+    {
+      "text": "The government in India buys wheat and rice from farmers at a 'fair price', stores it, and sells it at a lower price to consumers through ration shops. What is the primary economic rationale for this action?",
+      "options": [
+        "To maximize profits for the government treasury.",
+        "To eliminate private retail shops entirely.",
+        "To support both the farmers (by ensuring a fair price) and the consumers (by providing affordable food).",
+        "To increase the GDP contribution of the secondary sector."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Sectors in Terms of Ownership"
+    },
+    {
+      "text": "Read the following characteristics:\n- Formal processes and procedures.\n- Workers enjoy security of employment.\n- Follows the Factories Act and Minimum Wages Act.\nThese characteristics belong to which sector?",
+      "options": [
+        "Unorganised sector",
+        "Organised sector",
+        "Primary sector",
+        "Joint sector"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    },
+    {
+      "text": "How can the government BEST tackle the problem of underemployment in agriculture in semi-rural areas in the long term?",
+      "options": [
+        "By forcing farmers to migrate to metro cities.",
+        "By identifying, promoting, and locating agro-based industries (like dal mills or cold storage) in semi-rural areas.",
+        "By stopping the import of all agricultural goods.",
+        "By providing free food to all rural families."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Creating More Employment"
+    },
+    {
+      "text": "Why does the government have to undertake heavy spending on construction of roads, bridges, and railways instead of leaving it entirely to the private sector?",
+      "options": [
+        "Because the private sector lacks the technological knowledge to build them.",
+        "Because the private sector would only build them in rural areas.",
+        "Because it requires spending large sums of money beyond the capacity of the private sector, and collecting money from thousands of users is difficult.",
+        "Because the primary sector needs to be discouraged from using roads."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Sectors in Terms of Ownership"
+    },
+    {
+      "text": "A carpenter works in a furniture factory. The factory uses wood obtained from a forest to manufacture chairs. Which two sectors are directly interacting in this scenario?",
+      "options": [
+        "Primary and Tertiary",
+        "Primary and Secondary",
+        "Secondary and Tertiary",
+        "Public and Private"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "Assertion (A): More than half of the workers in India are working in the primary sector, but it produces only a quarter of the GDP.\nReason (R): Workers in the agricultural sector are highly efficient and use advanced machinery.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is not the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "Which of the following is NOT a service generated by the tertiary sector?",
+      "options": [
+        "Storage of goods in a godown.",
+        "Providing agricultural credit through banks.",
+        "Manufacturing bricks from earth.",
+        "Communication over telephones."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "Which of the following groups of people would mostly fall under the vulnerable category in the rural unorganised sector?",
+      "options": [
+        "Prosperous farmers and bank managers.",
+        "Landless agricultural labourers, small and marginal farmers, and artisans.",
+        "Government school teachers and doctors.",
+        "Factory managers and large-scale traders."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    },
+    {
+      "text": "In the context of the tertiary sector's growth in India, which group of workers is NOT experiencing the benefits of this growth?",
+      "options": [
+        "Highly skilled software engineers.",
+        "Small shopkeepers, repair persons, and street vendors.",
+        "Management professionals in corporate hospitals.",
+        "Financial consultants in multinational banks."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "If the total production in the service sector rose by 14 times over forty years, but employment in the service sector rose by only around 5 times, what does this mathematically imply about the sector?",
+      "options": [
+        "The sector is experiencing massive disguised unemployment.",
+        "Productivity per worker in the service sector has significantly increased.",
+        "The sector is shrinking in importance.",
+        "The government is heavily taxing the service sector."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Primary, Secondary and Tertiary Sectors in India"
+    },
+    {
+      "text": "According to the Planning Commission, if tourism as a sector is improved, how much additional employment can be generated every year?",
+      "options": [
+        "15 lakh people",
+        "20 lakh people",
+        "35 lakh people",
+        "50 lakh people"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Creating More Employment"
+    },
+    {
+      "text": "An enterprise is classified as Public or Private on the basis of:",
+      "options": [
+        "The number of people employed.",
+        "The volume of revenue generated.",
+        "Who owns the assets and is responsible for the delivery of services.",
+        "The type of goods produced (natural vs. manufactured)."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Sectors in Terms of Ownership"
+    },
+    {
+      "text": "Why is the primary sector also called the \"agriculture and related sector\"?",
+      "options": [
+        "Because it is the only sector that pays taxes to the government.",
+        "Because most of the natural products we get are from agriculture, dairy, fishing, and forestry.",
+        "Because it operates purely using artificial resources.",
+        "Because it is managed by the Ministry of Agriculture exclusively."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Sectors of Economic Activities"
+    },
+    {
+      "text": "Which of the following activities falls under the unorganised sector?",
+      "options": [
+        "A doctor treating patients in a government hospital.",
+        "A factory worker going to work in a registered big factory.",
+        "A handloom weaver working independently in her house.",
+        "A teacher taking classes in a public school."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    },
+    {
+      "text": "Kamal is asked to leave his job without any prior notice or reason. He does not get provident fund or paid leaves. What is the fundamental issue Kamal is facing?",
+      "options": [
+        "Lack of technical skills for the secondary sector.",
+        "Lack of job security and social security benefits typical of the unorganised sector.",
+        "Disguised unemployment in the primary sector.",
+        "The burden of double counting in GDP calculation."
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Division of Sectors as Organised and Unorganised"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783875812,
+    "_nanoseconds": 848000000
+  }
+}

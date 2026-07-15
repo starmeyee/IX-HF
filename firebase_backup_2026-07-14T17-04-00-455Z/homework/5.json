@@ -1,0 +1,37 @@
+{
+  "id": 5,
+  "date": "Saturday, 9 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "क्लास ग्रुप में दिए गए असाइनमेंट को एक नई कॉपी में करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Complete your notebook.",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Draw the diagram of the human respiratory system.",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Do the Q/Ans of Chapter 1.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Solve all the questions from every set of Weekly Tests 1 and 2.\nDo the middle-term split questions from Class 9 (RS Aggarwal).",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Study about determiners.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778265000000
+}

@@ -1,0 +1,27 @@
+{
+  "id": 1781913600000,
+  "date": "Saturday 20 June 2026",
+  "tasks": [
+    {
+      "subject": "Chemistry ",
+      "description": "Revise the Cw",
+      "type": "homework"
+    },
+    {
+      "subject": "Hindi",
+      "description": "Do Q/Ans of Sanchayan Ch 2 सपनों के-से दिन",
+      "type": "homework"
+    },
+    {
+      "subject": "English ",
+      "description": "Read Chapter 3 The letter ",
+      "type": "homework"
+    },
+    {
+      "subject": "Math ",
+      "description": "Do EX 3B RS Agarwal ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1781913600000
+}

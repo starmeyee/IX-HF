@@ -1,0 +1,2364 @@
+{
+  "chapterId": "maths-0-c1",
+  "subjectId": "maths-0",
+  "sectionId": "maths",
+  "createdAt": {
+    "_seconds": 1783871152,
+    "_nanoseconds": 644000000
+  },
+  "title": "Polynomials - Comprehensive Test",
+  "questions": [
+    {
+      "text": "The graph of a polynomial y = p(x) intersects the x-axis at exactly two distinct points and opens downwards. Which of the following is true for the polynomial p(x) = ax² + bx + c?",
+      "correctOptionIndex": 1,
+      "options": [
+        "a > 0 and it has two distinct real zeroes",
+        "a < 0 and it has two distinct real zeroes",
+        "a = 0 and it is a linear polynomial",
+        "a < 0 and it has no real zeroes"
+      ],
+      "difficulty": "Medium",
+      "topic": "Geometrical Meaning of Zeroes"
+    },
+    {
+      "text": "A student plots the graph of y = p(x). The graph does not touch or intersect the x-axis at all, but it intersects the y-axis at (0, -5). What can be concluded about the zeroes of p(x)?",
+      "difficulty": "Medium",
+      "options": [
+        "The polynomial has one zero at x = -5.",
+        "The polynomial has no real zeroes.",
+        "The polynomial has infinite real zeroes.",
+        "The polynomial has two equal real zeroes."
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Geometrical Meaning of Zeroes"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "difficulty": "Easy",
+      "options": [
+        "It has two distinct real zeroes.",
+        "It has no real zeroes.",
+        "It has two coincident (equal) real zeroes.",
+        "It is not a quadratic polynomial."
+      ],
+      "correctOptionIndex": 2,
+      "text": "If the graph of a quadratic polynomial touches the x-axis at exactly one point, what does this signify algebraically about its zeroes?"
+    },
+    {
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "options": [
+        "It is a quadratic polynomial with degree 2.",
+        "It is a cubic polynomial because of the fraction.",
+        "It is a linear polynomial.",
+        "It is not a polynomial at all."
+      ],
+      "text": "Consider the expression p(x) = x² + (1/x) - 3. Based on the definition of polynomials, which of the following statements is accurate?",
+      "topic": "Introduction to Polynomials"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "p = q",
+        "p = r",
+        "q = r",
+        "p + r = 0"
+      ],
+      "text": "If α and β are the zeroes of the quadratic polynomial f(x) = px² + qx + r, and they are reciprocals of each other, what is the relationship between the coefficients?",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "The zeroes of the quadratic polynomial x² + 99x + 127 are:",
+      "difficulty": "Hard",
+      "options": [
+        "Both positive",
+        "Both negative",
+        "One positive and one negative",
+        "Both equal"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "-9",
+        "9",
+        "18",
+        "-18"
+      ],
+      "text": "If one zero of the quadratic polynomial 2x² - 3x + k is 3, what is the value of k?",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "1",
+        "-1",
+        "4",
+        "-4"
+      ],
+      "correctOptionIndex": 1,
+      "text": "For the quadratic polynomial f(x) = kx² + 4x + 4, if the sum of the zeroes is equal to the product of the zeroes, find the value of k.",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "If the zeroes of the quadratic polynomial ax² + bx + c, where c ≠ 0, are equal, then:",
+      "options": [
+        "c and a have opposite signs.",
+        "c and b have opposite signs.",
+        "c and a have the same sign.",
+        "c and b have the same sign."
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "Given that α and β are the zeroes of a quadratic polynomial f(x) = x² - (k+6)x + 2(2k-1). If α + β = ½(αβ), what is the value of k?",
+      "correctOptionIndex": 0,
+      "options": [
+        "7",
+        "6",
+        "5",
+        "4"
+      ],
+      "difficulty": "Hard",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "4t² + t - 1",
+        "4t² - t + 1",
+        "4t² + t + 1",
+        "-4t² + t + 1"
+      ],
+      "text": "If α and β are zeroes of the polynomial t² - t - 4, form a polynomial whose zeroes are 1/α and 1/β."
+    },
+    {
+      "text": "If one of the zeroes of the cubic polynomial x³ + ax² + bx + c is -1, then the product of the other two zeroes is:",
+      "options": [
+        "b - a + 1",
+        "b - a - 1",
+        "a - b + 1",
+        "a - b - 1"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "topic": "Cubic Polynomials"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "The number of polynomials having zeroes as -2 and 5 is:",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "More than 3"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 3
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "-4",
+        "4",
+        "8",
+        "-8"
+      ],
+      "correctOptionIndex": 0,
+      "text": "If α, β, γ are the zeroes of the polynomial p(x) = 2x³ - 5x² - 14x + 8, what is the value of αβγ?",
+      "topic": "Cubic Polynomials"
+    },
+    {
+      "text": "A quadratic polynomial whose zeroes are -3 and 4 is:",
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "options": [
+        "x² - x + 12",
+        "x² + x + 12",
+        "x² - x - 12",
+        "2x² + 2x - 24"
+      ],
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "If the sum of the zeroes of the polynomial p(x) = (k² - 14)x² - 2x - 12 is 1, which of the following could be the value of k?",
+      "correctOptionIndex": 2,
+      "options": [
+        "4",
+        "-4",
+        "Both 4 and -4",
+        "None of the above"
+      ],
+      "difficulty": "Hard",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "Identify the degree of the polynomial expression: 7u^6 - (3/2)u^4 + 4u² + u - 8.",
+      "correctOptionIndex": 1,
+      "options": [
+        "4",
+        "6",
+        "2",
+        "1"
+      ],
+      "difficulty": "Easy",
+      "topic": "Introduction to Polynomials"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "text": "For what value of k is 3 a zero of the polynomial p(x) = 2x² + x + k?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "21",
+        "-21",
+        "15",
+        "-15"
+      ]
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "-1",
+        "1",
+        "-6",
+        "6"
+      ],
+      "text": "If α and β are the zeroes of the polynomial 2y² + 7y + 5, what is the value of α + β + αβ?",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Introduction to Polynomials",
+      "options": [
+        "2x - 3",
+        "√3x + 5",
+        "x - 2/11",
+        "2x + 5 - x²"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "text": "Which of the following is not a linear polynomial?"
+    },
+    {
+      "text": "If α and β are the zeroes of the quadratic polynomial f(x) = x² - p(x + 1) - c, then the value of (α + 1)(β + 1) is:",
+      "options": [
+        "c",
+        "c - 1",
+        "1 - c",
+        "1 + c"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "text": "A cubic polynomial can have at most how many zeroes?"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "text": "The parabola y = ax² + bx + c opens upwards if:",
+      "correctOptionIndex": 1,
+      "options": [
+        "a < 0",
+        "a > 0",
+        "a = 0",
+        "b > 0"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Cubic Polynomials",
+      "text": "If the sum of the products of the zeroes taken two at a time for the cubic polynomial ax³ + bx² + cx + d is required, which ratio represents it?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "-b/a",
+        "c/a",
+        "-d/a",
+        "d/a"
+      ]
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "Find a quadratic polynomial whose sum and product of zeroes are √2 and 1/3 respectively.",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "3x² - 3√2x + 1",
+        "x² - √2x + 1",
+        "3x² + 3√2x + 1",
+        "3x² - √2x + 3"
+      ]
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "text": "If the graph of a polynomial intersects the x-axis at exactly 3 points, the minimum degree of the polynomial is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "13/6",
+        "-13/6",
+        "6/13",
+        "-6/13"
+      ],
+      "text": "If α, β are the zeroes of the polynomial f(x) = x² - 5x + 6, find the value of (α/β) + (β/α)."
+    },
+    {
+      "text": "The zeroes of the quadratic polynomial x² - 3 are:",
+      "options": [
+        "3 and -3",
+        "√3 and -√3",
+        "3 and 1",
+        "√3 and 1"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "3",
+        "-3",
+        "Both 3 and -3",
+        "None of the above"
+      ],
+      "text": "If one zero of the polynomial (a² + 9)x² + 13x + 6a is reciprocal of the other, find the value of 'a'.",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A.",
+        "Both A and R are true but R is NOT the correct explanation of A.",
+        "A is true but R is false.",
+        "A is false but R is true."
+      ],
+      "text": "Assertion (A): The polynomial x³ - x² has exactly two zeroes, 0 and 1. Reason (R): A cubic polynomial always has exactly 3 real zeroes."
+    },
+    {
+      "topic": "Polynomials",
+      "text": "The zeroes of the quadratic polynomial 4x^2 - 4x - 3 are:",
+      "correctOptionIndex": 1,
+      "options": [
+        "-3/2, 1/2",
+        "3/2, -1/2",
+        "1/2, 1/2",
+        "-3/2, -1/2"
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "options": [
+        "1",
+        "Undefined (Infinitely many)",
+        "3",
+        "2"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "The number of polynomials having zeroes as -3 and 7 is:",
+      "topic": "Polynomials"
+    },
+    {
+      "correctOptionIndex": 2,
+      "options": [
+        "54",
+        "55",
+        "135",
+        "134"
+      ],
+      "difficulty": "Hard",
+      "text": "If α and β are the zeroes of the quadratic polynomial g(y) = y^2 - 5y + 3, then the value of α^4*β^3 + α^3*β^4 is:",
+      "topic": "Polynomials"
+    },
+    {
+      "text": "If one zero of the quadratic polynomial x² + 3x + k is 2, then the value of k is",
+      "options": [
+        "10",
+        "-10",
+        "5",
+        "-5"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "-b/a",
+        "b/a",
+        "c/a",
+        "-d/a"
+      ],
+      "text": "Given that two of the zeroes of the cubic polynomial ax³ + bx² + cx + d are 0, the third zero is"
+    },
+    {
+      "text": "If one of the zeroes of the quadratic polynomial (k-1)x² + kx + 1 is -3, then the value of k is",
+      "options": [
+        "4/3",
+        "-4/3",
+        "2/3",
+        "-2/3"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "A quadratic polynomial, whose zeroes are -3 and 4, is",
+      "difficulty": "Medium",
+      "options": [
+        "x² - x + 12",
+        "x² + x + 12",
+        "x²/2 - x/2 - 6",
+        "2x² + 2x - 24"
+      ],
+      "correctOptionIndex": 2,
+      "topic": "Zeroes and Coefficients"
+    },
+    {
+      "text": "If the zeroes of the quadratic polynomial x² + (a+1)x + b are 2 and -3, then",
+      "correctOptionIndex": 3,
+      "options": [
+        "a = -7, b = -1",
+        "a = 5, b = -1",
+        "a = 2, b = -6",
+        "a = 0, b = -6"
+      ],
+      "difficulty": "Medium",
+      "topic": "Zeroes and Coefficients"
+    },
+    {
+      "text": "The number of polynomials having zeroes as -2 and 5 is",
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "more than 3"
+      ],
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Zeroes and Coefficients",
+      "text": "Given that one of the zeroes of the cubic polynomial ax³ + bx² + cx + d is zero, the product of the other two zeroes is",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "-c/a",
+        "c/a",
+        "0",
+        "-b/a"
+      ]
+    },
+    {
+      "topic": "Zeroes and Coefficients",
+      "text": "If one of the zeroes of the cubic polynomial x³ + ax² + bx + c is -1, then the product of the other two zeroes is",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "b - a + 1",
+        "b - a - 1",
+        "a - b + 1",
+        "a - b - 1"
+      ]
+    },
+    {
+      "options": [
+        "both positive",
+        "both negative",
+        "one positive and one negative",
+        "both equal"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "The zeroes of the quadratic polynomial x² + 99x + 127 are",
+      "topic": "Zeroes and Coefficients"
+    },
+    {
+      "text": "The zeroes of the quadratic polynomial x² + kx + k, k ≠ 0,",
+      "difficulty": "Hard",
+      "options": [
+        "cannot both be positive",
+        "cannot both be negative",
+        "are always unequal",
+        "are always equal"
+      ],
+      "correctOptionIndex": 0,
+      "topic": "Zeroes and Coefficients"
+    },
+    {
+      "topic": "Zeroes and Coefficients",
+      "difficulty": "Hard",
+      "options": [
+        "c and a have opposite signs",
+        "c and b have opposite signs",
+        "c and a have the same sign",
+        "c and b have the same sign"
+      ],
+      "correctOptionIndex": 2,
+      "text": "If the zeroes of the quadratic polynomial ax² + bx + c, c ≠ 0 are equal, then"
+    },
+    {
+      "topic": "Zeroes and Coefficients",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "has no linear term and the constant term is negative.",
+        "has no linear term and the constant term is positive.",
+        "can have a linear term but the constant term is negative.",
+        "can have a linear term but the constant term is positive."
+      ],
+      "text": "If one of the zeroes of a quadratic polynomial of the form x² + ax + b is the negative of the other, then it"
+    },
+    {
+      "topic": "Division Algorithm for Polynomials",
+      "difficulty": "Hard",
+      "options": [
+        "$k = 5, a = -5$",
+        "$k = -5, a = 5$",
+        "$k = 5, a = 5$",
+        "$k = -5, a = -5$"
+      ],
+      "correctOptionIndex": 0,
+      "text": "If the polynomial $x^{4}-6x^{3}+16x^{2}-25x+10$ is divided by another polynomial $x^{2}-2x-k$, the remainder comes out to be $x-a$, then find $k$ and $a$."
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "text": "$\\alpha, \\beta, \\gamma$ are the zeroes of cubic polynomial $x^{3}-6x^{2}+p(x-1)+5$. If $\\alpha, \\beta, \\gamma$ are in A.P., then find the product of all the zeroes.",
+      "difficulty": "Super Difficult",
+      "options": [
+        "$6$",
+        "$8$",
+        "$-6$",
+        "$11$"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "topic": "Factor Theorem",
+      "correctOptionIndex": 0,
+      "options": [
+        "$-a^{4}+a^{2}b-ac+d=0$",
+        "$a^{4}-a^{2}b+ac-d=0$",
+        "$-a^{3}+a^{2}b-ac+d=0$",
+        "$a^{4}+a^{2}b+ac+d=0$"
+      ],
+      "difficulty": "Medium",
+      "text": "Using the division algorithm, if $(x+a)$ is a factor of $f(x)=ax^{3}+bx^{2}+cx+d$, which of the following relations holds true?"
+    },
+    {
+      "text": "If the quadratic expression $px^{2}+qx+r$ has the same sign as that of $p$, then what is the relation among $p, q$ and $r$?",
+      "options": [
+        "$q^{2} < 4pr$",
+        "$q^{2} > 4pr$",
+        "$q^{2} = 4pr$",
+        "$q^{2} \\ge 4pr$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Quadratic Expressions"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "text": "Consider a polynomial $f(x)=ax^{2}+bx+c$ such that $f(0)=4$. When $f(x)$ is divided by $x+1$, we get remainder $4$ and when it is divided by $x+2$, we get remainder $6$. Find the values of $a, b$ and $c$.",
+      "options": [
+        "$a=1, b=1, c=4$",
+        "$a=2, b=1, c=4$",
+        "$a=1, b=-1, c=4$",
+        "$a=-1, b=1, c=4$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 0
+    },
+    {
+      "topic": "Division Algorithm for Polynomials",
+      "correctOptionIndex": 1,
+      "options": [
+        "$122$",
+        "$132$",
+        "$142$",
+        "$112$"
+      ],
+      "difficulty": "Medium",
+      "text": "What is the remainder when $8x^{3}-13x^{2}+10x+3$ is divided by $(x-3)$?"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "text": "If $\\alpha, \\beta$ and $\\gamma$ are the zeroes of the polynomial $x^{3}-6x^{2}-x+30$, then find the value of $\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$.",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$-6$",
+        "$30$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy"
+    },
+    {
+      "options": [
+        "$1$",
+        "$-1$",
+        "$3$",
+        "$-3$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "text": "If $\\alpha, \\beta$ and $\\gamma$ are the zeroes of the cubic polynomial $kx^{3}-5x+9$ and $\\alpha^{3}+\\beta^{3}+\\gamma^{3}=27$, then find the value of $k$.",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "options": [
+        "$a$",
+        "$\\sqrt{a}$",
+        "$-a^{2}$",
+        "$a^{2}$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "text": "What must be subtracted from $f(x)=ax^{4}+\\sqrt{a}x^{3}+x^{2}+ax+\\sqrt{a}$ so that it is exactly divisible by $x^{2}+\\sqrt{a}$?",
+      "topic": "Division Algorithm for Polynomials"
+    },
+    {
+      "topic": "Division Algorithm for Polynomials",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "$x-110$",
+        "$110$",
+        "$110-x$",
+        "$4x+88$"
+      ],
+      "text": "Let $p(x)$ be any polynomial. When it is divided by $(x-19)$ and $(x-91)$, then the remainders are $91$ and $19$ respectively. The remainder, when $p(x)$ is divided by $(x-19)(x-91)$ is:"
+    },
+    {
+      "topic": "Value of a Polynomial",
+      "difficulty": "Super Difficult",
+      "options": [
+        "$4$",
+        "$10$",
+        "$6$",
+        "$7$"
+      ],
+      "correctOptionIndex": 1,
+      "text": "Let $p(x)$ be a cubic polynomial such that the coefficient of $x^{3}$ is $1$, $p(1)=1$, $p(2)=2$ and $p(3)=3$, then the value of $p(4)$ is:"
+    },
+    {
+      "topic": "Factor Theorem",
+      "text": "If $a+c+e=0$ and $b+d=0$, then $ax^{4}+bx^{3}+cx^{2}+dx+e$ is exactly divisible by:",
+      "correctOptionIndex": 2,
+      "options": [
+        "$x+1$",
+        "$x-1$",
+        "Both $(x+1)$ and $(x-1)$",
+        "None of these"
+      ],
+      "difficulty": "Medium"
+    },
+    {
+      "text": "Consider a quadratic polynomial $f(x)=ax^{2}+x+c$ such that $ac > \\frac{1}{4}$ and its graph completely lies below the x-axis, then:",
+      "options": [
+        "$a<0, c>0$",
+        "$a<0, c<0$",
+        "$a>0, c>0$",
+        "$a>0, c<0$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "topic": "Geometrical Meaning of Zeroes"
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "text": "If the zeroes of the polynomial $x^{3}-3x^{2}+2$ are $a-b, a$ and $a+b$, then the values of $a$ and $b$ respectively are:",
+      "options": [
+        "$-1$ and $\\pm\\sqrt{3}$",
+        "$1$ and $\\pm\\sqrt{3}$",
+        "$-1$ and $2$",
+        "$1$ and $\\pm 2$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "$2p^{3}=pq-r$",
+        "$2p^{3}=pq+r$",
+        "$p^{3}=pq-r$",
+        "$p^{3}=pq+r$"
+      ],
+      "text": "If $\\alpha-\\beta, \\alpha$ and $\\alpha+\\beta$ are the zeroes of the polynomial $f(x)=x^{3}-3px^{2}+qx-r$, then which of the following relations is correct?"
+    },
+    {
+      "text": "If on dividing $x^{3}-4x^{2}+3x-2$ by a non-zero polynomial $g(x)$, the quotient and the remainder are $(x-2)$ and $-2x$ respectively, then $g(x)$ is equal to:",
+      "options": [
+        "$x^{2}-2x+1$",
+        "$x^{2}+2x+1$",
+        "$x^{2}-2x-1$",
+        "$x^{2}-x-1$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Division Algorithm for Polynomials"
+    },
+    {
+      "text": "For the expression $f(x)=x^{3}+ax^{2}+bx+c$, if $f(1)=f(2)=0$ and $f(4)=f(0)$, then the values of $a, b$ and $c$ are:",
+      "options": [
+        "$a=-9, b=20, c=-12$",
+        "$a=-8, b=20, c=-12$",
+        "$a=9, b=-20, c=-12$",
+        "$a=-8, b=-20, c=12$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "topic": "Value of a Polynomial"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "text": "If $\\alpha, \\beta$ and $\\gamma$ are the zeroes of the cubic polynomial $x^{3}-5x^{2}+2x-10$, then the value of $(\\alpha+\\beta+\\gamma)(\\frac{1}{\\alpha}+\\frac{1}{\\beta}+\\frac{1}{\\gamma})$ is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "options": [
+        "$2$",
+        "$0$",
+        "$-1$",
+        "$1$"
+      ]
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "text": "For what value of $k$ is $-4$ a zero of the polynomial $x^{2}-x-(2k+2)$?",
+      "options": [
+        "$k = 9$",
+        "$k = -9$",
+        "$k = 18$",
+        "$k = 2$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy"
+    },
+    {
+      "text": "Find the quadratic polynomial whose sum and product of zeroes are $10$ and $3$ respectively.",
+      "options": [
+        "$x^{2}+10x+3$",
+        "$x^{2}-10x+3$",
+        "$x^{2}-3x+10$",
+        "$x^{2}+3x-10$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Formation of Quadratic Polynomial"
+    },
+    {
+      "text": "Find the quadratic polynomial whose sum and product of zeroes are $-1$ and $0$ respectively.",
+      "difficulty": "Easy",
+      "options": [
+        "$x^{2}-x$",
+        "$x^{2}+x$",
+        "$x^{2}-1$",
+        "$x^{2}+1$"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Formation of Quadratic Polynomial"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "correctOptionIndex": 1,
+      "options": [
+        "$\\frac{-5}{3}$ and $2$",
+        "$\\frac{5}{3}$ and $2$",
+        "$5$ and $6$",
+        "$\\frac{5}{3}$ and $-2$"
+      ],
+      "difficulty": "Easy",
+      "text": "What are the sum and product of the zeroes of the polynomial $3x^{2}-5x+6$ respectively?"
+    },
+    {
+      "topic": "Formation of Quadratic Polynomial",
+      "text": "Find the quadratic polynomial whose zeroes are $3$ and $-5$.",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "$x^{2}+2x-15$",
+        "$x^{2}-2x-15$",
+        "$x^{2}+8x-15$",
+        "$x^{2}-8x+15$"
+      ]
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "options": [
+        "$1$ zero",
+        "$2$ zeroes",
+        "$3$ zeroes",
+        "No zeroes"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "text": "If the graph of a polynomial $f(x)$ intersects the x-axis at exactly two distinct points, then the polynomial has exactly:"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Linear polynomial",
+        "Constant polynomial",
+        "Monomial",
+        "Quadratic polynomial"
+      ],
+      "text": "A non-zero polynomial of degree zero is known as a:",
+      "topic": "Polynomial Expressions"
+    },
+    {
+      "text": "A polynomial of degree two is known as a:",
+      "difficulty": "Easy",
+      "options": [
+        "Cubic polynomial",
+        "Biquadratic polynomial",
+        "Quadratic polynomial",
+        "Linear polynomial"
+      ],
+      "correctOptionIndex": 2,
+      "topic": "Polynomial Expressions"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "options": [
+        "Downwards",
+        "Upwards",
+        "Towards the right",
+        "Towards the left"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "text": "For $a>0$, in the quadratic polynomial $ax^{2}+bx+c$, the graph of the parabola will open:"
+    },
+    {
+      "options": [
+        "$4$ and $16$",
+        "$-4$ and $-16$",
+        "$4$ and $-4$",
+        "$0$ and $16$"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "text": "What are the zeroes of the quadratic polynomial $x^{2}-16$?",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "options": [
+        "$1$",
+        "$-1$",
+        "$a-2$",
+        "$\\frac{1}{a}-2$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the polynomial $x^{2}-ax+a$, then find the value of $\\frac{1}{\\alpha}+\\frac{1}{\\beta}-2$.",
+      "topic": "Relationship Between Zeroes and Coefficients"
+    },
+    {
+      "text": "Find the quadratic polynomial whose product and sum of the zeroes are $23$ and $10$ respectively.",
+      "options": [
+        "$x^{2}+10x+23$",
+        "$x^{2}-10x+23$",
+        "$x^{2}-23x+10$",
+        "$x^{2}+23x-10$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "topic": "Formation of Quadratic Polynomial"
+    },
+    {
+      "topic": "Formation of Quadratic Polynomial",
+      "text": "If $k$ is any non-zero constant, then the polynomial whose zeroes are $-1$ and $-2$ is:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "$k[x^{2}+3x-2]$",
+        "$k[x^{2}-3x+2]$",
+        "$k[x^{2}+3x+2]$",
+        "$k[x^{2}-3x-2]$"
+      ]
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "options": [
+        "x-axis",
+        "y-axis",
+        "Both x-axis and y-axis",
+        "None of these"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "text": "Real zeroes of a polynomial are those points at which the graph of the given polynomial intersects the:"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "options": [
+        "$1$ and $3$ are the zeroes of $p(x)$",
+        "Sum of the zeroes is $-4$",
+        "Product of zeroes is $3$",
+        "Both Option 1 and Option 3 are true"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "text": "For the polynomial $p(x)=2x^{2}-8x+6$, which of the following is true?"
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "$(x-\\alpha)(x-\\beta)-r$",
+        "$(x-\\alpha)(x-\\beta)+r$",
+        "$(x+\\alpha)(x+\\beta)-r$",
+        "$(x+\\alpha)(x+\\beta)+r$"
+      ],
+      "difficulty": "Hard",
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the polynomial $(x-p)(x-q)-r$, then $p$ and $q$ would be the zeroes of the polynomial:",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Formation of Quadratic Polynomial",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "$k[x^{2}+\\frac{2}{3}x+\\frac{1}{3}]$",
+        "$k[x^{2}+2x+\\frac{1}{3}]$",
+        "$k[x^{2}-\\frac{2}{3}x+\\frac{1}{3}]$",
+        "$k[x^{2}-\\frac{x}{3}+\\frac{2}{3}]$"
+      ],
+      "text": "If $k$ is any non-zero constant and $\\alpha, \\beta$ are the zeroes of the polynomial $x^{2}-2x+3$, then the polynomial whose zeroes are $\\frac{1}{\\alpha}$ and $\\frac{1}{\\beta}$ is:"
+    },
+    {
+      "options": [
+        "$k[x^{2}-(\\frac{2p}{q})x+\\frac{p}{q}] \\text{ for } k \\neq 0$",
+        "$k[x^{2}-(\\frac{2q}{p})x+\\frac{q}{p}] \\text{ for } k \\neq 0$",
+        "$k[x^{2}-(\\frac{p}{q})x+\\frac{q}{p}] \\text{ for } k \\neq 0$",
+        "$k[x^{2}+(\\frac{q}{p})x+\\frac{q}{p}] \\text{ for } k \\neq 0$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "text": "The quadratic polynomial whose zeroes are $\\frac{\\sqrt{p}}{\\sqrt{p}+\\sqrt{p-q}}$ and $\\frac{\\sqrt{p}}{\\sqrt{p}-\\sqrt{p-q}}$ is:",
+      "topic": "Formation of Quadratic Polynomial"
+    },
+    {
+      "text": "If $k$ is any non-zero constant and $\\alpha, \\beta$ are the zeroes of $x^{2}+ax+1$, then the polynomial whose zeroes are $\\frac{\\alpha^{2}}{\\beta}$ and $\\frac{\\beta^{2}}{\\alpha}$ is:",
+      "correctOptionIndex": 1,
+      "options": [
+        "$k[x^{2}+a(a^{2}-3)x-1]$",
+        "$k[x^{2}+a(a^{2}-3)x+1]$",
+        "$k[x^{2}-a(a^{2}-3)x+1]$",
+        "$k[x^{2}-a(a^{2}-3)x-1]$"
+      ],
+      "difficulty": "Hard",
+      "topic": "Relationship Between Zeroes and Coefficients"
+    },
+    {
+      "text": "If the product of the zeroes of the polynomial $ax^{2}-7x+3$ is $6$, then the value of $a$ is:",
+      "options": [
+        "$-7$",
+        "$-2$",
+        "$(2)^{-1}$",
+        "$(1)^{-2}$"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Relationship Between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "text": "If the zeroes of the polynomial $x^{2}-bx+a$ are two consecutive odd integers, then the value of $b^{2}-4a$ is:",
+      "difficulty": "Hard",
+      "options": [
+        "$-5$",
+        "$6$",
+        "$2$",
+        "$4$"
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "Both Assertion & Reason are true and Reason is the correct explanation.",
+        "Both Assertion & Reason are true but Reason is not the correct explanation.",
+        "Assertion is true statement but Reason is false.",
+        "Both Assertion and Reason are false statements."
+      ],
+      "text": "**Assertion (A)**: $0$ and $-2$ are the zeroes of $f(t)=4t^{2}+8t$.\n\n**Reason (R)**: Sum of zeroes is $-\\frac{8}{4}$ and product of zeroes is $\\frac{0}{4}$.\n\nSelect the correct option:",
+      "topic": "Relationship Between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "options": [
+        "Both Assertion & Reason are true and Reason is the correct explanation.",
+        "Both Assertion & Reason are true but Reason is not the correct explanation.",
+        "Assertion is true statement but Reason is false.",
+        "Both Assertion and Reason are false statements."
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 3,
+      "text": "**Assertion (A)**: The graph of $y=x^{4}$ will cut the x-axis in at least four points.\n\n**Reason (R)**: The degree of a polynomial determines its total number of real zeroes directly.\n\nSelect the correct option:"
+    },
+    {
+      "topic": "Polynomial Expressions",
+      "text": "**Case Study 1:** If $p(x)=ax^{2}+bx+c$ (where $a \\neq 0$) represents a quadratic polynomial. If $\\alpha$ and $\\beta$ are zeroes of $p(x)$, then $\\alpha+\\beta=\\frac{-b}{a}$ and $\\alpha\\beta=\\frac{c}{a}$.\n\nIf $p(x)=3x^{2}-2x+5$, what is the coefficient of $x$?",
+      "options": [
+        "$3$",
+        "$-2$",
+        "$5$",
+        "$2$"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "**Case Study 1:** Using the polynomial $p(x)=3x^{2}-2x+5$, what is the product of its zeroes?",
+      "options": [
+        "$\\frac{5}{3}$",
+        "$\\frac{2}{3}$",
+        "$-\\frac{5}{3}$",
+        "$-\\frac{2}{3}$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Relationship Between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Relationship Between Zeroes and Coefficients",
+      "options": [
+        "$\\frac{-56}{9}$",
+        "$\\frac{56}{9}$",
+        "$\\frac{44}{9}$",
+        "$\\frac{-44}{9}$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "text": "**Case Study 1:** Using the polynomial $p(x)=3x^{2}-2x+5$, what is the value of the square of the difference of its zeroes, i.e., $(\\alpha-\\beta)^{2}$?"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "text": "**Case Study 2:** An electric wire bent due to a storm forms a curve passing through the coordinates $(-2,0), (0,0), (2,0), (-1,3), (1,-3), (3,15)$ and $(-3,-15)$.\n\nBased on these coordinates, how many zeroes are there for the polynomial represented by this wire?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "**Case Study 2:** Based on the coordinates provided (intersecting the x-axis at $(-2,0), (0,0),$ and $(2,0)$), what are the zeroes of the polynomial?",
+      "difficulty": "Easy",
+      "options": [
+        "$2, 0, -2$",
+        "$2, -2, -5$",
+        "$-2, 2, -5.5$",
+        "$2, -3, -2$"
+      ],
+      "correctOptionIndex": 0,
+      "topic": "Geometrical Meaning of Zeroes"
+    },
+    {
+      "topic": "Geometrical Meaning of Zeroes",
+      "difficulty": "Easy",
+      "options": [
+        "$1$",
+        "$3$",
+        "$0$",
+        "$4$"
+      ],
+      "correctOptionIndex": 1,
+      "text": "**Case Study 2:** The degree of the polynomial passing through the aforementioned points (with $3$ distinct real zeroes) is most likely:"
+    },
+    {
+      "text": "The maximum number of zeroes that a polynomial of degree 3 can have is:",
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "None"
+      ],
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "If $-2$ is a zero of the polynomial $P(x)=3x^2+4x+2k$ then the value of $k$ is:",
+      "correctOptionIndex": 3,
+      "options": [
+        "$1$",
+        "$-1$",
+        "$2$",
+        "$-2$"
+      ],
+      "difficulty": "Easy",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "Both positive",
+        "Both negative",
+        "One positive and one negative",
+        "Both equal"
+      ],
+      "correctOptionIndex": 1,
+      "text": "The zeroes of the quadratic polynomial $x^2+99x+127$ are:",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "Cannot both be positive",
+        "Cannot both be negative",
+        "Are always unequal",
+        "Are always equal"
+      ],
+      "text": "The zeroes of the quadratic polynomial $x^2+kx+k, k \\neq 0$:"
+    },
+    {
+      "text": "If the zeroes of the quadratic polynomial $ax^2+bx+c, c \\neq 0$ are equal, then:",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "$c$ and $a$ have opposite signs",
+        "$c$ and $b$ have opposite signs",
+        "$c$ and $a$ have the same sign",
+        "$c$ and $b$ have the same sign"
+      ],
+      "topic": "Nature of Roots"
+    },
+    {
+      "text": "If the sum of zeroes of the polynomial $x^2-(k+3)x+(5k-3)$ is equal to one-fourth of the product of the zeroes, then the value of $k$ is:",
+      "options": [
+        "$3$",
+        "$5$",
+        "$15$",
+        "$18$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "The quadratic polynomial, the sum of whose zeroes is $-5$ and their product is $6$, is:",
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "options": [
+        "$x^2+5x+6$",
+        "$x^2-5x+6$",
+        "$x^2-5x-6$",
+        "$-x^2+5x+6$"
+      ],
+      "topic": "Formation of Polynomial"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "$x^2-5\\sqrt{2}x+1$",
+        "$8x^2-20$",
+        "$15x^2-6$",
+        "$x^2-2\\sqrt{5}x-1$"
+      ],
+      "text": "A quadratic polynomial having zeroes $-\\sqrt{\\frac{5}{2}}$ and $\\sqrt{\\frac{5}{2}}$ is:"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "If $a$ and $b$ are zeroes of the polynomial $2t^2-4t+3$, then the value of $a^2b+ab^2$ is:",
+      "difficulty": "Medium",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "options": [
+        "$a=-7, b=-1$",
+        "$a=5, b=-1$",
+        "$a=2, b=-6$",
+        "$a=0, b=-6$"
+      ],
+      "text": "If the zeroes of the quadratic polynomial $x^2+(a+1)x+b$ are $2$ and $-3$, then:",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "If $\\alpha, \\beta$ are the zeroes of the quadratic polynomial $p(x)=x^2-(k+6)x+2(2k-1)$, then the value of $k$, if $\\alpha+\\beta=\\frac{1}{2}\\alpha\\beta$ is:",
+      "difficulty": "Hard",
+      "options": [
+        "$-7$",
+        "$7$",
+        "$-3$",
+        "$3$"
+      ],
+      "correctOptionIndex": 1,
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "If $\\alpha, \\beta$ are zeroes of the polynomial $x^2-1$, then value of $(\\alpha+\\beta)$ is:",
+      "options": [
+        "$2$",
+        "$1$",
+        "$-1$",
+        "$0$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Degree of a Polynomial",
+      "text": "What is the degree of the polynomial $p(x)=7x+5x^2-\\sqrt{3}$?",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ]
+    },
+    {
+      "topic": "Degree of a Polynomial",
+      "correctOptionIndex": 2,
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "difficulty": "Easy",
+      "text": "What is the degree of the polynomial $q(x)=5x^4-32x^2+5x-8$?"
+    },
+    {
+      "text": "What is the degree of the polynomial $r(x)=x^3-x^6-5\\sqrt{2}$?",
+      "options": [
+        "$3$",
+        "$6$",
+        "$2$",
+        "$5$"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "topic": "Degree of a Polynomial"
+    },
+    {
+      "correctOptionIndex": 1,
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "difficulty": "Easy",
+      "text": "What is the degree of the polynomial $h(x)=\\frac{1}{2}-3x$?",
+      "topic": "Degree of a Polynomial"
+    },
+    {
+      "text": "What are the zeroes of the quadratic polynomial $6x^2-3-7x$?",
+      "options": [
+        "$\\frac{3}{2}, \\frac{-1}{3}$",
+        "$\\frac{2}{3}, \\frac{1}{3}$",
+        "$\\frac{-3}{2}, \\frac{1}{3}$",
+        "$\\frac{3}{2}, \\frac{1}{3}$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "options": [
+        "$1$",
+        "$2$",
+        "$-1$",
+        "$0$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "If zeroes of the polynomial $x^2+4x+2a$ are $\\alpha$ and $\\frac{2}{\\alpha}$, what is the value of $a$?"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "If $\\alpha, \\beta$ are zeroes of quadratic polynomial $5x^2+5x+1$, find the value of $\\alpha^2+\\beta^2$.",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{1}{5}$",
+        "$\\frac{4}{5}$"
+      ]
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "If $\\alpha, \\beta$ are zeroes of quadratic polynomial $5x^2+5x+1$, find the value of $\\alpha^{-1}+\\beta^{-1}$.",
+      "difficulty": "Hard",
+      "options": [
+        "$5$",
+        "$-5$",
+        "$\\frac{1}{5}$",
+        "$-\\frac{1}{5}$"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "text": "If $\\alpha$ and $\\beta$ are zeroes of a polynomial $6x^2-5x+1$, then the quadratic polynomial whose zeroes are $\\alpha^2$ and $\\beta^2$ is:",
+      "difficulty": "Hard",
+      "options": [
+        "$36x^2+13x+1$",
+        "$36x^2-13x+1$",
+        "$36x^2-13x-1$",
+        "$x^2-13x+36$"
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$-\\frac{1}{2}$",
+        "$\\frac{3}{2}$",
+        "$-\\frac{3}{2}$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "text": "If $m$ and $n$ are zeroes of the polynomial $(3x^2-x-2)$, what is the value of $\\frac{1}{m}+\\frac{1}{n}$?"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "text": "If $m$ and $n$ are zeroes of the polynomial $(3x^2-x-2)$, what is the value of $m^2+n^2$?",
+      "options": [
+        "$\\frac{11}{9}$",
+        "$\\frac{13}{9}$",
+        "$\\frac{15}{9}$",
+        "$\\frac{17}{9}$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "text": "If one zero of a polynomial $3x^2-8x+2k+1$ is seven times the other, then the value of $k$ is:",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$-\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "$-\\frac{3}{2}$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "options": [
+        "$2$",
+        "$-2$",
+        "$3$",
+        "$-3$"
+      ],
+      "text": "If one zero of the quadratic polynomial $f(x)=4x^2-8kx+8x-9$ is negative of the other, then the sum of the zeroes of $kx^2+3kx+2$ is:"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "$20$",
+        "$25$",
+        "$35$",
+        "$40$"
+      ],
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the polynomial $f(x)=x^2-x-k$ such that $\\alpha-\\beta=9$, then the value of $k$ is:"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "difficulty": "Medium",
+      "options": [
+        "$x^2-x+12$",
+        "$x^2+x+12$",
+        "$\\frac{x^2}{2}-\\frac{x}{2}-6$",
+        "$2x^2+2x-24$"
+      ],
+      "correctOptionIndex": 2,
+      "text": "A quadratic polynomial, whose zeroes are $-3$ and $4$, is:"
+    },
+    {
+      "topic": "Factor Theorem",
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "options": [
+        "$11$",
+        "$5$",
+        "$-11$",
+        "$-5$"
+      ],
+      "text": "If $x^2-4$ is the factor of $2x^3+k_1x^2+k_2x+12$, where $k_1, k_2$ are constants, then the value of $k_1+k_2$ is:"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$2$",
+        "$-2$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "text": "If $f(x)=(\\lambda^2+4)x^2+13x+4\\lambda$ and one zero of the polynomial is reciprocal of the other, then $\\lambda =$"
+    },
+    {
+      "topic": "Properties of Polynomials",
+      "options": [
+        "Has no linear term and the constant term is negative",
+        "Has no linear term and the constant term is positive",
+        "Can have a linear term but the constant term is negative",
+        "Can have a linear term but the constant term is positive"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "If one of the zeroes of a quadratic polynomial of the form $x^2+ax+b$ is the negative of the other, then it:"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 3,
+      "options": [
+        "$\\alpha=\\frac{t-s}{v-u}+\\beta$",
+        "$\\alpha=\\beta+\\frac{v-t}{s-u}$",
+        "$\\alpha=\\frac{t-s}{v-u}$",
+        "$\\alpha=\\frac{s-t}{v-u}-\\beta$"
+      ],
+      "text": "If $\\alpha-\\beta$ is a zero of the polynomials $x^2+sx+t$ and $x^2+ux+v$, what is the relationship between $\\alpha$ and $\\beta$?",
+      "topic": "Common Roots"
+    },
+    {
+      "topic": "Graph of Polynomials",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0,
+      "options": [
+        "The graph opens upwards if $a>0$",
+        "The graph opens downwards if $a>0$",
+        "The graph opens upwards if $a<0$",
+        "The graph opens downwards if $a=0$"
+      ],
+      "text": "Which of the following statements is true regarding the shape of the graph of $y=ax^2+bx+c$?"
+    },
+    {
+      "correctOptionIndex": 3,
+      "options": [
+        "$4$",
+        "$-4$",
+        "$-3$",
+        "$7$"
+      ],
+      "difficulty": "Medium",
+      "text": "What will be the value of $p$, if one zero of $x^2+(p-7)x-25=0$ is the additive inverse of the other?",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "$2-\\frac{4b^2}{ac}+\\frac{b^4}{a^2c^2}$",
+        "$2+\\frac{4b^2}{ac}-\\frac{b^4}{a^2c^2}$",
+        "$\\frac{b^2}{ac}+\\frac{b^4}{a^2c^2}$",
+        "$2-\\frac{2b^2}{ac}+\\frac{b^4}{a^2c^2}$"
+      ],
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the quadratic polynomial $f(x)=ax^2+bx+c$ then the value of $\\frac{\\alpha^2}{\\beta^2}+\\frac{\\beta^2}{\\alpha^2}$ is:",
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "text": "The quadratic polynomial having $5\\pm\\sqrt{3}$ as its zeroes is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "$x^2+10x+22$",
+        "$x^2-10x+22$",
+        "$x^2-10x-22$",
+        "$x^2+10x-22$"
+      ]
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "text": "Given 10 mathematical expressions: $2x+3, 3x^2+7x+2, 4x^3+3x^2+2, x^3+\\sqrt{3x}+7, 7x+\\sqrt{7}, 5x^3-7x+2, 2x^2+3-\\frac{5}{x}, 5x-\\frac{1}{2}, ax^3+bx^2+cx+d, x+\\frac{1}{x}$. How many of these are NOT polynomials?",
+      "topic": "Identification of Polynomials"
+    },
+    {
+      "topic": "Identification of Polynomials",
+      "difficulty": "Medium",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "correctOptionIndex": 0,
+      "text": "Given the same 10 expressions, how many are quadratic polynomials?"
+    },
+    {
+      "topic": "Zeroes of a Polynomial",
+      "text": "The zeroes of the quadratic polynomial $f(x)=abx^2+(b^2-ac)x-bc$ are:",
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "options": [
+        "$\\frac{c}{b}, \\frac{b}{a}$",
+        "$-\\frac{c}{b}, -\\frac{b}{a}$",
+        "$\\frac{c}{b}, -\\frac{b}{a}$",
+        "$-\\frac{c}{b}, \\frac{b}{a}$"
+      ]
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "$3x^2-16x+16$",
+        "$3x^2+16x+16$",
+        "$3x^2-16x-16$",
+        "$x^2-16x+16$"
+      ],
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the polynomial $x^2+4x+3$, what is the polynomial whose zeroes are $1+\\frac{\\beta}{\\alpha}$ and $1+\\frac{\\alpha}{\\beta}$?"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "correctOptionIndex": 1,
+      "options": [
+        "$2x^2+25x+82$",
+        "$2x^2-25x+82$",
+        "$x^2-25x+41$",
+        "$2x^2-25x-82$"
+      ],
+      "difficulty": "Hard",
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of the quadratic polynomial $f(x)=2x^2-5x+7$, a polynomial whose zeroes are $2\\alpha+3\\beta$ and $3\\alpha+2\\beta$ is:"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "text": "A quadratic polynomial whose zeroes are reciprocals of the zeroes of the polynomial $f(x)=ax^2+bx+c, (a \\neq 0, c \\neq 0)$ is:",
+      "difficulty": "Medium",
+      "options": [
+        "$bx^2+cx+a$",
+        "$cx^2-bx+a$",
+        "$cx^2+bx+a$",
+        "$ax^2-bx+c$"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "Graph of Polynomials",
+      "text": "**Assertion (A):** If the graph of a polynomial intersects the X-axis at only one point, it cannot be a quadratic polynomial.\n**Reason (R):** A polynomial $p(x)$ of degree $n$ can have at most $n$ real zeroes.",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ]
+    },
+    {
+      "topic": "Degree of a Polynomial",
+      "correctOptionIndex": 1,
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "difficulty": "Medium",
+      "text": "**Assertion (A):** The highest exponent of the variable in the algebraic expression is called the degree of a polynomial.\n**Reason (R):** The degree of $2x-5$ is $1$."
+    },
+    {
+      "difficulty": "Hard",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctOptionIndex": 2,
+      "text": "**Assertion (A):** Zeroes of $f(x)=x^2-4x-5$ are $5, -1$.\n**Reason (R):** The polynomial whose zeroes are $2+\\sqrt{3}$ and $2-\\sqrt{3}$ is $x^2-4x+7$.",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "**Assertion (A):** If $(2-\\sqrt{3})$ is one of the zero of the quadratic polynomial, then the other zero will be $(2+\\sqrt{3})$.\n**Reason (R):** Irrational zeroes (roots) always occur in pairs.",
+      "difficulty": "Medium",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "correctOptionIndex": 0,
+      "topic": "Nature of Roots"
+    },
+    {
+      "text": "**Assertion (A):** The quadratic polynomial with zeros $\\frac{8}{9}$ and $0$ is $9x^2-8x$.\n**Reason (R):** If the zeros of a quadratic polynomial are $p$ and $q$, then the factored form of the quadratic polynomial can be written as $p(x)=k(x-p)(x-q)$.",
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not the correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true"
+      ],
+      "topic": "Formation of Polynomial"
+    },
+    {
+      "text": "If $p$ and $q$ are the zeroes of polynomial $p(x)=x^2-4x+1$, match Column I expressions with their values in Column II.\n\n| Column I | Column II |\n| :--- | :--- |\n| (A) $p+q-\\frac{2}{pq}$ | (i) $3$ |\n| (B) $\\frac{1}{p}+\\frac{1}{q}-pq$ | (ii) $14$ |\n| (C) $3p+3q+2pq$ | (iii) $2$ |\n| (D) $5pq-2p-2q$ | (iv) $-3$ |",
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "options": [
+        "A-ii, B-iii, C-iv, D-i",
+        "A-iii, B-iv, C-i, D-ii",
+        "A-iv, B-i, C-ii, D-iii",
+        "A-iii, B-i, C-ii, D-iv"
+      ],
+      "topic": "Relationship between Zeroes and Coefficients"
+    },
+    {
+      "text": "**Applications of Parabolas - Highway Overpasses**\nIf the highway overpass is represented by $x^2-2x-8$, then its zeroes are:",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "$4, 2$",
+        "$4, -2$",
+        "$-4, 2$",
+        "$-4, -2$"
+      ],
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "Number of zeroes of a polynomial is equal to number of points where the graph of the polynomial:",
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "options": [
+        "Intersects X-axis",
+        "Intersects Y-axis",
+        "Intersects Y-axis or X-axis",
+        "None of the above"
+      ],
+      "topic": "Graph of Polynomials"
+    },
+    {
+      "topic": "Formation of Polynomial",
+      "text": "The representation of a Highway Underpass whose one zero is $6$ and the sum of the zeroes is $0$ is:",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "$x^2-6$",
+        "$x^2-36$",
+        "$x^2+36$",
+        "$x^2+6x$"
+      ]
+    },
+    {
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "text": "The number of zeroes that the polynomial $f(x)=(x-2)^2+4$ can have is:",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "**Revenue of a Firm**\nThe revenue (in Rs) of a firm is $R(x)=5x^3+4x^2+7$ and the expenditure is $E(x)=3x^3+2x-1$, where $x$ is the number of items. The profit polynomial $P(x)$ is:",
+      "options": [
+        "$2x^3+4x^2-2x+8$",
+        "$8x^3+4x^2+2x+6$",
+        "$2x^3+4x^2+2x+8$",
+        "$2x^3-4x^2-2x+8$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Operations on Polynomials"
+    },
+    {
+      "topic": "Operations on Polynomials",
+      "text": "If the firm produces $100$ items in a year, the revenue and profit (in Rs) are respectively:",
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "options": [
+        "Revenue = Rs. 50,40,007 and Profit = Rs. 20,39,808",
+        "Revenue = Rs. 50,40,000 and Profit = Rs. 20,39,800",
+        "Revenue = Rs. 5,04,007 and Profit = Rs. 2,03,988",
+        "Revenue = Rs. 50,00,007 and Profit = Rs. 20,00,808"
+      ]
+    },
+    {
+      "topic": "Operations on Polynomials",
+      "difficulty": "Hard",
+      "options": [
+        "Rs. 816.4",
+        "Rs. 716.4",
+        "Rs. 916.4",
+        "Rs. 800.4"
+      ],
+      "correctOptionIndex": 0,
+      "text": "Tax is calculated on the profit using the polynomial $T(y)=0.3y+100$, where $y$ represents the profit earned. The tax amount (in Rs) to be paid on the profit generated from $10$ items is:"
+    },
+    {
+      "text": "**Dolphin Jump**\nA dolphin jumps out of the water. Its height above water level after $t$ seconds is given by $h=20t-16t^2$. The zeroes of the polynomial $p(t)=20t-16t^2$ are:",
+      "correctOptionIndex": 1,
+      "options": [
+        "$0, \\frac{4}{5}$",
+        "$0, \\frac{5}{4}$",
+        "$0, -\\frac{5}{4}$",
+        "$1, \\frac{5}{4}$"
+      ],
+      "difficulty": "Medium",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Value of a Polynomial",
+      "text": "What would be the value of $h$ at $t=\\frac{3}{2}$?",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "$-6$",
+        "$6$",
+        "$0$",
+        "$-4$"
+      ]
+    },
+    {
+      "topic": "Applications of Polynomials",
+      "correctOptionIndex": 1,
+      "options": [
+        "$20 \\text{ cm}$",
+        "$25 \\text{ cm}$",
+        "$30 \\text{ cm}$",
+        "$16 \\text{ cm}$"
+      ],
+      "difficulty": "Hard",
+      "text": "How much horizontal distance has the dolphin covered before hitting the water level again if it travels at $20 \\text{ cm/s}$ horizontally?"
+    },
+    {
+      "topic": "Zeroes of Cubic Polynomial",
+      "text": "If $\\alpha, \\beta, \\gamma$ are the zeroes of $x^3-5x^2-2x+24$ and $\\alpha\\beta=12$, then the value of $\\gamma$ is:",
+      "options": [
+        "$2$",
+        "$-2$",
+        "$3$",
+        "$-3$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Zeroes of Cubic Polynomial",
+      "text": "If $a-b, a, a+b$ are the roots of $x^3-3x^2+x+1$, then the value of $a+b^2$ is:",
+      "difficulty": "Hard",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "correctOptionIndex": 0,
+      "options": [
+        "$4, -4, 5$",
+        "$3, -3, 5$",
+        "$2, -2, 5$",
+        "$1, -1, 5$"
+      ],
+      "difficulty": "Hard",
+      "text": "If two zeroes of the polynomial $x^3-5x^2-16x+80$ are equal in magnitude but opposite in sign, then the zeroes are:",
+      "topic": "Zeroes of Cubic Polynomial"
+    },
+    {
+      "text": "**Asana Poses**\nThe pose Trikonasana can be represented by the quadratic polynomial $4\\sqrt{3}x^2+5x-2\\sqrt{3}$. What is the shape of the graph of this polynomial?",
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "options": [
+        "Circle",
+        "Straight Line",
+        "Parabola",
+        "Ellipse"
+      ],
+      "topic": "Graph of Polynomials"
+    },
+    {
+      "topic": "Graph of Polynomials",
+      "text": "What is the number of zeroes for the graph of the quadratic polynomial $4\\sqrt{3}x^2+5x-2\\sqrt{3}$?",
+      "correctOptionIndex": 1,
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "correctOptionIndex": 2,
+      "options": [
+        "$\\frac{\\sqrt{3}}{4}, \\frac{2}{\\sqrt{3}}$",
+        "$-\\frac{\\sqrt{3}}{4}, -\\frac{2}{\\sqrt{3}}$",
+        "$\\frac{\\sqrt{3}}{4}, -\\frac{2}{\\sqrt{3}}$",
+        "$-\\frac{\\sqrt{3}}{4}, \\frac{2}{\\sqrt{3}}$"
+      ],
+      "difficulty": "Hard",
+      "text": "The zeroes of the quadratic polynomial $4\\sqrt{3}x^2+5x-2\\sqrt{3}$ representing Trikonasana are:",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "text": "**SLV-3 Rocket**\nA toy rocket is fired into the air. Its height above the ground after time $t$ seconds is given by $p(t)=24t^2-41t+12$. What will be the shape of the graph representing its height?",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "Line",
+        "Parabola",
+        "Hyperbola",
+        "Circle"
+      ],
+      "topic": "Graph of Polynomials"
+    },
+    {
+      "topic": "Graph of Polynomials",
+      "text": "Find the number of zeroes of the graph represented by $p(t)=24t^2-41t+12$.",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "$\\frac{3}{8}, \\frac{4}{3}$",
+        "$-\\frac{3}{8}, \\frac{4}{3}$",
+        "$\\frac{3}{8}, -\\frac{4}{3}$",
+        "$-\\frac{3}{8}, -\\frac{4}{3}$"
+      ],
+      "text": "The zeroes of the graph represented by $p(t)=24t^2-41t+12$ are:",
+      "topic": "Zeroes of a Polynomial"
+    },
+    {
+      "topic": "Relationship between Zeroes and Coefficients",
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "options": [
+        "$P(4,0)$ and $Q(-3,0)$",
+        "$P(3,0)$ and $Q(-4,0)$",
+        "$P(5,0)$ and $Q(-2,0)$",
+        "$P(2,0)$ and $Q(-5,0)$"
+      ],
+      "text": "**Stone Throw**\nRiddhi throws a stone in the air following a parabolic path starting from an initial point and landing at point P. The path represents a polynomial where the sum of its zeroes is $1$ and the sum of the squares of its zeroes is $25$. Assuming the starting point and landing point lie on the x-axis, find their coordinates P and Q."
+    },
+    {
+      "topic": "Applications of Polynomials",
+      "text": "If Riddhi throws the stone from point $x = -2$ and it lands at $x = 4$, and one unit on the graph represents $25$ metres, how far horizontally does the stone travel before landing?",
+      "options": [
+        "$175 \\text{ m}$",
+        "$150 \\text{ m}$",
+        "$125 \\text{ m}$",
+        "$100 \\text{ m}$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium"
+    },
+    {
+      "topic": "Types of Polynomials",
+      "text": "Zeroes of a zero polynomial is:",
+      "difficulty": "Easy",
+      "correctOptionIndex": 2,
+      "options": [
+        "not defined",
+        "1",
+        "Any real number",
+        "0"
+      ]
+    },
+    {
+      "topic": "Introduction to Polynomials",
+      "text": "Which of the following is not a polynomial?",
+      "options": [
+        "$3x+5$",
+        "$3y^2-4z^2+2y$",
+        "$x^3-3$",
+        "$\\frac{1}{x+2}$"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy"
+    },
+    {
+      "topic": "Degree of Polynomial",
+      "options": [
+        "5 terms",
+        "4 terms",
+        "6 terms",
+        "10 terms"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "text": "A polynomial of degree 5 in $x$ has at most:"
+    },
+    {
+      "options": [
+        "$3\\sqrt{y}+7$",
+        "$3x^2+\\frac{5}{x}+2$",
+        "$5x^2+\\sqrt{5}x+3$",
+        "$2x+\\frac{1}{x}$"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "text": "Which of the following is a polynomial?",
+      "topic": "Introduction to Polynomials"
+    },
+    {
+      "topic": "Values of Polynomial",
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "options": [
+        "42",
+        "0",
+        "8",
+        "-6"
+      ],
+      "text": "The value of $P(x)=x^2-7x+12$ at $x=3$ is:"
+    },
+    {
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "0",
+        "-1",
+        "$4\\sqrt{2}$",
+        "$8\\sqrt{2}+1$"
+      ],
+      "text": "If $p(x)=x^2-2\\sqrt{2}x+1$, then $p(\\sqrt{2})$ is equal to:",
+      "topic": "Values of Polynomial"
+    },
+    {
+      "topic": "Values of Polynomial",
+      "options": [
+        "3",
+        "2x",
+        "0",
+        "6"
+      ],
+      "difficulty": "Easy",
+      "correctOptionIndex": 3,
+      "text": "If $p(x)=x+3$, then $p(x)+p(-x)$ is equal to:"
+    },
+    {
+      "topic": "Zeroes of Polynomial",
+      "difficulty": "Medium",
+      "correctOptionIndex": 2,
+      "options": [
+        "10",
+        "7",
+        "-10",
+        "-2"
+      ],
+      "text": "If one of the zeroes of the polynomial $x^2+3x+k$ is 2, then the value of $k$ is:"
+    },
+    {
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "-2"
+      ],
+      "text": "The value of $p$, for which -4 is a zero of the polynomial $x^2-2x-(7p+3)$ is:",
+      "topic": "Zeroes of Polynomial"
+    },
+    {
+      "topic": "Values of Polynomial",
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "options": [
+        "2",
+        "3",
+        "6",
+        "-6"
+      ],
+      "text": "The value of polynomial $3x+2x^2-6$ at $x=0$ is:"
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "difficulty": "Medium",
+      "options": [
+        "-2",
+        "-1",
+        "1",
+        "None of the above"
+      ],
+      "correctOptionIndex": 0,
+      "text": "If $\\alpha, \\beta$ be the zeroes of the quadratic polynomial $2x^2+5x+1$, then value of $\\alpha+\\beta+\\alpha\\beta$:"
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "$c-1$",
+        "$1-c$",
+        "$c$",
+        "$1+c$"
+      ],
+      "text": "If $\\alpha, \\beta$ are the zeros of polynomial $f(x)=x^2-p(x+1)-c$, then $(\\alpha+1)(\\beta+1)=$",
+      "topic": "Relationship between zeros and coefficients"
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "text": "If one zero of the polynomial $(a^2+9)x^2+13x+6a$ is the reciprocal of the other, then the value of $a$ is:",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "-1"
+      ],
+      "difficulty": "Medium",
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "difficulty": "Medium",
+      "correctOptionIndex": 0,
+      "options": [
+        "$a=0, b=-6$",
+        "$a=2, b=-6$",
+        "$a=5, b=-1$",
+        "$a=-7, b=-1$"
+      ],
+      "text": "If the zeroes of the quadratic polynomial $x^2+(a+1)x+b$ are 2 and -3, then:"
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "text": "If $\\alpha$ and $\\beta$ are the roots of the equation $x^2-12x+32=0$, then find the value of $\\frac{\\alpha^2+\\beta^2}{\\alpha+\\beta}$",
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "options": [
+        "$\\frac{-8}{3}$",
+        "$\\frac{8}{3}$",
+        "$\\frac{-20}{3}$",
+        "$\\frac{20}{3}$"
+      ]
+    },
+    {
+      "difficulty": "Medium",
+      "options": [
+        "-23",
+        "-13",
+        "13",
+        "23"
+      ],
+      "correctOptionIndex": 1,
+      "text": "If $\\alpha$ and $\\beta$ are the zeroes of $p(x)=x^2-5x+6$ then value of $\\alpha+\\beta-3\\alpha\\beta$ is:",
+      "topic": "Relationship between zeros and coefficients"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "2",
+        "-1",
+        "1",
+        "-2"
+      ],
+      "text": "If the polynomial $ax^3+4x^2+3x-4$ and $x^3-4x+a$ leave the same remainder when divided by $(x-3)$ then value of $a$ is:"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "text": "If -2 is a zero of $p(x)=ax^3+bx^2+x-6$ and $p(x)$ leaves a remainder 4 when divided by $(x-2)$, then the values of $a$ and $b$ are (respectively):",
+      "options": [
+        "$a=2, b=2$",
+        "$a=0, b=2$",
+        "$a=1, b=2$",
+        "$a=0, b=0$"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "options": [
+        "0",
+        "1",
+        "1490",
+        "1000"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "text": "If $x^{101}+1001$ is divided by $(x+1)$, then remainder is:"
+    },
+    {
+      "topic": "Factor Theorem",
+      "difficulty": "Hard",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctOptionIndex": 3,
+      "text": "If $(x+1)$ is a factor of $x^4+(p-3)x^3-(3p-5)x^2+(2p-9)x+6$ then the value of $p$ is:"
+    },
+    {
+      "topic": "Factor Theorem",
+      "text": "If $(x+\\sqrt{2})$ is a factor of $kx^2-\\sqrt{2}x+1$, then the value of $k$ is:",
+      "difficulty": "Medium",
+      "options": [
+        "$-\\frac{3}{2}$",
+        "$-\\frac{2}{3}$",
+        "$\\frac{3}{2}$",
+        "$\\frac{2}{3}$"
+      ],
+      "correctOptionIndex": 0
+    },
+    {
+      "topic": "Remainder Theorem",
+      "text": "Using remainder theorem, the value of '$k$' if on dividing $2x^3+3x^2-kx+5$ by $(x-2)$ leaves a remainder 7 is:",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "12",
+        "13",
+        "16",
+        "8"
+      ]
+    },
+    {
+      "text": "If $f(x+2)=x^2+7x-13$, then find the remainder when $f(x)$ is divided by $(x+2)$:",
+      "difficulty": "Hard",
+      "options": [
+        "-25",
+        "-12",
+        "-23",
+        "-11"
+      ],
+      "correctOptionIndex": 0,
+      "topic": "Remainder Theorem"
+    },
+    {
+      "text": "If $9x^2-15x+6=0$ and $(3x-\\frac{5}{2})^2=k$ are identical, then the value of $k$ is:",
+      "options": [
+        "$\\frac{1}{4}$",
+        "4",
+        "9",
+        "$\\frac{1}{9}$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 0,
+      "topic": "Miscellaneous"
+    },
+    {
+      "topic": "Factor Theorem",
+      "text": "If $(2x+1)$ is a factor of both the expression $2x^2-5x+P$ and $2x^2+5x+Q$, find the value of $P+Q$.",
+      "correctOptionIndex": 2,
+      "options": [
+        "5",
+        "1",
+        "-1",
+        "-5"
+      ],
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "text": "Which of the following should be added to $9x^3+6x^2+x+2$, so that the sum is divisible by $(3x+1)$?",
+      "options": [
+        "4",
+        "-3",
+        "-2",
+        "-1"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard"
+    },
+    {
+      "topic": "Miscellaneous",
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "options": [
+        "0",
+        "2",
+        "1",
+        "6"
+      ],
+      "text": "If $x=2+2^{\\frac{1}{3}}+2^{\\frac{2}{3}}$ then $x^3-6x^2+6x=$"
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "$b^2=4ac$",
+        "$2b^2=9ac$",
+        "$c^2=4a+b^2$",
+        "$c^2=9a-b^2$"
+      ],
+      "text": "What is the condition for one root of the quadratic equation $ax^2+bx+c=0$ to be twice the other?"
+    },
+    {
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "$-\\frac{1}{6}$",
+        "$-\\frac{1}{12}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{5}{12}$"
+      ],
+      "text": "The minimum value of the polynomial $p(x)=3x^2-5x+2$ is:",
+      "topic": "Miscellaneous"
+    },
+    {
+      "topic": "HCF and LCM of Polynomials",
+      "text": "If the LCM of two polynomials $P(x)$ and $q(x)$ is $(x+3)(x-2)^2(x-6)$ and their HCF is $(x-2)$. If $P(x)=(x+3)(x-2)^2$, then $q(x)$ is:",
+      "difficulty": "Hard",
+      "options": [
+        "$(x+3)(x-2)$",
+        "$x^2-3x-18$",
+        "$x^2-8x+12$",
+        "None of the above"
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "topic": "HCF and LCM of Polynomials",
+      "difficulty": "Hard",
+      "correctOptionIndex": 1,
+      "options": [
+        "$x^3+1$",
+        "$x^4-x^3+x-1$",
+        "$x^2-x+1$",
+        "None of the above"
+      ],
+      "text": "The GCD of two polynomials is $(x-1)$ and their LCM is $x^6-1$. If one of the polynomials is $x^3-1$, then the other polynomial is:"
+    },
+    {
+      "topic": "Miscellaneous",
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "options": [
+        "$-\\frac{5}{3}$",
+        "$\\frac{5}{3}$",
+        "$-\\frac{5}{6}$",
+        "$\\frac{5}{6}$"
+      ],
+      "text": "For what value of $x$, does $-3x^2+5x-12$ have a maximum value?"
+    },
+    {
+      "text": "The quadratic polynomial whose zeroes are twice the zeroes of $2x^2-5x+2$ is:",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1,
+      "options": [
+        "$8x^2-10x+2$",
+        "$x^2-5x+4$",
+        "$2x^2-5x+2$",
+        "$x^2-10x+6$"
+      ],
+      "topic": "Relationship between zeros and coefficients"
+    },
+    {
+      "topic": "Remainder Theorem",
+      "options": [
+        "1",
+        "$x$",
+        "$-x$",
+        "$x^2+4$"
+      ],
+      "difficulty": "Hard",
+      "correctOptionIndex": 2,
+      "text": "If the polynomial $x^{19}+x^{17}+x^{13}+x^{11}+x^7+x^5+x^3$ is divided by $(x^2+1)$ then the remainder is:"
+    },
+    {
+      "topic": "HCF and LCM of Polynomials",
+      "text": "The LCM of $22x(x+1)^2$ and $36x^2(2x^2+3x+1)$ is:",
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "options": [
+        "$2x(x+1)$",
+        "$396x^2(x+1)^2(2x+1)$",
+        "$792x^3(x+1)^2(2x^2+3x+1)$",
+        "None of the above"
+      ]
+    },
+    {
+      "topic": "Relationship between zeros and coefficients",
+      "correctOptionIndex": 0,
+      "options": [
+        "$\\frac{5}{2}$",
+        "$\\frac{3}{2}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{7}{2}$"
+      ],
+      "difficulty": "Hard",
+      "text": "It is given that the difference between the zeroes of $4x^2-8kx+9$ is 4 and $k>0$, then '$k$' is:"
+    }
+  ]
+}

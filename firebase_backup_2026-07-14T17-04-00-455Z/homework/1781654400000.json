@@ -1,0 +1,17 @@
+{
+  "id": 1781654400000,
+  "date": "Wednesday 17 June 2026",
+  "tasks": [
+    {
+      "subject": "Maths ",
+      "description": "Do Excercise 3B",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics ",
+      "description": "Do the given question in copy ",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1781654400000
+}

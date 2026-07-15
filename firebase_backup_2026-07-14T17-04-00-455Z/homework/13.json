@@ -1,0 +1,22 @@
+{
+  "id": 13,
+  "date": "Wednesday, 29 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "आज कक्षा में पढ़ाए गए 'पदबंध' का अभ्यास करें।",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Do Q/Ans of Chapter 1 (Nationalism in Europe) in your Classwork copy.\nWrite 5 MCQs, Main points, Hard words with their meanings, and One Long Question answer.\n⚠️ Reminder: Bring your CW copy for tomorrow's Class Test of Chapter 1!",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete your CW and Homework copies.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777401000000
+}

@@ -28,8 +28,8 @@ export default async function handler(req, res) {
 
   const noticeId = new URL(req.url, origin).searchParams.get('id') || '';
 
-  let title       = '📢 Class Notice — 10th HI';
-  let description = 'Latest announcement for Class 10th HI.';
+  let title       = '📢 Class Notice — IX HF';
+  let description = 'Latest announcement for IX HF.';
   let author      = '';
 
   try {
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         const preview = clean(d.body, 110);
         title       = preview ? `📢 ${preview.slice(0, 60)}${preview.length > 60 ? '…' : ''}` : title;
         author      = d.authorName || '';
-        description = `${preview}${author ? ' — ' + author : ''} | 10th HI Portal`;
+        description = `${preview}${author ? ' — ' + author : ''} | IX HF Portal`;
       }
     }
   } catch (err) {
@@ -54,10 +54,10 @@ export default async function handler(req, res) {
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>${esc(title)} | 10th HI Portal</title>
+<title>${esc(title)} | IX HF Portal</title>
 <meta name="description" content="${esc(description)}"/>
 <meta property="og:type" content="article"/>
-<meta property="og:site_name" content="10th HI Portal"/>
+<meta property="og:site_name" content="IX HF Portal"/>
 <meta property="og:title" content="${esc(title)}"/>
 <meta property="og:description" content="${esc(description)}"/>
 <meta property="og:image" content="${esc(imgUrl)}"/>
@@ -72,7 +72,7 @@ export default async function handler(req, res) {
 <script>window.location.replace(${JSON.stringify(appUrl)});</script>
 <style>body{margin:0;font-family:system-ui,sans-serif;background:#09090b;color:#fafafa;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;}a{color:#8b5cf6;}</style>
 </head>
-<body><p>Opening 10th HI Portal… <a href="${esc(appUrl)}">Tap here if not redirected</a></p></body>
+<body><p>Opening IX HF Portal… <a href="${esc(appUrl)}">Tap here if not redirected</a></p></body>
 </html>`;
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');

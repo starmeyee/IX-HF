@@ -1,0 +1,116 @@
+{
+  "name": "Ruchir",
+  "phone": "8521278692",
+  "rollNo": 8,
+  "createdAt": 1782137793753,
+  "passwordHash": "0f657d4c9244de47e2507f269401e0377cec7f916c6e5fa4a215bf60f1f9efe9",
+  "checkedTopics": [
+    "science-0-c0-t0",
+    "science-0-c0-t1",
+    "science-0-c0-t2",
+    "science-0-c0-t3",
+    "science-0-c0-t4",
+    "science-0-c0-t5",
+    "science-0-c0-t6",
+    "science-0-c0-t7",
+    "science-0-c0-t8",
+    "science-0-c0-t9",
+    "science-0-c0-t11",
+    "science-0-c0-t10",
+    "science-0-c0-t12",
+    "science-0-c0-t13",
+    "science-0-c0-t14"
+  ],
+  "ux_pwa-install-v1": true,
+  "completedHolidayHomework_v2": [
+    "2",
+    "17-file-0",
+    "17-file-1",
+    "6",
+    "1-file-0",
+    "14",
+    "15",
+    "13",
+    "10",
+    "11",
+    "12",
+    "5",
+    "4",
+    "8",
+    "1-file-1",
+    "3",
+    "7",
+    "9",
+    "19",
+    "18-file-0",
+    "18-file-1",
+    "16",
+    "20"
+  ],
+  "seenBannerVersion": 1783409509400,
+  "ux_marks-banner-v1": true,
+  "isStarBatch": true,
+  "ux_notes-tour-v1_snooze": 1784117661567,
+  "hasUnlockedStarBatch": true,
+  "completedHomework": [
+    "1783468800000_0",
+    "1783468800000_1"
+  ],
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "sparks": 8,
+  "sparkLog": [
+    {
+      "type": "spend",
+      "amount": 2,
+      "reason": "Unlocked chapter: Human Eye and Colourful World",
+      "at": 1783766133504,
+      "balance": 8
+    },
+    {
+      "amount": 2,
+      "balance": 10,
+      "at": 1783524022290,
+      "type": "spend",
+      "reason": "Unlocked chapter: The Rise of Nationalism in Europe"
+    },
+    {
+      "amount": 4,
+      "balance": 12,
+      "reason": "Notes approved: Ch 1 Extra questions and answers...",
+      "at": 1783523032928,
+      "type": "earn"
+    },
+    {
+      "balance": 8,
+      "amount": 2,
+      "reason": "Unlocked chapter: Acids, Bases and Salts",
+      "type": "spend",
+      "at": 1783037741104
+    }
+  ],
+  "purchasedChapters": [
+    "science-1-c1",
+    "sst-0-c0",
+    "science-0-c1"
+  ],
+  "attendance_absentDays": [
+    "2026-04-16",
+    "2026-04-17",
+    "2026-04-18",
+    "2026-04-20",
+    "2026-04-21",
+    "2026-04-22",
+    "2026-05-02",
+    "2026-05-08",
+    "2026-05-09",
+    "2026-06-24",
+    "2026-06-25",
+    "2026-06-27",
+    "2026-07-06",
+    "2026-07-11"
+  ]
+}

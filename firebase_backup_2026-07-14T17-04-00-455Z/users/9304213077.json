@@ -1,0 +1,33 @@
+{
+  "name": "Parth",
+  "phone": "9304213077",
+  "rollNo": 6,
+  "createdAt": 1782745616370,
+  "passwordHash": "d261aa3454b76eb8e8b2fd179bd1239532c00c1478983ac51dd351696e42e14a",
+  "checkedTopics": [],
+  "ux_marks-banner-v1": true,
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "completedHomework": [],
+  "attendance_absentDays": [
+    "2026-04-25",
+    "2026-04-27",
+    "2026-04-28",
+    "2026-04-29",
+    "2026-04-30",
+    "2026-05-02",
+    "2026-05-09",
+    "2026-06-20",
+    "2026-06-22",
+    "2026-06-23",
+    "2026-06-24",
+    "2026-06-25",
+    "2026-06-27",
+    "2026-06-29",
+    "2026-06-30",
+    "2026-07-09"
+  ]
+}

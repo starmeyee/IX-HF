@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-19",
+  "weekday": "Friday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Chapter 2: सपनों के-से दिन Reading"
+    },
+    {
+      "period": "2nd",
+      "subject": "Chemistry",
+      "note": "Ch 2 Continued"
+    },
+    {
+      "period": "3rd",
+      "subject": "Biology",
+      "note": "Transportation in Plants Topic covered"
+    },
+    {
+      "period": "4th",
+      "subject": "Geography",
+      "note": "Ch 2 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Ch 3 , Question Practice"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Chapter 3: The Letter – by Dhumaketu Reading"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1781884727546
+}

@@ -1,7 +1,7 @@
 {
-  "name": "10th HI Portal",
-  "short_name": "10th HI",
-  "description": "Class portal for 10th HI — homework, attendance, notices & calendar",
+  "name": "IX HF Portal",
+  "short_name": "IX HF",
+  "description": "Class portal for IX HF — homework, attendance, notices & calendar",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#09090b",

@@ -1,0 +1,38 @@
+{
+  "date": "2026-06-23",
+  "weekday": "Tuesday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Study of Chapter 2: Pad (पद) – Meera"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Numericals Practice"
+    },
+    {
+      "period": "3rd",
+      "subject": "IT",
+      "note": "SESSION 2 , Unit 1 Part B explanation"
+    },
+    {
+      "period": "4th",
+      "subject": "Civics",
+      "note": "Local Gov Explained Ch 2"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Question Practiced of Ch 3"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Reading of ch 3 the Letter"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1782209648613
+}

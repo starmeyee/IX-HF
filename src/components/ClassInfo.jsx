@@ -2,16 +2,9 @@ import React, { useState } from 'react';
 import { Users, UserCircle, ShieldCheck, Copy, Check } from 'lucide-react';
 import { ROUTINE_TABLE } from '../data/routine';
 
-const studentsData = [
-  "Aditya Gupta", "Shreya", "Shourya", "Mihika", "Anuraj", "Parth", "Ravi", "Ruchir", "Sonali", "Yesh",
-  "Isha", "Ayush", "Aman Kishor", "KIRTI", "Suryanahu", "Mohit", "Virat Singh", "Rudransh", "Sushant", "Arnav",
-  "Deepanshu", "Anshuka", "Utkarsh", "Vibhav", "Aadarsh", "Sahil", "Ayush Kumar", "Awni", "Aditya Prakash", "Abhigyan",
-  "Anushka", "Shivam", "Chirag", "Khushi", "Pratyaksh", "Rahul", "Manshi", "Shivansh", "Abhishek", "Utkarsh Bhardwaj"
-];
+import { rollList as students } from '../auth/rollList';
 
-const students = studentsData.map((name, i) => ({ rollNo: i + 1, name }));
-
-const monitors = ["Utkarsh", "Pratyaksh", "Aditya", "Sonali", "Manshi"];
+const monitors = [];
 
 const routine = ROUTINE_TABLE;
 

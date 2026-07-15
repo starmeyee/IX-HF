@@ -1,0 +1,37 @@
+{
+  "id": 12,
+  "date": "Thursday, 30 April 2026",
+  "tasks": [
+    {
+      "subject": "IT",
+      "description": "Draw the style bar.",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Read the chapter.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Do the Q/Ans in your classwork copy.",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Draw the structure of the chloroplast.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Learn all trigonometrical ratios.",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "Do the exercise Q/Ans of Chapter 1.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777487400000
+}

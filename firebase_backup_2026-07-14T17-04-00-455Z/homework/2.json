@@ -1,0 +1,22 @@
+{
+  "id": 2,
+  "date": "Wednesday, 13 May 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "पाठ 1 'हरिहर काका' से खुद बनाए गए प्रश्नों के उत्तर लिखें।",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Learn the unification of Germany, Italy, and Britain.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Solve Exercise 1C of Chapter 1 (Real Numbers) from RS Aggarwal.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1778610600000
+}

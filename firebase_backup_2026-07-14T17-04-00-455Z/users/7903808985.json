@@ -1,0 +1,26 @@
+{
+  "name": "Aarav Kumar",
+  "phone": "7903808985",
+  "rollNo": 85,
+  "createdAt": 1783514869370,
+  "passwordHash": "0173a39a7e47792415ea23dee88c8d3f3a528988b1f781bef414caa71b9235e1",
+  "seenBannerVersion": 1783409509400,
+  "ux_marks-banner-v1": true,
+  "ux_pwa-install-v1": true,
+  "ux_notes-tour-v1_snooze": 1784134573305,
+  "completedHomework": [
+    "1783468800000_1"
+  ],
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "attendance_absentDays": [
+    "2026-05-05",
+    "2026-06-15",
+    "2026-07-11"
+  ],
+  "hasUnlockedStarBatch": true,
+  "isStarBatch": true
+}

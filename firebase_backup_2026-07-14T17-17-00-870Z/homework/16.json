@@ -1,0 +1,37 @@
+{
+  "id": 16,
+  "date": "Tuesday, 25 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "Revise Chapter 1 and Chapter 8",
+      "type": "homework"
+    },
+    {
+      "subject": "Chemistry",
+      "description": "Complete the class work copy",
+      "type": "homework"
+    },
+    {
+      "subject": "Biology",
+      "description": "Revise topic Nutrition in animal of Chapter 1",
+      "type": "homework"
+    },
+    {
+      "subject": "Geography",
+      "description": "Complete the class work copy",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Complete Exercise 2A of RS Aggarwal",
+      "type": "homework"
+    },
+    {
+      "subject": "English",
+      "description": "Complete exercise and question answers of Chapter 2",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1777055400000
+}

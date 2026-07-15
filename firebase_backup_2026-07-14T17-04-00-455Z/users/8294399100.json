@@ -1,0 +1,14 @@
+{
+  "name": "Chirag Anand",
+  "phone": "8294399100",
+  "rollNo": 33,
+  "createdAt": 1782375024397,
+  "passwordHash": "4f3bfe4618a5102aa2d4a9e3c22b32bc780caf16366f956eee037a9e4d81ee60",
+  "attendance_absentDays": [
+    "2026-06-15",
+    "2026-06-22"
+  ],
+  "seenInAppNotices": [
+    "ksMc9v6q9jaSpW99QOyx"
+  ]
+}

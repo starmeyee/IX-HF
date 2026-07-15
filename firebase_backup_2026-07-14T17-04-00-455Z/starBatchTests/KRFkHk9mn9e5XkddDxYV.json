@@ -1,0 +1,96 @@
+{
+  "chapterId": "science-1-c1",
+  "subjectId": "science-1",
+  "sectionId": "science",
+  "title": "Acids, Bases and Salts - Case Studies",
+  "questions": [
+    {
+      "text": "The substance not likely to contain CaCO3 is:",
+      "options": [
+        "Dolomite",
+        "A marble statue",
+        "Calcined gypsum",
+        "Sea shells"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Carbonate Compounds"
+    },
+    {
+      "text": "Chlorine gas reacts with _______ to form bleaching powder.",
+      "options": [
+        "dry Ca(OH)2",
+        "dil. solution of Ca(OH)2",
+        "conc. solution of Ca(OH)2",
+        "dry CaO"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Salts and their Preparation"
+    },
+    {
+      "text": "In the reaction between MnO2 and HCl, what is the nature of MnO2?",
+      "options": [
+        "Acidic oxide",
+        "Basic oxide",
+        "Neutral oxide",
+        "Amphoteric oxide"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Metallic and Non-metallic Oxides"
+    },
+    {
+      "text": "Predict the pH value of the water of river Yamuna if the reason for froth is high content of detergents dissolved in it.",
+      "options": [
+        "10-11",
+        "5-7",
+        "2-5",
+        "7"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "pH Scale"
+    },
+    {
+      "text": "Which of the following statements is correct for water with detergents dissolved in it?",
+      "options": [
+        "low concentration of hydroxide ion (OH-) and high concentration of hydronium ion (H3O+)",
+        "high concentration of hydroxide ion (OH-) and low concentration of hydronium ion (H3O+)",
+        "high concentration of hydroxide ion (OH-) as well as hydronium ion (H3O+)",
+        "equal concentration of both hydroxide ion (OH-) and hydronium ion (H3O+)"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Acids and Bases in Water Solution"
+    },
+    {
+      "text": "High content of phosphate ion in river Yamuna may lead to:",
+      "options": [
+        "decreased level of dissolved oxygen and increased growth of algae",
+        "decreased level of dissolved oxygen and no effect of growth of algae",
+        "increased level of dissolved oxygen and increased growth of algae",
+        "decreased level of dissolved oxygen and decreased growth of algae"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Environmental Chemistry"
+    },
+    {
+      "text": "If a sample of water containing detergents is provided to you, which of the following methods will you adopt to neutralize it?",
+      "options": [
+        "Treating the water with baking soda",
+        "Treating the water with vinegar",
+        "Treating the water with caustic soda",
+        "Treating the water with washing soda"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Neutralization"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1783877713,
+    "_nanoseconds": 433000000
+  }
+}

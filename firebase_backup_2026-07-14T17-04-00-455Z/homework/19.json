@@ -1,0 +1,32 @@
+{
+  "id": 19,
+  "date": "Wednesday, 22 April 2026",
+  "tasks": [
+    {
+      "subject": "Hindi",
+      "description": "'साखी' याद करें और उसके शब्दार्थ अपनी कॉपी में लिखें।",
+      "type": "homework"
+    },
+    {
+      "subject": "Physics",
+      "description": "Complete all ray diagrams of the Concave Mirror.",
+      "type": "homework"
+    },
+    {
+      "subject": "History",
+      "description": "Do hard words & their meanings, 5 MCQs, and a Long Question from Sections 1.2 and 1.3.",
+      "type": "homework"
+    },
+    {
+      "subject": "Math",
+      "description": "Solve the questions from today's Weekly Test.",
+      "type": "homework"
+    },
+    {
+      "subject": "Economics",
+      "description": "Do the given questions.",
+      "type": "homework"
+    }
+  ],
+  "timestamp": 1776796200000
+}

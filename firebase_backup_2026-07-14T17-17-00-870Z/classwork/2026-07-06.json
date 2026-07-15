@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-06",
+  "weekday": "Monday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "Explanation of पाठ 3: मैथिलीशरण गुप्त – मनुष्यता"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Ch 2 Human Eye"
+    },
+    {
+      "period": "3rd",
+      "subject": "IT",
+      "note": "Part B , Unit 1 , Session 3"
+    },
+    {
+      "period": "4th",
+      "subject": "Civics",
+      "note": "Ch 3 Continued"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "Converse of Thales Theorem Explained"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 4 A shady Plot Reading"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1783340729033
+}

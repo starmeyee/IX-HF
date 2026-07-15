@@ -1,0 +1,407 @@
+{
+  "name": "Utkarsh Kumar",
+  "phone": "8102783645",
+  "rollNo": 23,
+  "createdAt": 1780374348573,
+  "passwordHash": "945374c2f33bb25a868067f5518f6ed0fcf501b85a76c6dc4a4ca7939228dc10",
+  "broadcastKey": "1adc266634e90da1d997b4fe68e24df04319d3e4c417a9ae72abdf81cadf520a",
+  "checkedTopics": [
+    "science-1-c0-t0",
+    "science-1-c0-t1",
+    "science-1-c0-t2",
+    "science-1-c0-t3",
+    "science-1-c0-t4",
+    "science-1-c0-t5",
+    "science-1-c0-t6",
+    "science-1-c0-t7",
+    "science-1-c0-t8",
+    "science-1-c0-t9",
+    "science-1-c0-t10",
+    "science-1-c0-t11",
+    "science-1-c0-t12",
+    "science-1-c1-t1",
+    "science-1-c1-t0",
+    "science-2-c0-t0",
+    "science-2-c0-t1",
+    "science-2-c0-t2",
+    "science-2-c0-t3",
+    "science-2-c0-t4",
+    "science-2-c0-t5",
+    "science-2-c0-t6",
+    "science-2-c0-t7",
+    "science-2-c0-t8",
+    "science-2-c0-t9",
+    "sst-2-c0-t0",
+    "sst-2-c0-t2",
+    "sst-2-c0-t1",
+    "sst-2-c0-t3",
+    "maths-0-c0-t0",
+    "maths-0-c0-t1",
+    "maths-0-c0-t2",
+    "maths-0-c0-t3",
+    "maths-0-c0-t4",
+    "maths-0-c0-t5",
+    "maths-0-c1-t6",
+    "maths-0-c1-t5",
+    "maths-0-c1-t4",
+    "maths-0-c1-t3",
+    "maths-0-c1-t2",
+    "maths-0-c1-t1",
+    "maths-0-c1-t0",
+    "english-3-c0-t0",
+    "english-3-c0-t1",
+    "english-3-c0-t2",
+    "english-3-c0-t3",
+    "english-3-c0-t4",
+    "it-0-c0-t0",
+    "it-0-c0-t1",
+    "it-0-c0-t2",
+    "it-0-c0-t3",
+    "it-0-c0-t4",
+    "it-0-c0-t5",
+    "it-0-c0-t6",
+    "it-0-c0-t7",
+    "it-0-c0-t8",
+    "it-0-c0-t9",
+    "it-0-c0-t11",
+    "it-0-c0-t10",
+    "hindi-0-c0-t0",
+    "hindi-0-c0-t1",
+    "hindi-0-c0-t2",
+    "hindi-0-c0-t3",
+    "hindi-0-c0-t4",
+    "hindi-1-c0-t0",
+    "hindi-1-c0-t1",
+    "hindi-1-c0-t2",
+    "hindi-1-c0-t3",
+    "hindi-1-c0-t4",
+    "hindi-2-c0-t0",
+    "hindi-2-c0-t1",
+    "hindi-2-c0-t2",
+    "hindi-2-c0-t3",
+    "hindi-2-c0-t4"
+  ],
+  "whatsNewSeen_v1": true,
+  "email": "utkarshpcs53@gmail.com",
+  "emailVerified": true,
+  "ux_marks-banner-v1": true,
+  "seenBannerVersion": 1783409509400,
+  "ux_notes-tour-v1_snooze": 1784048157228,
+  "isStarBatch": true,
+  "hasUnlockedStarBatch": true,
+  "seenInAppNotices": [
+    "EDcwuMvumtprDuXkpU2z",
+    "gb481eosZ8ggXgnHgzhV",
+    "ksMc9v6q9jaSpW99QOyx"
+  ],
+  "completedHolidayHomework_v2": [
+    "10",
+    "2",
+    "7",
+    "13",
+    "1-file-1",
+    "3",
+    "11",
+    "8",
+    "14",
+    "18-file-1",
+    "4",
+    "17-file-1",
+    "20",
+    "17-file-0",
+    "9",
+    "12",
+    "18-file-0",
+    "16"
+  ],
+  "attendance_absentDays": [
+    "2026-04-24",
+    "2026-04-25",
+    "2026-04-27",
+    "2026-05-07",
+    "2026-06-15",
+    "2026-06-16",
+    "2026-07-03"
+  ],
+  "completedHomework": [
+    "1782777600000_0",
+    "1782691200000_0",
+    "1782691200000_1",
+    "1782691200000_2",
+    "1782518400000_0",
+    "1782518400000_2",
+    "1783296000000_0",
+    "1783296000000_1",
+    "1783296000000_2",
+    "1783382400000_0",
+    "1783728000000_3"
+  ],
+  "purchasedChapters": [
+    "sst-1-c0",
+    "sst-2-c0",
+    "sst-3-c1",
+    "hh-10",
+    "sst-2-c1",
+    "science-1-c1",
+    "science-2-c0",
+    "science-0-c0",
+    "science-0-c1",
+    "maths-0-c5",
+    "sst-0-c0"
+  ],
+  "sparks": 58,
+  "sparkLog": [
+    {
+      "type": "earn",
+      "amount": 4,
+      "reason": "Notes approved: Assignment 2",
+      "at": 1783949609389,
+      "balance": 58
+    },
+    {
+      "type": "earn",
+      "amount": 4,
+      "reason": "Notes approved: Assignment",
+      "at": 1783949608303,
+      "balance": 54
+    },
+    {
+      "amount": 2,
+      "at": 1783934239343,
+      "reason": "Unlocked chapter: The Rise of Nationalism in Europe",
+      "type": "spend",
+      "balance": 50
+    },
+    {
+      "reason": "Unlocked chapter: Triangles",
+      "balance": 52,
+      "type": "spend",
+      "at": 1783706885125,
+      "amount": 2
+    },
+    {
+      "type": "earn",
+      "balance": 54,
+      "reason": "Notes approved: Full Chapter Notes",
+      "at": 1783706855400,
+      "amount": 4
+    },
+    {
+      "at": 1783706854096,
+      "amount": 4,
+      "reason": "Notes approved: Full Notes",
+      "type": "earn",
+      "balance": 50
+    },
+    {
+      "at": 1783702502936,
+      "amount": 2,
+      "type": "spend",
+      "balance": 46,
+      "reason": "Unlocked chapter: Human Eye and Colourful World"
+    },
+    {
+      "balance": 48,
+      "type": "spend",
+      "reason": "Unlocked chapter: Light - Reflection and Refraction",
+      "at": 1783500348900,
+      "amount": 2
+    },
+    {
+      "reason": "Notes approved: Template for SST Project",
+      "balance": 50,
+      "type": "earn",
+      "at": 1783448935237,
+      "amount": 4
+    },
+    {
+      "at": 1783444500386,
+      "amount": 4,
+      "balance": 46,
+      "type": "earn",
+      "reason": "Notes approved: Inital Notes"
+    },
+    {
+      "type": "spend",
+      "balance": 42,
+      "reason": "Unlocked chapter: Life Processes",
+      "amount": 2,
+      "at": 1783091179837
+    },
+    {
+      "amount": 4,
+      "at": 1783090725575,
+      "reason": "Notes approved: Half Notes",
+      "balance": 44,
+      "type": "earn"
+    },
+    {
+      "amount": 4,
+      "at": 1783054205844,
+      "type": "earn",
+      "balance": 40,
+      "reason": "Notes approved: Q/Ans"
+    },
+    {
+      "reason": "Notes approved: Excercise Q ans",
+      "type": "earn",
+      "balance": 36,
+      "at": 1783054204975,
+      "amount": 4
+    },
+    {
+      "amount": 4,
+      "at": 1783054203912,
+      "balance": 32,
+      "type": "earn",
+      "reason": "Notes approved: Excercise Q/Ans"
+    },
+    {
+      "amount": 2,
+      "at": 1783009977669,
+      "balance": 28,
+      "type": "spend",
+      "reason": "Unlocked chapter: Acids, Bases and Salts"
+    },
+    {
+      "reason": "Notes approved: Half Notes",
+      "balance": 30,
+      "type": "earn",
+      "amount": 4,
+      "at": 1783009916843
+    },
+    {
+      "amount": 4,
+      "at": 1782817332536,
+      "reason": "Notes approved: Full Chapter Class Notes",
+      "type": "earn",
+      "balance": 26
+    },
+    {
+      "amount": 2,
+      "at": 1782817060939,
+      "reason": "Unlocked chapter: Federalism",
+      "balance": 22,
+      "type": "spend"
+    },
+    {
+      "amount": 4,
+      "at": 1782817035971,
+      "type": "earn",
+      "balance": 24,
+      "reason": "Notes approved: Full chapter notes"
+    },
+    {
+      "type": "spend",
+      "balance": 20,
+      "reason": "Unlocked HH answer: Full Solved",
+      "at": 1782662717802,
+      "amount": 2
+    },
+    {
+      "balance": 22,
+      "type": "earn",
+      "reason": "Notes approved: Full Solved",
+      "amount": 4,
+      "at": 1782655041239
+    },
+    {
+      "at": 1782488546696,
+      "amount": 2,
+      "balance": 18,
+      "type": "spend",
+      "reason": "Unlocked chapter: Sectors of the Indian Economy"
+    },
+    {
+      "type": "earn",
+      "balance": 20,
+      "reason": "Notes approved: Initial Notes",
+      "at": 1782488189888,
+      "amount": 4
+    },
+    {
+      "reason": "Unlocked chapter: Power Sharing",
+      "balance": 16,
+      "type": "spend",
+      "amount": 2,
+      "at": 1782323344303
+    },
+    {
+      "amount": 4,
+      "at": 1782323315788,
+      "reason": "Notes approved: Complete Chapter Notes",
+      "balance": 18,
+      "type": "earn"
+    },
+    {
+      "balance": 14,
+      "type": "spend",
+      "reason": "Unlocked chapter: Resources and Development",
+      "amount": 2,
+      "at": 1782320797814
+    },
+    {
+      "amount": 4,
+      "at": 1782320665872,
+      "reason": "Notes approved: Full chapter notes",
+      "type": "earn",
+      "balance": 16
+    },
+    {
+      "amount": 2,
+      "at": 1782315802445,
+      "reason": "Viewed: New notes",
+      "balance": 12,
+      "type": "spend"
+    },
+    {
+      "at": 1782240424778,
+      "amount": 2,
+      "reason": "Viewed: New notes",
+      "balance": 14,
+      "type": "spend"
+    },
+    {
+      "at": 1782240417347,
+      "amount": 4,
+      "reason": "Notes approved: New notes",
+      "type": "earn",
+      "balance": 16
+    },
+    {
+      "amount": 2,
+      "at": 1782239172338,
+      "type": "spend",
+      "balance": 12,
+      "reason": "Viewed: Complete Chapter Notes"
+    },
+    {
+      "at": 1782239159356,
+      "amount": 4,
+      "reason": "Notes approved: Complete Chapter Notes",
+      "balance": 14,
+      "type": "earn"
+    },
+    {
+      "balance": 10,
+      "type": "spend",
+      "reason": "Viewed: Full chapter Notes",
+      "amount": 2,
+      "at": 1782238462669
+    },
+    {
+      "amount": 2,
+      "at": 1782238142418,
+      "reason": "Viewed: Full chapter Notes",
+      "type": "spend",
+      "balance": 12
+    },
+    {
+      "reason": "Notes approved: Full chapter Notes",
+      "type": "earn",
+      "balance": 14,
+      "at": 1782238119243,
+      "amount": 4
+    }
+  ]
+}

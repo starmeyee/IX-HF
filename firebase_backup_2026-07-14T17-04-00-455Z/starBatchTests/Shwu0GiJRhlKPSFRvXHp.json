@@ -1,0 +1,720 @@
+{
+  "chapterId": "science-0-c0",
+  "subjectId": "science-0",
+  "sectionId": "science",
+  "createdAt": {
+    "_seconds": 1783876402,
+    "_nanoseconds": 546000000
+  },
+  "questions": [
+    {
+      "text": "Choose the incorrect statement among the following:",
+      "topic": "Properties of Light",
+      "difficulty": "Easy",
+      "correctOptionIndex": 1,
+      "options": [
+        "Light travels with a speed greater than that of sound",
+        "Light cannot travel through vacuum",
+        "Light travels in a straight line",
+        "Sunlight has its seven constituent colours"
+      ]
+    },
+    {
+      "correctOptionIndex": 0,
+      "text": "Which mirror has wider field of view?",
+      "topic": "Spherical Mirrors",
+      "difficulty": "Easy",
+      "options": [
+        "Convex mirror",
+        "Plane mirror",
+        "Concave mirror",
+        "Cylindrical mirror"
+      ]
+    },
+    {
+      "correctOptionIndex": 0,
+      "topic": "Laws of Reflection",
+      "difficulty": "Medium",
+      "text": "A ray of light is incident on a plane mirror. The angle between the incident ray and the wall perpendicular to the mirror is 55°. What will be the angle of reflection?",
+      "options": [
+        "55°",
+        "35°",
+        "45°",
+        "65°"
+      ]
+    },
+    {
+      "correctOptionIndex": 1,
+      "difficulty": "Hard",
+      "topic": "Refractive Index",
+      "text": "A ray of light travels from medium A to medium B. The angle between the incident ray and the interface is 45°, and the angle between the refracted ray and the interface is 30°. The refractive index of medium A relative to medium B is:",
+      "options": [
+        "√3 / √2",
+        "√2 / √3",
+        "1 / √2",
+        "√2"
+      ]
+    },
+    {
+      "options": [
+        "50 cm",
+        "40 cm",
+        "25 cm",
+        "20 cm"
+      ],
+      "text": "An object is placed at a distance of 50 cm from the optical centre of a spherical lens. If the magnification of image formed is +1/3, then the focal length of the lens is:",
+      "difficulty": "Medium",
+      "topic": "Lens Formula and Magnification",
+      "correctOptionIndex": 2
+    },
+    {
+      "options": [
+        "Concave mirror as well as convex lens",
+        "Convex mirror as well as concave lens",
+        "Two plane mirrors placed at 90° to each other",
+        "Concave mirror as well as concave lens"
+      ],
+      "correctOptionIndex": 0,
+      "text": "Which of the following can make a parallel beam of light when light from a point source is incident on it?",
+      "topic": "Reflection and Refraction",
+      "difficulty": "Medium"
+    },
+    {
+      "difficulty": "Hard",
+      "topic": "Spherical Mirrors",
+      "text": "A 10 mm long awl pin is placed vertically in front of a concave mirror. A 5 mm long image of the awl pin is formed at 30 cm in front of the mirror. The focal length of this mirror is",
+      "correctOptionIndex": 1,
+      "options": [
+        "- 30 cm",
+        "- 20 cm",
+        "- 40 cm",
+        "- 60 cm"
+      ]
+    },
+    {
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Image Formation by Mirrors",
+      "text": "Under which of the following conditions a concave mirror can form an image larger than the actual object?",
+      "options": [
+        "When the object is kept at a distance equal to its radius of curvature",
+        "When object is kept at a distance less than its focal length",
+        "When object is placed between the focus and centre of curvature",
+        "When object is kept at a distance greater than its radius of curvature"
+      ]
+    },
+    {
+      "options": [
+        "A convex lens has 4 dioptre power having a focal length 0.25 m",
+        "A convex lens has -4 dioptre power having a focal length 0.25 m",
+        "A concave lens has 4 dioptre power having a focal length 0.25 m",
+        "A concave lens has -4 dioptre power having a focal length 0.25 m"
+      ],
+      "text": "Which of the following statements is true?",
+      "topic": "Power of a Lens",
+      "difficulty": "Easy",
+      "correctOptionIndex": 0
+    },
+    {
+      "correctOptionIndex": 0,
+      "text": "Magnification produced by a rear view mirror fitted in vehicles",
+      "difficulty": "Easy",
+      "topic": "Spherical Mirrors",
+      "options": [
+        "is less than one",
+        "is more than one",
+        "is equal to one",
+        "can be more than or less than one depending upon the position of the object in front of it"
+      ]
+    },
+    {
+      "options": [
+        "15 cm in front of the mirror",
+        "30 cm in front of the mirror",
+        "between 15 cm and 30 cm in front of the mirror",
+        "more than 30 cm in front of the mirror"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Image Formation by Mirrors",
+      "text": "Rays from Sun converge at a point 15 cm in front of a concave mirror. Where should an object be placed so that size of its image is equal to the size of the object?"
+    },
+    {
+      "options": [
+        "a concave mirror",
+        "a convex mirror",
+        "a plane mirror",
+        "both concave as well as plane mirror"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Spherical Mirrors",
+      "text": "A full length image of a distant tall building can definitely be seen by using"
+    },
+    {
+      "options": [
+        "between the pole and the focus of the reflector",
+        "very near to the focus of the reflector",
+        "between the focus and centre of curvature of the reflector",
+        "at the centre of curvature of the reflector"
+      ],
+      "text": "In torches, search lights and headlights of vehicles the bulb is placed",
+      "topic": "Spherical Mirrors",
+      "difficulty": "Medium",
+      "correctOptionIndex": 1
+    },
+    {
+      "options": [
+        "plane mirror only",
+        "concave mirror only",
+        "convex mirror only",
+        "all mirrors irrespective of their shape"
+      ],
+      "correctOptionIndex": 3,
+      "text": "The laws of reflection hold good for",
+      "difficulty": "Easy",
+      "topic": "Laws of Reflection"
+    },
+    {
+      "options": [
+        "Kerosene",
+        "Water",
+        "Mustard oil",
+        "Glycerine"
+      ],
+      "correctOptionIndex": 3,
+      "text": "You are given water, mustard oil, glycerine and kerosene. In which of these media a ray of light incident obliquely at same angle would bend the most?",
+      "topic": "Refraction of Light",
+      "difficulty": "Medium"
+    },
+    {
+      "options": [
+        "Plane, convex and concave",
+        "Convex, concave and plane",
+        "Concave, plane and convex",
+        "Convex, plane and concave"
+      ],
+      "correctOptionIndex": 2,
+      "text": "A child is standing in front of a magic mirror. She finds the image of her head bigger, the middle portion of her body of the same size and that of the legs smaller. The following is the order of combinations for the magic mirror from the top.",
+      "topic": "Spherical Mirrors",
+      "difficulty": "Hard"
+    },
+    {
+      "difficulty": "Easy",
+      "topic": "Image Formation",
+      "text": "In which of the following, the image of an object placed at infinity will be highly diminished and point sized?",
+      "correctOptionIndex": 3,
+      "options": [
+        "Concave mirror only",
+        "Convex mirror only",
+        "Convex lens only",
+        "Concave mirror, convex mirror, concave lens and convex lens"
+      ]
+    },
+    {
+      "text": "When a plane mirror is rotated through a certain angle, the reflected ray turns through twice as much and the size of the image:",
+      "options": [
+        "is doubled",
+        "is halved",
+        "becomes infinite",
+        "remains the same"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Reflection by Plane Mirrors"
+    },
+    {
+      "text": "If an object is placed symmetrically between two plane mirrors, inclined at an angle of $72^{\\circ}$, then the total no. of images formed is:",
+      "options": [
+        "5",
+        "4",
+        "2",
+        "infinite"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Reflection by Plane Mirrors"
+    },
+    {
+      "text": "Which statement is true for the reflection of light?",
+      "options": [
+        "The angle of incidence and reflection are equal.",
+        "The reflected light is less bright than the incident light.",
+        "The sum of the angle of incidence and reflection is always greater than $90^{\\circ}$.",
+        "The beams of the incident light, after reflection, diverge at unequal angles."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Reflection of Light"
+    },
+    {
+      "text": "The focal length of a plane mirror is:",
+      "options": [
+        "0",
+        "infinite",
+        "25 cm",
+        "-25 cm"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Reflection by Plane Mirrors"
+    },
+    {
+      "text": "A ray of light passes through the optical centre of a convex lens. How does the ray emerge after refraction?",
+      "options": [
+        "It bends towards the principal axis",
+        "It bends away from the principal axis",
+        "It passes undeviated",
+        "It gets reflected back"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Easy",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "An object is placed at a distance of 40 cm in front of a concave mirror of a focal length of 20 cm. The image produced is:",
+      "options": [
+        "virtual and inverted",
+        "real and erect",
+        "real, inverted and of the opposite size as that of the object",
+        "real, inverted and of the same size as that of the object"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A student conducts an experiment using a convex lens. He places the object at a distance of 60 cm in front of the lens and observes that the image is formed at a distance of 30 cm behind the lens. What is the power of the lens?",
+      "options": [
+        "0.005 dioptre",
+        "0.05 dioptre",
+        "5 dioptre",
+        "50 dioptre"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Hard",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "An image of an object produced on a screen is about 36 cm using a convex lens. The image produced is about 3 times the size of the object. What is the size of the object?",
+      "options": [
+        "12 cm",
+        "33 cm",
+        "39 cm",
+        "108 cm"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "A student studies that a convex mirror always forms a virtual image irrespective of its position. What causes the convex mirror to always form a virtual image?",
+      "options": [
+        "Because the reflected ray never intersects",
+        "Because the reflected ray converges at a single point",
+        "Because the incident ray traces its path back along the principal axis",
+        "Because the incident ray of a convex mirror gets absorbed in the mirror"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A 10 mm long awl pin is placed vertically in front of a concave mirror at a distance of 60 cm. Its image is formed at 30 cm in front of the mirror. The focal length of this mirror is:",
+      "options": [
+        "-30 cm",
+        "-20 cm",
+        "-40 cm",
+        "-60 cm"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "Rahul conducts an experiment using an object of height 10 cm and a concave lens with a focal length of 20 cm. The object is placed at a distance of 25 cm from the lens. Can the image be formed on a screen?",
+      "options": [
+        "Yes, as the image formed will be real",
+        "Yes, as the image formed will be erect",
+        "No, as the image formed will be virtual",
+        "No, as the image formed will be inverted"
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "Magnification produced by a rearview mirror fitted in vehicles:",
+      "options": [
+        "is less than one",
+        "is more than one",
+        "is equal to one",
+        "can be more than or less than one, depending upon the position of the object in front of it"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A student conducts an activity using a concave mirror with a focal length of 10 cm. He placed the object 15 cm from the mirror. Where is the image likely to form?",
+      "options": [
+        "At 6 cm behind the mirror",
+        "At 30 cm behind the mirror",
+        "At 6 cm in front of the mirror",
+        "At 30 cm in front of the mirror"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Hard",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "The image of an object placed in front of a convex mirror is formed at:",
+      "options": [
+        "the object itself",
+        "twice the distance of the object in front of the mirror",
+        "half the distance of the object in front of the mirror",
+        "behind the mirror"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A full-length image of a distant tall building can definitely be seen using:",
+      "options": [
+        "a concave mirror",
+        "a convex mirror",
+        "a plane mirror",
+        "both concave as well as plane mirrors"
+      ],
+      "correctOptionIndex": 1,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A student conducts an activity using a flask of height 15 cm and a concave mirror. He finds that the image formed is 45 cm in height. What is the magnification of the image? (Assuming a virtual image based on available options)",
+      "options": [
+        "-3 times",
+        "$-1/3$ times",
+        "$1/3$ times",
+        "3 times"
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "Which of the following can make a parallel beam of light from a point source incident on it?",
+      "options": [
+        "Concave mirror as well as convex lens",
+        "Convex mirror as well as concave lens",
+        "Two plane mirrors placed at $90^{\\circ}$ to each other",
+        "Concave mirror as well as concave lens"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A student studies that the speed of light in air is $300000~km/sec$, whereas the speed in a glass slab is about $197000~km/sec$. What causes the difference in the speed of light in these two media?",
+      "options": [
+        "Difference in density (optical density)",
+        "Difference in temperature",
+        "Difference in the amount of light",
+        "Difference in the direction of wind flow"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Refraction of Light"
+    },
+    {
+      "text": "**Assertion (A):** The centre of curvature is not a part of the mirror. It lies outside its reflecting surface.\\n**Reason (R):** The reflecting surface of a spherical mirror forms a part of a sphere. This sphere has a centre.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** A ray passing through the centre of curvature of a concave mirror after reflection, is reflected back along the same path.\\n**Reason (R):** The incident rays fall on the mirror along the normal to the reflecting surface.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** A ray of light changes its direction when it travels obliquely from one transparent medium to another.\\n**Reason (R):** The speed of light changes when it enters from one transparent medium to another.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** The emergent ray is parallel to the direction of the incident ray.\\n**Reason (R):** The extent of bending of the ray of light at the opposite parallel faces (air-glass interface and glass-air interface) of the rectangular glass slab is equal and opposite.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** A ray of light travelling from a rarer medium to a denser medium slows down and bends towards the normal. When it travels from a denser medium to a rarer medium, it speeds up and bends away from the normal.\\n**Reason (R):** The speed of light is higher in a rarer medium than in a denser medium.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** The mirrors used in search lights are concave spherical.\\n**Reason (R):** In concave spherical mirror the image formed is always virtual.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 2,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "**Assertion (A):** Light travels faster in glass than in air.\\n**Reason (R):** Glass is denser than air.",
+      "options": [
+        "Both A and R are true, and R is correct explanation of the assertion.",
+        "Both A and R are true, but R is not the correct explanation of the assertion.",
+        "A is true, but R is false.",
+        "A is false, but R is true."
+      ],
+      "correctOptionIndex": 3,
+      "difficulty": "Medium",
+      "topic": "Assertion & Reason Based Questions"
+    },
+    {
+      "text": "The magnification produced by a spherical mirror is $-3$. What inferences can be drawn about the mirror and the image?",
+      "options": [
+        "Concave mirror, real and inverted image, magnified",
+        "Convex mirror, virtual and erect image, diminished",
+        "Concave mirror, virtual and erect image, magnified",
+        "Plane mirror, virtual and erect image, same size"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "The linear magnification produced by a spherical mirror is $+3$. State the type of mirror and position of the object with respect to the pole.",
+      "options": [
+        "Concave mirror; object is between pole and focus",
+        "Convex mirror; object is beyond centre of curvature",
+        "Concave mirror; object is at focus",
+        "Convex mirror; object is between pole and focus"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "The linear magnification produced by a spherical mirror is $-1/5$. State the type of spherical mirror and the position of the object.",
+      "options": [
+        "Concave mirror; object is placed beyond C",
+        "Convex mirror; object is placed at C",
+        "Concave mirror; object is placed between C and F",
+        "Plane mirror; object is placed at infinity"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "When an object is placed at a distance of 10 cm from the pole of a concave mirror of focal length 15 cm, what is the nature of the image?",
+      "options": [
+        "Virtual, erect, and highly enlarged",
+        "Real, inverted, and diminished",
+        "Virtual, erect, and diminished",
+        "Real, inverted, and enlarged"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "The refractive index of carbon disulphide is 1.63. What is the speed of light in carbon disulphide?",
+      "options": [
+        "$\\approx 1.84 \\times 10^8~m/s$",
+        "$\\approx 3.00 \\times 10^8~m/s$",
+        "$\\approx 1.63 \\times 10^8~m/s$",
+        "$\\approx 4.89 \\times 10^8~m/s$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Refraction of Light"
+    },
+    {
+      "text": "The outer surface of a hollow sphere of aluminium of radius 50 cm is to be used as a mirror. What will be the focal length and type of this mirror?",
+      "options": [
+        "$25~cm$, Convex mirror",
+        "$-25~cm$, Concave mirror",
+        "$50~cm$, Convex mirror",
+        "$-50~cm$, Concave mirror"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A ray of light enters a rectangular glass slab of refractive index 1.5. If its speed in air is $3 \\times 10^8~m/s$, what is its speed in glass?",
+      "options": [
+        "$2 \\times 10^8~m/s$",
+        "$1.5 \\times 10^8~m/s$",
+        "$4.5 \\times 10^8~m/s$",
+        "$3 \\times 10^8~m/s$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Refraction of Light"
+    },
+    {
+      "text": "A student claims that all images formed by concave mirrors are inverted. Is this correct?",
+      "options": [
+        "No, a concave mirror forms a virtual, erect, and enlarged image when the object is placed between the pole and focus.",
+        "Yes, concave mirrors always form real and inverted images.",
+        "No, concave mirrors form virtual and erect images when the object is placed beyond the centre of curvature.",
+        "Yes, except when the object is exactly at the focus."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "Why does a driver prefer using a convex mirror as a rear-view mirror instead of a plane mirror?",
+      "options": [
+        "It provides a wider field of view and forms virtual, erect, and diminished images.",
+        "It produces magnified images to see far-off objects clearly.",
+        "It absorbs glare from the headlights of trailing vehicles.",
+        "It forms real images that can be captured on a screen."
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A concave mirror forms a real image three times larger than the object. If the image is formed 36 cm in front of the mirror, what is the focal length of the mirror?",
+      "options": [
+        "$-9~cm$",
+        "$-12~cm$",
+        "$+9~cm$",
+        "$-27~cm$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "An object is placed between the focus and centre of curvature of a concave mirror. What is the nature and position of the image formed?",
+      "options": [
+        "Real, inverted, enlarged, beyond C",
+        "Virtual, erect, enlarged, behind mirror",
+        "Real, inverted, diminished, between C and F",
+        "Virtual, erect, diminished, behind mirror"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Reflection by Spherical Mirrors"
+    },
+    {
+      "text": "A convex lens forms a real image of an object on a screen placed 80 cm away from the lens. If the image is twice the size of the object, what is the focal length of the lens?",
+      "options": [
+        "$26.7~cm$",
+        "$40~cm$",
+        "$-26.7~cm$",
+        "$80~cm$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "An object placed 24 cm from a concave lens produces a virtual image 8 cm from the lens on the same side. Calculate the power of the lens.",
+      "options": [
+        "$-8.33~D$",
+        "$+8.33~D$",
+        "$-12.0~D$",
+        "$+12.0~D$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "A lens has a power of $-2.5~D$. Calculate its focal length.",
+      "options": [
+        "$-40~cm$",
+        "$+40~cm$",
+        "$-25~cm$",
+        "$+25~cm$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "The speed of light in glass is $2 \\times 10^8~m/s$ and in water is $2.25 \\times 10^8~m/s$. Which one of the two is optically denser?",
+      "options": [
+        "Glass, because light travels slower in it",
+        "Water, because light travels faster in it",
+        "Both have the same optical density",
+        "Cannot be determined without mass density"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Medium",
+      "topic": "Refraction of Light"
+    },
+    {
+      "text": "What is the net power of a combination of a convex lens of power $+4~D$ and a concave lens of power $-2~D$?",
+      "options": [
+        "$+2~D$ (Convergent)",
+        "$-2~D$ (Divergent)",
+        "$+6~D$ (Convergent)",
+        "$-6~D$ (Divergent)"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Easy",
+      "topic": "Refraction Through Lenses"
+    },
+    {
+      "text": "An object 10 cm in size is placed at 100 cm in front of a concave mirror. If its image is formed at the same point where the object is located, find the focal length of the mirror.",
+      "options": [
+        "$-50~cm$",
+        "$-100~cm$",
+        "$+50~cm$",
+        "$+100~cm$"
+      ],
+      "correctOptionIndex": 0,
+      "difficulty": "Hard",
+      "topic": "Reflection by Spherical Mirrors"
+    }
+  ],
+  "title": "Light: Reflection and Refraction - Complete Mastery Test"
+}

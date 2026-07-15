@@ -1,0 +1,40 @@
+{
+  "userId": "8102783645",
+  "testId": "v05jU5fGRcGYqUtPaMBg",
+  "chapterId": "sst-1-c1",
+  "score": 2,
+  "total": 10,
+  "responses": {
+    "0": 2,
+    "1": 1,
+    "2": 3,
+    "3": 2,
+    "4": 1,
+    "5": 2,
+    "6": 1,
+    "7": 1,
+    "8": 0,
+    "9": 1
+  },
+  "weakTopics": [
+    "Community and Conservation",
+    "Conservation of Forest and Wildlife"
+  ],
+  "seenIndices": [
+    23,
+    22,
+    27,
+    18,
+    4,
+    21,
+    24,
+    15,
+    26,
+    3
+  ],
+  "aiReview": "I am absolutely thrilled to see your determination and enthusiasm shine through in this Elite Star Batch MCQ test, even if the score wasn't exactly what we had hoped for. With 8 out of 10 questions answered incorrectly in the Community and Conservation topic, it's clear that we need to focus our efforts in this area. I encourage you to view these challenging questions as stepping stones to growth and success, and I recommend that you delve deeper into this topic, focusing on Conservation of Forest and Wildlife in particular, where you struggled with the medium to hard difficulty questions. Remember, perfection is a journey, not a destination, and I have every confidence that with consistent practice and dedication, you will rise to the top of your class. Keep pushing forward, and let's work together to unlock your full potential.",
+  "createdAt": {
+    "_seconds": 1783825466,
+    "_nanoseconds": 3000000
+  }
+}

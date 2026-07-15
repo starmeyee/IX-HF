@@ -1,0 +1,30 @@
+{
+  "title": "Maths Holiday homework Submission",
+  "description": "",
+  "sensitive": false,
+  "columns": [
+    {
+      "id": "col_1782751759335_0",
+      "label": "Assignment",
+      "type": "check"
+    },
+    {
+      "id": "col_1782751759335_1",
+      "label": "Project",
+      "type": "check"
+    },
+    {
+      "id": "col_1782751759335_2",
+      "label": "Activity",
+      "type": "check"
+    }
+  ],
+  "createdAt": {
+    "_seconds": 1782751759,
+    "_nanoseconds": 613000000
+  },
+  "updatedAt": {
+    "_seconds": 1782821942,
+    "_nanoseconds": 274000000
+  }
+}

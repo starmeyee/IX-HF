@@ -1,0 +1,12 @@
+{
+  "phone": "8102783645",
+  "rollNo": 23,
+  "name": "Utkarsh Kumar",
+  "test": "test2",
+  "claimedMarks": 10,
+  "currentMarks": 10,
+  "reason": "",
+  "createdAt": 1782150609289,
+  "resolvedAt": 1782150622269,
+  "status": "approved"
+}

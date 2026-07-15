@@ -1,0 +1,38 @@
+{
+  "date": "2026-07-14",
+  "weekday": "Tuesday",
+  "periods": [
+    {
+      "period": "1st",
+      "subject": "Hindi",
+      "note": "पाठ 3: मैथिलीशरण गुप्त – मनुष्यता Revision"
+    },
+    {
+      "period": "2nd",
+      "subject": "Physics",
+      "note": "Ch 2 Human Eye Countinued"
+    },
+    {
+      "period": "3rd",
+      "subject": "IT",
+      "note": "Sir Absent"
+    },
+    {
+      "period": "4th",
+      "subject": "Civics",
+      "note": "Politics in Caste Ch 3"
+    },
+    {
+      "period": "5th",
+      "subject": "Maths",
+      "note": "SSS and SAS similarity Explained"
+    },
+    {
+      "period": "6th",
+      "subject": "English",
+      "note": "Ch 12 Dear Departed Explained"
+    }
+  ],
+  "updatedBy": "Utkarsh Kumar",
+  "updatedAt": 1784033018802
+}

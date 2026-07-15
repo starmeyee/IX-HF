@@ -35,7 +35,7 @@ export default function handler(req) {
     const isNotes     = type === 'notes';
     const isNotice    = type === 'notice';
     const isHome      = type === 'home';
-    const title = clampText(searchParams.get('title') || '10th HI Portal', 48);
+    const title = clampText(searchParams.get('title') || 'IX HF Portal', 48);
     const rawLines = (searchParams.get('lines') || '').split('|').map((l) => l.trim()).filter(Boolean).slice(0, 5);
 
     const accent     = isNotice ? '#ec4899' : isNotes ? '#f59e0b' : isClasswork ? '#FF6D00' : '#8b5cf6';
@@ -77,7 +77,7 @@ export default function handler(req) {
         }, `${emoji}  ${label}`),
         h('div', { style: { display: 'flex', alignItems: 'center', gap: '12px', fontSize: 30, fontWeight: 700, color: '#fafafa' } },
           h('div', { style: { width: 40, height: 40, borderRadius: 10, background: 'linear-gradient(135deg,#8b5cf6,#ec4899)', display: 'flex' } }),
-          h('div', { style: { display: 'flex' } }, '10th HI'),
+          h('div', { style: { display: 'flex' } }, 'IX HF'),
         ),
       ),
       // Title
