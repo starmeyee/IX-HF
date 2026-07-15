@@ -107,7 +107,8 @@ export default function AuthModal({ resetPhone, onResetConsumed }) {
   async function handleRegister(e) {
     e.preventDefault(); setErr('');
     const roll = parseInt(rollNo, 10);
-    if (phone.trim() !== TEST_PHONE && !matchStudent(name, roll)) {
+    const isMatched = await matchStudent(name, roll);
+    if (phone.trim() !== TEST_PHONE && !isMatched) {
       setErr('Name or roll number doesn\'t match our records. Check and try again.');
       return;
     }

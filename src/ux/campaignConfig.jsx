@@ -249,7 +249,7 @@ const CAMPAIGNS = [
     content: {
       variant: 'whats-new',
       badge: Sparkles,
-      title: "Welcome to X HI Portal",
+      title: "Welcome to IX HF Portal",
       subtitle: "We've added some powerful new features — here's what's new:",
       features: [
         { icon: BookMarked, color: '#8b5cf6', bg: 'rgba(139,92,246,0.14)', title: 'Syllabus Tracking', body: 'See how much of each subject is done and tick off your own progress.' },

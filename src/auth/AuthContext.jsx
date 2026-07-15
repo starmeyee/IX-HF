@@ -30,9 +30,9 @@ export function AuthProvider({ children }) {
     const saved = localStorage.getItem('auth_phone');
     if (saved) {
       getUserByPhone(saved)
-        .then((user) => { 
+        .then(async (user) => { 
           if (user) {
-            user.role = user.phone === TEST_PHONE ? (user.activeRole || ROLES.STUDENT) : getUserRole(user.rollNo);
+            user.role = user.phone === TEST_PHONE ? (user.activeRole || ROLES.STUDENT) : await getUserRole(user.rollNo);
             setCurrentUser(user); 
           }
         })
@@ -45,7 +45,7 @@ export function AuthProvider({ children }) {
   async function refreshUser(phone) {
     const user = await getUserByPhone(phone);
     if (user) {
-      user.role = user.phone === TEST_PHONE ? (user.activeRole || ROLES.STUDENT) : getUserRole(user.rollNo);
+      user.role = user.phone === TEST_PHONE ? (user.activeRole || ROLES.STUDENT) : await getUserRole(user.rollNo);
       setCurrentUser(user);
     }
   }
@@ -65,7 +65,7 @@ export function AuthProvider({ children }) {
   async function savePassword(phone, password) {
     await setPassword(phone, password);
     const user = await getUserByPhone(phone);
-    if (user) user.role = getUserRole(user.rollNo);
+    if (user) user.role = await getUserRole(user.rollNo);
     setCurrentUser(user);
     localStorage.setItem('auth_phone', phone);
   }
@@ -77,7 +77,7 @@ export function AuthProvider({ children }) {
       // Post-merge: redirect to password reset with primary phone
       throw Object.assign(new Error('NEEDS_PASSWORD_RESET'), { primaryPhone: result.phone });
     }
-    result.role = result.phone === TEST_PHONE ? (result.activeRole || ROLES.STUDENT) : getUserRole(result.rollNo);
+    result.role = result.phone === TEST_PHONE ? (result.activeRole || ROLES.STUDENT) : await getUserRole(result.rollNo);
     setCurrentUser(result);
     // If they logged in via alternate phone, persist the primary phone for session restore
     localStorage.setItem('auth_phone', result.phone);
@@ -125,7 +125,7 @@ export function AuthProvider({ children }) {
   async function resetPassword(phone, newPassword) {
     await updatePassword(phone, newPassword);
     const user = await getUserByPhone(phone);
-    if (user) user.role = getUserRole(user.rollNo);
+    if (user) user.role = await getUserRole(user.rollNo);
     setCurrentUser(user);
     localStorage.setItem('auth_phone', phone);
   }

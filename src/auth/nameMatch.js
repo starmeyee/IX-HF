@@ -1,4 +1,4 @@
-import { rollList } from './rollList';
+import { getClassConfig } from '../services/classConfigService';
 
 /**
  * Checks if the entered first name matches the student's first name
@@ -16,17 +16,12 @@ function firstNameMatches(entered, official) {
  * @param {string} enteredName - Full name entered by student
  * @param {number} rollNo - Roll number entered
  */
-export function matchStudent(enteredName, rollNo) {
+export async function matchStudent(enteredName, rollNo) {
   const roll = parseInt(rollNo, 10);
-  const student = rollList.find((s) => s.rollNo === roll);
-  if (!student) return null;
-  if (!firstNameMatches(enteredName, student.name)) return null;
-  return student;
-}
-
-/**
- * Checks if a given name belongs to anyone in the class based on first name matching.
- */
-export function isNameInClass(enteredName) {
-  return rollList.some(student => firstNameMatches(enteredName, student.name));
+  const config = await getClassConfig();
+  const studentName = config.studentNames[roll];
+  
+  if (!studentName) return null;
+  if (!firstNameMatches(enteredName, studentName)) return null;
+  return { rollNo: roll, name: studentName };
 }

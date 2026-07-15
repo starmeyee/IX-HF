@@ -22,6 +22,7 @@ import { getAllUsers } from '../services/adminService';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getCTABannerConfig, saveCTABannerConfig, getCTAClicks } from '../services/ctaBannerService';
+import { getClassConfig, updateClassConfig } from '../services/classConfigService';
 
 function canAccess(user) {
   return user && (user.isAdmin || user.role === ROLES.MONITOR || user.role === ROLES.ADMIN);
@@ -609,7 +610,7 @@ function ClassworkManager({ currentUser }) {
   async function loadDate(dateKey) {
     setStatus('');
     if (!dateKey) { setRows([]); return; }
-    const periods = getPeriodsForDate(dateKey);
+    const periods = await getPeriodsForDate(dateKey);
     if (periods.length === 0) {
       setRows([]);
       setStatus('No periods scheduled (Sunday / holiday).');
@@ -1101,6 +1102,78 @@ function CTABannerManager() {
   );
 }
 
+function ClassConfigManager() {
+  const [config, setConfig] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    getClassConfig().then(setConfig);
+  }, []);
+
+  if (!config) return null;
+
+  async function handleSave(e) {
+    e.preventDefault();
+    setBusy(true);
+    await updateClassConfig(config);
+    setBusy(false);
+    alert('Class settings saved successfully!');
+  }
+
+  function handleNameChange(rollNo, name) {
+    setConfig(prev => ({
+      ...prev,
+      studentNames: { ...prev.studentNames, [rollNo]: name }
+    }));
+  }
+
+  return (
+    <div className="glass-card" style={{ marginBottom: '2rem' }}>
+      <div className="admin-section-header" onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
+        <h3><Users size={18} /> Class Configuration</h3>
+        <span>{expanded ? '▲' : '▼'}</span>
+      </div>
+      {expanded && (
+        <form onSubmit={handleSave} style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div>
+            <label style={{ display: 'block', marginBottom: '0.25rem', fontWeight: 600 }}>Class Teacher</label>
+            <input className="auth-input" value={config.classTeacher} onChange={e => setConfig({...config, classTeacher: e.target.value})} />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '0.25rem', fontWeight: 600 }}>Total Students</label>
+            <input className="auth-input" type="number" value={config.totalStudents} onChange={e => setConfig({...config, totalStudents: parseInt(e.target.value, 10)})} />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '0.25rem', fontWeight: 600 }}>Class Monitors (Comma separated Roll Nos)</label>
+            <input className="auth-input" value={config.monitors.join(', ')} onChange={e => {
+              const vals = e.target.value.split(',').map(v => parseInt(v.trim(), 10)).filter(v => !isNaN(v));
+              setConfig({...config, monitors: vals});
+            }} />
+          </div>
+          
+          <h4 style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>Student Names (Max 40)</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '0.5rem' }}>
+            {Array.from({ length: 40 }).map((_, i) => {
+              const r = i + 1;
+              return (
+                <div key={r} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <span style={{ width: '2rem', textAlign: 'right' }}>{r}.</span>
+                  <input className="auth-input" style={{ flex: 1, padding: '0.2rem 0.5rem' }} value={config.studentNames[r] || ''} onChange={e => handleNameChange(r, e.target.value)} />
+                </div>
+              );
+            })}
+          </div>
+          
+          <button type="submit" className="auth-btn primary" disabled={busy}>
+            {busy ? 'Saving...' : 'Save Settings'}
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export default function AdminPanel() {
   const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
@@ -1124,6 +1197,7 @@ export default function AdminPanel() {
       <NoticesManager currentUser={currentUser} />
       {isAdminUser(currentUser) && <BroadcastManager currentUser={currentUser} />}
       {isAdminUser(currentUser) && <CTABannerManager />}
+      {isAdminUser(currentUser) && <ClassConfigManager />}
       <HomeworkManager currentUser={currentUser} />
       <ClassworkManager currentUser={currentUser} />
       <SyllabusManager currentUser={currentUser} />

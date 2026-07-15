@@ -187,7 +187,7 @@ export function buildUserContext(user, data) {
   const tomorrow = new Date(now);
   tomorrow.setDate(tomorrow.getDate() + 1);
   const tomorrowKey = toDateKey(tomorrow);
-  const tomorrowRoutine = getPeriodsForDate(tomorrowKey).map(p => p.subject);
+  const tomorrowRoutine = (await getPeriodsForDate(tomorrowKey)).map(p => p.subject);
 
   const temporal = {
     currentHour,

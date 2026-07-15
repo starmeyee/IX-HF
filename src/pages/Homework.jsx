@@ -161,7 +161,7 @@ export default function Homework() {
     const ref = dayRefs.current[match.id];
     if (ref) setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
 
-    return () => { document.title = 'X HI Portal'; };
+    return () => { document.title = 'IX HF Portal'; };
   }, [searchParams, homeworkList]);
 
   // Auto-scroll to ?date= within the Classwork tab + set page title.
@@ -177,7 +177,7 @@ export default function Homework() {
     const ref = cwRefs.current[match.id];
     if (ref) setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
 
-    return () => { document.title = 'X HI Portal'; };
+    return () => { document.title = 'IX HF Portal'; };
   }, [searchParams, classworkList, tab]);
 
   const toggleTask = useCallback((taskKey) => {

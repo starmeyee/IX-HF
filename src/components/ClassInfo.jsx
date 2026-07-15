@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, UserCircle, ShieldCheck, Copy, Check } from 'lucide-react';
-import { ROUTINE_TABLE } from '../data/routine';
-
-import { rollList as students } from '../auth/rollList';
-
-const monitors = [];
-
-const routine = ROUTINE_TABLE;
+import { getClassConfig } from '../services/classConfigService';
 
 /**
  * Class overview content (teacher, student count, monitors, weekly
@@ -15,6 +9,23 @@ const routine = ROUTINE_TABLE;
  */
 export default function ClassInfo() {
   const [copied, setCopied] = useState(false);
+  const [config, setConfig] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    getClassConfig().then(c => {
+      if (active) setConfig(c);
+    });
+    return () => { active = false; };
+  }, []);
+
+  if (!config) return <div className="p-4 text-center">Loading class info...</div>;
+
+  const students = Object.keys(config.studentNames)
+    .map(r => ({ rollNo: parseInt(r, 10), name: config.studentNames[r] }))
+    .sort((a, b) => a.rollNo - b.rollNo)
+    .filter(s => s.name && s.name.trim() !== '')
+    .slice(0, config.totalStudents);
 
   const handleCopy = () => {
     const textToCopy = students.map(s => `${s.rollNo}. ${s.name}`).join('\n');
@@ -31,7 +42,7 @@ export default function ClassInfo() {
           <div className="stat-icon primary-grad"><UserCircle size={32} /></div>
           <div className="stat-info">
             <h3>Class Teacher</h3>
-            <p>Abhay Sinha</p>
+            <p>{config.classTeacher}</p>
           </div>
         </div>
 
@@ -39,7 +50,7 @@ export default function ClassInfo() {
           <div className="stat-icon secondary-grad"><Users size={32} /></div>
           <div className="stat-info">
             <h3>Total Students</h3>
-            <p>{students.length}</p>
+            <p>{config.totalStudents}</p>
           </div>
         </div>
 
@@ -51,7 +62,11 @@ export default function ClassInfo() {
             <h3>Class Monitors</h3>
           </div>
           <div className="monitor-tags">
-            {monitors.map(m => <span key={m} className="monitor-badge">{m}</span>)}
+            {config.monitors.length > 0 ? (
+              config.monitors.map(m => <span key={m} className="monitor-badge">Roll {m}</span>)
+            ) : (
+              <span className="text-secondary text-sm">None assigned</span>
+            )}
           </div>
         </div>
       </div>
@@ -68,10 +83,10 @@ export default function ClassInfo() {
             <div className="routine-cell header">5th</div>
             <div className="routine-cell header">6th</div>
 
-            {routine.map((row) => (
-              <React.Fragment key={row.day}>
-                <div className="routine-cell header day-label">{row.day}</div>
-                {row.periods.map((subject, index) => (
+            {config.routine && [1, 2, 3, 4, 5, 6].map(day => (
+              <React.Fragment key={day}>
+                <div className="routine-cell header day-label">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day]}</div>
+                {config.routine[day].map((subject, index) => (
                   <div key={index} className="routine-cell subject">{subject}</div>
                 ))}
               </React.Fragment>
