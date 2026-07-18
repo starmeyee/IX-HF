@@ -1128,6 +1128,16 @@ function ClassConfigManager() {
     }));
   }
 
+  function handleRoutineChange(day, periodIndex, subject) {
+    setConfig(prev => {
+      const newRoutine = { ...prev.routine };
+      const newDayArr = [...(newRoutine[day] || ['', '', '', '', '', ''])];
+      newDayArr[periodIndex] = subject;
+      newRoutine[day] = newDayArr;
+      return { ...prev, routine: newRoutine };
+    });
+  }
+
   return (
     <div className="glass-card" style={{ marginBottom: '2rem' }}>
       <div className="admin-section-header" onClick={() => setExpanded(!expanded)} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
@@ -1150,6 +1160,30 @@ function ClassConfigManager() {
               const vals = e.target.value.split(',').map(v => parseInt(v.trim(), 10)).filter(v => !isNaN(v));
               setConfig({...config, monitors: vals});
             }} />
+          </div>
+
+          <h4 style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>Weekly Routine</h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[1, 2, 3, 4, 5, 6].map(day => {
+              const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+              return (
+                <div key={day} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', background: 'rgba(255,255,255,0.02)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+                  <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{dayName}</span>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '0.5rem' }}>
+                    {(config.routine?.[day] || ['', '', '', '', '', '']).map((subj, idx) => (
+                      <input
+                        key={idx}
+                        className="auth-input"
+                        style={{ padding: '0.3rem 0.5rem', fontSize: '0.85rem' }}
+                        placeholder={`Period ${idx + 1}`}
+                        value={subj}
+                        onChange={e => handleRoutineChange(day, idx, e.target.value)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
           
           <h4 style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>Student Names (Max 40)</h4>

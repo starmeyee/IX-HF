@@ -74,23 +74,25 @@ export default function ClassInfo() {
       <div className="bento-section">
         <h2 className="section-title">Weekly Routine</h2>
         <div className="glass-card table-card p-0 glow-hover">
-          <div className="routine-grid-real">
-            <div className="routine-cell header">Day</div>
-            <div className="routine-cell header">1st</div>
-            <div className="routine-cell header">2nd</div>
-            <div className="routine-cell header">3rd</div>
-            <div className="routine-cell header">4th</div>
-            <div className="routine-cell header">5th</div>
-            <div className="routine-cell header">6th</div>
+          <div className="table-container">
+            <div className="routine-grid-real">
+              <div className="routine-cell header">Day</div>
+              <div className="routine-cell header">1st</div>
+              <div className="routine-cell header">2nd</div>
+              <div className="routine-cell header">3rd</div>
+              <div className="routine-cell header">4th</div>
+              <div className="routine-cell header">5th</div>
+              <div className="routine-cell header">6th</div>
 
-            {config.routine && [1, 2, 3, 4, 5, 6].map(day => (
-              <React.Fragment key={day}>
-                <div className="routine-cell header day-label">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day]}</div>
-                {config.routine[day].map((subject, index) => (
-                  <div key={index} className="routine-cell subject">{subject}</div>
-                ))}
-              </React.Fragment>
-            ))}
+              {config.routine && [1, 2, 3, 4, 5, 6].map(day => (
+                <React.Fragment key={day}>
+                  <div className="routine-cell header day-label">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day]}</div>
+                  {config.routine[day].map((subject, index) => (
+                    <div key={index} className="routine-cell subject">{subject}</div>
+                  ))}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </div>
